@@ -30,5 +30,9 @@ in
       userName = nickname;
       userEmail = email;
     };
+
+    imports = map mylib.relativeToRoot [
+      "homes/editors/vscode"
+    ];
   };
 }
