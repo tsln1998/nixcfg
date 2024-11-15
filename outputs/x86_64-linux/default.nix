@@ -1,4 +1,4 @@
-{ lib, inputs, system, withSpecialArgs }@args:
+{ lib, mylib, inputs, system, withSpecialArgs }@args:
 let
   hosts = inputs.haumea.lib.load {
     src = ./src;

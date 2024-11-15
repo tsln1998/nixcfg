@@ -1,5 +1,5 @@
-{
-  lib
+{ lib
+, mylib
 , inputs
 , system
 , specialArgs
@@ -8,7 +8,7 @@
 , ...
 }:
 let
-  inherit (inputs) home-manager;
+  inherit (inputs) nixos-wsl home-manager;
 in
 lib.nixosSystem {
   inherit system specialArgs;
@@ -20,7 +20,7 @@ lib.nixosSystem {
         networking.hostName = lib.mkForce name;
       }
       # host configuration
-      (lib.relativeToRoot "hosts/${name}")
+      (mylib.relativeToRoot "hosts/${name}")
       # home-manager
       home-manager.nixosModules.home-manager
       {

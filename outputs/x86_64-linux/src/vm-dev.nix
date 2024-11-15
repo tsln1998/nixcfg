@@ -1,4 +1,5 @@
 { lib
+, mylib
 , inputs
 , system
 , specialArgs
@@ -12,5 +13,5 @@ let
   };
 in
 {
-  nixosConfigurations.${sys.name} = lib.makeNixSystem sys;
+  nixosConfigurations.${sys.name} = mylib.makeNixSystem sys;
 }

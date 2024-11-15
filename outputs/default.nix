@@ -1,15 +1,20 @@
 { nixpkgs, nixpkgs-unstable, ... }@inputs:
 let
-  lib = (import ../lib { inherit (nixpkgs) lib; }) // nixpkgs.lib;
+  inherit (nixpkgs) lib;
+
+  mylib = import ../lib { inherit lib; };
 
   args = {
-    inherit inputs lib;
+    inherit lib mylib inputs;
 
     withSpecialArgs = system: {
+      inherit mylib inputs;
+      
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
       };
+
       pkgs-unstable = import nixpkgs-unstable {
         inherit system;
         config.allowUnfree = true;

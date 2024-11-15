@@ -1,5 +1,5 @@
-{
-  lib
+{ lib
+, mylib
 , inputs
 , system
 , specialArgs
@@ -23,7 +23,7 @@ lib.nixosSystem {
         networking.hostName = lib.mkForce name;
       }
       # host configuration
-      (lib.relativeToRoot "hosts/${name}")
+      (mylib.relativeToRoot "hosts/${name}")
       # home-manager
       home-manager.nixosModules.home-manager
       {

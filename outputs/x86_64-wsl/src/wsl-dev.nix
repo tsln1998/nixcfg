@@ -1,4 +1,5 @@
 { lib
+,mylib
 , inputs
 , system
 , specialArgs
@@ -12,5 +13,5 @@ let
   };
 in
 {
-  nixosConfigurations.${sys.name} = lib.makeWslSystem sys;
+  nixosConfigurations.${sys.name} = mylib.makeWslSystem sys;
 }
