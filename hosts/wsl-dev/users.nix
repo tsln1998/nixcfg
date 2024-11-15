@@ -1,6 +1,6 @@
-{ lib, mylib, pkgs, ... }:
+{ config, lib, mylib, pkgs, ... }:
 let
-  username = "tsln";
+  username = config.wsl.defaultUser;
   nickname = "Tsln";
   email = "tsln1998@users.noreply.github.com";
 in
@@ -14,7 +14,6 @@ in
     createHome = true;
 
     isNormalUser = true;
-    initialHashedPassword = "$y$j9T$oepN5i.bp.KULuIHEvv0h0$e8mQlpoPV5O.wHdeiBGxLjlCldFsXf6Ho9T8l7Y3g06";
 
     openssh.authorizedKeys.keyFiles = map mylib.relativeToRoot [
       "rsc/id_ed25519.pub"
