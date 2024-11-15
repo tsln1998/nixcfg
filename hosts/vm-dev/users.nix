@@ -32,7 +32,8 @@ in
     };
 
     imports = map mylib.relativeToRoot [
-      "homes/editors/vscode"
+      "homes/editors"
+      "homes/devel"
     ];
   };
 }

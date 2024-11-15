@@ -1,8 +1,7 @@
-{ ... }:
-{
+{...}:{
   imports = [
     ./core.nix
     ./debugger.nix
-    ./extensions.nix
+    ./tools.nix
   ];
 }

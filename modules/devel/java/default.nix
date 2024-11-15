@@ -1,4 +1,0 @@
-{ ... }:
-{
-  imports = [ ./core.nix ];
-}
