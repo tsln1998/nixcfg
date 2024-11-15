@@ -24,14 +24,13 @@ in
   home-manager.users.${username} = {
     home.stateVersion = "24.05";
 
-    programs.git = {
-      enable = true;
-      userName = nickname;
-      userEmail = email;
-    };
-
     imports = map mylib.relativeToRoot [
       "homes/devel"
     ];
+
+    programs.git = {
+      userName = nickname;
+      userEmail = email;
+    };
   };
 }

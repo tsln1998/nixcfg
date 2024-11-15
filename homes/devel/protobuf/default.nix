@@ -1,8 +1,7 @@
 {...}:{
   imports = [
     ./core.nix
-    ./debugger.nix
-    ./tools.nix
+    ./golang.nix
     ./vscode.nix
   ];
 }

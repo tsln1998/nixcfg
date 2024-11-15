@@ -1,8 +1,8 @@
-{...}:{
+{ ... }: {
   imports = [
     ./core.nix
-    ./debugger.nix
-    ./tools.nix
+    ./lfs.nix
+    ./config.nix
     ./vscode.nix
   ];
 }
