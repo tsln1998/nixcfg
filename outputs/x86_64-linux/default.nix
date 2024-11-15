@@ -1,10 +1,10 @@
 { lib, mylib, inputs, system, withSpecialArgs }@args:
 let
+  specialArgs = withSpecialArgs system;
+
   hosts = inputs.haumea.lib.load {
     src = ./src;
-    inputs = args // {
-      specialArgs = withSpecialArgs system;
-    };
+    inputs = args // {inherit specialArgs;};
   };
 
   hostsValues = builtins.attrValues hosts;
@@ -13,6 +13,9 @@ let
     nixosConfigurations = lib.attrsets.mergeAttrsList (
       map (it: it.nixosConfigurations or { }) hostsValues
     );
+    packages = {
+      ${system} = import (mylib.relativeToRoot "packages") specialArgs;
+    };
   };
 in
 outputs

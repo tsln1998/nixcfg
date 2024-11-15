@@ -18,8 +18,11 @@ lib.nixosSystem {
       # system configuration
       nixos-wsl.nixosModules.default
       {
+        nix.settings.experimental-features = "nix-command flakes";
+
         wsl.enable = lib.mkForce true;
         wsl.defaultUser = lib.mkDefault "nixos";
+        
         networking.hostName = lib.mkForce name;
       }
       # host configuration

@@ -9,7 +9,7 @@ let
 
     withSpecialArgs = system: {
       inherit mylib inputs;
-      
+
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
@@ -26,16 +26,16 @@ let
 
   nixosSystems = {
     x86_64-linux = import ./x86_64-linux (args // { system = "x86_64-linux"; });
-    x86_64-wsl = import ./x86_64-wsl (args // { system = "x86_64-linux"; });
   };
 
-  nixosSystemNames = builtins.attrNames nixosSystems;
   nixosSystemValues = builtins.attrValues nixosSystems;
-
-  allSystemNames = nixosSystemNames;
-  allSystemValues = nixosSystemValues;
 in
 {
-  nixosConfigurations =
-    lib.attrsets.mergeAttrsList (map (it: it.nixosConfigurations or { }) nixosSystemValues);
+  nixosConfigurations = lib.attrsets.mergeAttrsList (
+    map (it: it.nixosConfigurations or { }) nixosSystemValues
+  );
+
+  packages = lib.attrsets.mergeAttrsList (
+    map (it: it.packages or { }) nixosSystemValues
+  );
 }

@@ -8,7 +8,7 @@
 , ...
 }:
 let
-  inherit (inputs) nixos-wsl home-manager;
+  inherit (inputs) home-manager;
 in
 lib.nixosSystem {
   inherit system specialArgs;
@@ -17,6 +17,8 @@ lib.nixosSystem {
     [
       # system configuration
       {
+        nix.settings.experimental-features = "nix-command flakes";
+
         networking.hostName = lib.mkForce name;
       }
       # host configuration
