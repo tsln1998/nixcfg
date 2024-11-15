@@ -1,7 +1,5 @@
-{ lib, pkgs, ... }:
+{ pkgs, ... }:
 {
-  services.displayManager.defaultSession = lib.mkDefault "plasma";
-
   services.desktopManager.plasma6 = {
     enable = true;
     notoPackage = pkgs.noto-fonts-cjk;
