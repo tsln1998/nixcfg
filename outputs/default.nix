@@ -1,6 +1,6 @@
 { nixpkgs, nixpkgs-unstable, ... }@inputs:
 let
-  inherit (nixpkgs) lib;
+  lib = (import ../lib { inherit (nixpkgs) lib; }) // nixpkgs.lib;
 
   args = (builtins.removeAttrs inputs [ "self" ]) // {
     inherit lib;

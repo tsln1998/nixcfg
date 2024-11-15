@@ -1,19 +1,20 @@
 { lib
 , system
 , nixos-wsl
+, home-manager
 , withSpecialArgs
 , ...
-}: {
-  nixosConfigurations = {
-    vm-dev = lib.nixosSystem {
-      inherit system;
-      specialArgs = withSpecialArgs system;
-      modules = [
-        ../../../hosts/vm-dev
-        {
-          networking.hostName = "vm-dev";
-        }
-      ];
-    };
+} @args:
+let
+  sys = args // {
+    name = "vm-dev";
+
+    specialArgs = withSpecialArgs system;
+
+    modules = [
+    ];
   };
+in
+{
+  nixosConfigurations.${sys.name} = lib.makeNixSystem sys;
 }
