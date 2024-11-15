@@ -28,6 +28,7 @@ in
     imports = map mylib.relativeToRoot [
       "homes/editors"
       "homes/devel"
+      "homes/browsers"
     ];
 
     programs.git = {
