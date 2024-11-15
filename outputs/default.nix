@@ -13,6 +13,8 @@ let
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
+
+        overlays = import ../overlays inputs;
       };
 
       pkgs-unstable = import nixpkgs-unstable {
