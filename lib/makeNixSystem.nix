@@ -1,15 +1,16 @@
 {
-  # output args
   lib
-, nixos-wsl
-, home-manager
+, inputs
 , system
-  # system args
-, name
 , specialArgs
+, name
 , modules
 , ...
-}: lib.nixosSystem {
+}:
+let
+  inherit (inputs) home-manager;
+in
+lib.nixosSystem {
   inherit system specialArgs;
 
   modules = modules ++ (

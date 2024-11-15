@@ -1,8 +1,10 @@
-{ lib, haumea, ... }@args:
+{ lib, inputs, system, withSpecialArgs }@args:
 let
-  hosts = haumea.lib.load {
+  hosts = inputs.haumea.lib.load {
     src = ./src;
-    inputs = args;
+    inputs = args // {
+      specialArgs = withSpecialArgs system;
+    };
   };
 
   hostsValues = builtins.attrValues hosts;

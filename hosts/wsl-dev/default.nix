@@ -1,8 +1,8 @@
 { pkgs, ...}: {
   imports = [
-    ../../modules/base/core
+    ../../modules/base
     ../../modules/base/server
-    ../../modules/devel/core
+    ../../modules/devel
     ../../modules/devel/nix
     ../../modules/devel/go
     ../../modules/shells

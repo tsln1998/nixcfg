@@ -1,16 +1,12 @@
 { lib
+, inputs
 , system
-, nixos-wsl
-, home-manager
-, withSpecialArgs
+, specialArgs
 , ...
 } @args:
 let
   sys = args // {
     name = "wsl-dev";
-
-    specialArgs = withSpecialArgs system;
-
     modules = [
     ];
   };

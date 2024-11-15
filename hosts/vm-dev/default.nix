@@ -2,19 +2,16 @@
 {
   imports = [
     ./hardware.nix
-    ../../modules/base/core
+    ../../modules/base
     ../../modules/base/desktop
     ../../modules/base/server
-    ../../modules/gui/core
+    ../../modules/gui
     ../../modules/gui/desktop/plasma
     ../../modules/gui/display/sddm
+    ../../modules/virtualisation/guest/vmware
     ../../modules/shells
     ../../modules/utils
   ];
-
-  virtualisation.vmware.guest.enable = true;
-
-  services.xserver.videoDrivers = [ "vmware" ];
 
   boot.loader = {
     efi = {

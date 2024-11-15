@@ -2,8 +2,8 @@
 let
   lib = (import ../lib { inherit (nixpkgs) lib; }) // nixpkgs.lib;
 
-  args = (builtins.removeAttrs inputs [ "self" ]) // {
-    inherit lib;
+  args = {
+    inherit inputs lib;
 
     withSpecialArgs = system: {
       pkgs = import nixpkgs {

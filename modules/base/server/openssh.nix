@@ -1,4 +1,4 @@
-{...}:{
-    services.openssh.enable = true;
-    services.openssh.settings.PermitRootLogin = "yes";
+{ lib, ... }: {
+  services.openssh.enable = lib.mkDefault true;
+  services.openssh.settings.PermitRootLogin = lib.mkDefault "prohibit-password";
 }
