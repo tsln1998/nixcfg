@@ -23,5 +23,13 @@
     systemd-boot.enable = true;
   };
 
+  i18n = {
+    supportedLocales = [
+      "en_US.UTF-8/UTF-8"
+      "zh_CN.UTF-8/UTF-8"
+    ];
+    defaultLocale = "zh_CN.UTF-8";
+  };
+
   system.stateVersion = "24.05";
 }
