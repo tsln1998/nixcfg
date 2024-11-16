@@ -18,6 +18,8 @@
       "modules/gui/desktop/plasma"
       "modules/gui/display/sddm"
       "modules/virtualisation/guest/vmware"
+      "modules/virtualisation/host/docker"
+      "modules/virtualisation/host/podman"
       "modules/shells"
       "modules/utils"
     ]);

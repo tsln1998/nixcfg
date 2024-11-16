@@ -31,9 +31,9 @@ in
     home.stateVersion = "24.05";
 
     imports = map mylib.relativeToRoot [
+      "homes/applications"
       "homes/editors"
       "homes/devel"
-      "homes/browsers"
     ];
 
     programs.git = {
