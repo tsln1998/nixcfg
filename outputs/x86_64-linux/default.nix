@@ -1,10 +1,18 @@
-{ lib, mylib, inputs, system, withSpecialArgs }@args:
+{
+  lib,
+  mylib,
+  inputs,
+  system,
+  withSpecialArgs,
+}@args:
 let
   specialArgs = withSpecialArgs system;
 
   hosts = inputs.haumea.lib.load {
     src = ./src;
-    inputs = args // {inherit specialArgs;};
+    inputs = args // {
+      inherit specialArgs;
+    };
   };
 
   hostsValues = builtins.attrValues hosts;

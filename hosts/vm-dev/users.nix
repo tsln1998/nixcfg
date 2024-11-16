@@ -1,4 +1,9 @@
-{ lib, mylib, pkgs, ... }:
+{
+  lib,
+  mylib,
+  pkgs,
+  ...
+}:
 let
   username = "tsln";
   nickname = "Tsln";

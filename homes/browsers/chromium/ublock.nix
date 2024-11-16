@@ -1,5 +1,4 @@
-{ ... }: {
-  programs.chromium.extensions = [
-    { id = "ddkjiahejlhfcafbddmgiahcphecmpfh"; }
-  ];
+{ ... }:
+{
+  programs.chromium.extensions = [ { id = "ddkjiahejlhfcafbddmgiahcphecmpfh"; } ];
 }

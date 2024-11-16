@@ -1,5 +1,4 @@
-{ pkgs, ... }: {
-  programs.vscode.extensions = with pkgs.vscode-extensions; [
-    golang.go
-  ];
+{ pkgs, ... }:
+{
+  programs.vscode.extensions = with pkgs.vscode-extensions; [ golang.go ];
 }

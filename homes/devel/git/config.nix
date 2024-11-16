@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   programs.git.extraConfig = {
     core = {
       autocrlf = "input";

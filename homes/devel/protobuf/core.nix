@@ -1,5 +1,4 @@
-{ pkgs,...}:{
-  home.packages = with pkgs; [
-    protobuf
-  ];
+{ pkgs, ... }:
+{
+  home.packages = with pkgs; [ protobuf ];
 }

@@ -35,7 +35,5 @@ in
     map (it: it.nixosConfigurations or { }) nixosSystemValues
   );
 
-  packages = lib.attrsets.mergeAttrsList (
-    map (it: it.packages or { }) nixosSystemValues
-  );
+  packages = lib.attrsets.mergeAttrsList (map (it: it.packages or { }) nixosSystemValues);
 }

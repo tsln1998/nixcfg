@@ -1,5 +1,4 @@
-{ pkgs-unstable, ... }: {
-  home.packages = with pkgs-unstable; [
-    delve
-  ];
+{ pkgs-unstable, ... }:
+{
+  home.packages = with pkgs-unstable; [ delve ];
 }

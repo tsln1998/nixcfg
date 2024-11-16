@@ -1,4 +1,10 @@
-{ config, lib, mylib, pkgs, ... }:
+{
+  config,
+  lib,
+  mylib,
+  pkgs,
+  ...
+}:
 let
   username = config.wsl.defaultUser;
   nickname = "Tsln";
@@ -24,9 +30,7 @@ in
   home-manager.users.${username} = {
     home.stateVersion = "24.05";
 
-    imports = map mylib.relativeToRoot [
-      "homes/devel"
-    ];
+    imports = map mylib.relativeToRoot [ "homes/devel" ];
 
     programs.git = {
       userName = nickname;

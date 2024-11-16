@@ -1,5 +1,4 @@
-{ pkgs, ... }: {
-  programs.vscode.extensions = with pkgs.vscode-extensions; [
-    jnoortheen.nix-ide
-  ];
+{ pkgs, ... }:
+{
+  programs.vscode.extensions = with pkgs.vscode-extensions; [ jnoortheen.nix-ide ];
 }
