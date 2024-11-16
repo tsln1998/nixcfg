@@ -1,1 +1,5 @@
-_: [ (final: _prev: { additions = import ../packages { pkgs = final; }; }) ]
+{ ... }@inputs:
+[
+  (import ./packages.nix inputs)
+  (import ./versions.nix inputs)
+]
