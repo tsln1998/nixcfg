@@ -1,4 +1,4 @@
-{ nixpkgs, nixpkgs-unstable, ... }@inputs:
+{ nixpkgs, ... }@inputs:
 let
   inherit (nixpkgs) lib;
 
@@ -15,11 +15,6 @@ let
         config.allowUnfree = true;
 
         overlays = import ../overlays inputs;
-      };
-
-      pkgs-unstable = import nixpkgs-unstable {
-        inherit system;
-        config.allowUnfree = true;
       };
     };
   };

@@ -1,4 +1,4 @@
-{ pkgs, pkgs-unstable, ... }:
+{ pkgs, ... }:
 {
   programs.vscode.extensions =
     (with pkgs.vscode-extensions; [
@@ -11,5 +11,5 @@
       quicktype.quicktype
       humao.rest-client
     ])
-    ++ (with pkgs-unstable.vscode-extensions; [ fill-labs.dependi ]);
+    ++ (with pkgs.unstable.vscode-extensions; [ fill-labs.dependi ]);
 }
