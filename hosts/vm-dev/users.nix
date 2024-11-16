@@ -40,5 +40,13 @@ in
       userName = nickname;
       userEmail = email;
     };
+
+    home.packages = with pkgs; [
+      mongodb-compass
+      hoppscotch
+
+      additions.nx-torzu
+      additions.apifox
+    ];
   };
 }

@@ -2,20 +2,20 @@
 {
   relativeToRoot = lib.path.append ../.;
 
-  scan = path:
-    builtins.map
-    (f: (path + "/${f}"))
-    (builtins.attrNames
-      (lib.attrsets.filterAttrs
-        (
+  scan =
+    path:
+    builtins.map (f: (path + "/${f}")) (
+      builtins.attrNames (
+        lib.attrsets.filterAttrs (
           path: _type:
-            (_type == "directory") # include directories
-            || (
-              (path != "default.nix") # ignore default.nix
-              && (lib.strings.hasSuffix ".nix" path) # include .nix files
-            )
-        )
-        (builtins.readDir path)));
+          (_type == "directory") # include directories
+          || (
+            (path != "default.nix") # ignore default.nix
+            && (lib.strings.hasSuffix ".nix" path) # include .nix files
+          )
+        ) (builtins.readDir path)
+      )
+    );
 
   makeNixSystem = import ./makeNixSystem.nix;
   makeWslSystem = import ./makeWslSystem.nix;

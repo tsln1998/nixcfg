@@ -1,1 +1,7 @@
-_: final: _prev: { additions = import ../packages { pkgs = final; }; }
+{ ... }:
+final: _prev: {
+  additions = import ../packages {
+    inherit (final) system;
+    pkgs = final;
+  };
+}
