@@ -14,6 +14,7 @@
       "modules/base"
       "modules/base/desktop"
       "modules/base/server"
+      "modules/boot/plymouth"
       "modules/gui"
       "modules/gui/desktop/plasma"
       "modules/gui/display/sddm"
