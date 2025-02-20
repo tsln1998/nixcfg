@@ -2,7 +2,6 @@
   nixConfig = {
     substituters = [
       "https://mirrors.cernet.edu.cn/nix-channels/store"
-      "https://mirrors.ustc.edu.cn/nix-channels/store"
       "https://cache.nixos.org/"
     ];
   };
@@ -13,13 +12,18 @@
 
     nixos-wsl.url = "github:nix-community/NixOS-WSL/2411.6.0";
     nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
-    
-    jetbrains-plugins.url = "github:theCapypara/nix-jetbrains-plugins";
-    jetbrains-plugins.inputs.nixpkgs.follows = "nixpkgs-unstable";
-    jetbrains-plugins.inputs.systems.follows = "nixpkgs-systems";
 
     home-manager.url = "github:nix-community/home-manager/release-24.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    agenix.url = "github:ryantm/agenix/e600439ec4c273cf11e06fe4d9d906fb98fa097c";
+    agenix.inputs.nixpkgs.follows = "nixpkgs";
+    agenix.inputs.systems.follows = "nixpkgs-systems";
+    agenix.inputs.home-manager.follows = "home-manager";
+
+    jetbrains-plugins.url = "github:theCapypara/nix-jetbrains-plugins";
+    jetbrains-plugins.inputs.nixpkgs.follows = "nixpkgs-unstable";
+    jetbrains-plugins.inputs.systems.follows = "nixpkgs-systems";
   };
 
   outputs =
@@ -39,6 +43,10 @@
     {
       inherit overlays;
       #
+      # NixOS Modules
+      #
+      nixosModules = (import ./modules/nixos) // (import ./modules/common);
+      #
       # NixOS Configurations
       #
       nixosConfigurations = {
@@ -53,6 +61,10 @@
           };
         };
       };
+      #
+      # Home Manager Modules
+      #
+      homeManagerModules = (import ./modules/home-manager) // (import ./modules/common);
       #
       # Home Manager Standalone Configrations
       #

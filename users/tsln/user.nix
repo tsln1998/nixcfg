@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   users.mutableUsers = false;
   users.users.tsln = {
@@ -9,6 +9,6 @@
     ];
 
     isNormalUser = true;
-    hashedPassword = "$6$l3YXqJS1tc9F0wTK$ZbbbiVMos.hwW6h1kIv8HHpkL8dMhtFGFpop/4E/vZGSRVXClxToiWeZlLW38q4WTzH5ePn3FZx1/i6bgmWHl/";
+    hashedPasswordFile = config.age.secrets."users/tsln/passwd".path;
   };
 }
