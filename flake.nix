@@ -2,6 +2,7 @@
   nixConfig = {
     substituters = [
       "https://mirrors.cernet.edu.cn/nix-channels/store"
+      "https://mirrors.ustc.edu.cn/nix-channels/store"
       "https://cache.nixos.org/"
     ];
   };
@@ -10,8 +11,12 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-systems.url = "github:nix-systems/default-linux";
 
+    nixpkgs-nur.url = "github:nix-community/NUR";
+    nixpkgs-nur.inputs.nixpkgs.follows = "nixpkgs";
+
     nixos-wsl.url = "github:nix-community/NixOS-WSL/2411.6.0";
     nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
+    nixos-hardware.url = "github:nixos/nixos-hardware";
 
     home-manager.url = "github:nix-community/home-manager/release-24.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -20,6 +25,9 @@
     agenix.inputs.nixpkgs.follows = "nixpkgs";
     agenix.inputs.systems.follows = "nixpkgs-systems";
     agenix.inputs.home-manager.follows = "home-manager";
+
+    disko.url = "github:nix-community/disko/v1.11.0";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
 
     jetbrains-plugins.url = "github:theCapypara/nix-jetbrains-plugins";
     jetbrains-plugins.inputs.nixpkgs.follows = "nixpkgs-unstable";
@@ -60,6 +68,16 @@
             inherit inputs outputs tools;
           };
         };
+        # VMware
+        "vmware" = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ./hosts/vmware
+          ];
+          specialArgs = with self; {
+            inherit inputs outputs tools;
+          };
+        };
       };
       #
       # Home Manager Modules
@@ -79,6 +97,16 @@
             pkgs = pkgs.x86_64-linux;
             modules = [
               ./home/tsln/tb16g6imh-wsl
+            ];
+            extraSpecialArgs = with self; {
+              inherit inputs outputs tools;
+            };
+          };
+          # VMware
+          "tsln@vmware" = home-manager.lib.homeManagerConfiguration {
+            pkgs = pkgs.x86_64-linux;
+            modules = [
+              ./home/tsln/vmware
             ];
             extraSpecialArgs = with self; {
               inherit inputs outputs tools;

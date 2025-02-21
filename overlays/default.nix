@@ -1,6 +1,6 @@
 { inputs, ... }:
 let
-  inherit (inputs) nixpkgs-unstable;
+  inherit (inputs) nixpkgs-unstable nixpkgs-nur;
 in
 {
   unstable = final: _: {
@@ -9,4 +9,7 @@ in
       config = final.config;
     };
   };
+  nur = (
+    nixpkgs-nur.overlays.default
+  );
 }

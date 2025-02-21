@@ -15,6 +15,10 @@ in
     "${homeDirectory}/.ssh/id_ed25519"
     "/tmp/id_rsa_${username}"
     "/tmp/id_ed25519_${username}"
+    "/etc/ssh/ssh_host_ed25519_key"
+    "/etc/ssh/ssh_host_rsa_key"
+    "/tmp/ssh_host_ed25519_key"
+    "/tmp/ssh_host_rsa_key"
     "/tmp/id_rsa"
     "/tmp/id_ed25519"
   ];
@@ -22,5 +26,5 @@ in
   # age.secretsDir = "${homeDirectory}/.agenix/agenix";
   # age.secretsMountPoint = "${homeDirectory}/.agenix/agenix.d";
 
-  home.activation.agenix = lib.hm.dag.entryBefore ["checkFilesChanged"] config.systemd.user.services.agenix.Service.ExecStart;
+  home.activation.agenix = lib.hm.dag.entryAfter ["writeBoundary"] config.systemd.user.services.agenix.Service.ExecStart;
 }

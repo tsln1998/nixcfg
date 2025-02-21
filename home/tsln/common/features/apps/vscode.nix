@@ -18,6 +18,20 @@ in
       usernamehw.errorlens
     ];
 
+    enableUpdateCheck = false;
+    enableExtensionUpdateCheck = false;
     mutableExtensionsDir = false;
+
+    userSettings = {
+      "window.titleBarStyle" = "custom";
+      "window.autoDetectColorScheme" = true;
+      "workbench.preferredDarkColorTheme" = "GitHub Dark";
+      "workbench.preferredLightColorTheme" = "GitHub Light";
+      "editor.fontLigatures" = true;
+      "editor.fontFamily" = "'Fira Code', 'Ubuntu Mono', 'Noto Sans CJK SC', 'Noto Serif CJK SC'";
+      "nix.enableLanguageServer" = true;
+      "nix.serverPath" = "nixd";
+      "nix.formatterPath" = "nixfmt";
+    };
   };
 }
