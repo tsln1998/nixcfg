@@ -30,6 +30,8 @@
     };
     "org/gnome/Console" = {
       theme = "auto";
+      use-system-font = false;
+      custom-font = "FiraCode Nerd Font 10";
     };
     "org/gnome/shell/extensions/dynamic-panel" = {
       top-margin = 8;
