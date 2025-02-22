@@ -12,6 +12,10 @@
       dynamic-panel
     ];
 
+  home.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+  };
+
   dconf.settings = {
     "org/gnome/shell" = {
       experimental-features = [

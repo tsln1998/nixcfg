@@ -7,6 +7,7 @@
       "home/tsln/common/features/apps/firefox.nix"
       "home/tsln/common/features/apps/vscode.nix"
       "home/tsln/common/features/desktop/gnome.nix"
+      "home/tsln/common/features/i18n/fcitx.nix"
       "home/tsln/common/features/cli"
       "home/tsln/common/features/dev"
       "home/tsln/common/features/ops"

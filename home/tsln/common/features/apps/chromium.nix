@@ -5,7 +5,7 @@
     package = pkgs.unstable.chromium;
     commandLineArgs = [
       "--enable-features=UseOzonePlatform"
-      "--ozone-platform=wayland"
+      "--wayland-text-input-version=3"
     ];
     extensions = [
       { id = "ddkjiahejlhfcafbddmgiahcphecmpfh"; } # uBlock Origin Lite
