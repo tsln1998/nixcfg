@@ -7,19 +7,14 @@ let
   fcitx5 = pkgs.fcitx5-with-addons.override {
     inherit addons;
   };
-
-  kimpanel = pkgs.gnomeExtensions.kimpanel;
 in
 {
   home.packages = [
     fcitx5
-    kimpanel
   ];
 
   home.sessionVariables = {
     XMODIFIERS = "@im=fcitx";
-    # QT_IM_MODULE = "fcitx";
-    # QT_IM_MODULES = "wayland;fcitx";
   };
 
   gtk = {
@@ -30,17 +25,6 @@ in
     };
     gtk4.extraConfig = {
       gtk-im-module = "fcitx";
-    };
-  };
-
-  dconf.settings = {
-    "org/gnome/settings-daemon/plugins/xsettings" = {
-      overrides = "{'Gtk/IMModule':<'fcitx'>}";
-    };
-    "org/gnome/shell" = {
-      enabled-extensions = [
-        kimpanel.extensionUuid
-      ];
     };
   };
 
