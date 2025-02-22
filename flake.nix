@@ -21,13 +21,17 @@
     home-manager.url = "github:nix-community/home-manager/release-24.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    agenix.url = "github:ryantm/agenix/e600439ec4c273cf11e06fe4d9d906fb98fa097c";
+    agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
     agenix.inputs.systems.follows = "nixpkgs-systems";
     agenix.inputs.home-manager.follows = "home-manager";
 
-    disko.url = "github:nix-community/disko/v1.11.0";
+    disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
+
+    plasma-manager.url = "github:nix-community/plasma-manager";
+    plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
+    plasma-manager.inputs.home-manager.follows = "home-manager";
 
     jetbrains-plugins.url = "github:theCapypara/nix-jetbrains-plugins";
     jetbrains-plugins.inputs.nixpkgs.follows = "nixpkgs-unstable";

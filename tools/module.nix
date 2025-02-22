@@ -7,6 +7,8 @@ name:
     inputs.home-manager.nixosModules.home-manager
   else if name == "<disko>" then
     inputs.disko.nixosModules.disko
+  else if name == "<plasma-home-manager>" then
+    inputs.plasma-manager.homeManagerModules.plasma-manager
   else if name == "<agenix-nixos>" then
     inputs.agenix.nixosModules.default
   else if name == "<agenix-home-manager>" then
