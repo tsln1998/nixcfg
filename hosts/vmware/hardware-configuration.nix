@@ -21,6 +21,7 @@
   boot.loader.grub.device = "nodev";
   boot.loader.grub.efiSupport = true;
   boot.loader.grub.efiInstallAsRemovable = true;
+  boot.loader.grub.configurationLimit = 50;
   boot.loader.efi.efiSysMountPoint = "/boot";
 
   virtualisation.vmware.guest.enable = true;

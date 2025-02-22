@@ -10,6 +10,8 @@
     gwenview
     khelpcenter
     elisa
+    okular
+    kate
   ];
 
   environment.sessionVariables = {
