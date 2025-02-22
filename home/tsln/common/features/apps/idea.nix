@@ -10,6 +10,10 @@ let
 in
 {
   home.packages = with repo.plugins; [
-    (addPlugins app bundled)
+    (addPlugins (app.override {
+      vmopts = ''
+        -Dawt.toolkit.name=WLToolkit
+      '';
+    }) bundled)
   ];
 }

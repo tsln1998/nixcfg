@@ -1,7 +1,6 @@
 { pkgs, ... }:
 {
   services.xserver = {
-    displayManager.gdm.enable = true;
     desktopManager.gnome.enable = true;
     desktopManager.gnome.extraGSettingsOverridePackages = [ pkgs.mutter ];
     desktopManager.gnome.extraGSettingsOverrides = ''

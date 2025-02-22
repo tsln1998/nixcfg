@@ -18,6 +18,8 @@ in
 
   home.sessionVariables = {
     XMODIFIERS = "@im=fcitx";
+    QT_IM_MODULE = "fcitx";
+    QT_IM_MODULES = "wayland;fcitx";
   };
 
   gtk = {
