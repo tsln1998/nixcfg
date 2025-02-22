@@ -1,16 +1,17 @@
 { config, pkgs, ... }:
+let
+  extensions = with pkgs.gnomeExtensions; [
+    system-monitor
+    windownavigator
+    workspace-indicator
+    dynamic-panel
+    caffeine
+  ];
+in
 {
-  home.packages =
-    with pkgs;
-    with gnomeExtensions;
-    [
-      numix-icon-theme-circle
-
-      system-monitor
-      windownavigator
-      workspace-indicator
-      dynamic-panel
-    ];
+  home.packages = [
+    pkgs.numix-icon-theme-circle
+  ] ++ extensions;
 
   home.sessionVariables = {
     NIXOS_OZONE_WL = "1";
@@ -22,12 +23,7 @@
         "scale-monitor-framebuffer"
         "xwayland-native-scaling"
       ];
-      enabled-extensions = with pkgs.gnomeExtensions; [
-        workspace-indicator.extensionUuid
-        windownavigator.extensionUuid
-        system-monitor.extensionUuid
-        dynamic-panel.extensionUuid
-      ];
+      enabled-extensions = (map (ex: ex.extensionUuid) extensions);
       favorite-apps = (
         (if config.programs.chromium.enable then [ "chromium-browser.desktop" ] else [ ])
         ++ (if config.programs.firefox.enable then [ "firefox.desktop" ] else [ ])

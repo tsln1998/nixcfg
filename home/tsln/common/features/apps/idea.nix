@@ -1,6 +1,6 @@
 { pkgs, tools, ... }:
 let
-  repo = pkgs.unstable.jetbrains;
+  repo = pkgs.jetbrains;
   app = repo.idea-ultimate;
   market = tools.module "<jetbrains-plugins>";
   plugins = market.${app.system}.${app.pname}.${app.version};
