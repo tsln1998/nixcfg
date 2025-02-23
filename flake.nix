@@ -49,15 +49,20 @@
     let
       # load overlays
       overlays = import ./overlays (with self; { inherit inputs outputs; });
+      # load packages
+      packages = nixpkgs.lib.genAttrs (import nixpkgs-systems) (
+        system: import ./packages nixpkgs.legacyPackages.${system}
+      );
       # load tools
       tools = import ./tools (with self; with nixpkgs; { inherit inputs outputs lib; });
     in
     {
       inherit overlays;
+      inherit packages;
       #
       # NixOS Modules
       #
-      nixosModules = (import ./modules/nixos) // (import ./modules/common);
+      nixosModules = import ./modules/nixos;
       #
       # NixOS Configurations
       #
@@ -66,6 +71,7 @@
         "tb16g6imh-wsl" = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
+            ./modules/nixos
             ./hosts/tb16g6imh-wsl
           ];
           specialArgs = with self; {
@@ -76,6 +82,7 @@
         "vmware" = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
+            ./modules/nixos
             ./hosts/vmware
           ];
           specialArgs = with self; {
@@ -86,7 +93,7 @@
       #
       # Home Manager Modules
       #
-      homeManagerModules = (import ./modules/home-manager) // (import ./modules/common);
+      homeManagerModules = import ./modules/home-manager;
       #
       # Home Manager Standalone Configrations
       #
@@ -100,6 +107,7 @@
           "tsln@tb16g6imh-wsl" = home-manager.lib.homeManagerConfiguration {
             pkgs = pkgs.x86_64-linux;
             modules = [
+              ./modules/home-manager
               ./home/tsln/tb16g6imh-wsl
             ];
             extraSpecialArgs = with self; {
@@ -110,6 +118,7 @@
           "tsln@vmware" = home-manager.lib.homeManagerConfiguration {
             pkgs = pkgs.x86_64-linux;
             modules = [
+              ./modules/home-manager
               ./home/tsln/vmware
             ];
             extraSpecialArgs = with self; {
