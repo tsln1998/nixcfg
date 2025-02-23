@@ -3,8 +3,10 @@ let
 in
 {
   # ThinkBook 16+ G6 IMH (WSL)
-  "hosts/tb16g6imh-wsl/ssh_host_ed25519_key.age".publicKeys = keys.hosts.tb16g6imh-wsl ++ keys.users.tsln;
-  "hosts/tb16g6imh-wsl/ssh_host_ed25519_key.pub.age".publicKeys = keys.hosts.tb16g6imh-wsl ++ keys.users.tsln;
+  "hosts/tb16g6imh-wsl/ssh_host_ed25519_key.age".publicKeys =
+    keys.hosts.tb16g6imh-wsl ++ keys.users.tsln;
+  "hosts/tb16g6imh-wsl/ssh_host_ed25519_key.pub.age".publicKeys =
+    keys.hosts.tb16g6imh-wsl ++ keys.users.tsln;
 
   # VMware
   "hosts/vmware/ssh_host_ed25519_key.age".publicKeys = keys.hosts.vmware ++ keys.users.tsln;

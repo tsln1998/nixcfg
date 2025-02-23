@@ -1,4 +1,4 @@
-{ config,tools, ... }:
+{ config, tools, ... }:
 {
   imports = tools.scan ./.;
 

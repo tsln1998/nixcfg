@@ -1,7 +1,7 @@
-{outputs, tools, ... }:
+{ outputs, tools, ... }:
 {
   imports = tools.scan ./.;
-  
+
   nix = {
     settings = {
       substituters = [
