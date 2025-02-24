@@ -1,11 +1,4 @@
 {
-  nixConfig = {
-    substituters = [
-      "https://mirrors.cernet.edu.cn/nix-channels/store"
-      "https://mirrors.ustc.edu.cn/nix-channels/store"
-      "https://cache.nixos.org/"
-    ];
-  };
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
