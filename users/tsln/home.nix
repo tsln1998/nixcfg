@@ -19,7 +19,6 @@ in
     shell = pkgs.zsh;
     packages = [
       pkgs.home-manager
-      pkgs.zsh
     ];
     extraGroups = builtins.filter (group: builtins.hasAttr group config.users.groups) [
       "wheel"
