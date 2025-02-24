@@ -14,6 +14,7 @@ in
   imports = [ (relative "<home-manager>") ];
 
   home-manager.users.tsln = relative "home/tsln/${hostname}";
+  home-manager.backupFileExtension = "hm-bak";
   home-manager.extraSpecialArgs = {
     inherit inputs outputs;
     inherit tools pkgs;
