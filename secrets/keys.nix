@@ -12,6 +12,9 @@ let
     vmware = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGAkFEAhSYaKtw30BigRgUjZtwq9iFVKAS/5m8vWBprr"
     ];
+    oci-sg-1 = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAbdrPFrrWj6DTbSAI7dv4wtuWSrZMZ55VS26RNysb1J"
+    ];
   };
 in
 {

@@ -12,6 +12,11 @@ in
   "hosts/vmware/ssh_host_ed25519_key.age".publicKeys = keys.hosts.vmware ++ keys.users.tsln;
   "hosts/vmware/ssh_host_ed25519_key.pub.age".publicKeys = keys.hosts.vmware ++ keys.users.tsln;
 
+  # Oracle Cloud Singapore
+  "hosts/oci-sg-1/ssh_host_ed25519_key.age".publicKeys = keys.hosts.oci-sg-1 ++ keys.users.tsln;
+  "hosts/oci-sg-1/ssh_host_ed25519_key.pub.age".publicKeys = keys.hosts.oci-sg-1 ++ keys.users.tsln;
+  "hosts/oci-sg-1/caddyfile.age".publicKeys = keys.hosts.oci-sg-1 ++ keys.users.tsln;
+
   # User 'tsln'
   "users/tsln/passwd.age".publicKeys = keys.all;
   "users/tsln/id_ed25519.age".publicKeys = keys.users.tsln;

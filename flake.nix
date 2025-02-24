@@ -78,6 +78,17 @@
             inherit inputs outputs tools;
           };
         };
+        # Oracle Cloud Singapore
+        "oci-sg-1" = nixpkgs.lib.nixosSystem {
+          system = "aarch64-linux";
+          modules = [
+            ./modules/nixos
+            ./hosts/oci-sg-1
+          ];
+          specialArgs = with self; {
+            inherit inputs outputs tools;
+          };
+        };
         # VMware
         "vmware" = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
@@ -109,6 +120,17 @@
             modules = [
               ./modules/home-manager
               ./home/tsln/tb16g6imh-wsl
+            ];
+            extraSpecialArgs = with self; {
+              inherit inputs outputs tools;
+            };
+          };
+          # Oracle Cloud Singapore
+          "tsln@oci-sg-1" = home-manager.lib.homeManagerConfiguration {
+            pkgs = pkgs.aarch64-linux;
+            modules = [
+              ./modules/home-manager
+              ./home/tsln/oci-sg-1
             ];
             extraSpecialArgs = with self; {
               inherit inputs outputs tools;

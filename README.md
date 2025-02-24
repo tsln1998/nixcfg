@@ -14,14 +14,11 @@ sudo nix --extra-experimental-features "nix-command flakes" \
 # ...
 
 # run nixos-install
-sudo nixos-install --no-root-password \
-    --flake '.#<hostname>'
+sudo nixos-install --no-root-password --flake '.#<hostname>'
 ```
 
 # Install (NixOS on WSL)
 
 ```bash
-sudo nixos-rebuild --extra-experimental-features "nix-command flakes" \
-    switch \
-    --flake '.#<hostname>'
+sudo nixos-rebuild switch --flake '.#<hostname>'
 ```
