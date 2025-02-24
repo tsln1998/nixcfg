@@ -16,9 +16,9 @@ in
   "hosts/thinkpad-x280/ssh_host_ed25519_key.pub.age".publicKeys = keys.all;
 
   # Oracle Cloud Singapore
-  "hosts/oracle-sin-1/caddyfile.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
   "hosts/oracle-sin-1/ssh_host_ed25519_key.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
   "hosts/oracle-sin-1/ssh_host_ed25519_key.pub.age".publicKeys = keys.all;
+  "hosts/oracle-sin-1/caddyfile.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
 
   # User - tsln
   "users/tsln/passwd.age".publicKeys = keys.all;

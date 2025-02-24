@@ -26,6 +26,7 @@
     outputs.overlays.unstable
     outputs.overlays.nur
     outputs.overlays.additions
+    outputs.overlays.agenix
   ];
 
   nixpkgs.config.allowUnfree = true;

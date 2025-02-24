@@ -1,6 +1,5 @@
 {
   tools,
-  inputs,
   pkgs,
   ...
 }:
@@ -17,6 +16,6 @@
   ];
 
   environment.defaultPackages = [
-    inputs.agenix.packages.${pkgs.system}.default
+    pkgs.agenix
   ];
 }

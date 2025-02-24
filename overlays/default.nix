@@ -17,4 +17,7 @@ in
   additions =
     # pkgs.additions
     final: _: { additions = import ../packages final.pkgs; };
+  agenix =
+    # pkgs.agenix
+    final: _: { agenix = inputs.agenix.packages.${final.system}.default; };
 }
