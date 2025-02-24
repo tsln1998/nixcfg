@@ -1,4 +1,10 @@
 {
+  nixConfig = {
+    substituters = [
+      "https://mirror.sjtu.edu.cn/nix-channels/store"
+    ];
+  };
+
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -71,6 +77,17 @@
             inherit inputs outputs tools;
           };
         };
+        # ThinkPad X280
+        "thinkpad-x280" = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ./modules/nixos
+            ./hosts/thinkpad-x280
+          ];
+          specialArgs = with self; {
+            inherit inputs outputs tools;
+          };
+        };
         # Oracle Cloud Singapore
         "oci-sg-1" = nixpkgs.lib.nixosSystem {
           system = "aarch64-linux";
@@ -113,6 +130,17 @@
             modules = [
               ./modules/home-manager
               ./home/tsln/tb16g6imh-wsl
+            ];
+            extraSpecialArgs = with self; {
+              inherit inputs outputs tools;
+            };
+          };
+          # ThinkPad X280
+          "tsln@thinkpad-x280" = home-manager.lib.homeManagerConfiguration {
+            pkgs = pkgs.x86_64-linux;
+            modules = [
+              ./modules/home-manager
+              ./home/tsln/thinkpad-x280
             ];
             extraSpecialArgs = with self; {
               inherit inputs outputs tools;

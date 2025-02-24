@@ -9,6 +9,9 @@ let
     tb16g6imh-wsl = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHTluQQEUjOLtK+EmsP1TwosvnUVVnc7uE3WuNIUqqX4"
     ];
+    thinkpad-x280 = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF2PncLvH0OvD/gU2Yfa3WFzTMQK61gtsahHb8wYMGjt"
+    ];
     vmware = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGAkFEAhSYaKtw30BigRgUjZtwq9iFVKAS/5m8vWBprr"
     ];
