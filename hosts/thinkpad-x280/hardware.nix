@@ -1,8 +1,8 @@
-{inputs,...}:
+{ inputs, ... }:
 {
 
   imports = [
-inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x280
+    inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x280
   ];
 
   boot.loader.grub.enable = true;

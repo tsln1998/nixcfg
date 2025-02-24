@@ -77,6 +77,17 @@
             inherit inputs outputs tools;
           };
         };
+        # ThinkBook 16+ G6 IMH (VMware)
+        "tb16g6imh-vm" = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ./modules/nixos
+            ./hosts/tb16g6imh-vm
+          ];
+          specialArgs = with self; {
+            inherit inputs outputs tools;
+          };
+        };
         # ThinkPad X280
         "thinkpad-x280" = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
@@ -89,22 +100,11 @@
           };
         };
         # Oracle Cloud Singapore
-        "oci-sg-1" = nixpkgs.lib.nixosSystem {
+        "oracle-sin-1" = nixpkgs.lib.nixosSystem {
           system = "aarch64-linux";
           modules = [
             ./modules/nixos
-            ./hosts/oci-sg-1
-          ];
-          specialArgs = with self; {
-            inherit inputs outputs tools;
-          };
-        };
-        # VMware
-        "vmware" = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            ./modules/nixos
-            ./hosts/vmware
+            ./hosts/oracle-sin-1
           ];
           specialArgs = with self; {
             inherit inputs outputs tools;
@@ -135,6 +135,17 @@
               inherit inputs outputs tools;
             };
           };
+          # ThinkBook 16+ G6 IMH (VMware)
+          "tsln@tb16g6imh-vm" = home-manager.lib.homeManagerConfiguration {
+            pkgs = pkgs.x86_64-linux;
+            modules = [
+              ./modules/home-manager
+              ./home/tsln/tb16g6imh-vm
+            ];
+            extraSpecialArgs = with self; {
+              inherit inputs outputs tools;
+            };
+          };
           # ThinkPad X280
           "tsln@thinkpad-x280" = home-manager.lib.homeManagerConfiguration {
             pkgs = pkgs.x86_64-linux;
@@ -147,22 +158,11 @@
             };
           };
           # Oracle Cloud Singapore
-          "tsln@oci-sg-1" = home-manager.lib.homeManagerConfiguration {
+          "tsln@oracle-sin-1" = home-manager.lib.homeManagerConfiguration {
             pkgs = pkgs.aarch64-linux;
             modules = [
               ./modules/home-manager
-              ./home/tsln/oci-sg-1
-            ];
-            extraSpecialArgs = with self; {
-              inherit inputs outputs tools;
-            };
-          };
-          # VMware
-          "tsln@vmware" = home-manager.lib.homeManagerConfiguration {
-            pkgs = pkgs.x86_64-linux;
-            modules = [
-              ./modules/home-manager
-              ./home/tsln/vmware
+              ./home/tsln/oracle-sin-1
             ];
             extraSpecialArgs = with self; {
               inherit inputs outputs tools;

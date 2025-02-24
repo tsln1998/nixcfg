@@ -1,6 +1,6 @@
 { lib, ... }:
 {
-  networking.hostName = "oci-sg-1";
+  networking.hostName = "oracle-sin-1";
   networking.useDHCP = lib.mkDefault true;
   networking.usePredictableInterfaceNames = false;
   networking.firewall = {

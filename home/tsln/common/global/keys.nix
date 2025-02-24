@@ -4,7 +4,7 @@ let
   inherit (config.age) secrets;
 in
 {
-  home.activation._activation_dotssh_ = lib.hm.dag.entryAfter [ "agenix" ] ''
+  home.activation.secretKeys = lib.hm.dag.entryAfter [ "agenix" ] ''
     run mkdir -p $HOME/.ssh
     run rm -f $HOME/.ssh/id_rsa || true
     run cp $VERBOSE_ARG ${secrets."users/${username}/id_rsa".path} $HOME/.ssh/id_rsa
