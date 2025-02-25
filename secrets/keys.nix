@@ -21,6 +21,9 @@ let
     oracle-sin-1 = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAbdrPFrrWj6DTbSAI7dv4wtuWSrZMZ55VS26RNysb1J"
     ];
+    oracle-bom-1 = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPE7Y+Jp2aGmJIKs7sKwmtt7x7n5oM0FdeufuhOhN2kw"
+    ];
   };
 in
 {
@@ -32,5 +35,5 @@ in
     all = concatLists (attrValues hosts);
   };
 
-  all = concatLists (attrValues users // hosts);
+  all = concatLists (attrValues users) ++ concatLists (attrValues hosts);
 }
