@@ -14,6 +14,7 @@ in
   # ThinkPad X280
   "hosts/thinkpad-x280/ssh_host_ed25519_key.age".publicKeys = hosts.thinkpad-x280 ++ users.tsln;
   "hosts/thinkpad-x280/ssh_host_ed25519_key.pub.age".publicKeys = keys.all;
+  "hosts/thinkpad-x280/mihomo.yaml.age".publicKeys = hosts.thinkpad-x280 ++ users.tsln;
 
   # Oracle Cloud Singapore
   "hosts/oracle-sin-1/ssh_host_ed25519_key.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
