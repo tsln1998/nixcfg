@@ -6,6 +6,6 @@ in
 {
   services.xray = {
     enable = true;
-    settingsFile = secrets."hosts/${hostName}/xray.json";
+    settingsFile = secrets."hosts/${hostName}/xray.json".path;
   };
 }
