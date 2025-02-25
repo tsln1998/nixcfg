@@ -11,6 +11,8 @@
   boot.loader.grub.efiInstallAsRemovable = true;
   boot.loader.efi.efiSysMountPoint = "/boot";
 
+  hardware.enableAllFirmware = true;
+
   fileSystems = {
     "/" = {
       device = "/dev/disk/by-uuid/0ea47c4c-8649-4701-bd6f-2b18b9b60146";
