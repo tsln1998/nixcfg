@@ -110,6 +110,17 @@
             inherit inputs outputs tools;
           };
         };
+        # Oracle Cloud India 1
+        "oracle-bom-1" = nixpkgs.lib.nixosSystem {
+          system = "aarch64-linux";
+          modules = [
+            ./modules/nixos
+            ./hosts/oracle-bom-1
+          ];
+          specialArgs = with self; {
+            inherit inputs outputs tools;
+          };
+        };
       };
       #
       # Home Manager Modules
@@ -163,6 +174,17 @@
             modules = [
               ./modules/home-manager
               ./home/tsln/oracle-sin-1
+            ];
+            extraSpecialArgs = with self; {
+              inherit inputs outputs tools;
+            };
+          };
+          # Oracle Cloud India 1
+          "tsln@oracle-bom-1" = home-manager.lib.homeManagerConfiguration {
+            pkgs = pkgs.aarch64-linux;
+            modules = [
+              ./modules/home-manager
+              ./home/tsln/oracle-bom-1
             ];
             extraSpecialArgs = with self; {
               inherit inputs outputs tools;
