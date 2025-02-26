@@ -34,11 +34,11 @@
 
   fileSystems = {
     "/" = {
-      device = "/dev/disk/by-uuid/8b4879a3-6fda-4ea1-a685-2578c4538916";
+      device = "/dev/disk/by-uuid/850b03ce-145d-4a5e-98da-9770968976c9";
       fsType = "ext4";
     };
     "/efi" = {
-      device = "/dev/disk/by-uuid/29B6-9F8D";
+      device = "/dev/disk/by-uuid/A2C6-6BD0";
       fsType = "vfat";
       options = [
         "fmask=0077"
