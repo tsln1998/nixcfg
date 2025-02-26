@@ -121,6 +121,17 @@
             inherit inputs outputs tools;
           };
         };
+        # Oracle Cloud USA Phoenix 1
+        "oracle-phx-1" = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ./modules/nixos
+            ./hosts/oracle-phx-1
+          ];
+          specialArgs = with self; {
+            inherit inputs outputs tools;
+          };
+        };
       };
       #
       # Home Manager Modules
@@ -185,6 +196,17 @@
             modules = [
               ./modules/home-manager
               ./home/tsln/oracle-bom-1
+            ];
+            extraSpecialArgs = with self; {
+              inherit inputs outputs tools;
+            };
+          };
+          # Oracle Cloud USA Phoenix 1
+          "tsln@oracle-phx-1" = home-manager.lib.homeManagerConfiguration {
+            pkgs = pkgs.x86_64-linux;
+            modules = [
+              ./modules/home-manager
+              ./home/tsln/oracle-phx-1
             ];
             extraSpecialArgs = with self; {
               inherit inputs outputs tools;
