@@ -28,6 +28,12 @@ in
   "hosts/oracle-bom-1/caddyfile.age".publicKeys = hosts.oracle-bom-1 ++ users.tsln;
   "hosts/oracle-bom-1/xray.json.age".publicKeys = hosts.oracle-bom-1 ++ users.tsln;
 
+  # Oracle Cloud USA Phoenix 1
+  "hosts/oracle-phx-1/ssh_host_ed25519_key.age".publicKeys = hosts.oracle-phx-1 ++ users.tsln;
+  "hosts/oracle-phx-1/ssh_host_ed25519_key.pub.age".publicKeys = keys.all;
+  "hosts/oracle-phx-1/caddyfile.age".publicKeys = hosts.oracle-phx-1 ++ users.tsln;
+  "hosts/oracle-phx-1/xray.json.age".publicKeys = hosts.oracle-phx-1 ++ users.tsln;
+
   # User - tsln
   "users/tsln/passwd.age".publicKeys = keys.all;
   "users/tsln/id_ed25519.age".publicKeys = users.tsln;
