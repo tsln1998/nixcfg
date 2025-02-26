@@ -24,5 +24,7 @@
   boot.loader.grub.configurationLimit = 50;
   boot.loader.efi.efiSysMountPoint = "/boot";
 
+  boot.tmp.cleanOnBoot = true;
+
   virtualisation.vmware.guest.enable = true;
 }

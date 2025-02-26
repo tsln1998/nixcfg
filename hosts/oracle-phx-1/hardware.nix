@@ -30,6 +30,7 @@
       "virtio_gpu"
     ];
   };
+  
   boot = {
     kernelModules = [
       "kvm-amd"
@@ -39,6 +40,8 @@
       "console=tty0"
     ];
   };
+  
+  boot.tmp.cleanOnBoot = true;
 
   swapDevices = [
     {

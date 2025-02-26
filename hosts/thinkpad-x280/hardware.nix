@@ -11,6 +11,8 @@
   boot.loader.grub.efiInstallAsRemovable = true;
   boot.loader.efi.efiSysMountPoint = "/boot";
 
+  boot.tmp.useTmpfs = true;
+
   hardware.enableAllFirmware = true;
 
   fileSystems = {
