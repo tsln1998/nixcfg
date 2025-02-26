@@ -40,4 +40,5 @@ in
   "users/tsln/id_ed25519.pub.age".publicKeys = keys.all;
   "users/tsln/id_rsa.age".publicKeys = users.tsln;
   "users/tsln/id_rsa.pub.age".publicKeys = keys.all;
+  "users/tsln/ssh_config.age".publicKeys = keys.all;
 }

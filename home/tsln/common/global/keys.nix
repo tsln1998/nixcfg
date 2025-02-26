@@ -6,6 +6,8 @@ in
 {
   home.activation.secretKeys = lib.hm.dag.entryAfter [ "agenix" ] ''
     run mkdir -p $HOME/.ssh
+    run rm -f $HOME/.ssh/config || true
+    run cp $VERBOSE_ARG ${secrets."users/${username}/ssh_config".path} $HOME/.ssh/config
     run rm -f $HOME/.ssh/id_rsa || true
     run cp $VERBOSE_ARG ${secrets."users/${username}/id_rsa".path} $HOME/.ssh/id_rsa
     run rm -f $HOME/.ssh/id_rsa.pub || true
