@@ -1,5 +1,10 @@
 # Install (NixOS)
 
+```bash
+# run nixos-install
+sudo nixos-install --dir /mnt --no-root-password --flake '.#<hostname>'
+```
+
 # Install (NixOS with disko)
 
 ```bash
