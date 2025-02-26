@@ -40,6 +40,13 @@
     ];
   };
 
+  swapDevices = [
+    {
+      device = "/swapfile";
+      size = 2048;
+    }
+  ];
+
   fileSystems = {
     "/" = {
       device = "/dev/disk/by-uuid/4d857269-af07-4828-a30c-4c14fcfdb76d";
