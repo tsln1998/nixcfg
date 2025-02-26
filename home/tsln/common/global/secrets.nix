@@ -13,6 +13,7 @@ in
     file = relative "secrets/users/${username}/id_rsa.pub.age";
     mode = "644";
   };
+  
   age.secrets."users/${username}/id_ed25519" = {
     file = relative "secrets/users/${username}/id_ed25519.age";
     mode = "600";

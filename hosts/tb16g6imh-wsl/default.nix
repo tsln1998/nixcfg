@@ -9,7 +9,5 @@
     ++ (tools.scan ./.)
   );
 
-  # services.crproxy.enable = true;
-
   system.stateVersion = "24.11";
 }
