@@ -11,6 +11,13 @@ in
     configFile = secrets."hosts/thinkpad-x280/mihomo.yaml".path;
   };
 
+  services.tproxy = {
+    enable = false;
+    after = [ "mihomo.service" ];
+    tcpTo = 7891;
+    udpTo = 1053;
+  };
+
   networking.firewall = {
     allowedTCPPorts = [
       9090
