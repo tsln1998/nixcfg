@@ -1,4 +1,4 @@
-{ pkgs, tools, ... }:
+{ tools, ... }:
 {
   imports = (
     map tools.relative [

@@ -150,7 +150,7 @@ in
             for i in {1..15}; do
               ${lib.getExe' pkgs.utillinux "mountpoint"} -q ${conf.local} && break || sleep 1
             done
-          '' ;
+          '';
 
           ExecStop = lib.concatStringsSep " " [
             (lib.getExe' pkgs.fuse "fusermount")
