@@ -3,9 +3,9 @@
   imports = (
     map tools.relative [
       "home/tsln/common/global"
-      "home/tsln/common/features/cli"
-      "home/tsln/common/features/dev"
-      "home/tsln/common/features/ops"
+      "home/tsln/common/cli"
+      "home/tsln/common/dev"
+      "home/tsln/common/ops"
     ]
   );
 }
