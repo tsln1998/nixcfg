@@ -6,6 +6,17 @@
 }:
 let
   cfg = config.services.tproxy;
+  reversed = lib.concatStringsSep "," [
+    "10.0.0.0/8"
+    "100.64.0.0/10"
+    "127.0.0.0/8"
+    "169.254.0.0/16"
+    "172.16.0.0/12"
+    "192.0.0.0/24"
+    "192.168.0.0/16"
+    "224.0.0.0/4"
+    "255.255.255.255/32"
+  ];
 in
 {
   options.services.tproxy = {
@@ -35,6 +46,12 @@ in
       description = "ip route table";
     };
 
+    subnet = lib.mkOption {
+      type = lib.types.nullOr lib.types.str;
+      default = null;
+      description = "redirect subnet";
+    };
+
     tcpTo = lib.mkOption {
       type = lib.types.port;
       default = 7891;
@@ -48,8 +65,8 @@ in
     };
 
     dnsTo = lib.mkOption {
-      type = lib.types.port;
-      default = 1053;
+      type = lib.types.nullOr lib.types.port;
+      default = null;
       description = "redirect dns to (tproxy)";
     };
   };
@@ -64,55 +81,88 @@ in
       tables = {
         tproxy-redirect = {
           family = "ip";
-          content = ''
-            chain dns-prerouting {
-              type nat hook prerouting priority dstnat
-              policy accept
-              
-              meta mark ${toString cfg.rtmark} return
+          content = lib.concatStringsSep "\n" [
+            (
+              lib.optionalString (cfg.dnsTo != null) ''
+                chain dns-prerouting {
+                  type nat hook prerouting priority dstnat
+                  policy accept
+                  
+                  meta mark ${toString cfg.rtmark} return
 
-              udp dport 53 meta mark set ${toString cfg.rtmark} redirect to :${toString cfg.dnsTo}
-            }
+                  udp dport 53 meta mark set ${toString cfg.rtmark} redirect to :${toString cfg.dnsTo}
+                }
 
-            chain dns-output {
-              type nat hook output priority dstnat
-              policy accept
+                chain dns-output {
+                  type nat hook output priority dstnat
+                  policy accept
 
-              meta mark ${toString cfg.rtmark} return
+                  meta mark ${toString cfg.rtmark} return
 
-              udp dport 53 meta mark set ${toString cfg.rtmark} redirect to :${toString cfg.dnsTo}
-            }
+                  udp dport 53 meta mark set ${toString cfg.rtmark} redirect to :${toString cfg.dnsTo}
+                }
+              ''
+            )
+            (
+              if cfg.subnet == null then
+                ''
+                  chain prerouting {
+                    type filter hook prerouting priority mangle
+                    policy accept
 
-            chain prerouting {
-              type filter hook prerouting priority mangle
-              policy accept
+                    # bypass processed outbound
+                    meta mark ${toString cfg.rtmark} return
+                    # bypass reserved addrs
+                    ip daddr {${reversed}} return
 
-              # bypass processed outbound
-              meta mark ${toString cfg.rtmark} return
+                    # proxy tcp traffic
+                    ip protocol tcp tproxy ip to :${toString cfg.tcpTo} meta mark set ${toString cfg.fwmark}
+                    # proxy udp traffic
+                    ip protocol udp tproxy ip to :${toString cfg.udpTo} meta mark set ${toString cfg.fwmark}
+                  }
 
-              # bypass reserved addrs
-              ip daddr {10.0.0.0/8,100.64.0.0/10,127.0.0.0/8,169.254.0.0/16,172.16.0.0/12,192.0.0.0/24,192.168.0.0/16,224.0.0.0/4,255.255.255.255/32} return
+                  chain output {
+                    type route hook output priority mangle
+                    policy accept
 
-              # proxy tcp traffic
-              ip protocol tcp tproxy ip to :${toString cfg.tcpTo} meta mark set ${toString cfg.fwmark}
-              # proxy udp traffic
-              ip protocol udp tproxy ip to :${toString cfg.udpTo} meta mark set ${toString cfg.fwmark}
-            }
+                    # bypass processed outbound
+                    meta mark ${toString cfg.rtmark} return
 
-            chain output {
-              type route hook output priority mangle
-              policy accept
+                    # bypass reserved addrs
+                    ip daddr {${reversed}} return
 
-              # bypass processed outbound
-              meta mark ${toString cfg.rtmark} return
+                    # mark default outbound
+                    ip protocol { tcp, udp } meta mark set ${toString cfg.fwmark}
+                  }
+                ''
+              else
+                ''
+                  chain prerouting {
+                    type filter hook prerouting priority mangle
+                    policy accept
 
-              # bypass reserved addrs
-              ip daddr {10.0.0.0/8,100.64.0.0/10,127.0.0.0/8,169.254.0.0/16,172.16.0.0/12,192.0.0.0/24,192.168.0.0/16,224.0.0.0/4,255.255.255.255/32} return
+                    # bypass processed outbound
+                    meta mark ${toString cfg.rtmark} return
 
-              # mark default outbound
-              ip protocol { tcp, udp } meta mark set ${toString cfg.fwmark}
-            }
-          '';
+                    # proxy tcp traffic
+                    ip protocol tcp ip daddr ${cfg.subnet} tproxy ip to :${toString cfg.tcpTo} meta mark set ${toString cfg.fwmark}
+                    # proxy udp traffic
+                    ip protocol udp ip daddr ${cfg.subnet} tproxy ip to :${toString cfg.udpTo} meta mark set ${toString cfg.fwmark}
+                  }
+
+                  chain output {
+                    type route hook output priority mangle
+                    policy accept
+
+                    # bypass processed outbound
+                    meta mark ${toString cfg.rtmark} return
+
+                    # mark default outbound
+                    ip protocol { tcp, udp } ip daddr ${cfg.subnet} meta mark set ${toString cfg.fwmark}
+                  }
+                ''
+            )
+          ];
         };
       };
     };
