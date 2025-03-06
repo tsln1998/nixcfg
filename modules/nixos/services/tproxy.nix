@@ -174,8 +174,9 @@ in
       {
         description = "Setup tproxy redirect";
 
-        wantedBy = [ "multi-user.target" ] ++ cfg.after;
-        after = [ "network.target" ] ++ cfg.after;
+        wantedBy = [ "multi-user.target" ];
+        requires = [ "network-online.target" ] ++ cfg.after;
+        after = [ "network-online.target" ] ++ cfg.after;
 
         serviceConfig = {
           Type = "oneshot";

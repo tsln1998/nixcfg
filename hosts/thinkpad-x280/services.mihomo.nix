@@ -14,7 +14,7 @@ in
 
   services.tproxy = {
     enable = true;
-    after = [ "mihomo.service" ];
+    after = [ "clash.service" ];
     tcpTo = 7891;
     udpTo = 7891;
     dnsTo = 1053;
