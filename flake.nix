@@ -9,7 +9,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/10069ef4cf863633f57238f179a0297de84bd8d3";
     nixpkgs-systems.url = "github:nix-systems/default-linux";
 
     nixpkgs-nur.url = "github:nix-community/NUR";
