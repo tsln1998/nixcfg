@@ -9,12 +9,6 @@ name:
     inputs.disko.nixosModules.disko
   else if name == "<plasma-home-manager>" then
     inputs.plasma-manager.homeManagerModules.plasma-manager
-  else if name == "<nixvim-nixos>" then
-    inputs.nixvim.nixosModules.nixvim
-  else if name == "<nixvim-darwin>" then
-    inputs.nixvim.nixDarwinModules.nixvim
-  else if name == "<nixvim-home-manager>" then
-    inputs.nixvim.homeManagerModules.nixvim
   else if name == "<agenix-nixos>" then
     inputs.agenix.nixosModules.default
   else if name == "<agenix-home-manager>" then
