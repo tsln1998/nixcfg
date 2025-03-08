@@ -39,7 +39,7 @@ in
 
     serviceConfig = {
       Type = "simple";
-      ExecStart = "${pkgs.unstable.n8n}/bin/n8n";
+      ExecStart = "${pkgs.n8n}/bin/n8n";
       Restart = "on-failure";
       EnvironmentFile = secrets."hosts/${hostName}/n8n.env".path;
     };

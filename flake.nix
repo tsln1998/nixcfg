@@ -1,25 +1,24 @@
 {
   nixConfig = {
     substituters = [
-      "https://mirrors.scau.edu.cn/nix-channels/store"
       "https://mirrors.ustc.edu.cn/nix-channels/store"
       "https://cache.nixos.org"
     ];
   };
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/10069ef4cf863633f57238f179a0297de84bd8d3";
+    nixpkgs.url = "github:NixOS/nixpkgs/10069ef4cf863633f57238f179a0297de84bd8d3";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixpkgs-systems.url = "github:nix-systems/default-linux";
 
     nixpkgs-nur.url = "github:nix-community/NUR";
     nixpkgs-nur.inputs.nixpkgs.follows = "nixpkgs";
 
-    nixos-wsl.url = "github:nix-community/NixOS-WSL/2411.6.0";
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/0e4ccdb8181da2c6193c047b50ffee5f1a3b6dc1";
     nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
     nixos-hardware.url = "github:nixos/nixos-hardware";
 
-    home-manager.url = "github:nix-community/home-manager/release-24.11";
+    home-manager.url = "github:nix-community/home-manager/26f6b862645ff281f3bada5d406e8c20de8d837c";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     agenix.url = "github:ryantm/agenix";
@@ -29,9 +28,6 @@
 
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
-
-    nixvim.url = "github:nix-community/nixvim/nixos-24.11";
-    nixvim.inputs.nixpkgs.follows = "nixpkgs";
 
     plasma-manager.url = "github:nix-community/plasma-manager";
     plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
