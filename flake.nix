@@ -1,7 +1,6 @@
 {
   nixConfig = {
     substituters = [
-      "https://mirrors.scau.edu.cn/nix-channels/store"
       "https://mirrors.ustc.edu.cn/nix-channels/store"
       "https://cache.nixos.org"
     ];
