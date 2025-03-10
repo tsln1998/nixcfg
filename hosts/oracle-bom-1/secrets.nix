@@ -12,4 +12,8 @@ in
     file = relative "secrets/hosts/${hostName}/xray.json.age";
     mode = "0644";
   };
+  age.secrets."hosts/${hostName}/nezha-agent.yaml" = {
+    file = relative "secrets/hosts/${hostName}/nezha-agent.yaml.age";
+    mode = "0644";
+  };
 }

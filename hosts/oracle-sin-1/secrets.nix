@@ -28,4 +28,12 @@ in
     file = relative "secrets/hosts/${hostName}/n8n.env.age";
     mode = "0644";
   };
+  age.secrets."hosts/${hostName}/nezha.rclone" = {
+    file = relative "secrets/hosts/${hostName}/nezha.rclone.age";
+    mode = "0644";
+  };
+  age.secrets."hosts/${hostName}/nezha-agent.yaml" = {
+    file = relative "secrets/hosts/${hostName}/nezha-agent.yaml.age";
+    mode = "0644";
+  };
 }

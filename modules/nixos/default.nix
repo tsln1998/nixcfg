@@ -27,4 +27,7 @@
   ];
 
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.permittedInsecurePackages = [
+    "litestream-0.3.13"
+  ];
 }
