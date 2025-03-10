@@ -28,4 +28,8 @@ in
     file = relative "secrets/hosts/${hostName}/n8n.env.age";
     mode = "0644";
   };
+  age.secrets."hosts/oracle-sin-1/nezha.rclone" = {
+    file = relative "secrets/hosts/oracle-sin-1/nezha.rclone.age";
+    mode = "0644";
+  };
 }
