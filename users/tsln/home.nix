@@ -1,39 +1,38 @@
 {
-  inputs,
-  outputs,
   tools,
   pkgs,
   config,
   ...
 }:
 let
+  inherit (builtins) filter hasAttr;
   inherit (tools) relative;
-  hostname = config.networking.hostName;
+  inherit (config.networking) hostName;
+  inherit (config.age) secrets;
+
+  username = "tsln";
+  groups = [
+    "wheel"
+    "docker"
+  ];
 in
 {
-  imports = [ (relative "<home-manager>") ];
+  imports = (
+    map relative [
+      "<home-manager>"
+      "users/common"
+    ]
+  );
 
   # User configuration
-  users.mutableUsers = false;
-  users.users.tsln = {
+  users.users."${username}" = {
     shell = pkgs.zsh;
-    packages = [
-      pkgs.home-manager
-    ];
-    extraGroups = builtins.filter (group: builtins.hasAttr group config.users.groups) [
-      "wheel"
-      "docker"
-    ];
-
+    packages = [ pkgs.home-manager ];
+    extraGroups = filter (g: hasAttr g config.users.groups) groups;
     isNormalUser = true;
-    hashedPasswordFile = config.age.secrets."users/tsln/passwd".path;
+    hashedPasswordFile = secrets."users/${username}/passwd".path;
   };
 
   # Home Manager configuration
-  home-manager.users.tsln = relative "home/tsln/${hostname}";
-  home-manager.backupFileExtension = "hm-bak";
-  home-manager.extraSpecialArgs = {
-    inherit inputs outputs;
-    inherit tools pkgs;
-  };
+  home-manager.users."${username}" = relative "home/${username}/${hostName}";
 }
