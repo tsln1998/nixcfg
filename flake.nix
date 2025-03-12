@@ -36,6 +36,8 @@
     plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
     plasma-manager.inputs.home-manager.follows = "home-manager";
 
+    catppuccin.url = "github:catppuccin/nix/v1.2.1";
+
     jetbrains-plugins.url = "github:theCapypara/nix-jetbrains-plugins";
     jetbrains-plugins.inputs.nixpkgs.follows = "nixpkgs-unstable";
     jetbrains-plugins.inputs.systems.follows = "nixpkgs-systems";
