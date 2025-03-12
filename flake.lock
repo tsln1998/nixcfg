@@ -109,8 +109,7 @@
     "flake-utils": {
       "inputs": {
         "systems": [
-          "jetbrains-plugins",
-          "systems"
+          "nixpkgs-systems"
         ]
       },
       "locked": {
@@ -150,7 +149,9 @@
     },
     "jetbrains-plugins": {
       "inputs": {
-        "flake-utils": "flake-utils",
+        "flake-utils": [
+          "flake-utils"
+        ],
         "nixpkgs": [
           "nixpkgs-unstable"
         ],
@@ -305,6 +306,7 @@
       "inputs": {
         "agenix": "agenix",
         "disko": "disko",
+        "flake-utils": "flake-utils",
         "home-manager": "home-manager",
         "jetbrains-plugins": "jetbrains-plugins",
         "nixos-hardware": "nixos-hardware",

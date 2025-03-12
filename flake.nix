@@ -18,6 +18,9 @@
     nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
     nixos-hardware.url = "github:nixos/nixos-hardware";
 
+    flake-utils.url = "github:numtide/flake-utils";
+    flake-utils.inputs.systems.follows = "nixpkgs-systems";
+
     home-manager.url = "github:nix-community/home-manager/release-24.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -36,6 +39,7 @@
     jetbrains-plugins.url = "github:theCapypara/nix-jetbrains-plugins";
     jetbrains-plugins.inputs.nixpkgs.follows = "nixpkgs-unstable";
     jetbrains-plugins.inputs.systems.follows = "nixpkgs-systems";
+    jetbrains-plugins.inputs.flake-utils.follows = "flake-utils";
   };
 
   outputs =
@@ -44,21 +48,27 @@
       nixpkgs,
       nixpkgs-systems,
       home-manager,
+      flake-utils,
       ...
     }@inputs:
     let
-      # load overlays
-      overlays = import ./overlays (with self; { inherit inputs outputs; });
-      # load packages
-      packages = nixpkgs.lib.genAttrs (import nixpkgs-systems) (
-        system: import ./packages nixpkgs.legacyPackages.${system}
-      );
+      # load utils
+      passThrough = flake-utils.lib.eachDefaultSystemPassThrough;
       # load tools
       tools = import ./tools (with self; with nixpkgs; { inherit inputs outputs lib; });
+      # load overlays
+      overlays = import ./overlays (with self; with nixpkgs; { inherit inputs outputs lib; });
+      # load pkgs     (nixpkgs)
+      pkgs = passThrough (system: {
+        ${system} = import nixpkgs { inherit system; };
+      });
+      # load packages (additionals)
+      packages = passThrough (system: {
+        ${system} = import ./packages pkgs.${system};
+      });
     in
     {
-      inherit overlays;
-      inherit packages;
+      inherit overlays packages;
       #
       # NixOS Modules
       #
@@ -141,78 +151,73 @@
       #
       # Home Manager Standalone Configrations
       #
-      homeConfigurations =
-        let
-          # generate packages for all systems
-          pkgs = nixpkgs.lib.genAttrs (import nixpkgs-systems) (system: import nixpkgs { inherit system; });
-        in
-        {
-          # ThinkBook 16+ G6 IMH (WSL)
-          "tsln@tb16g6imh-wsl" = home-manager.lib.homeManagerConfiguration {
-            pkgs = pkgs.x86_64-linux;
-            modules = [
-              ./modules/home-manager
-              ./home/tsln/tb16g6imh-wsl
-            ];
-            extraSpecialArgs = with self; {
-              inherit inputs outputs tools;
-            };
-          };
-          # ThinkBook 16+ G6 IMH (VMware)
-          "tsln@tb16g6imh-vm" = home-manager.lib.homeManagerConfiguration {
-            pkgs = pkgs.x86_64-linux;
-            modules = [
-              ./modules/home-manager
-              ./home/tsln/tb16g6imh-vm
-            ];
-            extraSpecialArgs = with self; {
-              inherit inputs outputs tools;
-            };
-          };
-          # ThinkPad X280
-          "tsln@thinkpad-x280" = home-manager.lib.homeManagerConfiguration {
-            pkgs = pkgs.x86_64-linux;
-            modules = [
-              ./modules/home-manager
-              ./home/tsln/thinkpad-x280
-            ];
-            extraSpecialArgs = with self; {
-              inherit inputs outputs tools;
-            };
-          };
-          # Oracle Cloud Singapore
-          "tsln@oracle-sin-1" = home-manager.lib.homeManagerConfiguration {
-            pkgs = pkgs.aarch64-linux;
-            modules = [
-              ./modules/home-manager
-              ./home/tsln/oracle-sin-1
-            ];
-            extraSpecialArgs = with self; {
-              inherit inputs outputs tools;
-            };
-          };
-          # Oracle Cloud India 1
-          "tsln@oracle-bom-1" = home-manager.lib.homeManagerConfiguration {
-            pkgs = pkgs.aarch64-linux;
-            modules = [
-              ./modules/home-manager
-              ./home/tsln/oracle-bom-1
-            ];
-            extraSpecialArgs = with self; {
-              inherit inputs outputs tools;
-            };
-          };
-          # Oracle Cloud USA Phoenix 1
-          "tsln@oracle-phx-1" = home-manager.lib.homeManagerConfiguration {
-            pkgs = pkgs.x86_64-linux;
-            modules = [
-              ./modules/home-manager
-              ./home/tsln/oracle-phx-1
-            ];
-            extraSpecialArgs = with self; {
-              inherit inputs outputs tools;
-            };
+      homeConfigurations = {
+        # ThinkBook 16+ G6 IMH (WSL)
+        "tsln@tb16g6imh-wsl" = home-manager.lib.homeManagerConfiguration {
+          pkgs = pkgs.x86_64-linux;
+          modules = [
+            ./modules/home-manager
+            ./home/tsln/tb16g6imh-wsl
+          ];
+          extraSpecialArgs = with self; {
+            inherit inputs outputs tools;
           };
         };
+        # ThinkBook 16+ G6 IMH (VMware)
+        "tsln@tb16g6imh-vm" = home-manager.lib.homeManagerConfiguration {
+          pkgs = pkgs.x86_64-linux;
+          modules = [
+            ./modules/home-manager
+            ./home/tsln/tb16g6imh-vm
+          ];
+          extraSpecialArgs = with self; {
+            inherit inputs outputs tools;
+          };
+        };
+        # ThinkPad X280
+        "tsln@thinkpad-x280" = home-manager.lib.homeManagerConfiguration {
+          pkgs = pkgs.x86_64-linux;
+          modules = [
+            ./modules/home-manager
+            ./home/tsln/thinkpad-x280
+          ];
+          extraSpecialArgs = with self; {
+            inherit inputs outputs tools;
+          };
+        };
+        # Oracle Cloud Singapore
+        "tsln@oracle-sin-1" = home-manager.lib.homeManagerConfiguration {
+          pkgs = pkgs.aarch64-linux;
+          modules = [
+            ./modules/home-manager
+            ./home/tsln/oracle-sin-1
+          ];
+          extraSpecialArgs = with self; {
+            inherit inputs outputs tools;
+          };
+        };
+        # Oracle Cloud India 1
+        "tsln@oracle-bom-1" = home-manager.lib.homeManagerConfiguration {
+          pkgs = pkgs.aarch64-linux;
+          modules = [
+            ./modules/home-manager
+            ./home/tsln/oracle-bom-1
+          ];
+          extraSpecialArgs = with self; {
+            inherit inputs outputs tools;
+          };
+        };
+        # Oracle Cloud USA Phoenix 1
+        "tsln@oracle-phx-1" = home-manager.lib.homeManagerConfiguration {
+          pkgs = pkgs.x86_64-linux;
+          modules = [
+            ./modules/home-manager
+            ./home/tsln/oracle-phx-1
+          ];
+          extraSpecialArgs = with self; {
+            inherit inputs outputs tools;
+          };
+        };
+      };
     };
 }
