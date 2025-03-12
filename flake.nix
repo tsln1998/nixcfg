@@ -219,5 +219,37 @@
           };
         };
       };
+      #
+      # DevShells
+      #
+      devShells = passThrough (system: {
+        ${system} =
+          let
+            pkgs' = pkgs.${system};
+          in
+          {
+            # UUPDump FHS Environment
+            uup =
+              let
+                fhs = pkgs'.buildFHSUserEnv {
+                  name = "enter";
+                  targetPkgs =
+                    _: with pkgs'; [
+                      aria2
+                      cabextract
+                      wimlib
+                      chntpw
+                      cdrkit
+                    ];
+
+                  runScript = "bash";
+                };
+              in
+              pkgs'.mkShell {
+                packages = [ fhs ];
+                shellHook = "cd $HOME && ${fhs}/bin/enter && exit";
+              };
+          };
+      });
     };
 }
