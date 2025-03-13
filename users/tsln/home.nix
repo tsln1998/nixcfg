@@ -14,6 +14,7 @@ let
   groups = [
     "wheel"
     "docker"
+    "networkmanager"
   ];
 in
 {

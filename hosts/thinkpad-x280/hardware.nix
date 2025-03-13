@@ -1,19 +1,26 @@
-{ inputs, ... }:
+{ inputs, pkgs, ... }:
 {
 
   imports = [
     inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x280
   ];
 
+  boot.tmp.cleanOnBoot = true;
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "nodev";
   boot.loader.grub.efiSupport = true;
   boot.loader.grub.efiInstallAsRemovable = true;
   boot.loader.efi.efiSysMountPoint = "/boot";
-
-  boot.tmp.cleanOnBoot = true;
-
+  boot.initrd.kernelModules = [ "i915" ];
+  
   hardware.enableAllFirmware = true;
+
+  hardware.graphics.enable =  true;
+  hardware.graphics.extraPackages = with pkgs; [
+    intel-media-driver
+    intel-ocl
+    intel-vaapi-driver
+  ];
 
   fileSystems = {
     "/" = {
@@ -29,7 +36,7 @@
       ];
     };
   };
-  
+
   swapDevices = [
     {
       device = "/swapfile";
