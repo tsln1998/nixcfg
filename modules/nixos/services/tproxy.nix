@@ -110,8 +110,14 @@ in
 
                     # bypass processed outbound
                     meta mark ${toString cfg.rtmark} return
+                    
                     # bypass reserved addrs
                     ip daddr {${reversed}} return
+
+                    # bypass dns query (redirect on nat)
+                    ${lib.optionalString (cfg.dnsTo != null) ''
+                      udp dport 53 return
+                    ''}
 
                     # proxy tcp traffic
                     ip protocol tcp tproxy ip to :${toString cfg.tcpTo} meta mark set ${toString cfg.fwmark}
@@ -141,6 +147,11 @@ in
 
                     # bypass processed outbound
                     meta mark ${toString cfg.rtmark} return
+
+                    # bypass dns query (redirect on nat)
+                    ${lib.optionalString (cfg.dnsTo != null) ''
+                      udp dport 53 return
+                    ''}
 
                     # proxy tcp traffic
                     ip protocol tcp ip daddr ${cfg.subnet} tproxy ip to :${toString cfg.tcpTo} meta mark set ${toString cfg.fwmark}
