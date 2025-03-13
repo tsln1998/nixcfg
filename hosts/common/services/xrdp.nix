@@ -4,7 +4,7 @@
   ...
 }:
 let
-  dm  = config.services.xserver.desktopManager;
+  dm = config.services.xserver.desktopManager;
   dm' = config.services.desktopManager;
 in
 {

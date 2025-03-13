@@ -48,7 +48,6 @@
     {
       self,
       nixpkgs,
-      nixpkgs-systems,
       home-manager,
       flake-utils,
       ...

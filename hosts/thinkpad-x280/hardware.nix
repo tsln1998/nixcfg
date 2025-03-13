@@ -12,10 +12,10 @@
   boot.loader.grub.efiInstallAsRemovable = true;
   boot.loader.efi.efiSysMountPoint = "/boot";
   boot.initrd.kernelModules = [ "i915" ];
-  
+
   hardware.enableAllFirmware = true;
 
-  hardware.graphics.enable =  true;
+  hardware.graphics.enable = true;
   hardware.graphics.extraPackages = with pkgs; [
     intel-media-driver
     intel-ocl

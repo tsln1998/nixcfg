@@ -7,7 +7,7 @@
 let
   cfg = config.services.rclone;
   naming = name: "rclone-mount" + lib.optionalString (name != "") ("-" + name);
-  mounts = lib.filterAttrs (name: conf: conf.enable) cfg.mounts;
+  mounts = lib.filterAttrs (_: conf: conf.enable) cfg.mounts;
 in
 {
   options.services.rclone = {

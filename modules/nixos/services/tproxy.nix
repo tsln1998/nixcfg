@@ -82,27 +82,25 @@ in
         tproxy-redirect = {
           family = "ip";
           content = lib.concatStringsSep "\n" [
-            (
-              lib.optionalString (cfg.dnsTo != null) ''
-                chain dns-prerouting {
-                  type nat hook prerouting priority dstnat
-                  policy accept
-                  
-                  meta mark ${toString cfg.rtmark} return
+            (lib.optionalString (cfg.dnsTo != null) ''
+              chain dns-prerouting {
+                type nat hook prerouting priority dstnat
+                policy accept
+                
+                meta mark ${toString cfg.rtmark} return
 
-                  udp dport 53 meta mark set ${toString cfg.rtmark} redirect to :${toString cfg.dnsTo}
-                }
+                udp dport 53 meta mark set ${toString cfg.rtmark} redirect to :${toString cfg.dnsTo}
+              }
 
-                chain dns-output {
-                  type nat hook output priority dstnat
-                  policy accept
+              chain dns-output {
+                type nat hook output priority dstnat
+                policy accept
 
-                  meta mark ${toString cfg.rtmark} return
+                meta mark ${toString cfg.rtmark} return
 
-                  udp dport 53 meta mark set ${toString cfg.rtmark} redirect to :${toString cfg.dnsTo}
-                }
-              ''
-            )
+                udp dport 53 meta mark set ${toString cfg.rtmark} redirect to :${toString cfg.dnsTo}
+              }
+            '')
             (
               if cfg.subnet == null then
                 ''
