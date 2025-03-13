@@ -237,6 +237,7 @@
                   name = "enter";
                   targetPkgs =
                     _: with pkgs'; [
+                      zsh
                       aria2
                       cabextract
                       wimlib
@@ -244,7 +245,7 @@
                       cdrkit
                     ];
 
-                  runScript = "bash";
+                  runScript = "zsh";
                 };
               in
               pkgs'.mkShell {

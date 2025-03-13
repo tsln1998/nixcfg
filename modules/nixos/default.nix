@@ -9,6 +9,9 @@
         "flakes"
         "ca-derivations"
       ];
+      trusted-users = [
+        "@wheel"
+      ];
       warn-dirty = false;
     };
 
