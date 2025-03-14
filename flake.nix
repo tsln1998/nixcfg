@@ -53,23 +53,38 @@
       ...
     }@inputs:
     let
-      # load utils
-      passThrough = flake-utils.lib.eachDefaultSystemPassThrough;
       # load tools
       tools = import ./tools (with self; with nixpkgs; { inherit inputs outputs lib; });
       # load overlays
       overlays = import ./overlays (with self; with nixpkgs; { inherit inputs outputs lib; });
-      # load pkgs     (nixpkgs)
-      pkgs = passThrough (system: {
-        ${system} = import nixpkgs { inherit system; };
-      });
-      # load packages (additionals)
-      packages = passThrough (system: {
-        ${system} = import ./packages pkgs.${system};
-      });
+      # load nixpkgs
+      pkgsFor = nixpkgs.lib.genAttrs (flake-utils.lib.defaultSystems) (
+        system:
+        import nixpkgs {
+          inherit system overlays;
+          config = {
+            allowUnfree = true;
+          };
+        }
+      );
     in
     {
-      inherit overlays packages;
+      #
+      # Inherit outputs
+      #
+      inherit overlays;
+    }
+    // (flake-utils.lib.eachDefaultSystem (system: {
+      #
+      # Packages
+      #
+      packages = import ./packages pkgsFor.${system};
+      #
+      # devShells
+      #
+      devShells = import ./shells pkgsFor.${system};
+    }))
+    // {
       #
       # NixOS Modules
       #
@@ -155,7 +170,7 @@
       homeConfigurations = {
         # ThinkBook 16+ G6 IMH (WSL)
         "tsln@tb16g6imh-wsl" = home-manager.lib.homeManagerConfiguration {
-          pkgs = pkgs.x86_64-linux;
+          pkgs = pkgsFor.x86_64-linux;
           modules = [
             ./modules/home-manager
             ./home/tsln/tb16g6imh-wsl
@@ -166,7 +181,7 @@
         };
         # ThinkBook 16+ G6 IMH (VMware)
         "tsln@tb16g6imh-vm" = home-manager.lib.homeManagerConfiguration {
-          pkgs = pkgs.x86_64-linux;
+          pkgs = pkgsFor.x86_64-linux;
           modules = [
             ./modules/home-manager
             ./home/tsln/tb16g6imh-vm
@@ -177,7 +192,7 @@
         };
         # ThinkPad X280
         "tsln@thinkpad-x280" = home-manager.lib.homeManagerConfiguration {
-          pkgs = pkgs.x86_64-linux;
+          pkgs = pkgsFor.x86_64-linux;
           modules = [
             ./modules/home-manager
             ./home/tsln/thinkpad-x280
@@ -188,7 +203,7 @@
         };
         # Oracle Cloud Singapore
         "tsln@oracle-sin-1" = home-manager.lib.homeManagerConfiguration {
-          pkgs = pkgs.aarch64-linux;
+          pkgs = pkgsFor.aarch64-linux;
           modules = [
             ./modules/home-manager
             ./home/tsln/oracle-sin-1
@@ -199,7 +214,7 @@
         };
         # Oracle Cloud India 1
         "tsln@oracle-bom-1" = home-manager.lib.homeManagerConfiguration {
-          pkgs = pkgs.aarch64-linux;
+          pkgs = pkgsFor.aarch64-linux;
           modules = [
             ./modules/home-manager
             ./home/tsln/oracle-bom-1
@@ -210,7 +225,7 @@
         };
         # Oracle Cloud USA Phoenix 1
         "tsln@oracle-phx-1" = home-manager.lib.homeManagerConfiguration {
-          pkgs = pkgs.x86_64-linux;
+          pkgs = pkgsFor.x86_64-linux;
           modules = [
             ./modules/home-manager
             ./home/tsln/oracle-phx-1
@@ -220,38 +235,5 @@
           };
         };
       };
-      #
-      # DevShells
-      #
-      devShells = passThrough (system: {
-        ${system} =
-          let
-            pkgs' = pkgs.${system};
-          in
-          {
-            # UUPDump FHS Environment
-            uup =
-              let
-                fhs = pkgs'.buildFHSUserEnv {
-                  name = "enter";
-                  targetPkgs =
-                    _: with pkgs'; [
-                      zsh
-                      aria2
-                      cabextract
-                      wimlib
-                      chntpw
-                      cdrkit
-                    ];
-
-                  runScript = "zsh";
-                };
-              in
-              pkgs'.mkShell {
-                packages = [ fhs ];
-                shellHook = "cd $HOME && ${fhs}/bin/enter && exit";
-              };
-          };
-      });
     };
 }

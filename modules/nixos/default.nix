@@ -22,13 +22,7 @@
     };
   };
 
-  nixpkgs.overlays = [
-    outputs.overlays.unstable
-    outputs.overlays.nur
-    outputs.overlays.additions
-    outputs.overlays.agenix
-  ];
-
+  nixpkgs.overlays = outputs.overlays;
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.permittedInsecurePackages = [
     "litestream-0.3.13"

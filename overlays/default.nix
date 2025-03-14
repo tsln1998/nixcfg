@@ -1,23 +1,7 @@
-{ inputs, ... }:
-let
-  inherit (inputs) nixpkgs-unstable nixpkgs-nur;
-in
-{
-  unstable = final: _: {
-    # pkgs.unstable
-    unstable = import nixpkgs-unstable {
-      system = final.system;
-      config = final.config;
-    };
-  };
-  nur = (
-    # pkgs.nur
-    nixpkgs-nur.overlays.default
-  );
-  additions =
-    # pkgs.additions
-    final: _: { additions = import ../packages final.pkgs; };
-  agenix =
-    # pkgs.agenix
-    final: _: { agenix = inputs.agenix.packages.${final.system}.default; };
-}
+{ ... }@inputs:
+[
+  (import ./nur inputs)
+  (import ./unstable inputs)
+  (import ./additions inputs)
+  (import ./agenix inputs)
+]

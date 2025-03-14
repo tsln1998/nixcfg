@@ -2,11 +2,6 @@
 {
   imports = tools.scan ./.;
 
-  nixpkgs.overlays = [
-    outputs.overlays.unstable
-    outputs.overlays.nur
-    outputs.overlays.additions
-  ];
-
+  nixpkgs.overlays = outputs.overlays;
   nixpkgs.config.allowUnfree = true;
 }
