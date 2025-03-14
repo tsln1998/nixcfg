@@ -4,7 +4,7 @@ let
   inherit (config.networking) hostName;
 in
 {
-  age.secrets."hosts/thinkpad-x280/mihomo.yaml" = {
+  age.secrets."hosts/${hostName}/mihomo.yaml" = {
     file = relative "secrets/hosts/thinkpad-x280/mihomo.yaml.age";
     mode = "0644";
   };

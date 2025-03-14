@@ -16,4 +16,12 @@ in
     file = relative "secrets/hosts/${hostName}/nezha-agent.yaml.age";
     mode = "0644";
   };
+  age.secrets."hosts/${hostName}/alist-sync.rclone" = {
+    file = relative "secrets/hosts/${hostName}/alist-sync.rclone.age";
+    mode = "0644";
+  };
+  age.secrets."hosts/${hostName}/alist-webdav.rclone" = {
+    file = relative "secrets/hosts/${hostName}/alist-webdav.rclone.age";
+    mode = "0644";
+  };
 }

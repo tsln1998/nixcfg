@@ -29,6 +29,12 @@ in
                 default = true;
               };
 
+              public = lib.mkOption {
+                type = lib.types.bool;
+                default = false;
+                description = "allow other user access";
+              };
+
               configFile = lib.mkOption {
                 type = lib.types.path;
                 description = "rclone.conf path";
@@ -124,6 +130,9 @@ in
               "--no-modtime"
               "--no-seek"
             ]
+            ++ (lib.optionals conf.public [
+              "--allow-other"
+            ])
             ++ [
               "--config"
               "\${CREDENTIALS_DIRECTORY}/rclone.conf"
