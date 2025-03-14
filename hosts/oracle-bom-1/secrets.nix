@@ -24,4 +24,12 @@ in
     file = relative "secrets/hosts/${hostName}/alist-webdav.rclone.age";
     mode = "0644";
   };
+  age.secrets."hosts/${hostName}/radarr-sync.rclone" = {
+    file = relative "secrets/hosts/${hostName}/radarr-sync.rclone.age";
+    mode = "0644";
+  };
+  age.secrets."hosts/${hostName}/jackett-sync.rclone" = {
+    file = relative "secrets/hosts/${hostName}/jackett-sync.rclone.age";
+    mode = "0644";
+  };
 }

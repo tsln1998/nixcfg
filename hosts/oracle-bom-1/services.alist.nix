@@ -61,7 +61,12 @@ in
 
     serviceConfig = {
       Type = "simple";
-      ExecStartPre = "${litestream} restore -if-db-not-exists -if-replica-exists -config ${litestream-conf} ${workdb}";
+      ExecStartPre = pkgs.writeShellScript "litestream-alist-restore" ''
+        [ -f "${alist-sync-conf}" ] && \
+          ${pkgs.coreutils}/bin/cp ${alist-sync-conf} ${alist-work-conf}
+
+        ${litestream} restore -if-db-not-exists -if-replica-exists -config ${litestream-conf} ${workdb}
+      '';
       ExecStart = "${litestream} replicate -config ${litestream-conf}";
       Restart = "on-failure";
     };
@@ -84,7 +89,10 @@ in
 
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = "${pkgs.coreutils}/bin/cp ${alist-work-conf} ${alist-sync-conf}";
+      ExecStart = pkgs.writeShellScript "alist-config-sync" ''
+        [ -f "${alist-work-conf}" ] && \
+          ${pkgs.coreutils}/bin/cp ${alist-work-conf} ${alist-sync-conf}
+      '';
     };
   };
 
