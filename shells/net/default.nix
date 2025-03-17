@@ -9,5 +9,6 @@ pkgs.mkShell {
     mtr
     gping
     whois
+    traceroute
   ];
 }
