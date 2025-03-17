@@ -12,7 +12,7 @@ let
   workdir = "/var/lib/jackett";
 in
 {
-  # jackett with litestream services
+  # jackett
   services.jackett = {
     enable = true;
     package = pkgs.unstable.jackett;

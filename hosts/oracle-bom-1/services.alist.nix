@@ -10,6 +10,7 @@ let
 
   # runtime directory
   ctrldir = "/mnt/alist";
+  ctrldft = "aliyun";
   workdir = "/var/lib/alist";
   syncdir = "${workdir}/sync";
 
@@ -115,6 +116,13 @@ in
       Unit = "alist-config-sync.service";
     };
   };
+
+  # alist upload util
+  environment.systemPackages = [(pkgs.writeScriptBin "alist-upload" ''
+    INPUT="$1"
+    OUTPUT="$2"
+    ${pkgs.coreutils}/bin/cp -r "$INPUT" "${ctrldir}/${ctrldft}/$OUTPUT"
+  '')];
 
   # rclone enable
   services.rclone.enable = true;

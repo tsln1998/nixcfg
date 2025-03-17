@@ -39,6 +39,7 @@ in
   "hosts/oracle-bom-1/alist-webdav.rclone.age".publicKeys = hosts.oracle-bom-1 ++ users.tsln;
   "hosts/oracle-bom-1/radarr-sync.rclone.age".publicKeys = hosts.oracle-bom-1 ++ users.tsln;
   "hosts/oracle-bom-1/jackett-sync.rclone.age".publicKeys = hosts.oracle-bom-1 ++ users.tsln;
+  "hosts/oracle-bom-1/qbittorrent-sync.rclone.age".publicKeys = hosts.oracle-bom-1 ++ users.tsln;
 
   # Oracle Cloud USA Phoenix 1
   "hosts/oracle-phx-1/ssh_host_ed25519_key.age".publicKeys = hosts.oracle-phx-1 ++ users.tsln;

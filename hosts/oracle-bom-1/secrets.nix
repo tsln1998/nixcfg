@@ -32,4 +32,8 @@ in
     file = relative "secrets/hosts/${hostName}/jackett-sync.rclone.age";
     mode = "0644";
   };
+  age.secrets."hosts/${hostName}/qbittorrent-sync.rclone" = {
+    file = relative "secrets/hosts/${hostName}/qbittorrent-sync.rclone.age";
+    mode = "0644";
+  };
 }
