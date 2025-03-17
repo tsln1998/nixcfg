@@ -6,6 +6,7 @@
       "home/tsln/common/cli"
       "home/tsln/common/dev"
       "home/tsln/common/i18n/locale.nix"
+      "home/tsln/common/i18n/fcitx.nix"
     ]
   );
 }

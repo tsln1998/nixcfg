@@ -47,9 +47,9 @@ in
   };
 
   # fcitx plasma virtual keyboard
-  programs.plasma.configFile = lib.optionalAttrs config.programs.plasma.enable {
-    "kwinrc"."Wayland"."InputMethod[$e]" =
-      "$HOME/.nix-profile/share/applications/fcitx5-wayland-launcher.desktop";
-    "kwinrc"."Wayland"."VirtualKeyboardEnabled" = true;
-  };
+  # programs.plasma.configFile = lib.optionalAttrs config.programs.plasma.enable {
+  #   "kwinrc"."Wayland"."InputMethod[$e]" =
+  #     "$HOME/.nix-profile/share/applications/fcitx5-wayland-launcher.desktop";
+  #   "kwinrc"."Wayland"."VirtualKeyboardEnabled" = true;
+  # };
 }

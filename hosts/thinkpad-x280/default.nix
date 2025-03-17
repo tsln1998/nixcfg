@@ -3,6 +3,7 @@
   imports = (
     map tools.relative [
       "hosts/common/global"
+      "hosts/common/desktop/cosmic.nix"
       "hosts/common/services/openssh.nix"
       "hosts/common/services/docker.nix"
       "users/tsln"
