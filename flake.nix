@@ -29,6 +29,9 @@
     agenix.inputs.systems.follows = "nixpkgs-systems";
     agenix.inputs.home-manager.follows = "home-manager";
 
+    comin.url = "github:nlewo/comin/v0.5.0";
+    comin.inputs.nixpkgs.follows = "nixpkgs";
+
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
 
