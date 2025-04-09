@@ -1,31 +1,28 @@
-{ ... }:
+{ pkgs, ... }:
 {
-  # fonts = {
-  #   packages = with pkgs; [
-  #     ubuntu-classic
-  #     fira-code
-  #     fira-code-nerdfont
-  #     noto-fonts
-  #     noto-fonts-cjk-sans
-  #     noto-fonts-cjk-serif
-  #   ];
+  fonts.fontconfig = {
+    enable = true;
+    defaultFonts = {
+      serif = [
+        "Noto Serif CJK SC"
+      ];
+      sansSerif = [
+        "Noto Sans CJK SC"
+      ];
+      monospace = [
+        "Fira Code"
+      ];
+      emoji = [
+        "Noto Color Emoji"
+      ];
+    };
+  };
 
-  #   fontconfig = {
-  #     defaultFonts = {
-  #       emoji = [
-  #         "Noto Color Emoji"
-  #       ];
-  #       monospace = [
-  #         "Ubuntu Mono"
-  #         "Noto Sans Mono CJK SC"
-  #       ];
-  #       sansSerif = [
-  #         "Noto Sans CJK SC"
-  #       ];
-  #       serif = [
-  #         "Noto Serif CJK SC"
-  #       ];
-  #     };
-  #   };
-  # };
+  home.packages = with pkgs; [
+    noto-fonts-cjk-sans
+    noto-fonts-cjk-serif
+    noto-fonts-color-emoji
+    fira-code
+    fira-code-nerdfont
+  ];
 }

@@ -14,7 +14,7 @@
     nixpkgs-nur.url = "github:nix-community/NUR";
     nixpkgs-nur.inputs.nixpkgs.follows = "nixpkgs";
 
-    nixos-wsl.url = "github:nix-community/NixOS-WSL";
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/2411.6.0";
     nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
     nixos-hardware.url = "github:nixos/nixos-hardware";
 

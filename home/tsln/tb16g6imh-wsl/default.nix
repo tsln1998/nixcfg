@@ -6,6 +6,7 @@
       "home/tsln/common/cli"
       "home/tsln/common/dev/nix.nix"
       "home/tsln/common/ops"
+      "home/tsln/common/i18n/fonts.nix"
       "home/tsln/common/i18n/locale.nix"
     ]
   );
