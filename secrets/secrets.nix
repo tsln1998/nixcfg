@@ -20,6 +20,7 @@ in
   # ThinkPad X1 Gen6
   "hosts/thinkpad-x1g6/ssh_host_ed25519_key.age".publicKeys = hosts.thinkpad-x1g6 ++ users.tsln;
   "hosts/thinkpad-x1g6/ssh_host_ed25519_key.pub.age".publicKeys = keys.all;
+  "hosts/thinkpad-x1g6/mihomo.yaml.age".publicKeys = hosts.thinkpad-x1g6 ++ users.tsln;
 
   # Oracle Cloud Singapore
   "hosts/oracle-sin-1/ssh_host_ed25519_key.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
