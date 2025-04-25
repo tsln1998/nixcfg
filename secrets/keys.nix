@@ -17,6 +17,9 @@ let
     thinkpad-x280 = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF2PncLvH0OvD/gU2Yfa3WFzTMQK61gtsahHb8wYMGjt"
     ];
+    thinkpad-x1g6 = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDWk+fwV0GaFu044qUdOZMoOyDG9Rg0eifRYxjHqyN6b"
+    ];
     oracle-sin-1 = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAbdrPFrrWj6DTbSAI7dv4wtuWSrZMZ55VS26RNysb1J"
     ];
