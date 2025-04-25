@@ -18,7 +18,7 @@ name:
   else if name == "<catppuccin-nixos>" then
     inputs.catppuccin.nixosModules.catppuccin
   else if name == "<catppuccin-home-manager>" then
-    inputs.catppuccin.homeManagerModules.catppuccin
+    inputs.catppuccin.homeModules.catppuccin
   else if name == "<jetbrains-plugins>" then
     inputs.jetbrains-plugins.plugins
   else
