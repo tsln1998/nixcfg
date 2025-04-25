@@ -30,9 +30,4 @@ in
     ];
     checkReversePath = false;
   };
-
-  environment.systemPackages = [
-    pkgs.q
-    pkgs.nali
-  ];
 }
