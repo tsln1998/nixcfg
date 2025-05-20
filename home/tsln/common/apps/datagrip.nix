@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
   home.packages = [
-    pkgs.unstable.jetbrains.datagrip
+    pkgs.jetbrains.datagrip
   ];
 }

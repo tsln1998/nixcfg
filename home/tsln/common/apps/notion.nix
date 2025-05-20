@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
   home.packages = [
-    pkgs.unstable.notion-app-enhanced
+    pkgs.notion-app-enhanced
   ];
 }

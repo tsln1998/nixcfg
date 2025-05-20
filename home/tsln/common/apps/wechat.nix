@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
   home.packages = [
-    pkgs.unstable.wechat-uos
+    pkgs.wechat-uos
   ];
 }

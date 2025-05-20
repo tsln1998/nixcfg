@@ -17,7 +17,7 @@ let
   syncdb = "${syncdir}/db";
 
   # nezha launcher
-  nezha = "${pkgs.unstable.nezha}/bin/nezha";
+  nezha = "${pkgs.nezha}/bin/nezha";
   nezha-conf = "${syncdir}/nezha.conf";
   nezha-exec = pkgs.writeShellScript "nezha-exec" (
     lib.concatStringsSep " " [

@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
   home.packages = [
-    pkgs.unstable.mihomo-party
+    pkgs.mihomo-party
   ];
 }

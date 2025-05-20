@@ -8,7 +8,7 @@ let
   inherit (config.age) secrets;
   inherit (config.networking) hostName;
 
-  nezha-agent = lib.getExe pkgs.unstable.nezha-agent;
+  nezha-agent = lib.getExe pkgs.nezha-agent;
 in
 {
   systemd.services.nezha-agent = {

@@ -2,7 +2,7 @@
 {
   programs.chromium = {
     enable = true;
-    package = pkgs.unstable.chromium;
+    package = pkgs.chromium;
     commandLineArgs = [
       "--enable-features=UseOzonePlatform"
       "--wayland-text-input-version=3"
