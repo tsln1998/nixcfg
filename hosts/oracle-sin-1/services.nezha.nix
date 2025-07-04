@@ -69,7 +69,7 @@ in
     mounts.nezha = {
       configFile = secrets."hosts/${hostName}/nezha.rclone".path;
       remote = "r2";
-      subpath = "fs-nezha";
+      subpath = "nezha";
       local = syncdir;
       vfs-cache = {
         max-age = "1h";
