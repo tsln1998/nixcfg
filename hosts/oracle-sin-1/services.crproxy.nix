@@ -3,7 +3,7 @@ let
   crproxy = pkgs.additions.crproxy;
   procps = pkgs.procps;
 
-  address = "127.0.0.1:18000";
+  address = "127.0.0.1:60080";
 in
 {
   systemd.services.crproxy = {
