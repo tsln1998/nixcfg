@@ -1,9 +1,20 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  tools,
+  ...
+}:
 let
   inherit (config.age) secrets;
+  inherit (tools) relative;
   inherit (config.networking) hostName;
 in
 {
+  age.secrets."hosts/${hostName}/mihomo.yaml" = {
+    file = relative "secrets/hosts/${hostName}/mihomo.yaml.age";
+    mode = "0644";
+  };
+
   services.clash = {
     enable = true;
     tproxyMode = true;

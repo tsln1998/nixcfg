@@ -2,6 +2,7 @@
 {
   imports = (
     map tools.relative [
+      "<disko>"
       "hosts/common/global"
       "hosts/common/services/openssh.nix"
       #"hosts/common/desktop/sddm.nix"
