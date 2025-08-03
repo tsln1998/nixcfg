@@ -4,14 +4,12 @@
 pkgs:
 let
   fhs = pkgs.buildFHSEnv {
-    name = "uup-devshell";
+    name = "aircrack-devshell";
     targetPkgs =
       _: with pkgs; [
-        aria2
-        cabextract
-        wimlib
-        chntpw
-        cdrkit
+        aircrack-ng
+        wifite2
+        wordlists
       ];
   };
 in
