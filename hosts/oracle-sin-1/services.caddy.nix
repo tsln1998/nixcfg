@@ -1,15 +1,42 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  ...
+}:
 let
   inherit (config.age) secrets;
   inherit (config.networking) hostName;
+
+  cfg = secrets."hosts/${hostName}/caddyfile".path;
+  entry = pkgs.writeTextFile {
+    name = "caddy-entrypoint.sh";
+    text = ''
+      #!/bin/ash
+      caddy add-package github.com/mholt/caddy-l4@v0.0.0-20250530154005-4d3c80e89c5f
+      caddy run
+    '';
+    executable = true;
+  };
 in
 {
-  services.caddy = {
-    enable = true;
-    configFile = secrets."hosts/${hostName}/caddyfile".path;
-    package = pkgs.caddy.withPlugins {
-      plugins = [ "github.com/mholt/caddy-l4@v0.0.0-20250530154005-4d3c80e89c5f" ];
-      hash = "sha256-uo3mVKqijNUztHLm7tXtgSUPVxzkO9TfF+CPJ01gAN4=";
-    };
+  virtualisation.oci-containers.containers.caddy = {
+    image = "caddy:2.10";
+    dependsOn = [
+      "xtls"
+      "hysteria"
+      "crproxy"
+    ];
+    ports = [
+      "80:80"
+      "443:443"
+    ];
+    networks = [
+      "shared"
+    ];
+    volumes = [
+      "${cfg}:/etc/caddy/Caddyfile"
+      "${entry}:/usr/bin/entrypoint.sh"
+    ];
+    entrypoint = "/usr/bin/entrypoint.sh";
   };
 }

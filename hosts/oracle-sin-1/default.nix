@@ -1,4 +1,4 @@
-{ tools, ... }:
+{ tools, lib, ... }:
 {
   imports = (
     map tools.relative [
@@ -10,6 +10,8 @@
     ]
     ++ (tools.scan ./.)
   );
+
+  virtualisation.oci-containers.backend = lib.mkDefault "docker";
 
   system.stateVersion = "25.05";
 }

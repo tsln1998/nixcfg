@@ -2,14 +2,19 @@
 let
   inherit (config.age) secrets;
   inherit (config.networking) hostName;
+
+  cfg = secrets."hosts/${hostName}/hysteria.yaml";
 in
 {
-  services.hysteria = {
-    enable = true;
-    configFile = secrets."hosts/${hostName}/hysteria.yaml".path;
-  };
-
-  networking.firewall = {
-    allowedUDPPorts = [ 443 ];
+  virtualisation.oci-containers.containers.hysteria = {
+    image = "tobyxdd/hysteria:v2.6.2";
+    volumes = [
+      "${cfg.path}:/etc/hysteria.yaml"
+    ];
+    cmd = [
+      "server"
+      "-c"
+      "/etc/hysteria.yaml"
+    ];
   };
 }
