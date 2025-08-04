@@ -1,6 +1,8 @@
 let
   keys = import ./keys.nix;
   inherit (keys) hosts users;
+
+  oracle-shared = hosts.oracle-sin-1 ++ hosts.oracle-bom-1 ++ hosts.oracle-phx-1;
 in
 {
   # ThinkBook 16+ G6 IMH (WSL)
@@ -21,6 +23,10 @@ in
   "hosts/thinkpad-x1g6/ssh_host_ed25519_key.age".publicKeys = hosts.thinkpad-x1g6 ++ users.tsln;
   "hosts/thinkpad-x1g6/ssh_host_ed25519_key.pub.age".publicKeys = keys.all;
   "hosts/thinkpad-x1g6/mihomo.yaml.age".publicKeys = hosts.thinkpad-x1g6 ++ users.tsln;
+
+  # Oracle Cloud Shared
+  "hosts/oracle-shared/k3s.age".publicKeys = oracle-shared ++ users.tsln;
+  "hosts/oracle-shared/tailscale.age".publicKeys = oracle-shared ++ users.tsln;
 
   # Oracle Cloud Singapore
   "hosts/oracle-sin-1/ssh_host_ed25519_key.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
