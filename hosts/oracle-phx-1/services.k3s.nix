@@ -1,5 +1,4 @@
 {
-  pkgs,
   tools,
   config,
   ...
@@ -8,10 +7,10 @@ let
   inherit (tools) relative;
   inherit (config.age) secrets;
 
-  key = "hosts/oracle-shared/k3s.age";
+  key = "hosts/oracle-shared/k3s";
 in
 {
-  age.secrets.${key}.file = relative "secrets/${key}";
+  age.secrets.${key}.file = relative "secrets/${key}.age";
 
   services.k3s.enable = true;
   services.k3s.role = "agent";
