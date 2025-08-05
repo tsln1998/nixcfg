@@ -62,7 +62,6 @@ in
   services.k3s.extraFlags = [
     "--write-kubeconfig-mode 644"
     "--node-external-ip 100.64.0.1"
-    "--disable traefik"
     "--disable local-storage"
     "--disable metrics-server"
   ];
