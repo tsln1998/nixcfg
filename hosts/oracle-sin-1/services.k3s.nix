@@ -12,9 +12,9 @@ let
   key = "hosts/oracle-shared/k3s.age";
 in
 {
-
+  # https://docs.k3s.io/cli/certificate#using-custom-ca-certificates
+  # https://docs.k3s.io/cli/token
   age.secrets =
-    # https://docs.k3s.io/cli/certificate#using-custom-ca-certificates
     lib.listToAttrs (
       lib.map
         (name: {
@@ -49,12 +49,11 @@ in
           "etcd/server-ca.pem"
         ]
     )
-    //
-    # https://docs.k3s.io/cli/token
-    {
+    // {
       ${key}.file = relative "secrets/${key}";
     };
 
+  # k3s cluster (master node)
   services.k3s.enable = true;
   services.k3s.clusterInit = true;
   services.k3s.role = "server";
@@ -65,4 +64,18 @@ in
     "--disable local-storage"
     "--disable metrics-server"
   ];
+
+  # k3s firewall
+  networking.firewall = {
+    allowedTCPPorts = [
+      80
+      443
+      6443
+    ];
+    allowedUDPPorts = [
+      80
+      443
+    ];
+  };
+
 }
