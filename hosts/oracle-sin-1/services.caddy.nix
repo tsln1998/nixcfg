@@ -12,4 +12,9 @@ in
       hash = "sha256-uo3mVKqijNUztHLm7tXtgSUPVxzkO9TfF+CPJ01gAN4=";
     };
   };
+
+  networking.firewall = {
+    allowedUDPPorts = [ 443 ];
+    allowedTCPPorts = [ 443 ];
+  };
 }

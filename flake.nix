@@ -118,17 +118,6 @@
             inherit inputs outputs tools;
           };
         };
-        # ThinkPad X280
-        "thinkpad-x280" = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            ./modules/nixos
-            ./hosts/thinkpad-x280
-          ];
-          specialArgs = with self; {
-            inherit inputs outputs tools;
-          };
-        };
         # ThinkPad X1 Gen6
         "thinkpad-x1g6" = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
@@ -199,17 +188,6 @@
           modules = [
             ./modules/home-manager
             ./home/tsln/tb16g6imh-vm
-          ];
-          extraSpecialArgs = with self; {
-            inherit inputs outputs tools;
-          };
-        };
-        # ThinkPad X280
-        "tsln@thinkpad-x280" = home-manager.lib.homeManagerConfiguration {
-          pkgs = pkgsFor.x86_64-linux;
-          modules = [
-            ./modules/home-manager
-            ./home/tsln/thinkpad-x280
           ];
           extraSpecialArgs = with self; {
             inherit inputs outputs tools;

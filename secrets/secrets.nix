@@ -11,12 +11,6 @@ in
   "hosts/tb16g6imh-vm/ssh_host_ed25519_key.age".publicKeys = hosts.tb16g6imh-vm ++ users.tsln;
   "hosts/tb16g6imh-vm/ssh_host_ed25519_key.pub.age".publicKeys = keys.all;
 
-  # ThinkPad X280
-  "hosts/thinkpad-x280/ssh_host_ed25519_key.age".publicKeys = hosts.thinkpad-x280 ++ users.tsln;
-  "hosts/thinkpad-x280/ssh_host_ed25519_key.pub.age".publicKeys = keys.all;
-  "hosts/thinkpad-x280/mihomo.yaml.age".publicKeys = hosts.thinkpad-x280 ++ users.tsln;
-  "hosts/thinkpad-x280/nezha-agent.yaml.age".publicKeys = hosts.thinkpad-x280 ++ users.tsln;
-
   # ThinkPad X1 Gen6
   "hosts/thinkpad-x1g6/ssh_host_ed25519_key.age".publicKeys = hosts.thinkpad-x1g6 ++ users.tsln;
   "hosts/thinkpad-x1g6/ssh_host_ed25519_key.pub.age".publicKeys = keys.all;
@@ -28,22 +22,18 @@ in
   "hosts/oracle-sin-1/caddyfile.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
   "hosts/oracle-sin-1/hysteria.yaml.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
   "hosts/oracle-sin-1/xray.json.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
-  "hosts/oracle-sin-1/nezha.rclone.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
-  "hosts/oracle-sin-1/nezha-agent.yaml.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
 
   # Oracle Cloud India 1
   "hosts/oracle-bom-1/ssh_host_ed25519_key.age".publicKeys = hosts.oracle-bom-1 ++ users.tsln;
   "hosts/oracle-bom-1/ssh_host_ed25519_key.pub.age".publicKeys = keys.all;
   "hosts/oracle-bom-1/hysteria.yaml.age".publicKeys = hosts.oracle-bom-1 ++ users.tsln;
   "hosts/oracle-bom-1/xray.json.age".publicKeys = hosts.oracle-bom-1 ++ users.tsln;
-  "hosts/oracle-bom-1/nezha-agent.yaml.age".publicKeys = hosts.oracle-bom-1 ++ users.tsln;
 
   # Oracle Cloud USA Phoenix 1
   "hosts/oracle-phx-1/ssh_host_ed25519_key.age".publicKeys = hosts.oracle-phx-1 ++ users.tsln;
   "hosts/oracle-phx-1/ssh_host_ed25519_key.pub.age".publicKeys = keys.all;
   "hosts/oracle-phx-1/hysteria.yaml.age".publicKeys = hosts.oracle-phx-1 ++ users.tsln;
   "hosts/oracle-phx-1/xray.json.age".publicKeys = hosts.oracle-phx-1 ++ users.tsln;
-  "hosts/oracle-phx-1/nezha-agent.yaml.age".publicKeys = hosts.oracle-phx-1 ++ users.tsln;
 
   # User - tsln
   "users/tsln/passwd.age".publicKeys = keys.all;
