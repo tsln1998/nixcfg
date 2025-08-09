@@ -15,6 +15,9 @@
       color = {
         ui = "auto";
       };
+      push = {
+        autoSetupRemote = true;
+      };
       url = {
         "ssh://git@ssh.github.com:443/" = {
           insteadOf = "git@github.com:";
