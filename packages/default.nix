@@ -1,3 +1,3 @@
 pkgs: {
-  crproxy = pkgs.callPackage ./crproxy { };
+  crproxy = pkgs.callPackage ./crproxy.nix { };
 }
