@@ -8,7 +8,7 @@ in
 {
   networking.hostName = "tb16g6imh-vm";
   networking.hostId = "454768f1";
-  networking.useDHCP = false;
+  networking.useDHCP = lib.mkDefault true;
   networking.usePredictableInterfaceNames = false;
   networking.interfaces.${interface}.ipv4.addresses = [
     {
