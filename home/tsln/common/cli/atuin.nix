@@ -7,4 +7,7 @@
       update_check = false;
     };
   };
+  programs.atuin.daemon = {
+    enable = true;
+  };
 }

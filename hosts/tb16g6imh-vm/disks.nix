@@ -3,7 +3,7 @@ _: {
     disk = {
       main = {
         type = "disk";
-        device = "/dev/sda";
+        device = "/dev/disk/by-id/scsi-360022480550d6113c945982a0197638e";
         content = {
           type = "gpt";
           partitions = {
@@ -20,17 +20,36 @@ _: {
                 type = "filesystem";
               };
             };
-            root = {
+            zfs = {
               size = "100%";
               content = {
-                extraArgs = [
-                  "-f"
-                ];
-                format = "xfs";
-                mountpoint = "/";
-                type = "filesystem";
+                type = "zfs";
+                pool = "zroot";
               };
             };
+          };
+        };
+      };
+    };
+    zpool = {
+      zroot = {
+        type = "zpool";
+        rootFsOptions = {
+          mountpoint = "none";
+          compression = "zstd";
+        };
+        datasets = {
+          "root" = {
+            type = "zfs_fs";
+            mountpoint = "/";
+          };
+          "store" = {
+            type = "zfs_fs";
+            mountpoint = "/nix";
+          };
+          "home" = {
+            type = "zfs_fs";
+            mountpoint = "/home";
           };
         };
       };

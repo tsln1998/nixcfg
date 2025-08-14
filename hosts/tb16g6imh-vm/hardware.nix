@@ -26,5 +26,6 @@
 
   boot.tmp.cleanOnBoot = true;
 
-  virtualisation.vmware.guest.enable = true;
+  virtualisation.hypervGuest.enable = true;
+  virtualisation.oci-containers.backend = "podman";
 }
