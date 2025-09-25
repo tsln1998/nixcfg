@@ -8,4 +8,11 @@ in
     enable = true;
     settingsFile = secrets."hosts/${hostName}/xray.json".path;
   };
+
+  networking.firewall = {
+    allowedTCPPorts = [
+      80
+      443
+    ];
+  };
 }

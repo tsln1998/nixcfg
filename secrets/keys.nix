@@ -4,6 +4,7 @@ let
   users = {
     tsln = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDq45URPrEHk5bm8yEsv5horJ/ctJpm3hff7k0GFqcI6"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFPnBz0T25JuOeNUqb+SVj56cKeFew7HFokCiRr1hzsn"
     ];
   };
 

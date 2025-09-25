@@ -8,4 +8,8 @@ in
     enable = true;
     configFile = secrets."hosts/${hostName}/hysteria.yaml".path;
   };
+
+  networking.firewall = {
+    allowedUDPPorts = [ 443 ];
+  };
 }

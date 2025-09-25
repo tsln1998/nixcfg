@@ -10,6 +10,9 @@ in
   };
 
   networking.firewall = {
-    allowedTCPPorts = [ 443 ];
+    allowedTCPPorts = [
+      80
+      443
+    ];
   };
 }
