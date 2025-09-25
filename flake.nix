@@ -38,13 +38,8 @@
     plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
     plasma-manager.inputs.home-manager.follows = "home-manager";
 
-    catppuccin.url = "github:catppuccin/nix";
+    catppuccin.url = "github:catppuccin/nix/release-25.05";
     catppuccin.inputs.nixpkgs.follows = "nixpkgs";
-
-    jetbrains-plugins.url = "github:theCapypara/nix-jetbrains-plugins";
-    jetbrains-plugins.inputs.nixpkgs.follows = "nixpkgs-unstable";
-    jetbrains-plugins.inputs.systems.follows = "nixpkgs-systems";
-    jetbrains-plugins.inputs.flake-utils.follows = "flake-utils";
   };
 
   outputs =
