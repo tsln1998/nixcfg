@@ -9,8 +9,6 @@ name:
     inputs.disko.nixosModules.disko
   else if name == "<comin>" then
     inputs.comin.nixosModules.comin
-  else if name == "<plasma-home-manager>" then
-    inputs.plasma-manager.homeManagerModules.plasma-manager
   else if name == "<agenix-nixos>" then
     inputs.agenix.nixosModules.default
   else if name == "<agenix-home-manager>" then
@@ -19,8 +17,6 @@ name:
     inputs.catppuccin.nixosModules.catppuccin
   else if name == "<catppuccin-home-manager>" then
     inputs.catppuccin.homeModules.catppuccin
-  else if name == "<jetbrains-plugins>" then
-    inputs.jetbrains-plugins.plugins
   else
     abort
 )

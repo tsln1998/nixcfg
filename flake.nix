@@ -34,10 +34,6 @@
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
 
-    plasma-manager.url = "github:nix-community/plasma-manager";
-    plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
-    plasma-manager.inputs.home-manager.follows = "home-manager";
-
     catppuccin.url = "github:catppuccin/nix/release-25.05";
     catppuccin.inputs.nixpkgs.follows = "nixpkgs";
   };
@@ -157,6 +153,17 @@
             inherit inputs outputs tools;
           };
         };
+        # Oracle Cloud Indonesia Batam 1
+        "oracle-bat-1" = nixpkgs.lib.nixosSystem {
+          system = "aarch64-linux";
+          modules = [
+            ./modules/nixos
+            ./hosts/oracle-bat-1
+          ];
+          specialArgs = with self; {
+            inherit inputs outputs tools;
+          };
+        };
       };
       #
       # Home Manager Modules
@@ -227,6 +234,17 @@
           modules = [
             ./modules/home-manager
             ./home/tsln/oracle-phx-1
+          ];
+          extraSpecialArgs = with self; {
+            inherit inputs outputs tools;
+          };
+        };
+        # Oracle Cloud Indonesia Batam 1
+        "tsln@oracle-bat-1" = home-manager.lib.homeManagerConfiguration {
+          pkgs = pkgsFor.aarch64-linux;
+          modules = [
+            ./modules/home-manager
+            ./home/tsln/oracle-bat-1
           ];
           extraSpecialArgs = with self; {
             inherit inputs outputs tools;

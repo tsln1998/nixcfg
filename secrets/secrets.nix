@@ -34,6 +34,12 @@ in
   "hosts/oracle-phx-1/hysteria.yaml.age".publicKeys = hosts.oracle-phx-1 ++ users.tsln;
   "hosts/oracle-phx-1/xray.json.age".publicKeys = hosts.oracle-phx-1 ++ users.tsln;
 
+  # Oracle Cloud Indonesia Batam 1
+  "hosts/oracle-bat-1/ssh_host_ed25519_key.age".publicKeys = hosts.oracle-bat-1 ++ users.tsln;
+  "hosts/oracle-bat-1/ssh_host_ed25519_key.pub.age".publicKeys = keys.all;
+  "hosts/oracle-bat-1/hysteria.yaml.age".publicKeys = hosts.oracle-bat-1 ++ users.tsln;
+  "hosts/oracle-bat-1/xray.json.age".publicKeys = hosts.oracle-bat-1 ++ users.tsln;
+
   # User - tsln
   "users/tsln/passwd.age".publicKeys = keys.all;
   "users/tsln/id_ed25519.age".publicKeys = users.tsln;
