@@ -20,4 +20,7 @@
   boot.loader.efi.efiSysMountPoint = "/boot";
 
   boot.tmp.cleanOnBoot = true;
+
+  # Hyper-V Guest
+  virtualisation.hypervGuest.enable = true;
 }
