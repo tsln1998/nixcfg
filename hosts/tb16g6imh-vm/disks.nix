@@ -3,7 +3,7 @@ _: {
     disk = {
       main = {
         type = "disk";
-        device = "/dev/disk/by-id/scsi-360022480550d6113c945982a0197638e";
+        device = "/dev/disk/by-id/scsi-36002248084c1aa9a059f42420d833145";
         content = {
           type = "gpt";
           partitions = {
