@@ -1,12 +1,15 @@
-{ ... }:
+{ pkgs, ... }:
 {
-
+  # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "nodev";
   boot.loader.grub.efiSupport = true;
   boot.loader.grub.efiInstallAsRemovable = true;
   boot.loader.efi.efiSysMountPoint = "/efi";
 
+  boot.tmp.cleanOnBoot = true;
+
+  # Use Initrd
   boot.initrd = {
     availableKernelModules = [
       "9p"
@@ -31,17 +34,17 @@
     ];
   };
 
-  boot = {
-    kernelModules = [
-      "kvm-amd"
-    ];
-    kernelParams = [
-      "console=ttyS0,115200n8"
-      "console=tty0"
-    ];
-  };
+  # Use Xanmod Kernel
+  boot.kernelPackages = pkgs.linuxPackages_xanmod;
+  boot.kernelModules = [
+    "kvm-amd"
+  ];
 
-  boot.tmp.cleanOnBoot = true;
+  # Use Kernel Params
+  boot.kernelParams = [
+    "console=ttyS0,115200n8"
+    "console=tty0"
+  ];
 
   swapDevices = [
     {

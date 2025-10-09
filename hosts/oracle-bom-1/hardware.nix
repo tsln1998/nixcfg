@@ -1,12 +1,15 @@
-{ ... }:
+{ pkgs, ... }:
 {
-
+  # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "nodev";
   boot.loader.grub.efiSupport = true;
   boot.loader.grub.efiInstallAsRemovable = true;
   boot.loader.efi.efiSysMountPoint = "/efi";
 
+  boot.tmp.useTmpfs = true;
+
+  # Use Initrd
   boot.initrd = {
     availableKernelModules = [
       "virtio_net"
@@ -28,12 +31,11 @@
     ];
   };
 
+  # Use Kernel Params
   boot.kernelParams = [
     "console=ttyAMA0,115200n8"
     "console=tty0"
   ];
-
-  boot.tmp.useTmpfs = true;
 
   fileSystems = {
     "/" = {
