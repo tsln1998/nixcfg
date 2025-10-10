@@ -1,4 +1,9 @@
 { tools, ... }:
 {
-  imports = tools.scan ./.;
+  imports = (
+    map tools.relative [
+      "users/common"
+    ]
+    ++ (tools.scan ./.)
+  );
 }

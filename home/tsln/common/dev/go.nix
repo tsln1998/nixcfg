@@ -1,12 +1,18 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
+let
+  inherit (config.home) homeDirectory;
+in
 {
   programs.go.enable = true;
 
   home.packages = with pkgs.unstable; [
+    # for debugger
     gopls
     delve
-    protobuf
-    protoc-gen-go
-    protoc-gen-go-grpc
+  ];
+
+  home.sessionPath = [
+    # for go install
+    "${homeDirectory}/go/bin"
   ];
 }
