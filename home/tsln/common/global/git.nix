@@ -5,9 +5,11 @@
 {
   programs.git = {
     enable = lib.mkDefault true;
-    userName = lib.mkDefault "Tsln";
-    userEmail = lib.mkDefault "tsln1998@gmail.com";
-    extraConfig = {
+    settings = {
+      user = {
+        name = lib.mkDefault "Tsln";
+        email = lib.mkDefault "tsln1998@gmail.com";
+      };
       core = {
         autocrlf = "input";
         eol = "lf";

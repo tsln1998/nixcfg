@@ -18,5 +18,5 @@
   services.logind.hibernateKey = "ignore";
   services.logind.rebootKey = "ignore";
 
-  system.stateVersion = "25.05";
+  system.stateVersion = "25.11";
 }
