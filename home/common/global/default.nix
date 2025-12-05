@@ -1,8 +1,13 @@
-{ config, tools, ... }:
+{
+  config,
+  tools,
+  lib,
+  ...
+}:
 {
   imports = tools.scan ./.;
 
-  home.username = "tsln";
+  home.username = lib.mkDefault "tsln";
   home.homeDirectory = "/home/${config.home.username}";
   home.stateVersion = "25.11";
 }

@@ -2,9 +2,10 @@
 {
   imports = (
     map tools.relative [
-      "home/tsln/common/global"
-      "home/tsln/common/cli"
-      "home/tsln/common/dev/nix.nix"
+      "home/common/global"
+      "home/common/cli"
+      "home/common/dev/nix.nix"
     ]
+    ++ (tools.scan ./.)
   );
 }
