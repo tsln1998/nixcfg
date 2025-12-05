@@ -25,8 +25,4 @@ in
 
   age.secretsDir = homeDirectory + "/.agenix";
   age.secretsMountPoint = homeDirectory + "/.agenix.d";
-
-  home.activation.agenix = lib.hm.dag.entryAfter [
-    "writeBoundary"
-  ] config.systemd.user.services.agenix.Service.ExecStart;
 }
