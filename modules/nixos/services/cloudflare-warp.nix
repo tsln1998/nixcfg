@@ -9,7 +9,18 @@ let
   cli = pkgs.writeShellScript "warp-cli-tos" ''
     ${lib.getExe cfg.package} --accept-tos $@
   '';
+  wait = pkgs.writeShellScript "cloudflare-warp-wait" ''
+    WAIT_SOCK="/var/run/cloudflare-warp/warp_service"
+    WAIT_TIMEOUT=60
+
+    until [ -e $WAIT_SOCK ] || (( $SECONDS >= $WAIT_TIMEOUT )); do
+      sleep 1;
+    done
+
+    test -e $WAIT_SOCK
+  '';
   connect = pkgs.writeShellScript "cloudflare-warp-connect" ''
+    ${wait}
     ${cli} registration show || ${cli} registration new
     ${cli} mode ${cfg.mode}
     ${cli} connect
