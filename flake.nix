@@ -114,17 +114,6 @@
             inherit inputs outputs tools;
           };
         };
-        # ThinkPad X1 Gen6
-        "thinkpad-x1g6" = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            ./modules/nixos
-            ./hosts/thinkpad-x1g6
-          ];
-          specialArgs = with self; {
-            inherit inputs outputs tools;
-          };
-        };
         # Oracle Cloud Singapore
         "oracle-sin-1" = nixpkgs.lib.nixosSystem {
           system = "aarch64-linux";
@@ -184,17 +173,6 @@
           modules = [
             ./modules/home-manager
             ./home/tsln/tb16g6imh-vm
-          ];
-          extraSpecialArgs = with self; {
-            inherit inputs outputs tools;
-          };
-        };
-        # ThinkPad X1 Gen6
-        "tsln@thinkpad-x1g6" = home-manager.lib.homeManagerConfiguration {
-          pkgs = pkgsFor.x86_64-linux;
-          modules = [
-            ./modules/home-manager
-            ./home/tsln/thinkpad-x1g6
           ];
           extraSpecialArgs = with self; {
             inherit inputs outputs tools;
