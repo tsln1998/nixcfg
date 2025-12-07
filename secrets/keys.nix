@@ -15,9 +15,6 @@ let
     tb16g6imh-vm = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGAkFEAhSYaKtw30BigRgUjZtwq9iFVKAS/5m8vWBprr"
     ];
-    thinkpad-x1g6 = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF2PncLvH0OvD/gU2Yfa3WFzTMQK61gtsahHb8wYMGjt"
-    ];
     oracle-sin-1 = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAbdrPFrrWj6DTbSAI7dv4wtuWSrZMZ55VS26RNysb1J"
     ];
