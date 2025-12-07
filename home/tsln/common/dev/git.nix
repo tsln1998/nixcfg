@@ -1,26 +1,23 @@
-{
-  lib,
-  ...
-}:
+{ lib, ... }:
 {
   programs.git = {
-    enable = lib.mkDefault true;
+    enable = true;
     settings = {
       user = {
         name = lib.mkDefault "Tsln";
         email = lib.mkDefault "tsln1998@gmail.com";
       };
       core = {
-        autocrlf = "input";
-        eol = "lf";
+        autocrlf = lib.mkDefault "input";
+        eol = lib.mkDefault "lf";
       };
       color = {
-        ui = "auto";
+        ui = lib.mkDefault "auto";
       };
       push = {
-        autoSetupRemote = true;
+        autoSetupRemote = lib.mkDefault true;
       };
-      url = {
+      url = lib.mkDefault {
         "ssh://git@ssh.github.com:443/" = {
           insteadOf = "git@github.com:";
         };
