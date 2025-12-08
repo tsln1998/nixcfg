@@ -161,7 +161,7 @@
       #
       # Home Manager Modules
       #
-      homeManagerModules = import ./modules/home-manager;
+      homeManagerModules = import ./modules/home;
       #
       # Home Manager Standalone Configrations
       #
@@ -170,7 +170,7 @@
         "tsln@tb16g6imh-wsl" = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgsFor.x86_64-linux;
           modules = [
-            ./modules/home-manager
+            ./modules/home
             ./home/tsln/tb16g6imh-wsl
           ];
           extraSpecialArgs = with self; {
@@ -181,7 +181,7 @@
         "tsln@tb16g6imh-vm" = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgsFor.x86_64-linux;
           modules = [
-            ./modules/home-manager
+            ./modules/home
             ./home/tsln/tb16g6imh-vm
           ];
           extraSpecialArgs = with self; {
@@ -192,7 +192,7 @@
         "tsln@oracle-sin-1" = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgsFor.aarch64-linux;
           modules = [
-            ./modules/home-manager
+            ./modules/home
             ./home/tsln/oracle-sin-1
           ];
           extraSpecialArgs = with self; {
@@ -203,7 +203,7 @@
         "tsln@oracle-bom-1" = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgsFor.aarch64-linux;
           modules = [
-            ./modules/home-manager
+            ./modules/home
             ./home/tsln/oracle-bom-1
           ];
           extraSpecialArgs = with self; {
@@ -214,7 +214,7 @@
         "tsln@oracle-phx-1" = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgsFor.x86_64-linux;
           modules = [
-            ./modules/home-manager
+            ./modules/home
             ./home/tsln/oracle-phx-1
           ];
           extraSpecialArgs = with self; {
