@@ -5,8 +5,11 @@
       "home/common/global"
       "home/common/cli"
       "home/common/dev/nix.nix"
-      "home/common/dev/bun.nix"
+      "home/common/dev/go.nix"
       "home/common/dev/java.nix"
+      "home/common/dev/rust.nix"
+      "home/common/dev/python.nix"
+      "home/common/dev/nodejs.nix"
       "home/common/i18n/locale.nix"
     ])
     ++ (map tools.relative [

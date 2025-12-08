@@ -1,18 +1,30 @@
-{ pkgs, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 let
   inherit (config.home) homeDirectory;
+
+  GOPATH = "${homeDirectory}/.go";
 in
 {
   programs.go.enable = true;
 
+  # for debugger
   home.packages = with pkgs.unstable; [
-    # for debugger
     gopls
     delve
   ];
 
+  # go environment variables
+  home.sessionVariables = {
+    GOPATH = lib.mkDefault GOPATH;
+  };
+
+  # go paths
   home.sessionPath = [
-    # for go install
-    "${homeDirectory}/go/bin"
+    "${GOPATH}/bin"
   ];
 }

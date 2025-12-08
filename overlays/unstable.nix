@@ -1,9 +1,7 @@
 { inputs, ... }:
-let
-  inherit (inputs) nixpkgs-unstable;
-in
 final: _: {
-  unstable = import nixpkgs-unstable {
-    inherit (final) system config;
+  unstable = import inputs.nixpkgs-unstable {
+    inherit (final) config;
+    inherit (final.stdenv.hostPlatform) system;
   };
 }
