@@ -1,8 +1,7 @@
-{ pkgs, ... }:
+{ ... }:
 {
-  security.sudo = {
+  security.sudo-rs = {
     enable = true;
-    package = pkgs.sudo;
     wheelNeedsPassword = false;
   };
 }
