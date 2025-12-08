@@ -4,4 +4,5 @@
   ./unstable.nix
   ./additions.nix
   ./agenix.nix
+  ./llm.nix
 ])
