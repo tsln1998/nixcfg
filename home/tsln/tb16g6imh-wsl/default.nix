@@ -6,6 +6,7 @@
       "home/common/cli"
       "home/common/dev/nix.nix"
       "home/common/dev/bun.nix"
+      "home/common/dev/java.nix"
       "home/common/i18n/locale.nix"
     ])
     ++ (map tools.relative [
