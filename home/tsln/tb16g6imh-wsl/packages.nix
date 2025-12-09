@@ -9,5 +9,11 @@
   ++ [
     # Development Tools
     pkgs.cloc
+  ]
+  ++ [
+    # Github Client
+    pkgs.github-cli
+    # Fly.io Client
+    pkgs.flyctl
   ];
 }
