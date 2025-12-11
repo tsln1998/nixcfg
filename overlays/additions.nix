@@ -1,4 +1,4 @@
 { ... }:
 final: _: {
-  additions = import ../../packages final.pkgs;
+  additions = import ../packages final.pkgs;
 }

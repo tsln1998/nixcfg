@@ -4,8 +4,10 @@
     # LLM Agents
     pkgs.llm-agents.openspec
     pkgs.llm-agents.opencode
-    pkgs.llm-agents.cursor-agent
+    pkgs.llm-agents.amp
     pkgs.llm-agents.droid
+    pkgs.llm-agents.cursor-agent
+    pkgs.llm-agents.qwen-code
   ]
   ++ [
     # Development Tools
