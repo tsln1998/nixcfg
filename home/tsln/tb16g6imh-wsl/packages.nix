@@ -2,9 +2,10 @@
 {
   home.packages = [
     # LLM Agents
-    pkgs.llm-agents.droid
+    pkgs.llm-agents.openspec
+    pkgs.llm-agents.opencode
     pkgs.llm-agents.cursor-agent
-    pkgs.llm-agents.claude-code
+    pkgs.llm-agents.droid
   ]
   ++ [
     # Development Tools
