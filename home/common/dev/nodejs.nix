@@ -16,6 +16,7 @@ in
     ".npmrc" = {
       text = ''
         prefix=${homeDirectory}/.npm
+        registry=https://mirrors.cloud.tencent.com/npm/
       '';
     };
   };
