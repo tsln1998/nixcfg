@@ -10,6 +10,7 @@
       "home/common/dev/rust.nix"
       "home/common/dev/python.nix"
       "home/common/dev/nodejs.nix"
+      "home/common/dev/dotnet.nix"
       "home/common/ops/kubectl.nix"
       "home/common/ops/fluxcd.nix"
       "home/common/i18n/locale.nix"
