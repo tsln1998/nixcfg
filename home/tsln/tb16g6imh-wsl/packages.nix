@@ -3,10 +3,7 @@
   home.packages = [
     # LLM Agents
     pkgs.llm-agents.openspec
-    pkgs.llm-agents.opencode
-    pkgs.llm-agents.droid
     pkgs.llm-agents.claude-code
-    pkgs.llm-agents.claude-code-router
   ]
   ++ [
     # Development Tools

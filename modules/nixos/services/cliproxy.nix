@@ -10,7 +10,7 @@ let
   volume = "cliproxy-data";
 
   paths = {
-    binary = "/CLIProxyAPI/CLIProxyAPI";
+    binary = "/CLIProxyAPI/${cfg.cmd}";
     preset = "/CLIProxyAPI/config.yaml";
     volume = "/CLIProxyAPI/.data";
   };
@@ -46,10 +46,22 @@ in
       description = "Enable usage statistics reporting";
     };
 
+    image = lib.mkOption {
+      type = lib.types.str;
+      default = "eceasy/cli-proxy-api";
+      description = "CLIProxyAPI image name";
+    };
+
     tag = lib.mkOption {
       type = lib.types.str;
-      default = "v6.6.0";
+      default = "v6.6.8";
       description = "CLIProxyAPI image tag";
+    };
+
+    cmd = lib.mkOption {
+      type = lib.types.str;
+      default = "CLIProxyAPI";
+      description = "CLIProxyAPI image command";
     };
 
     name = lib.mkOption {
@@ -79,7 +91,7 @@ in
 
   config = lib.mkIf cfg.enable {
     virtualisation.oci-containers.containers."${cfg.name}" = {
-      image = "eceasy/cli-proxy-api:${cfg.tag}";
+      image = "${cfg.image}:${cfg.tag}";
       ports = [
         "${builtins.toString cfg.port}:${builtins.toString cfg.port}"
       ];
