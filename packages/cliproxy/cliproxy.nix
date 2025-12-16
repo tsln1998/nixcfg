@@ -5,9 +5,9 @@
   owner ? "router-for-me",
   repo ? "CLIProxyAPI",
   pname ? "cliproxy",
-  version ? "6.6.8",
-  hash ? "sha256-omet0BLXRdbzYamJx6AmpPRy7ifgVPYLU/oMTTS1AGY=",
-  vendorHash ? "sha256-kF5VyRyrIza+QrTcuNQZznTrBZ3Pf1QTOJi9Twby6j4=",
+  version ? "6.6.18",
+  hash ? "sha256-qSU1Pyzn/JylmHP3t32fpMLJfMAB56cvwvs9/qXHaPI=",
+  vendorHash ? "sha256-EjpnlOMQkIJpuB+RSW2NPQgrb1bpfOdrvF4Crs+qiKE=",
 }:
 let
   rev = "refs/tags/v${version}";
