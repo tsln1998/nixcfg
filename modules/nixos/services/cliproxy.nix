@@ -89,6 +89,10 @@ in
           // {
             port = cfg.port;
             auth-dir = data;
+            request-retry = 3;
+            quota-exceeded = {
+              switch-project = true;
+            };
           }
           // (lib.optionalAttrs (cfg.management != null) {
             remote-management = {
