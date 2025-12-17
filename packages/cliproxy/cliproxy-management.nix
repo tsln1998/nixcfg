@@ -1,28 +1,29 @@
 {
   lib,
-  buildNpmPackage,
-  fetchFromGitHub,
+  fetchurl,
+  stdenvNoCC,
 }:
 let
   owner = "router-for-me";
   repo = "Cli-Proxy-API-Management-Center";
   pname = "cliproxy-management";
-  version = "0.5.13";
-  rev = "refs/tags/v${version}";
-  hash = "sha256-9WIaNyTDTZJiCUZEb0pOYGNTQeJcrdDOvrjsjBvnNZM=";
-  npmDepsHash = "sha256-1yzo87MOnANtzHofvP+AIIrksTRScw4lyTtA7bNoPWU=";
+  version = "1.0.1";
+  hash = "sha256-QJvAQwpUd+s1uLmw+dG3cj1Gj+EgCPL+vskK58G7rtc=";
 in
-buildNpmPackage rec {
-  inherit pname version npmDepsHash;
+stdenvNoCC.mkDerivation rec {
+  inherit pname version;
 
-  src = fetchFromGitHub {
-    inherit owner repo;
-    inherit rev hash;
+  src = fetchurl {
+    inherit hash;
+    url = "https://github.com/${owner}/${repo}/releases/download/v${version}/management.html";
   };
 
+  dontUnpack = true;
+
   installPhase = ''
-    mkdir -p $out
-    cp dist/index.html $out/management.html
+    runHook preInstall
+    mkdir -p $out && cp $src $out/management.html
+    runHook postInstall
   '';
 
   meta = with lib; {
