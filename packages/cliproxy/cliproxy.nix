@@ -5,8 +5,8 @@
   owner ? "router-for-me",
   repo ? "CLIProxyAPI",
   pname ? "cliproxy",
-  version ? "6.6.18",
-  hash ? "sha256-qSU1Pyzn/JylmHP3t32fpMLJfMAB56cvwvs9/qXHaPI=",
+  version ? "6.6.26",
+  hash ? "sha256-G5Yf7aJ58gF/bfvxj1dLn3UsXfammMZ49JV1K59+JUo=",
   vendorHash ? "sha256-EjpnlOMQkIJpuB+RSW2NPQgrb1bpfOdrvF4Crs+qiKE=",
 }:
 let
@@ -18,6 +18,13 @@ buildGoModule rec {
   src = fetchFromGitHub {
     inherit owner repo;
     inherit rev hash;
+
+    leaveDotGit = true;
+
+    postFetch = ''
+      git rev-parse HEAD > $out/.git-commit
+      find $out -type d -name .git -exec rm -rf {} +
+    '';
   };
 
   subPackages = [
@@ -27,7 +34,13 @@ buildGoModule rec {
   ldflags = [
     "-s"
     "-w"
+    "-X main.Version=${version}"
   ];
+
+  preBuild = ''
+    ldflags+=" -X main.Commit=$(cat $out/.git-commit || echo unknown)"
+    ldflags+=" -X main.BuildDate=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+  '';
 
   postInstall = ''
     mv $out/bin/server $out/bin/${pname}
