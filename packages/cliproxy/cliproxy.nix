@@ -18,13 +18,6 @@ buildGoModule rec {
   src = fetchFromGitHub {
     inherit owner repo;
     inherit rev hash;
-
-    leaveDotGit = true;
-
-    postFetch = ''
-      git rev-parse HEAD > $out/.git-commit
-      find $out -type d -name .git -exec rm -rf {} +
-    '';
   };
 
   subPackages = [
@@ -38,7 +31,6 @@ buildGoModule rec {
   ];
 
   preBuild = ''
-    ldflags+=" -X main.Commit=$(cat $out/.git-commit || echo unknown)"
     ldflags+=" -X main.BuildDate=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
   '';
 
