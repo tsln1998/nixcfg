@@ -114,11 +114,11 @@
           };
         };
         # ThinkBook 16+ G6 IMH (VMware)
-        "tb16g6imh-vm" = nixpkgs.lib.nixosSystem {
+        "tb16g6imh" = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
             ./modules/nixos
-            ./hosts/tb16g6imh-vm
+            ./hosts/tb16g6imh
           ];
           specialArgs = with self; {
             inherit inputs outputs tools;
@@ -178,11 +178,11 @@
           };
         };
         # ThinkBook 16+ G6 IMH (VMware)
-        "tsln@tb16g6imh-vm" = home-manager.lib.homeManagerConfiguration {
+        "tsln@tb16g6imh" = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgsFor.x86_64-linux;
           modules = [
             ./modules/home
-            ./home/tsln/tb16g6imh-vm
+            ./home/tsln/tb16g6imh
           ];
           extraSpecialArgs = with self; {
             inherit inputs outputs tools;

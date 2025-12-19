@@ -12,7 +12,7 @@ let
     tb16g6imh-wsl = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHTluQQEUjOLtK+EmsP1TwosvnUVVnc7uE3WuNIUqqX4"
     ];
-    tb16g6imh-vm = [
+    tb16g6imh = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGAkFEAhSYaKtw30BigRgUjZtwq9iFVKAS/5m8vWBprr"
     ];
     oracle-sin-1 = [
