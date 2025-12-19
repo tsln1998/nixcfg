@@ -8,6 +8,6 @@
 
   catppuccin = {
     enable = true;
-    flavor = lib.mkDefault "mocha";
+    flavor = lib.mkDefault "latte";
   };
 }
