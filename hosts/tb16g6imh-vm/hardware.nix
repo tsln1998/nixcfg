@@ -1,12 +1,12 @@
 {
   inputs,
   lib,
-  pkgs,
   ...
 }:
 {
   imports = [
     inputs.nixos-hardware.nixosModules.common-cpu-intel
+    inputs.nixos-hardware.nixosModules.common-gpu-intel
     inputs.nixos-hardware.nixosModules.common-pc-laptop
     inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
   ];
@@ -17,10 +17,21 @@
   boot.loader.grub.efiSupport = true;
   boot.loader.grub.efiInstallAsRemovable = true;
   boot.loader.grub.configurationLimit = 50;
+  boot.loader.grub.useOSProber = true;
   boot.loader.efi.efiSysMountPoint = "/boot";
 
-  boot.tmp.cleanOnBoot = true;
+  # RAM tmpfs
+  boot.tmp.useTmpfs = true;
 
-  # Hyper-V Guest
-  virtualisation.hypervGuest.enable = true;
+  # GPU Drivers
+  hardware.intelgpu.vaapiDriver = "intel-media-driver";
+
+  # Firmware
+  hardware.enableRedistributableFirmware = lib.mkDefault true;
+
+  # Hardware Clock
+  time.hardwareClockInLocalTime = true;
+  
+  # TPM2 Module
+  security.tpm2.enable = lib.mkDefault true;
 }
