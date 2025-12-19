@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
   home.packages = [
-    pkgs.wechat
+    pkgs.netease-cloud-music-gtk
   ];
 }
