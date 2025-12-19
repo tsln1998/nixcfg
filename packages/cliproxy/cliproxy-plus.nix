@@ -14,6 +14,6 @@ import ./cliproxy.nix {
   repo = "CLIProxyAPIPlus";
   pname = "cliproxy-plus";
   version = "6.6.29-0";
-  hash = "sha256-yj7wFV7hQe2TIQnMooyJBX4n+fHFgxoxWvaoU3GuVHk=";
+  hash = "sha256-rNHyBN8bvgV05812GIf4mkI+esuFSKObwT+RmseulSw=";
   vendorHash = "sha256-4h2m1NXOhTkSH5SEX13u4zGlyDLzsbjLhtP2sNtJR0s=";
 }
