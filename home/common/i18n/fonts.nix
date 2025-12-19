@@ -22,7 +22,9 @@
     noto-fonts-cjk-sans
     noto-fonts-cjk-serif
     noto-fonts-color-emoji
+    jetbrains-mono
     fira-code
-    fira-code-nerdfont
+    nerd-fonts.fira-code
+    nerd-fonts.jetbrains-mono
   ];
 }
