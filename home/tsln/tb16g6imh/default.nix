@@ -16,6 +16,7 @@
       "home/common/apps/netease-music.nix"
       "home/common/apps/bitwarden.nix"
       "home/common/apps/chromium.nix"
+      "home/common/apps/ghostty.nix"
       "home/common/apps/vscode.nix"
       "home/common/apps/qq.nix"
       #"home/common/apps/wechat.nix"
