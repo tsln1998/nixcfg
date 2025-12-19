@@ -9,5 +9,9 @@
   catppuccin = {
     enable = true;
     flavor = lib.mkDefault "latte";
+
+    fcitx5 = {
+      enable = false;
+    };
   };
 }

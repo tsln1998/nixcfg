@@ -21,6 +21,7 @@
       #"home/common/apps/wechat.nix"
       "home/common/i18n/locale.nix"
       "home/common/i18n/fonts.nix"
+      "home/common/i18n/fcitx.nix"
     ])
     ++ (map tools.relative [
       "home/tsln/common/dev/git.nix"
