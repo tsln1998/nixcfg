@@ -8,8 +8,8 @@ in
   "hosts/tb16g6imh-wsl/ssh_host_ed25519_key.pub.age".publicKeys = keys.all;
 
   # ThinkBook 16+ G6 IMH (VMware)
-  "hosts/tb16g6imh-vm/ssh_host_ed25519_key.age".publicKeys = hosts.tb16g6imh-vm ++ users.tsln;
-  "hosts/tb16g6imh-vm/ssh_host_ed25519_key.pub.age".publicKeys = keys.all;
+  "hosts/tb16g6imh/ssh_host_ed25519_key.age".publicKeys = hosts.tb16g6imh ++ users.tsln;
+  "hosts/tb16g6imh/ssh_host_ed25519_key.pub.age".publicKeys = keys.all;
 
   # Oracle Cloud Singapore
   "hosts/oracle-sin-1/ssh_host_ed25519_key.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
