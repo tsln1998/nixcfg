@@ -5,7 +5,7 @@
     notoPackage = pkgs.noto-fonts-cjk-sans;
   };
 
-  environment.plasma6.excludePackages = with pkgs; [
+  environment.plasma6.excludePackages = with pkgs.kdePackages; [
     plasma-browser-integration
     gwenview
     khelpcenter
