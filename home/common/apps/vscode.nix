@@ -1,11 +1,19 @@
 { lib, pkgs, ... }:
 let
   repo = pkgs.unstable;
+  vscodeWithWaylandIME = repo.vscode.overrideAttrs (oldAttrs: {
+    postFixup = (oldAttrs.postFixup or "") + ''
+      wrapProgram $out/bin/code \
+        --add-flags "--enable-wayland-ime" \
+        --add-flags "--enable-features=UseOzonePlatform" \
+        --add-flags "--ozone-platform=wayland"
+    '';
+  });
 in
 {
   programs.vscode = {
     enable = true;
-    package = repo.vscode;
+    package = vscodeWithWaylandIME;
     mutableExtensionsDir = false;
 
     profiles.default = {
