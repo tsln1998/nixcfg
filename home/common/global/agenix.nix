@@ -1,5 +1,4 @@
 {
-  tools,
   config,
   ...
 }:
@@ -7,8 +6,6 @@ let
   inherit (config.home) username homeDirectory;
 in
 {
-  imports = [ (tools.module "<agenix-home-manager>") ];
-
   age.identityPaths = [
     "${homeDirectory}/.ssh/id_rsa"
     "${homeDirectory}/.ssh/id_ed25519"

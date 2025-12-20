@@ -1,11 +1,8 @@
 {
-  tools,
   pkgs,
   ...
 }:
 {
-  imports = [ (tools.module "<agenix-nixos>") ];
-
   age.identityPaths = [
     "/etc/ssh/ssh_host_ed25519_key"
     "/etc/ssh/ssh_host_rsa_key"

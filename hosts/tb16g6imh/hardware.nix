@@ -31,7 +31,10 @@
 
   # Hardware Clock
   time.hardwareClockInLocalTime = true;
-  
+
   # TPM2 Module
   security.tpm2.enable = lib.mkDefault true;
+
+  # VMware Guest
+  virtualisation.vmware.guest.enable = lib.mkDefault true;
 }
