@@ -1,4 +1,9 @@
-{ lib, tools, pkgs, ... }:
+{
+  lib,
+  tools,
+  pkgs,
+  ...
+}:
 let
   repo = pkgs.unstable;
   package = repo.vscode.overrideAttrs (oldAttrs: {
@@ -94,7 +99,7 @@ in
           enableExtensionUpdateCheck = false;
         };
 
-        Go = tools.merge default{
+        Go = tools.merge default {
           extensions = with repo.vscode-extensions; [
             # Golang
             golang.go

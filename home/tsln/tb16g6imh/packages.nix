@@ -6,7 +6,7 @@
     pkgs.llm-agents.openspec
     pkgs.llm-agents.claude-code
   ]
-  ++[
+  ++ [
     # GUI Applications
     pkgs.code-cursor-fhs
   ]

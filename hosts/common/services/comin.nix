@@ -1,6 +1,5 @@
-{ tools, pkgs, ... }:
+{ pkgs, ... }:
 {
-  imports = [ (tools.module "<comin>") ];
   services.comin = {
     enable = true;
     remotes = [
