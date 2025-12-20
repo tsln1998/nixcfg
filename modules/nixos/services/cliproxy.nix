@@ -19,18 +19,6 @@ in
       description = "CLIProxyAPI serve port";
     };
 
-    management = lib.mkOption {
-      type = lib.types.nullOr lib.types.str;
-      default = null;
-      description = "Enable remote management interface (set secret key for enable)";
-    };
-
-    statistics = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
-      description = "Enable usage statistics reporting";
-    };
-
     settings = lib.mkOption {
       type = lib.types.attrs;
       default = { };
@@ -85,24 +73,20 @@ in
       ### configuration file
       conf = pkgs.writeText "${cfg.package.pname}.yaml" (
         lib.strings.toJSON (
-          cfg.settings
-          // {
+          lib.recursiveUpdate {
             port = cfg.port;
             auth-dir = data;
             request-retry = 3;
+            remote-management = {
+              allow-remote = false;
+              secret-key = "";
+            };
             quota-exceeded = {
               switch-project = true;
             };
-          }
-          // (lib.optionalAttrs (cfg.management != null) {
-            remote-management = {
-              allow-remote = true;
-              secret-key = cfg.management;
-            };
-          })
-          // (lib.optionalAttrs cfg.statistics {
+            logging-to-file = true;
             usage-statistics-enabled = true;
-          })
+          } cfg.settings
         )
       );
 
