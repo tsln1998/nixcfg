@@ -2,6 +2,6 @@
 {
   programs.java = {
     enable = true;
-    package = pkgs.openjdk;
+    package = pkgs.graalvmPackages.graalvm-ce;
   };
 }
