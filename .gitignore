@@ -1,2 +1,13 @@
+# Ignore tmp directory
 /tmp
-/result
+
+# Ignore build outputs from performing a nix-build or `nix build` command
+result
+result-*
+
+# Ignore automatically generated direnv output
+.direnv
+
+# Ignore editor files
+.vscode/*
+.claude/*
