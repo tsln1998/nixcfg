@@ -3,7 +3,11 @@
   services.cliproxy = {
     enable = true;
     package = pkgs.additions.cliproxy-plus;
-    management = "unsecret";
-    statistics = true;
+    settings = {
+      remote-management = {
+        allow-remote = true;
+        secret-key = "unsecret";
+      };
+    };
   };
 }

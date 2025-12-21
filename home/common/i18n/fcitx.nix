@@ -18,13 +18,15 @@
     };
   };
 
-  home.file = {
-    "fcitx-classicui.conf" = {
-      target = ".config/fcitx5/conf/classicui.conf";
-      text = ''
-        Theme=Nord-Light
-      '';
+  # activate fcitx5 in plasma
+  programs.plasma.configFile.kwinrc = {
+    Wayland = {
+      "VirtualKeyboardEnabled" = true;
+      "InputMethod[\$e]" = "$HOME/.nix-profile/share/applications/fcitx5-wayland-launcher.desktop";
     };
+  };
+
+  home.file = {
     "rime-default.custom.yaml" = {
       target = ".local/share/fcitx5/rime/default.custom.yaml";
       text = ''

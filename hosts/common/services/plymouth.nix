@@ -1,9 +1,9 @@
-{ ... }:
+{ lib, ... }:
 {
   boot = {
     plymouth = {
       enable = true;
-      theme = "breeze";
+      theme = lib.mkDefault "breeze";
     };
 
     consoleLogLevel = 3;

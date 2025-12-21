@@ -1,15 +1,10 @@
 {
-  inputs,
   outputs,
   tools,
   ...
 }:
 {
-  imports = (tools.scan ./.) ++ [
-    inputs.agenix.homeManagerModules.default
-    inputs.catppuccin.homeModules.catppuccin
-    inputs.plasma-manager.homeManagerModules.plasma-manager
-  ];
+  imports = tools.scan ./.;
   nix.gc = {
     automatic = true;
     dates = "weekly";
