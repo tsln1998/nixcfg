@@ -4,7 +4,7 @@
 
   programs.plasma = {
     workspace = {
-      iconTheme = "Numix Circle";
+      iconTheme = "Numix Circle Light";
     };
   };
 }
