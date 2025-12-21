@@ -2,12 +2,12 @@
 {
   imports = (
     map tools.relative [
-      "<disko>"
       "hosts/common/global"
       "hosts/common/desktop/plasma.nix"
       "hosts/common/desktop/sddm.nix"
       "hosts/common/services/plymouth.nix"
       "hosts/common/services/openssh.nix"
+      "hosts/common/themes/catppuccin.nix"
       "users/tsln"
     ]
     ++ (tools.scan ./.)

@@ -6,19 +6,11 @@
 }:
 let
   repo = pkgs.unstable;
-  package = repo.vscode.overrideAttrs (oldAttrs: {
-    postFixup = (oldAttrs.postFixup or "") + ''
-      wrapProgram $out/bin/code \
-        --add-flags "--enable-wayland-ime" \
-        --add-flags "--enable-features=UseOzonePlatform" \
-        --add-flags "--ozone-platform=wayland"
-    '';
-  });
 in
-{
+rec {
   programs.vscode = {
     enable = true;
-    package = package;
+    package = repo.vscode;
     mutableExtensionsDir = false;
 
     profiles =
@@ -27,9 +19,6 @@ in
           extensions = with repo.vscode-extensions; [
             # Keybindings
             k--kato.intellij-idea-keybindings
-            # Themes
-            github.github-vscode-theme
-            pkief.material-icon-theme
             # Common
             editorconfig.editorconfig
             waderyan.gitblame
@@ -40,56 +29,48 @@ in
           ];
 
           userSettings = {
-            "window.titleBarStyle" = "native";
-            "window.menuStyle" = "custom";
-            "window.autoDetectColorScheme" = true;
-            "window.commandCenter" = false;
-            "window.openFilesInNewWindow" = "off";
-            "window.openFoldersInNewWindow" = "on";
+            "window.openFilesInNewWindow" = lib.mkDefault "off";
+            "window.openFoldersInNewWindow" = lib.mkDefault "on";
 
-            "workbench.startupEditor" = "none";
-            "workbench.iconTheme" = lib.mkDefault "material-icon-theme";
-            "workbench.preferredDarkColorTheme" = lib.mkDefault "GitHub Dark";
-            "workbench.preferredLightColorTheme" = lib.mkDefault "GitHub Light";
-            "workbench.layoutControl.enabled" = false;
+            "workbench.startupEditor" = lib.mkDefault "none";
 
-            "chat.disableAIFeatures" = true;
+            "chat.disableAIFeatures" = lib.mkDefault true;
 
-            "security.workspace.trust.enabled" = false;
+            "security.workspace.trust.enabled" = lib.mkDefault false;
 
-            "files.autoSaveWhenNoErrors" = true;
-            "files.autoSaveWorkspaceFilesOnly" = true;
-            "files.eol" = "\n";
+            "files.autoSaveWhenNoErrors" = lib.mkDefault true;
+            "files.autoSaveWorkspaceFilesOnly" = lib.mkDefault true;
+            "files.eol" = lib.mkDefault "\n";
 
-            "editor.fontLigatures" = true;
-            "editor.fontFamily" = lib.strings.concatStringsSep ", " [
-              "'Jetbrains Mono'"
+            "editor.fontLigatures" = lib.mkDefault true;
+            "editor.fontFamily" = lib.mkDefault (lib.strings.concatStringsSep ", " [
               "'Fira Code'"
+              "'Jetbrains Mono'"
               "'Ubuntu Mono'"
-            ];
-            "editor.cursorSmoothCaretAnimation" = "on";
-            "editor.cursorBlinking" = "phase";
-            "editor.inlineSuggest.enabled" = true;
-            "editor.acceptSuggestionOnCommitCharacter" = false;
-            "editor.guides.bracketPairs" = true;
-            "editor.largeFileOptimizations" = false;
-            "editor.inlineSuggest.showToolbar" = "always";
-            "editor.minimap.autohide" = "scroll";
+            ]);
+            "editor.cursorSmoothCaretAnimation" = lib.mkDefault "on";
+            "editor.cursorBlinking" = lib.mkDefault "phase";
+            "editor.inlineSuggest.enabled" = lib.mkDefault true;
+            "editor.acceptSuggestionOnCommitCharacter" = lib.mkDefault false;
+            "editor.guides.bracketPairs" = lib.mkDefault true;
+            "editor.largeFileOptimizations" = lib.mkDefault false;
+            "editor.inlineSuggest.showToolbar" = lib.mkDefault "always";
+            "editor.minimap.autohide" = lib.mkDefault "scroll";
 
-            "terminal.integrated.cursorStyle" = "line";
-            "terminal.integrated.cursorStyleInactive" = "underline";
+            "terminal.integrated.cursorStyle" = lib.mkDefault "line";
+            "terminal.integrated.cursorStyleInactive" = lib.mkDefault "underline";
 
-            "explorer.autoReveal" = true;
-            "explorer.autoRevealExclude" = {
-              "**/node_modules" = true;
+            "explorer.autoReveal" = lib.mkDefault true;
+            "explorer.autoRevealExclude" = lib.mkDefault {
+              "**/node_modules" = lib.mkDefault true;
             };
 
-            "git.autofetch" = true;
-            "git.fetchOnPull" = true;
-            "git.enableSmartCommit" = true;
+            "git.autofetch" = lib.mkDefault true;
+            "git.fetchOnPull" = lib.mkDefault true;
+            "git.enableSmartCommit" = lib.mkDefault true;
 
-            "gitblame.delayBlame" = 500;
-            "gitblame.ignoreWhitespace" = true;
+            "gitblame.delayBlame" = lib.mkDefault 500;
+            "gitblame.ignoreWhitespace" = lib.mkDefault true;
           };
         };
       in
@@ -113,9 +94,9 @@ in
           ];
 
           userSettings = {
-            "nix.enableLanguageServer" = true;
-            "nix.serverPath" = "nixd";
-            "nix.formatterPath" = "nixfmt";
+            "nix.enableLanguageServer" = lib.mkDefault true;
+            "nix.serverPath" = lib.mkDefault "nixd";
+            "nix.formatterPath" = lib.mkDefault "nixfmt";
           };
         };
 
@@ -130,4 +111,9 @@ in
         };
       };
   };
+
+  catppuccin.vscode.profiles = lib.mapAttrs (_: _: {
+    # enable color theme
+    enable = true;
+  }) programs.vscode.profiles;
 }

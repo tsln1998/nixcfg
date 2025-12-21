@@ -4,6 +4,7 @@
     (map tools.relative [
       "home/common/global"
       "home/common/cli"
+      "home/common/themes"
       "home/common/dev/nix.nix"
       #"home/common/dev/go.nix"
       #"home/common/dev/java.nix"
