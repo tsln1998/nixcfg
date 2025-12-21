@@ -3,6 +3,7 @@
   imports = (
     map tools.relative [
       "hosts/common/global"
+      "hosts/common/i18n"
       "hosts/common/display/sddm.nix"
       "hosts/common/desktop/plasma.nix"
       "hosts/common/desktop/xfce.nix"
