@@ -29,6 +29,9 @@ rec {
           ];
 
           userSettings = {
+            "window.titleBarStyle" = lib.mkForce "native";
+            "window.menuStyle" = lib.mkForce "custom";
+            "window.commandCenter" = lib.mkDefault false;
             "window.openFilesInNewWindow" = lib.mkDefault "off";
             "window.openFoldersInNewWindow" = lib.mkDefault "on";
 
@@ -43,11 +46,13 @@ rec {
             "files.eol" = lib.mkDefault "\n";
 
             "editor.fontLigatures" = lib.mkDefault true;
-            "editor.fontFamily" = lib.mkDefault (lib.strings.concatStringsSep ", " [
-              "'Fira Code'"
-              "'Jetbrains Mono'"
-              "'Ubuntu Mono'"
-            ]);
+            "editor.fontFamily" = lib.mkDefault (
+              lib.strings.concatStringsSep ", " [
+                "'Fira Code'"
+                "'Jetbrains Mono'"
+                "'Ubuntu Mono'"
+              ]
+            );
             "editor.cursorSmoothCaretAnimation" = lib.mkDefault "on";
             "editor.cursorBlinking" = lib.mkDefault "phase";
             "editor.inlineSuggest.enabled" = lib.mkDefault true;

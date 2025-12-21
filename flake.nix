@@ -97,7 +97,9 @@
       #
       # NixOS Modules
       #
-      nixosModules = import ./modules/nixos;
+      nixosModules = {
+        default = import ./modules/nixos;
+      };
       #
       # NixOS Configurations
       #
@@ -106,7 +108,6 @@
         "tb16g6imh-wsl" = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            ./modules/nixos
             ./hosts/tb16g6imh-wsl
           ];
           specialArgs = with self; {
@@ -117,7 +118,6 @@
         "tb16g6imh" = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            ./modules/nixos
             ./hosts/tb16g6imh
           ];
           specialArgs = with self; {
@@ -128,7 +128,6 @@
         "oracle-sin-1" = nixpkgs.lib.nixosSystem {
           system = "aarch64-linux";
           modules = [
-            ./modules/nixos
             ./hosts/oracle-sin-1
           ];
           specialArgs = with self; {
@@ -139,7 +138,6 @@
         "oracle-bom-1" = nixpkgs.lib.nixosSystem {
           system = "aarch64-linux";
           modules = [
-            ./modules/nixos
             ./hosts/oracle-bom-1
           ];
           specialArgs = with self; {
@@ -150,7 +148,6 @@
         "oracle-phx-1" = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            ./modules/nixos
             ./hosts/oracle-phx-1
           ];
           specialArgs = with self; {
@@ -161,7 +158,9 @@
       #
       # Home Manager Modules
       #
-      homeManagerModules = import ./modules/home;
+      homeManagerModules = {
+        default = import ./modules/home;
+      };
       #
       # Home Manager Standalone Configrations
       #
@@ -170,7 +169,6 @@
         "tsln@tb16g6imh-wsl" = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgsFor.x86_64-linux;
           modules = [
-            ./modules/home
             ./home/tsln/tb16g6imh-wsl
           ];
           extraSpecialArgs = with self; {
@@ -181,7 +179,6 @@
         "tsln@tb16g6imh" = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgsFor.x86_64-linux;
           modules = [
-            ./modules/home
             ./home/tsln/tb16g6imh
           ];
           extraSpecialArgs = with self; {
@@ -192,7 +189,6 @@
         "tsln@oracle-sin-1" = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgsFor.aarch64-linux;
           modules = [
-            ./modules/home
             ./home/tsln/oracle-sin-1
           ];
           extraSpecialArgs = with self; {
@@ -203,7 +199,6 @@
         "tsln@oracle-bom-1" = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgsFor.aarch64-linux;
           modules = [
-            ./modules/home
             ./home/tsln/oracle-bom-1
           ];
           extraSpecialArgs = with self; {
@@ -214,7 +209,6 @@
         "tsln@oracle-phx-1" = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgsFor.x86_64-linux;
           modules = [
-            ./modules/home
             ./home/tsln/oracle-phx-1
           ];
           extraSpecialArgs = with self; {
