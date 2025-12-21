@@ -7,8 +7,8 @@
 
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
     plasma-browser-integration
-    gwenview
     khelpcenter
+    konsole
     elisa
     okular
     kate
