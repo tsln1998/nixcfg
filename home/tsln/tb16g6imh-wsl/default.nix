@@ -6,6 +6,7 @@
       "home/common/cli"
       "home/common/themes"
       "home/common/dev/nix.nix"
+      "home/common/dev/cxx.nix"
       "home/common/dev/go.nix"
       "home/common/dev/java.nix"
       "home/common/dev/rust.nix"
