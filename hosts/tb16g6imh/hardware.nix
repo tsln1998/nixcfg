@@ -30,7 +30,7 @@
   hardware.enableRedistributableFirmware = lib.mkDefault true;
 
   # Hardware Clock
-  time.hardwareClockInLocalTime = true;
+  time.hardwareClockInLocalTime = false;
 
   # TPM2 Module
   security.tpm2.enable = lib.mkDefault true;

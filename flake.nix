@@ -46,6 +46,13 @@
     plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
     plasma-manager.inputs.home-manager.follows = "home-manager";
 
+    niri.url = "github:sodiboo/niri-flake";
+      niri.inputs.nixpkgs.follows = "nixpkgs";
+      niri.inputs.nixpkgs-stable.follows = "nixpkgs";
+
+      noctalia.url = "github:noctalia-dev/noctalia-shell";
+      noctalia.inputs.nixpkgs.follows = "nixpkgs";
+
     catppuccin.url = "github:catppuccin/nix";
     catppuccin.inputs.nixpkgs.follows = "nixpkgs";
 

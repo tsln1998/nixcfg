@@ -21,8 +21,8 @@ in
     # Catppuccin Plasma Configuration
     programs.plasma =
       let
-        artwork = pkgs.nixos-artwork.wallpapers."catppuccin-${config.catppuccin.flavor}";
-        wallpaper = "${artwork}/share/backgrounds/nixos/nixos-wallpaper-catppuccin-${config.catppuccin.flavor}.png";
+        artwork = pkgs.nixos-artwork.wallpapers."catppuccin-${flavor}";
+        wallpaper = "${artwork}/share/backgrounds/nixos/nixos-wallpaper-catppuccin-${flavor}.png";
       in
       {
         workspace = {
