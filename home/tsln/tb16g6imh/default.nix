@@ -15,7 +15,6 @@
       "home/common/ops/kubectl.nix"
       "home/common/ops/fluxcd.nix"
       "home/common/desktop/plasma.nix"
-      "home/common/desktop/niri.nix"
       "home/common/apps/netease-music.nix"
       "home/common/apps/bitwarden.nix"
       "home/common/apps/chromium.nix"

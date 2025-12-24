@@ -8,7 +8,9 @@
   nix = {
     settings = {
       substituters = [
+        "https://mirrors.cernet.edu.cn/nix-channels/store"
         "https://mirrors.ustc.edu.cn/nix-channels/store"
+        "https://mirrors.tuna.edu.cn/nix-channels/store"
         "https://cache.nixos.org/"
       ];
       experimental-features = [

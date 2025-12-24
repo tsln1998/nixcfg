@@ -5,11 +5,13 @@
   ...
 }:
 lib.mkIf config.programs.plasma.enable {
-  home.packages = [ pkgs.numix-icon-theme-circle ];
+  home.packages = [
+    pkgs.papirus-icon-theme
+  ];
 
   programs.plasma = {
     workspace = {
-      iconTheme = "Numix Circle Light";
+      iconTheme = "Papirus-Light";
     };
   };
 }
