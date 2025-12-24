@@ -12,7 +12,6 @@
     inputs.catppuccin.homeModules.catppuccin
     inputs.plasma-manager.homeModules.plasma-manager
     inputs.niri.homeModules.niri
-    inputs.noctalia.homeModules.default
     outputs.homeManagerModules.default
   ];
 
