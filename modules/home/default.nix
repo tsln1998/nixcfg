@@ -7,13 +7,34 @@
 }:
 {
   imports = tools.scan ./.;
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 7d";
-    persistent = true;
+
+  nix = {
+    package = lib.mkDefault pkgs.nix;
+    settings = {
+      substituters = [
+        "https://mirrors.cernet.edu.cn/nix-channels/store"
+        "https://mirrors.ustc.edu.cn/nix-channels/store"
+        "https://mirrors.tuna.edu.cn/nix-channels/store"
+        "https://cache.nixos.org/"
+      ];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+        "ca-derivations"
+      ];
+      trusted-users = [
+        "@wheel"
+      ];
+      warn-dirty = false;
+    };
+
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 7d";
+      persistent = true;
+    };
   };
-  nix.package =  lib.mkDefault pkgs.nix;
 
   nixpkgs.overlays = outputs.overlays;
   nixpkgs.config.allowUnfree = true;

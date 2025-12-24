@@ -18,12 +18,17 @@
     };
   };
 
-  # activate fcitx5 in plasma
+  # Plasma Virutal Keyboard
   programs.plasma.configFile.kwinrc = {
     Wayland = {
       "VirtualKeyboardEnabled" = true;
       "InputMethod[\$e]" = "$HOME/.nix-profile/share/applications/fcitx5-wayland-launcher.desktop";
     };
+  };
+
+  # Wayland supported
+  home.sessionVariables = {
+    NIXOS_OZONE_WL = 1;
   };
 
   home.file = {

@@ -29,6 +29,8 @@ rec {
           ];
 
           userSettings = {
+            "window.titleBarStyle" = lib.mkForce "native";
+            "window.menuStyle" = lib.mkForce "custom";
             "window.commandCenter" = lib.mkDefault false;
             "window.openFilesInNewWindow" = lib.mkDefault "off";
             "window.openFoldersInNewWindow" = lib.mkDefault "on";
