@@ -6,11 +6,13 @@
 }:
 let
   inherit (lib.strings) toSentenceCase;
-  plasma = config.programs.plasma.enable;
+  enablePlasma = config.programs.plasma.enable;
+  enableKonsole = config.programs.konsole.enable;
   flavor = "latte";
   accent = "blue";
 in
 {
+  # Catppuccin
   catppuccin = {
     enable = true;
     flavor = lib.mkDefault flavor;
@@ -22,7 +24,7 @@ in
   };
 
   # Catppuccin Plasma Theme Package
-  home.packages = lib.optionals plasma [
+  home.packages = lib.optionals enablePlasma [
     (pkgs.catppuccin-kde.override {
       flavour = [ flavor ];
       accents = [ accent ];
@@ -44,4 +46,18 @@ in
         inherit wallpaper;
       };
     };
+
+  # Catppuccin Konsole Theme Package
+  home.file = lib.optionalAttrs enableKonsole {
+    ".local/share/konsole/catppuccin-${flavor}.colorscheme" = {
+      source = "${pkgs.additions.catppuccin-konsole}/catppuccin-${flavor}.colorscheme";
+    };
+  };
+
+  # Catppuccin Konsole Configuration
+  programs.konsole.profiles = lib.optionalAttrs enableKonsole {
+    "${config.programs.konsole.defaultProfile}" = {
+      colorScheme = "catppuccin-${flavor}";
+    };
+  };
 }
