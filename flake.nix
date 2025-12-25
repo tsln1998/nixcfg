@@ -1,9 +1,7 @@
 {
   nixConfig = {
     substituters = [
-      "https://mirrors.cernet.edu.cn/nix-channels/store"
       "https://mirrors.ustc.edu.cn/nix-channels/store"
-      "https://mirrors.tuna.edu.cn/nix-channels/store"
       "https://cache.nixos.org/"
     ];
 
@@ -47,10 +45,6 @@
     plasma-manager.url = "github:nix-community/plasma-manager";
     plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
     plasma-manager.inputs.home-manager.follows = "home-manager";
-
-    niri.url = "github:sodiboo/niri-flake";
-    niri.inputs.nixpkgs.follows = "nixpkgs";
-    niri.inputs.nixpkgs-stable.follows = "nixpkgs";
 
     catppuccin.url = "github:catppuccin/nix";
     catppuccin.inputs.nixpkgs.follows = "nixpkgs";
