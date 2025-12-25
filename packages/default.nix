@@ -3,4 +3,5 @@ pkgs: {
   cliproxy = pkgs.callPackage ./cliproxy/cliproxy.nix { };
   cliproxy-plus = pkgs.callPackage ./cliproxy/cliproxy-plus.nix { };
   cliproxy-management = pkgs.callPackage ./cliproxy/cliproxy-management.nix { };
+  catppuccin-konsole = pkgs.callPackage ./catppuccin/konsole.nix { };
 }

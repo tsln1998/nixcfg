@@ -7,7 +7,7 @@
 let
   repo = pkgs.unstable;
 in
-rec {
+{
   programs.vscode = {
     enable = true;
     package = repo.vscode;
@@ -26,20 +26,22 @@ rec {
             gruntfuggly.todo-tree
             usernamehw.errorlens
             tamasfe.even-better-toml
+            github.github-vscode-theme
           ];
 
           userSettings = {
+            "chat.disableAIFeatures" = lib.mkDefault true;
+
             "window.titleBarStyle" = lib.mkForce "native";
             "window.menuStyle" = lib.mkForce "custom";
             "window.commandCenter" = lib.mkDefault false;
             "window.openFilesInNewWindow" = lib.mkDefault "off";
             "window.openFoldersInNewWindow" = lib.mkDefault "on";
+            "window.autoDetectColorScheme" = lib.mkDefault true;
 
             "workbench.startupEditor" = lib.mkDefault "none";
-
-            "chat.disableAIFeatures" = lib.mkDefault true;
-
-            "security.workspace.trust.enabled" = lib.mkDefault false;
+            "workbench.preferredDarkColorTheme" = lib.mkDefault "GitHub Dark Colorblind (Beta)";
+            "workbench.preferredLightColorTheme" = lib.mkDefault "GitHub Light Colorblind (Beta)";
 
             "files.autoSaveWhenNoErrors" = lib.mkDefault true;
             "files.autoSaveWorkspaceFilesOnly" = lib.mkDefault true;
@@ -76,6 +78,8 @@ rec {
 
             "gitblame.delayBlame" = lib.mkDefault 500;
             "gitblame.ignoreWhitespace" = lib.mkDefault true;
+
+            "security.workspace.trust.enabled" = lib.mkDefault false;
           };
         };
       in
@@ -126,9 +130,4 @@ rec {
         };
       };
   };
-
-  catppuccin.vscode.profiles = lib.mapAttrs (_: _: {
-    # enable color theme
-    enable = true;
-  }) programs.vscode.profiles;
 }
