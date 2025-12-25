@@ -19,6 +19,7 @@
       "home/common/apps/bitwarden.nix"
       "home/common/apps/chromium.nix"
       "home/common/apps/ptyxis.nix"
+      "home/common/apps/flclash.nix"
       "home/common/apps/vscode.nix"
       "home/common/apps/vlc.nix"
       "home/common/apps/qq.nix"

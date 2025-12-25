@@ -114,6 +114,16 @@ rec {
           userSettings = {
           };
         };
+
+        Java = tools.merge default {
+          extensions = with repo.vscode-extensions; [
+            # Kotlin LSP
+            mathiasfrohlich.kotlin
+          ];
+
+          userSettings = {
+          };
+        };
       };
   };
 
