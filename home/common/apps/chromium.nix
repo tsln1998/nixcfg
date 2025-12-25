@@ -9,6 +9,7 @@
       { id = "bpoadfkcbjbfhfodiogcnhhhpibjhbnh"; } # Translator
       { id = "eggdlmopfankeonchoflhfoglaakobma"; } # Apifox
       { id = "amknoiejhlmhancpahfcfcfhllgkpbld"; } # Hoppscotch
+      { id = "hkedbapjpblbodpgbajblpnlpenaebaa"; } # Elasticvue
     ];
   };
 }

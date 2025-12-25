@@ -32,6 +32,9 @@
   # Hardware Clock
   time.hardwareClockInLocalTime = false;
 
+  # Cooling management
+  services.thermald.enable = lib.mkDefault true;
+
   # TPM2 Module
   security.tpm2.enable = lib.mkDefault true;
 
