@@ -11,7 +11,6 @@
     inputs.agenix.homeManagerModules.default
     inputs.catppuccin.homeModules.catppuccin
     inputs.plasma-manager.homeModules.plasma-manager
-    inputs.niri.homeModules.niri
     outputs.homeManagerModules.default
   ];
 
