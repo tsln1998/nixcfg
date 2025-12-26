@@ -3,7 +3,7 @@
   stdenvNoCC,
   fetchFromGitHub,
 }:
-let 
+let
   owner = "catppuccin";
   repo = "konsole";
   name = "${owner}-${repo}";
