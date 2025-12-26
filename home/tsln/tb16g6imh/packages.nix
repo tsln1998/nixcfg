@@ -7,7 +7,7 @@
   ]
   ++ [
     # GUI Applications
-    pkgs.code-cursor-fhs
+    pkgs.llm-agents.cursor-agent
   ]
   ++ [
     # Development Tools
