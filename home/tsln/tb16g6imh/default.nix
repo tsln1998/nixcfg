@@ -28,6 +28,7 @@
       "home/common/i18n/fcitx.nix"
       "home/common/i18n/fonts.nix"
       "home/common/i18n/locale.nix"
+      "home/common/ops/docker.nix"
       "home/common/ops/fluxcd.nix"
       "home/common/ops/kubectl.nix"
     ])

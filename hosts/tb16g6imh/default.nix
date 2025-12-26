@@ -8,6 +8,7 @@
       "hosts/common/desktop/plasma.nix"
       "hosts/common/services/plymouth.nix"
       "hosts/common/services/openssh.nix"
+      "hosts/common/services/docker.nix"
       "hosts/common/themes/catppuccin.nix"
       "users/tsln"
     ]
