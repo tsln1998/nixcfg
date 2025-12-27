@@ -1,3 +1,4 @@
-{pkgs,...}: {
-  home.packages = [pkgs.kdePackages.filelight];
+{ pkgs, ... }:
+{
+  home.packages = [ pkgs.kdePackages.filelight ];
 }

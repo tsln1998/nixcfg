@@ -7,19 +7,18 @@
 let
   inherit (config.home) homeDirectory;
 
-  repo = pkgs.unstable;
   path = "${homeDirectory}/.go";
 in
 {
   programs.go = {
     enable = true;
-    package = repo.go;
+    package = pkgs.go;
   };
 
   # for debugger
-  home.packages = with repo; [
-    gopls
-    delve
+  home.packages = [
+    pkgs.gopls
+    pkgs.delve
   ];
 
   # go environment variables
