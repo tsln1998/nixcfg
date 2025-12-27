@@ -9,6 +9,7 @@
       "hosts/common/services/plymouth.nix"
       "hosts/common/services/openssh.nix"
       "hosts/common/services/docker.nix"
+      "hosts/common/services/kmscon.nix"
       "hosts/common/themes/catppuccin.nix"
       "users/tsln"
     ]
