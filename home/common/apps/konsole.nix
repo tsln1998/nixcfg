@@ -14,7 +14,7 @@
     profiles = {
       Default = {
         font = {
-          name = "Fira Code";
+          name = "Jetbrains Mono";
           size = 11;
         };
       };
