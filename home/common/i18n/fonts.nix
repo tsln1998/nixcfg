@@ -10,7 +10,7 @@
         "Noto Sans CJK SC"
       ];
       monospace = [
-        "Fira Code"
+        "Jetbrains Mono"
       ];
       emoji = [
         "Noto Color Emoji"
@@ -23,8 +23,6 @@
     noto-fonts-cjk-serif
     noto-fonts-color-emoji
     jetbrains-mono
-    fira-code
-    nerd-fonts.fira-code
     nerd-fonts.jetbrains-mono
   ];
 }
