@@ -19,14 +19,18 @@ in
           extensions = with repo.vscode-extensions; [
             # Keybindings
             k--kato.intellij-idea-keybindings
+            # Rainbow
+            oderwat.indent-rainbow
+            # Git
+            codezombiech.gitignore
+            waderyan.gitblame
             # Common
             editorconfig.editorconfig
-            waderyan.gitblame
-            codezombiech.gitignore
-            gruntfuggly.todo-tree
-            usernamehw.errorlens
-            tamasfe.even-better-toml
             github.github-vscode-theme
+            gruntfuggly.todo-tree
+            tamasfe.even-better-toml
+            redhat.vscode-yaml
+            usernamehw.errorlens
           ];
 
           userSettings = {
@@ -91,14 +95,12 @@ in
 
         Go = tools.merge default {
           extensions = with repo.vscode-extensions; [
-            # Golang
             golang.go
           ];
         };
 
         Nix = tools.merge default {
           extensions = with repo.vscode-extensions; [
-            # Nix
             jnoortheen.nix-ide
           ];
 
@@ -111,8 +113,8 @@ in
 
         Rust = tools.merge default {
           extensions = with repo.vscode-extensions; [
-            # Rust Analyzer
             rust-lang.rust-analyzer
+            vadimcn.vscode-lldb
           ];
 
           userSettings = {
@@ -121,8 +123,41 @@ in
 
         Java = tools.merge default {
           extensions = with repo.vscode-extensions; [
-            # Kotlin LSP
             mathiasfrohlich.kotlin
+          ];
+
+          userSettings = {
+          };
+        };
+
+        Python = tools.merge default {
+          extensions = with repo.vscode-extensions; [
+            ms-python.python
+            ms-python.debugpy
+            ms-python.isort
+            ms-python.vscode-pylance
+          ];
+
+          userSettings = {
+          };
+        };
+
+        Cxx = tools.merge default {
+          extensions = with repo.vscode-extensions; [
+            ms-vscode.cpptools
+            ms-vscode.cmake-tools
+            vadimcn.vscode-lldb
+          ];
+
+          userSettings = {
+          };
+        };
+
+        DotNet = tools.merge default {
+          extensions = with repo.vscode-extensions; [
+            ms-dotnettools.csdevkit
+            ms-dotnettools.csharp
+            ms-dotnettools.vscode-dotnet-runtime
           ];
 
           userSettings = {

@@ -1,14 +1,17 @@
 { lib, ... }:
 {
-  virtualisation.docker = {
-    enable = true;
-    enableOnBoot = true;
-
-    autoPrune = {
+  virtualisation = {
+    docker = {
       enable = true;
-      dates = "weekly";
+      enableOnBoot = true;
+
+      autoPrune = {
+        enable = true;
+        dates = "weekly";
+      };
+    };
+    oci-containers = {
+      backend = lib.mkDefault "docker";
     };
   };
-
-  virtualisation.oci-containers.backend = lib.mkDefault "docker";
 }
