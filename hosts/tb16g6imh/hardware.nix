@@ -36,7 +36,7 @@
   hardware.enableRedistributableFirmware = lib.mkDefault true;
 
   # Hardware Clock
-  time.hardwareClockInLocalTime = false;
+  time.hardwareClockInLocalTime = lib.mkDefault true;
 
   # Cooling management
   services.thermald.enable = lib.mkDefault true;

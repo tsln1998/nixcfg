@@ -5,7 +5,8 @@
   networking.useDHCP = lib.mkDefault true;
   networking.usePredictableInterfaceNames = false;
 
+  networking.firewall.enable = true;
   networking.wireless.iwd.enable = true;
   networking.networkmanager.enable = true;
-  networking.networkmanager.wifi.backend = "iwd";
+  networking.networkmanager.wifi.backend = lib.mkForce "iwd";
 }
