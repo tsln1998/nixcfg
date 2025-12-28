@@ -10,7 +10,7 @@
           "nixpkgs"
         ],
         "systems": [
-          "nixpkgs-systems"
+          "nixos-systems"
         ]
       },
       "locked": {
@@ -188,7 +188,7 @@
     "flake-utils": {
       "inputs": {
         "systems": [
-          "nixpkgs-systems"
+          "nixos-systems"
         ]
       },
       "locked": {
@@ -263,6 +263,21 @@
         "type": "github"
       }
     },
+    "nixos-systems": {
+      "locked": {
+        "lastModified": 1689347949,
+        "narHash": "sha256-12tWmuL2zgBgZkdoB6qXZsgJEH9LR3oUgpaQq2RbI80=",
+        "owner": "nix-systems",
+        "repo": "default-linux",
+        "rev": "31732fcf5e8fea42e59c2488ad31a0e651500f68",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default-linux",
+        "type": "github"
+      }
+    },
     "nixos-wsl": {
       "inputs": {
         "flake-compat": "flake-compat_2",
@@ -321,32 +336,18 @@
         "type": "github"
       }
     },
-    "nixpkgs-systems": {
-      "locked": {
-        "lastModified": 1689347949,
-        "narHash": "sha256-12tWmuL2zgBgZkdoB6qXZsgJEH9LR3oUgpaQq2RbI80=",
-        "owner": "nix-systems",
-        "repo": "default-linux",
-        "rev": "31732fcf5e8fea42e59c2488ad31a0e651500f68",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-systems",
-        "repo": "default-linux",
-        "type": "github"
-      }
-    },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1766563328,
-        "narHash": "sha256-elwHvmfAlgarSVdQ6RYfO5FK7olixnl1JQFqggVcgLc=",
+        "lastModified": 1766651565,
+        "narHash": "sha256-QEhk0eXgyIqTpJ/ehZKg9IKS7EtlWxF3N7DXy42zPfU=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "beff446b7b5ee4cacfbf8ba12a4aa767025cd0d6",
+        "rev": "3e2499d5539c16d0d173ba53552a4ff8547f4539",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
+        "ref": "nixos-unstable",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -384,10 +385,10 @@
         "home-manager": "home-manager",
         "llm-agents": "llm-agents",
         "nixos-hardware": "nixos-hardware",
+        "nixos-systems": "nixos-systems",
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs",
         "nixpkgs-nur": "nixpkgs-nur",
-        "nixpkgs-systems": "nixpkgs-systems",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "plasma-manager": "plasma-manager"
       }

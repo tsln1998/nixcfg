@@ -17,25 +17,25 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs";
-    nixpkgs-systems.url = "github:nix-systems/default-linux";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     nixpkgs-nur.url = "github:nix-community/NUR";
     nixpkgs-nur.inputs.nixpkgs.follows = "nixpkgs";
 
+    nixos-systems.url = "github:nix-systems/default-linux";
+    nixos-hardware.url = "github:nixos/nixos-hardware";
     nixos-wsl.url = "github:nix-community/NixOS-WSL";
     nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
-    nixos-hardware.url = "github:nixos/nixos-hardware";
 
     flake-utils.url = "github:numtide/flake-utils";
-    flake-utils.inputs.systems.follows = "nixpkgs-systems";
+    flake-utils.inputs.systems.follows = "nixos-systems";
 
     home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
-    agenix.inputs.systems.follows = "nixpkgs-systems";
+    agenix.inputs.systems.follows = "nixos-systems";
     agenix.inputs.home-manager.follows = "home-manager";
 
     comin.url = "github:nlewo/comin";

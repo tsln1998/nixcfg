@@ -74,7 +74,9 @@ let
       "gitblame.delayBlame" = lib.mkDefault 500;
       "gitblame.ignoreWhitespace" = lib.mkDefault true;
 
-      "redhat.telemetry.enabled" = false;
+      "diffEditor.renderSideBySide" = lib.mkDefault false;
+
+      "redhat.telemetry.enabled" = lib.mkDefault false;
 
       "security.workspace.trust.enabled" = lib.mkDefault false;
     };
