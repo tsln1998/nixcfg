@@ -1,4 +1,6 @@
 { pkgs, ... }:
+with pkgs;
+with kdePackages;
 {
   services.desktopManager.plasma6 = {
     enable = true;
@@ -9,11 +11,17 @@
     enable = true;
 
     extraPortals = [
-      pkgs.kdePackages.xdg-desktop-portal-kde
+      xdg-desktop-portal-kde
     ];
   };
 
-  environment.plasma6.excludePackages = with pkgs.kdePackages; [
+  environment.defaultPackages = [
+    qtbase
+    xdg-utils
+    desktop-file-utils
+  ];
+
+  environment.plasma6.excludePackages = [
     plasma-browser-integration
     khelpcenter
     kate

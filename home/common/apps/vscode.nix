@@ -74,6 +74,8 @@ let
       "gitblame.delayBlame" = lib.mkDefault 500;
       "gitblame.ignoreWhitespace" = lib.mkDefault true;
 
+      "redhat.telemetry.enabled" = false;
+
       "security.workspace.trust.enabled" = lib.mkDefault false;
     };
   };
@@ -92,6 +94,10 @@ in
     extensions = with repo.vscode-extensions; [
       golang.go
     ];
+
+    userSettings = {
+      "go.showWelcome" = false;
+    };
   };
 
   programs.vscode.profiles.Nix = tools.merge preset {
