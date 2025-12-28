@@ -164,6 +164,10 @@ in
       networking.firewall = lib.optionalAttrs cfg.openFirewall {
         allowedTCPPorts = [ cfg.port ];
       };
+      ### install package
+      environment.defaultPackages = [
+        cfg.package
+      ];
     }
   );
 }

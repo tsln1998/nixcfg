@@ -1,0 +1,19 @@
+diff --git a/internal/config/config.go b/internal/config/config.go
+index 315324b..52fd27a 100644
+--- a/internal/config/config.go
++++ b/internal/config/config.go
+@@ -396,13 +396,7 @@ func LoadConfig(configFile string) (*Config, error) {
+ func LoadConfigOptional(configFile string, optional bool) (*Config, error) {
+ 	// Read the entire configuration file into memory.
+ 	data, err := os.ReadFile(configFile)
+-	if err != nil {
+-		if optional {
+-			if os.IsNotExist(err) || errors.Is(err, syscall.EISDIR) {
+-				// Missing and optional: return empty config (cloud deploy standby).
+-				return &Config{}, nil
+-			}
+-		}
++	if err != nil && !(errors.Is(err, os.ErrNotExist) || errors.Is(err, syscall.EISDIR)) {
+ 		return nil, fmt.Errorf("failed to read config file: %w", err)
+ 	}
+ 

@@ -1,0 +1,13 @@
+diff --git a/internal/auth/kiro/protocol_handler.go b/internal/auth/kiro/protocol_handler.go
+index d900ee3..220896d 100644
+--- a/internal/auth/kiro/protocol_handler.go
++++ b/internal/auth/kiro/protocol_handler.go
+@@ -325,7 +325,7 @@ func installLinuxHandler(handlerPort int) error {
+ 
+ 	// Create handler script - tries multiple ports to handle dynamic port allocation
+ 	scriptPath := getLinuxHandlerScriptPath()
+-	scriptContent := fmt.Sprintf(`#!/bin/bash
++	scriptContent := fmt.Sprintf(`#!/usr/bin/env bash
+ # Kiro OAuth Protocol Handler
+ # Handles kiro:// URIs - tries CLI first, then forwards to Kiro IDE
+ 
