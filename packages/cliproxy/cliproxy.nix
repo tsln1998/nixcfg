@@ -2,23 +2,35 @@
   lib,
   buildGoModule,
   fetchFromGitHub,
-  owner ? "router-for-me",
-  repo ? "CLIProxyAPI",
-  pname ? "cliproxy",
-  version ? "6.6.26",
-  hash ? "sha256-G5Yf7aJ58gF/bfvxj1dLn3UsXfammMZ49JV1K59+JUo=",
-  vendorHash ? "sha256-EjpnlOMQkIJpuB+RSW2NPQgrb1bpfOdrvF4Crs+qiKE=",
 }:
 let
+  owner = "router-for-me";
+  repo = "CLIProxyAPI";
+  pname = "cliproxy";
+  version = "6.6.26";
   rev = "refs/tags/v${version}";
+  hash = "sha256-G5Yf7aJ58gF/bfvxj1dLn3UsXfammMZ49JV1K59+JUo=";
+  vendorHash = "sha256-EjpnlOMQkIJpuB+RSW2NPQgrb1bpfOdrvF4Crs+qiKE=";
 in
 buildGoModule rec {
-  inherit pname version vendorHash;
+  inherit
+    pname
+    version
+    vendorHash
+    ;
 
   src = fetchFromGitHub {
-    inherit owner repo;
-    inherit rev hash;
+    inherit
+      owner
+      repo
+      rev
+      hash
+      ;
   };
+
+  patches = [
+    ./patches/001-force-optional-config.patch
+  ];
 
   subPackages = [
     "cmd/server"
