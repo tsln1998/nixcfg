@@ -7,8 +7,8 @@ let
   owner = "router-for-me";
   repo = "Cli-Proxy-API-Management-Center";
   pname = "cliproxy-management";
-  version = "1.2.1";
-  hash = "sha256-KyS1/3RJXbO1FoWk0ADi1uSGdNaBNPkqMgYjQvcyq1k=";
+  version = "1.2.2";
+  hash = "sha256-otVLbtG0LLaZnx4CliT1qcj1ulSCYyLOkU+wM/YrvPc=";
 in
 stdenvNoCC.mkDerivation rec {
   inherit pname version;
