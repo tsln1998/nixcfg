@@ -45,9 +45,10 @@ let
       "editor.fontLigatures" = lib.mkDefault true;
       "editor.fontFamily" = lib.mkDefault (
         lib.strings.concatStringsSep ", " [
-          "'Fira Code'"
           "'Jetbrains Mono'"
-          "'Ubuntu Mono'"
+          "'Noto Sans CJK SC'"
+          "'Noto Serif CJK SC'"
+          "'Noto Color Emoji'"
         ]
       );
       "editor.cursorSmoothCaretAnimation" = lib.mkDefault "on";
