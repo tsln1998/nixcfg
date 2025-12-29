@@ -1,0 +1,92 @@
+diff --git a/cmd/server/main.go b/cmd/server/main.go
+index a050140..bd40d7d 100644
+--- a/cmd/server/main.go
++++ b/cmd/server/main.go
+@@ -77,6 +77,7 @@ func main() {
+ 	var antigravityLogin bool
+ 	var kiroLogin bool
+ 	var kiroGoogleLogin bool
++	var kiroGitHubLogin bool
+ 	var kiroAWSLogin bool
+ 	var kiroAWSAuthCode bool
+ 	var kiroImport bool
+@@ -101,6 +102,7 @@ func main() {
+ 	flag.BoolVar(&antigravityLogin, "antigravity-login", false, "Login to Antigravity using OAuth")
+ 	flag.BoolVar(&kiroLogin, "kiro-login", false, "Login to Kiro using Google OAuth")
+ 	flag.BoolVar(&kiroGoogleLogin, "kiro-google-login", false, "Login to Kiro using Google OAuth (same as --kiro-login)")
++	flag.BoolVar(&kiroGitHubLogin, "kiro-github-login", false, "Login to Kiro using GitHub OAuth")
+ 	flag.BoolVar(&kiroAWSLogin, "kiro-aws-login", false, "Login to Kiro using AWS Builder ID (device code flow)")
+ 	flag.BoolVar(&kiroAWSAuthCode, "kiro-aws-authcode", false, "Login to Kiro using AWS Builder ID (authorization code flow, better UX)")
+ 	flag.BoolVar(&kiroImport, "kiro-import", false, "Import Kiro token from Kiro IDE (~/.aws/sso/cache/kiro-auth-token.json)")
+@@ -510,6 +512,12 @@ func main() {
+ 		// Note: This config mutation is safe - auth commands exit after completion
+ 		setKiroIncognitoMode(cfg, useIncognito, noIncognito)
+ 		cmd.DoKiroGoogleLogin(cfg, options)
++	} else if kiroGitHubLogin {
++		// For Kiro auth, default to incognito mode for multi-account support
++		// Users can explicitly override with --no-incognito
++		// Note: This config mutation is safe - auth commands exit after completion
++		setKiroIncognitoMode(cfg, useIncognito, noIncognito)
++		cmd.DoKiroGitHubLogin(cfg, options)
+ 	} else if kiroAWSLogin {
+ 		// For Kiro auth, default to incognito mode for multi-account support
+ 		// Users can explicitly override with --no-incognito
+diff --git a/internal/cmd/kiro_login.go b/internal/cmd/kiro_login.go
+index 74d0968..cfdd32d 100644
+--- a/internal/cmd/kiro_login.go
++++ b/internal/cmd/kiro_login.go
+@@ -20,6 +20,54 @@ func DoKiroLogin(cfg *config.Config, options *LoginOptions) {
+ 	DoKiroGoogleLogin(cfg, options)
+ }
+ 
++// DoKiroGitHubLogin triggers Kiro authentication with GitHub OAuth.
++// This uses a custom protocol handler (kiro://) to receive the callback.
++//
++// Parameters:
++//   - cfg: The application configuration
++//   - options: Login options including prompts
++func DoKiroGitHubLogin(cfg *config.Config, options *LoginOptions) {
++	if options == nil {
++		options = &LoginOptions{}
++	}
++
++	// Note: Kiro defaults to incognito mode for multi-account support.
++	// Users can override with --no-incognito if they want to use existing browser sessions.
++
++	manager := newAuthManager()
++
++	// Use KiroAuthenticator with GitHub login
++	authenticator := sdkAuth.NewKiroAuthenticator()
++	record, err := authenticator.LoginWithGitHub(context.Background(), cfg, &sdkAuth.LoginOptions{
++		NoBrowser: options.NoBrowser,
++		Metadata:  map[string]string{},
++		Prompt:    options.Prompt,
++	})
++	if err != nil {
++		log.Errorf("Kiro GitHub authentication failed: %v", err)
++		fmt.Println("\nTroubleshooting:")
++		fmt.Println("1. Make sure the protocol handler is installed")
++		fmt.Println("2. Complete the GitHub login in the browser")
++		fmt.Println("3. If callback fails, try: --kiro-import (after logging in via Kiro IDE)")
++		return
++	}
++
++	// Save the auth record
++	savedPath, err := manager.SaveAuth(record, cfg)
++	if err != nil {
++		log.Errorf("Failed to save auth: %v", err)
++		return
++	}
++
++	if savedPath != "" {
++		fmt.Printf("Authentication saved to %s\n", savedPath)
++	}
++	if record != nil && record.Label != "" {
++		fmt.Printf("Authenticated as %s\n", record.Label)
++	}
++	fmt.Println("Kiro GitHub authentication successful!")
++}
++
+ // DoKiroGoogleLogin triggers Kiro authentication with Google OAuth.
+ // This uses a custom protocol handler (kiro://) to receive the callback.
+ //

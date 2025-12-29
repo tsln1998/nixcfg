@@ -17,6 +17,7 @@ in
 
   # for debugger
   home.packages = [
+    pkgs.go-tools
     pkgs.gopls
     pkgs.delve
   ];

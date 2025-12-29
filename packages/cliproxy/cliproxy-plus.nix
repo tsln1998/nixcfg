@@ -34,6 +34,7 @@ buildGoModule rec {
   patches = [
     ./patches/001-force-optional-config.patch
     ./patches/002-fix-shebang-path.patch
+    ./patches/003-add-kiro-github-login.patch
   ];
 
   buildInputs = [
