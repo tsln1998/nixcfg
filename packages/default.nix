@@ -1,4 +1,5 @@
 pkgs: {
+  rrc = pkgs.callPackage ./self/rrc.nix { };
   crproxy = pkgs.callPackage ./crproxy/crproxy.nix { };
   cliproxy = pkgs.callPackage ./cliproxy/cliproxy.nix { };
   cliproxy-plus = pkgs.callPackage ./cliproxy/cliproxy-plus.nix { };
