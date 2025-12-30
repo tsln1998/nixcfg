@@ -12,4 +12,8 @@ in
     file = relative "secrets/hosts/${hostName}/xray.json.age";
     mode = "0644";
   };
+  age.secrets."hosts/${hostName}/rrc.env" = {
+    file = relative "secrets/hosts/${hostName}/rrc.env.age";
+    mode = "0644";
+  };
 }
