@@ -1,41 +1,59 @@
 {
   lib,
-  fetchFromGitHub,
-  rustPlatform,
-  pkg-config,
-  openssl,
+  stdenv,
+  fetchurl,
+  autoPatchelfHook,
+  gcc,
 }:
 let
   owner = "tsln1998";
   pname = "rrc";
-  rev = "f0cb838308e5ba7750f7c5c07a3ae3aa570377d7";
-  hash = "sha256-vq1zXT+c6qiOu9WqFsDiqd/ndTHKo9rGAYbQbI+VN+w=";
-  cargoHash = "sha256-kJ62OEw6rvdtsqy962hrauuAE1Rc3gu5T+rhWvH0aJc=";
-in
-rustPlatform.buildRustPackage {
-  inherit pname cargoHash;
-  version = builtins.substring 0 6 rev;
+  version = "0.0.2";
 
-  src = fetchFromGitHub {
-    inherit owner;
-    inherit rev hash;
-    repo = pname;
-  };
+  # Select the appropriate binary based on system architecture
+  src = fetchurl (
+    if stdenv.hostPlatform.system == "x86_64-linux" then {
+      url = "https://github.com/${owner}/${pname}/releases/download/v${version}/${pname}-v${version}-linux-amd64.tar.gz";
+      sha256 = "sha256-ygAv3jS0dkNVMwiIc1NBPPU5r3inNSb9ulFgZ7S0wpU=";
+    } else if stdenv.hostPlatform.system == "aarch64-linux" then {
+      url = "https://github.com/${owner}/${pname}/releases/download/v${version}/${pname}-v${version}-linux-arm64.tar.gz";
+      sha256 = "sha256-e7R2KpGdwsLGI1LS44B9DpF2qMhhhDDe1PKMIGQY/Yk=";
+    } else throw "Unsupported system: ${stdenv.hostPlatform.system}"
+  );
+in
+stdenv.mkDerivation {
+  inherit pname version src;
 
   nativeBuildInputs = [
-    pkg-config
+    autoPatchelfHook
   ];
 
   buildInputs = [
-    openssl
+    gcc.cc.lib
   ];
 
+  sourceRoot = ".";
+
+  installPhase = ''
+    runHook preInstall
+
+    mkdir -p $out/bin
+
+    cp ${pname}-v${version}-linux-amd64 $out/bin/${pname} || \
+      cp ${pname}-v${version}-linux-arm64 $out/bin/${pname}
+    
+    chmod +x $out/bin/${pname}
+
+    runHook postInstall
+  '';
+
   meta = with lib; {
-    homepage = "https://github.com/${owner}/${repo}";
-    changelog = "https://github.com/${owner}/${repo}";
+    homepage = "https://github.com/${owner}/${pname}";
+    changelog = "https://github.com/${owner}/${pname}";
     description = "RRC Notify";
     maintainers = [ ];
     mainProgram = pname;
     license = licenses.mit;
+    platforms = [ "x86_64-linux" "aarch64-linux" ];
   };
 }

@@ -15,6 +15,10 @@ let
       # Git
       codezombiech.gitignore
       waderyan.gitblame
+      # Nix
+      jnoortheen.nix-ide
+      # Direnv
+      mkhl.direnv
       # Common
       editorconfig.editorconfig
       github.github-vscode-theme
@@ -77,6 +81,10 @@ let
 
       "diffEditor.renderSideBySide" = lib.mkDefault false;
 
+      "nix.enableLanguageServer" = lib.mkDefault true;
+      "nix.serverPath" = lib.mkDefault "nixd";
+      "nix.formatterPath" = lib.mkDefault "nixfmt";
+
       "redhat.telemetry.enabled" = lib.mkDefault false;
 
       "security.workspace.trust.enabled" = lib.mkDefault false;
@@ -103,23 +111,22 @@ in
     };
   };
 
-  programs.vscode.profiles.Nix = tools.merge preset {
-    extensions = with repo.vscode-extensions; [
-      jnoortheen.nix-ide
-    ];
-
-    userSettings = {
-      "nix.enableLanguageServer" = lib.mkDefault true;
-      "nix.serverPath" = lib.mkDefault "nixd";
-      "nix.formatterPath" = lib.mkDefault "nixfmt";
-    };
-  };
-
   programs.vscode.profiles.Rust = tools.merge preset {
     extensions = with repo.vscode-extensions; [
       rust-lang.rust-analyzer
       vadimcn.vscode-lldb
     ];
+  };
+
+  programs.vscode.profiles.Zig = tools.merge preset {
+    extensions = with repo.vscode-extensions; [
+      ziglang.vscode-zig
+      vadimcn.vscode-lldb
+    ];
+
+    userSettings = {
+      "zig.zls.enabled" = "on";
+    };
   };
 
   programs.vscode.profiles.Java = tools.merge preset {
@@ -137,7 +144,7 @@ in
     ];
   };
 
-  programs.vscode.profiles."C++" = tools.merge preset {
+  programs.vscode.profiles.Cxx = tools.merge preset {
     extensions = with repo.vscode-extensions; [
       ms-vscode.cpptools
       ms-vscode.cmake-tools
