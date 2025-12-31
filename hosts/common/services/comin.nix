@@ -9,7 +9,7 @@
         branches.main.name = "main";
       }
     ];
-    postDeploymentCommand = pkgs.writeShellScript "combin-reboot-if-need" ''
+    postDeploymentCommand = pkgs.writers.writeBash "combin-reboot-if-need" ''
       KERNEL_INSTALL="$(readlink /nix/var/nix/profiles/system/kernel 2>/dev/null || true)"
       KERNEL_BOOTED="$(readlink /run/booted-system/kernel 2>/dev/null || true)"
       if [ "$KERNEL_INSTALL" != "$KERNEL_BOOTED" ]; then
