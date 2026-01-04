@@ -12,44 +12,45 @@ _: {
               type = "EF00";
               content = {
                 format = "vfat";
+                type = "filesystem";
+                mountpoint = "/boot";
                 mountOptions = [
                   "defaults"
                   "umask=0077"
                 ];
-                mountpoint = "/boot";
-                type = "filesystem";
               };
             };
-            zfs = {
+            root = {
               size = "100%";
               content = {
-                type = "zfs";
-                pool = "zroot";
+                type = "btrfs";
+                extraArgs = [ "-f" ];
+                subvolumes = {
+                  "@root" = {
+                    mountpoint = "/";
+                  };
+                  "@home" = {
+                    mountOptions = [
+                      "compress=zstd"
+                    ];
+                    mountpoint = "/home";
+                  };
+                  "@nix" = {
+                    mountOptions = [
+                      "compress=zstd"
+                      "noatime"
+                    ];
+                    mountpoint = "/nix";
+                  };
+                  "@swap" = {
+                    mountpoint = "/.swap";
+                    swap = {
+                      swapfile.size = "8G";
+                    };
+                  };
+                };
               };
             };
-          };
-        };
-      };
-    };
-    zpool = {
-      zroot = {
-        type = "zpool";
-        rootFsOptions = {
-          mountpoint = "none";
-          compression = "zstd";
-        };
-        datasets = {
-          "root" = {
-            type = "zfs_fs";
-            mountpoint = "/";
-          };
-          "store" = {
-            type = "zfs_fs";
-            mountpoint = "/nix";
-          };
-          "home" = {
-            type = "zfs_fs";
-            mountpoint = "/home";
           };
         };
       };
