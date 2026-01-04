@@ -1,157 +1,122 @@
 {
   lib,
-  tools,
   pkgs,
   ...
 }:
 let
   repo = pkgs.unstable;
-  preset = {
-    extensions =
-      (with repo.vscode-extensions; [
-        # Keybindings
-        k--kato.intellij-idea-keybindings
-        # Rainbow
-        oderwat.indent-rainbow
-        # Git
-        codezombiech.gitignore
-        waderyan.gitblame
-        # Nix
-        jnoortheen.nix-ide
-        # Direnv
-        mkhl.direnv
-        # Common
-        editorconfig.editorconfig
-        github.github-vscode-theme
-        gruntfuggly.todo-tree
-        tamasfe.even-better-toml
-        redhat.vscode-yaml
-        usernamehw.errorlens
-      ])
-      ++ (with pkgs.additions.vscode-extensions; [
-        # gRPC
-        bufbuild.vscode-buf
-      ]);
+  
+  # 基础扩展
+  baseExtensions =
+    (with repo.vscode-extensions; [
+      # Keybindings
+      k--kato.intellij-idea-keybindings
+      # Rainbow
+      oderwat.indent-rainbow
+      # Git
+      codezombiech.gitignore
+      waderyan.gitblame
+      # Nix
+      jnoortheen.nix-ide
+      # Direnv
+      mkhl.direnv
+      # Common
+      editorconfig.editorconfig
+      github.github-vscode-theme
+      gruntfuggly.todo-tree
+      tamasfe.even-better-toml
+      redhat.vscode-yaml
+      usernamehw.errorlens
+    ])
+    ++ (with pkgs.additions.vscode-extensions; [
+      # gRPC
+      bufbuild.vscode-buf
+    ]);
 
-    userSettings = {
-      "chat.disableAIFeatures" = lib.mkDefault true;
+  # 基础用户设置
+  baseUserSettings = {
+    "chat.disableAIFeatures" = lib.mkDefault true;
 
-      "window.titleBarStyle" = lib.mkForce "native";
-      "window.menuStyle" = lib.mkForce "custom";
-      "window.commandCenter" = lib.mkDefault false;
-      "window.openFilesInNewWindow" = lib.mkDefault "off";
-      "window.openFoldersInNewWindow" = lib.mkDefault "on";
-      "window.autoDetectColorScheme" = lib.mkDefault true;
+    "window.titleBarStyle" = lib.mkForce "native";
+    "window.menuStyle" = lib.mkForce "custom";
+    "window.commandCenter" = lib.mkDefault false;
+    "window.openFilesInNewWindow" = lib.mkDefault "off";
+    "window.openFoldersInNewWindow" = lib.mkDefault "on";
+    "window.autoDetectColorScheme" = lib.mkDefault true;
 
-      "workbench.startupEditor" = lib.mkDefault "none";
-      "workbench.preferredDarkColorTheme" = lib.mkDefault "GitHub Dark Colorblind (Beta)";
-      "workbench.preferredLightColorTheme" = lib.mkDefault "GitHub Light Colorblind (Beta)";
+    "workbench.startupEditor" = lib.mkDefault "none";
+    "workbench.preferredDarkColorTheme" = lib.mkDefault "GitHub Dark Colorblind (Beta)";
+    "workbench.preferredLightColorTheme" = lib.mkDefault "GitHub Light Colorblind (Beta)";
 
-      "files.autoSaveWhenNoErrors" = lib.mkDefault true;
-      "files.autoSaveWorkspaceFilesOnly" = lib.mkDefault true;
-      "files.eol" = lib.mkDefault "\n";
+    "files.autoSaveWhenNoErrors" = lib.mkDefault true;
+    "files.autoSaveWorkspaceFilesOnly" = lib.mkDefault true;
+    "files.eol" = lib.mkDefault "\n";
 
-      "editor.fontLigatures" = lib.mkDefault true;
-      "editor.fontFamily" = lib.mkDefault (
-        lib.strings.concatStringsSep ", " [
-          "'Jetbrains Mono'"
-          "'Noto Sans CJK SC'"
-          "'Noto Serif CJK SC'"
-          "'Noto Color Emoji'"
-        ]
-      );
-      "editor.cursorSmoothCaretAnimation" = lib.mkDefault "on";
-      "editor.cursorBlinking" = lib.mkDefault "phase";
-      "editor.inlineSuggest.enabled" = lib.mkDefault true;
-      "editor.acceptSuggestionOnCommitCharacter" = lib.mkDefault false;
-      "editor.guides.bracketPairs" = lib.mkDefault true;
-      "editor.largeFileOptimizations" = lib.mkDefault false;
-      "editor.inlineSuggest.showToolbar" = lib.mkDefault "always";
-      "editor.minimap.autohide" = lib.mkDefault "scroll";
+    "editor.fontLigatures" = lib.mkDefault true;
+    "editor.fontFamily" = lib.mkDefault (
+      lib.strings.concatStringsSep ", " [
+        "'Jetbrains Mono'"
+        "'Noto Sans CJK SC'"
+        "'Noto Serif CJK SC'"
+        "'Noto Color Emoji'"
+      ]
+    );
+    "editor.cursorSmoothCaretAnimation" = lib.mkDefault "on";
+    "editor.cursorBlinking" = lib.mkDefault "phase";
+    "editor.inlineSuggest.enabled" = lib.mkDefault true;
+    "editor.acceptSuggestionOnCommitCharacter" = lib.mkDefault false;
+    "editor.guides.bracketPairs" = lib.mkDefault true;
+    "editor.largeFileOptimizations" = lib.mkDefault false;
+    "editor.inlineSuggest.showToolbar" = lib.mkDefault "always";
+    "editor.minimap.autohide" = lib.mkDefault "scroll";
 
-      "terminal.integrated.cursorStyle" = lib.mkDefault "line";
-      "terminal.integrated.cursorStyleInactive" = lib.mkDefault "underline";
+    "terminal.integrated.cursorStyle" = lib.mkDefault "line";
+    "terminal.integrated.cursorStyleInactive" = lib.mkDefault "underline";
 
-      "explorer.autoReveal" = lib.mkDefault true;
-      "explorer.autoRevealExclude" = lib.mkDefault {
-        "**/node_modules" = lib.mkDefault true;
-      };
-
-      "git.autofetch" = lib.mkDefault true;
-      "git.fetchOnPull" = lib.mkDefault true;
-      "git.enableSmartCommit" = lib.mkDefault true;
-
-      "gitblame.delayBlame" = lib.mkDefault 500;
-      "gitblame.ignoreWhitespace" = lib.mkDefault true;
-
-      "diffEditor.renderSideBySide" = lib.mkDefault false;
-
-      "nix.enableLanguageServer" = lib.mkDefault true;
-      "nix.serverPath" = lib.mkDefault "nixd";
-      "nix.formatterPath" = lib.mkDefault "nixfmt";
-
-      "redhat.telemetry.enabled" = lib.mkDefault false;
-
-      "security.workspace.trust.enabled" = lib.mkDefault false;
+    "explorer.autoReveal" = lib.mkDefault true;
+    "explorer.autoRevealExclude" = lib.mkDefault {
+      "**/node_modules" = lib.mkDefault true;
     };
+
+    "git.autofetch" = lib.mkDefault true;
+    "git.fetchOnPull" = lib.mkDefault true;
+    "git.enableSmartCommit" = lib.mkDefault true;
+
+    "gitblame.delayBlame" = lib.mkDefault 500;
+    "gitblame.ignoreWhitespace" = lib.mkDefault true;
+
+    "diffEditor.renderSideBySide" = lib.mkDefault false;
+
+    "nix.enableLanguageServer" = lib.mkDefault true;
+    "nix.serverPath" = lib.mkDefault "nixd";
+    "nix.formatterPath" = lib.mkDefault "nixfmt";
+
+    "redhat.telemetry.enabled" = lib.mkDefault false;
+
+    "security.workspace.trust.enabled" = lib.mkDefault false;
   };
-in
-rec {
-  programs.vscode.enable = true;
-  programs.vscode.package = repo.vscode;
-  programs.vscode.mutableExtensionsDir = false;
 
-  programs.vscode.profiles.default = tools.merge preset {
-    enableUpdateCheck = false;
-    enableExtensionUpdateCheck = false;
-  };
-
-  programs.vscode.profiles.All = builtins.foldl' tools.merge { } [
-    programs.vscode.profiles.Go
-    programs.vscode.profiles.Rust
-    programs.vscode.profiles.Zig
-    programs.vscode.profiles.Java
-    programs.vscode.profiles.Python
-    programs.vscode.profiles.Cxx
-    programs.vscode.profiles.Net
-  ];
-
-  programs.vscode.profiles.Go = tools.merge preset {
-    extensions = with repo.vscode-extensions; [
+  # 语言特定扩展配置（不包含基础扩展）
+  langExtensions = {
+    go = with repo.vscode-extensions; [
       golang.go
     ];
 
-    userSettings = {
-      "go.showWelcome" = false;
-    };
-  };
-
-  programs.vscode.profiles.Rust = tools.merge preset {
-    extensions = with repo.vscode-extensions; [
+    rust = with repo.vscode-extensions; [
       rust-lang.rust-analyzer
       vadimcn.vscode-lldb
     ];
-  };
 
-  programs.vscode.profiles.Zig = tools.merge preset {
-    extensions = with repo.vscode-extensions; [
+    zig = with repo.vscode-extensions; [
       ziglang.vscode-zig
       vadimcn.vscode-lldb
     ];
 
-    userSettings = {
-      "zig.zls.enabled" = "on";
-    };
-  };
-
-  programs.vscode.profiles.Java = tools.merge preset {
-    extensions = with repo.vscode-extensions; [
+    java = with repo.vscode-extensions; [
       mathiasfrohlich.kotlin
     ];
-  };
 
-  programs.vscode.profiles.Python = tools.merge preset {
-    extensions =
+    python =
       (with repo.vscode-extensions; [
         ms-python.python
         ms-python.debugpy
@@ -161,21 +126,104 @@ rec {
       ++ (with pkgs.additions.vscode-extensions; [
         ms-python.autopep8
       ]);
-  };
 
-  programs.vscode.profiles.Cxx = tools.merge preset {
-    extensions = with repo.vscode-extensions; [
+    cxx = with repo.vscode-extensions; [
       ms-vscode.cpptools
       ms-vscode.cmake-tools
       vadimcn.vscode-lldb
     ];
-  };
 
-  programs.vscode.profiles.Net = tools.merge preset {
-    extensions = with repo.vscode-extensions; [
+    net = with repo.vscode-extensions; [
       ms-dotnettools.csdevkit
       ms-dotnettools.csharp
       ms-dotnettools.vscode-dotnet-runtime
     ];
+  };
+
+  # 语言特定用户设置
+  langUserSettings = {
+    go = {
+      "go.showWelcome" = false;
+    };
+
+    zig = {
+      "zig.zls.enabled" = "on";
+    };
+  };
+
+  # 所有语言的扩展列表
+  allLangExtensions =
+    langExtensions.go
+    ++ langExtensions.rust
+    ++ langExtensions.zig
+    ++ langExtensions.java
+    ++ langExtensions.python
+    ++ langExtensions.cxx
+    ++ langExtensions.net;
+
+  # 所有语言的用户设置
+  allLangUserSettings =
+    (langUserSettings.go or { })
+    // (langUserSettings.zig or { });
+in
+{
+  programs.vscode.enable = true;
+  programs.vscode.package = repo.vscode;
+  programs.vscode.mutableExtensionsDir = false;
+
+  # Default profile: 仅基础配置
+  programs.vscode.profiles.default = {
+    enableUpdateCheck = false;
+    enableExtensionUpdateCheck = false;
+    extensions = baseExtensions;
+    userSettings = baseUserSettings;
+  };
+
+  # All profile: 基础 + 所有语言
+  programs.vscode.profiles.All = {
+    extensions = baseExtensions ++ allLangExtensions;
+    userSettings = baseUserSettings // allLangUserSettings;
+  };
+
+  # Go profile: 基础 + Go
+  programs.vscode.profiles.Go = {
+    extensions = baseExtensions ++ langExtensions.go;
+    userSettings = baseUserSettings // (langUserSettings.go or { });
+  };
+
+  # Rust profile: 基础 + Rust
+  programs.vscode.profiles.Rust = {
+    extensions = baseExtensions ++ langExtensions.rust;
+    userSettings = baseUserSettings;
+  };
+
+  # Zig profile: 基础 + Zig
+  programs.vscode.profiles.Zig = {
+    extensions = baseExtensions ++ langExtensions.zig;
+    userSettings = baseUserSettings // (langUserSettings.zig or { });
+  };
+
+  # Java profile: 基础 + Java
+  programs.vscode.profiles.Java = {
+    extensions = baseExtensions ++ langExtensions.java;
+    userSettings = baseUserSettings;
+  };
+
+  # Python profile: 基础 + Python
+  programs.vscode.profiles.Python = {
+    extensions = baseExtensions ++ langExtensions.python;
+    userSettings = baseUserSettings;
+  };
+
+  # Cxx profile: 基础 + C++
+  programs.vscode.profiles.Cxx = {
+    extensions = baseExtensions ++ langExtensions.cxx;
+    userSettings = baseUserSettings;
+  };
+
+  # Net profile: 基础 + .NET
+  programs.vscode.profiles.Net = {
+    extensions = baseExtensions ++ langExtensions.net;
+    userSettings = baseUserSettings;
   };
 }
