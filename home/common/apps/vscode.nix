@@ -7,26 +7,31 @@
 let
   repo = pkgs.unstable;
   preset = {
-    extensions = with repo.vscode-extensions; [
-      # Keybindings
-      k--kato.intellij-idea-keybindings
-      # Rainbow
-      oderwat.indent-rainbow
-      # Git
-      codezombiech.gitignore
-      waderyan.gitblame
-      # Nix
-      jnoortheen.nix-ide
-      # Direnv
-      mkhl.direnv
-      # Common
-      editorconfig.editorconfig
-      github.github-vscode-theme
-      gruntfuggly.todo-tree
-      tamasfe.even-better-toml
-      redhat.vscode-yaml
-      usernamehw.errorlens
-    ];
+    extensions =
+      (with repo.vscode-extensions; [
+        # Keybindings
+        k--kato.intellij-idea-keybindings
+        # Rainbow
+        oderwat.indent-rainbow
+        # Git
+        codezombiech.gitignore
+        waderyan.gitblame
+        # Nix
+        jnoortheen.nix-ide
+        # Direnv
+        mkhl.direnv
+        # Common
+        editorconfig.editorconfig
+        github.github-vscode-theme
+        gruntfuggly.todo-tree
+        tamasfe.even-better-toml
+        redhat.vscode-yaml
+        usernamehw.errorlens
+      ])
+      ++ (with pkgs.additions.vscode-extensions; [
+        # gRPC
+        bufbuild.vscode-buf
+      ]);
 
     userSettings = {
       "chat.disableAIFeatures" = lib.mkDefault true;
@@ -91,7 +96,7 @@ let
     };
   };
 in
-{
+rec {
   programs.vscode.enable = true;
   programs.vscode.package = repo.vscode;
   programs.vscode.mutableExtensionsDir = false;
@@ -100,6 +105,16 @@ in
     enableUpdateCheck = false;
     enableExtensionUpdateCheck = false;
   };
+
+  programs.vscode.profiles.All = builtins.foldl' tools.merge { } [
+    programs.vscode.profiles.Go
+    programs.vscode.profiles.Rust
+    programs.vscode.profiles.Zig
+    programs.vscode.profiles.Java
+    programs.vscode.profiles.Python
+    programs.vscode.profiles.Cxx
+    programs.vscode.profiles.Net
+  ];
 
   programs.vscode.profiles.Go = tools.merge preset {
     extensions = with repo.vscode-extensions; [
@@ -136,12 +151,16 @@ in
   };
 
   programs.vscode.profiles.Python = tools.merge preset {
-    extensions = with repo.vscode-extensions; [
-      ms-python.python
-      ms-python.debugpy
-      ms-python.isort
-      ms-python.vscode-pylance
-    ];
+    extensions =
+      (with repo.vscode-extensions; [
+        ms-python.python
+        ms-python.debugpy
+        ms-python.isort
+        ms-python.vscode-pylance
+      ])
+      ++ (with pkgs.additions.vscode-extensions; [
+        ms-python.autopep8
+      ]);
   };
 
   programs.vscode.profiles.Cxx = tools.merge preset {
