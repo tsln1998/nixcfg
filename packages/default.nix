@@ -1,5 +1,5 @@
 pkgs: {
-  rrc = pkgs.callPackage ./self/rrc.nix { };
+  rrc = pkgs.callPackage ./github/rrc.nix { };
   crproxy = pkgs.callPackage ./crproxy/crproxy.nix { };
   cliproxy = pkgs.callPackage ./cliproxy/cliproxy.nix { };
   cliproxy-plus = pkgs.callPackage ./cliproxy/cliproxy-plus.nix { };
