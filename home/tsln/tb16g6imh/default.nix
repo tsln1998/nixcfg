@@ -11,7 +11,6 @@
       "home/common/apps/dingtalk.nix"
       "home/common/apps/filelight.nix"
       "home/common/apps/flclash.nix"
-      "home/common/apps/ghostty.nix"
       "home/common/apps/insomnia.nix"
       "home/common/apps/intellij.nix"
       "home/common/apps/konsole.nix"
