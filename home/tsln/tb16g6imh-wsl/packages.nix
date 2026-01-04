@@ -6,6 +6,10 @@
     pkgs.llm-agents.claude-code
   ]
   ++ [
+    # GUI Applications
+    pkgs.llm-agents.cursor-agent
+  ]
+  ++ [
     # Development Tools
     pkgs.cloc
   ]
