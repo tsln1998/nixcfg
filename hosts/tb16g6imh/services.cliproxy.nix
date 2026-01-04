@@ -1,8 +1,4 @@
-{ config, pkgs, ... }:
-let
-  inherit (config.age) secrets;
-  inherit (config.networking) hostName;
-in
+{ pkgs, ... }:
 {
   services.cliproxy = {
     enable = true;
@@ -13,6 +9,5 @@ in
         secret-key = "unsecret";
       };
     };
-    settingsFile = secrets."hosts/${hostName}/cliproxy.yaml".path;
   };
 }
