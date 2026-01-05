@@ -74,28 +74,45 @@
       # load overlays
       overlays = import ./overlays (with self; with nixpkgs; { inherit inputs outputs lib; });
       # load nixpkgs
-      pkgsFor = nixpkgs.lib.genAttrs (flake-utils.lib.defaultSystems) (
-        system:
-        import nixpkgs {
-          inherit system overlays;
-          config = {
-            allowUnfree = true;
+      pkgsFor =
+        (nixpkgs.lib.genAttrs (flake-utils.lib.defaultSystems) (
+          system:
+          import nixpkgs {
+            inherit system overlays;
+            config = {
+              allowUnfree = true;
+            };
+          }
+        ))
+        // {
+          # Cross System
+          x86_64-w64-mingw32 = import nixpkgs {
+            inherit overlays;
+            system = "x86_64-linux";
+            config = {
+              allowUnfree = true;
+              allowUnsupportedSystem = true;
+            };
+            crossSystem = {
+              config = "x86_64-w64-mingw32";
+            };
           };
-        }
-      );
+        };
     in
     {
-    }
-    // (flake-utils.lib.eachDefaultSystem (system: {
       #
       # Packages
       #
-      packages = import ./packages pkgsFor.${system};
+      packages = nixpkgs.lib.genAttrs (builtins.attrNames pkgsFor) (
+        system: import ./packages pkgsFor.${system}
+      );
       #
       # devShells
       #
-      devShells = import ./shells pkgsFor.${system};
-    }))
+      devShells = nixpkgs.lib.genAttrs (builtins.attrNames pkgsFor) (
+        system: import ./shells pkgsFor.${system}
+      );
+    }
     // {
       #
       # NixOS Modules
