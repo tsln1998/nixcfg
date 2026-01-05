@@ -85,10 +85,6 @@
       );
     in
     {
-      #
-      # Inherit outputs
-      #
-      inherit overlays;
     }
     // (flake-utils.lib.eachDefaultSystem (system: {
       #
@@ -118,7 +114,12 @@
             ./hosts/tb16g6imh-wsl
           ];
           specialArgs = with self; {
-            inherit inputs outputs tools;
+            inherit
+              inputs
+              outputs
+              overlays
+              tools
+              ;
           };
         };
         # ThinkBook 16+ G6 IMH (VMware)
@@ -128,7 +129,12 @@
             ./hosts/tb16g6imh
           ];
           specialArgs = with self; {
-            inherit inputs outputs tools;
+            inherit
+              inputs
+              outputs
+              overlays
+              tools
+              ;
           };
         };
         # Oracle Cloud Singapore
@@ -138,7 +144,12 @@
             ./hosts/oracle-sin-1
           ];
           specialArgs = with self; {
-            inherit inputs outputs tools;
+            inherit
+              inputs
+              outputs
+              overlays
+              tools
+              ;
           };
         };
         # Oracle Cloud India 1
@@ -148,7 +159,12 @@
             ./hosts/oracle-bom-1
           ];
           specialArgs = with self; {
-            inherit inputs outputs tools;
+            inherit
+              inputs
+              outputs
+              overlays
+              tools
+              ;
           };
         };
         # Oracle Cloud USA Phoenix 1
@@ -158,7 +174,12 @@
             ./hosts/oracle-phx-1
           ];
           specialArgs = with self; {
-            inherit inputs outputs tools;
+            inherit
+              inputs
+              outputs
+              overlays
+              tools
+              ;
           };
         };
       };
@@ -179,7 +200,12 @@
             ./home/tsln/tb16g6imh-wsl
           ];
           extraSpecialArgs = with self; {
-            inherit inputs outputs tools;
+            inherit
+              inputs
+              outputs
+              overlays
+              tools
+              ;
           };
         };
         # ThinkBook 16+ G6 IMH (VMware)
@@ -189,7 +215,12 @@
             ./home/tsln/tb16g6imh
           ];
           extraSpecialArgs = with self; {
-            inherit inputs outputs tools;
+            inherit
+              inputs
+              outputs
+              overlays
+              tools
+              ;
           };
         };
         # Oracle Cloud Singapore
@@ -199,7 +230,12 @@
             ./home/tsln/oracle-sin-1
           ];
           extraSpecialArgs = with self; {
-            inherit inputs outputs tools;
+            inherit
+              inputs
+              outputs
+              overlays
+              tools
+              ;
           };
         };
         # Oracle Cloud India 1
@@ -209,7 +245,12 @@
             ./home/tsln/oracle-bom-1
           ];
           extraSpecialArgs = with self; {
-            inherit inputs outputs tools;
+            inherit
+              inputs
+              outputs
+              overlays
+              tools
+              ;
           };
         };
         # Oracle Cloud USA Phoenix 1
@@ -219,7 +260,12 @@
             ./home/tsln/oracle-phx-1
           ];
           extraSpecialArgs = with self; {
-            inherit inputs outputs tools;
+            inherit
+              inputs
+              outputs
+              overlays
+              tools
+              ;
           };
         };
       };
