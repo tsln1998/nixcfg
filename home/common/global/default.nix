@@ -11,7 +11,7 @@
     inputs.agenix.homeManagerModules.default
     inputs.catppuccin.homeModules.catppuccin
     inputs.plasma-manager.homeModules.plasma-manager
-    outputs.homeManagerModules.default
+    outputs.homeModules.default
   ];
 
   home.username = lib.mkDefault "tsln";

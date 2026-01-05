@@ -5,7 +5,7 @@
 }:
 let
   repo = pkgs.unstable;
-  
+
   # 基础扩展
   baseExtensions =
     (with repo.vscode-extensions; [
@@ -28,9 +28,9 @@ let
       redhat.vscode-yaml
       usernamehw.errorlens
     ])
-    ++ (with pkgs.additions.vscode-extensions; [
+    ++ (with pkgs.additions; [
       # gRPC
-      bufbuild.vscode-buf
+      vscode-extensions_vscode-buf
     ]);
 
   # 基础用户设置
@@ -123,8 +123,8 @@ let
         ms-python.isort
         ms-python.vscode-pylance
       ])
-      ++ (with pkgs.additions.vscode-extensions; [
-        ms-python.autopep8
+      ++ (with pkgs.additions; [
+        vscode-extensions_autopep8
       ]);
 
     cxx = with repo.vscode-extensions; [
@@ -162,9 +162,7 @@ let
     ++ langExtensions.net;
 
   # 所有语言的用户设置
-  allLangUserSettings =
-    (langUserSettings.go or { })
-    // (langUserSettings.zig or { });
+  allLangUserSettings = (langUserSettings.go or { }) // (langUserSettings.zig or { });
 in
 {
   programs.vscode.enable = true;
