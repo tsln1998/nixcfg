@@ -186,7 +186,7 @@
       #
       # Home Manager Modules
       #
-      homeManagerModules = {
+      homeModules = {
         default = import ./modules/home;
       };
       #

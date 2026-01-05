@@ -1,4 +1,9 @@
-{ lib,config, pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 let
   inherit (config.age) secrets;
   inherit (config.networking) hostName;
@@ -12,7 +17,7 @@ in
     wantedBy = [ "multi-user.target" ];
 
     serviceConfig = {
-      ExecStart = "${lib.getExe pkgs.additions.rrc}";
+      ExecStart = "${lib.getExe pkgs.additions.github-rrc}";
       EnvironmentFile = secrets."hosts/${hostName}/rrc.env".path;
       DynamicUser = true;
       Restart = "on-failure";
