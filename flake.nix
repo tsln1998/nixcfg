@@ -139,7 +139,7 @@
               ;
           };
         };
-        # ThinkBook 16+ G6 IMH (VMware)
+        # ThinkBook 16+ G6 IMH
         "tb16g6imh" = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
