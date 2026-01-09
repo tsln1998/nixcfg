@@ -16,7 +16,6 @@ in
   "hosts/oracle-sin-1/ssh_host_ed25519_key.pub.age".publicKeys = keys.all;
   "hosts/oracle-sin-1/hysteria.yaml.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
   "hosts/oracle-sin-1/xray.json.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
-  "hosts/oracle-sin-1/rrc.env.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
 
   # Oracle Cloud India 1
   "hosts/oracle-bom-1/ssh_host_ed25519_key.age".publicKeys = hosts.oracle-bom-1 ++ users.tsln;
