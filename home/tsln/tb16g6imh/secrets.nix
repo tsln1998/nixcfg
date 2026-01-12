@@ -13,4 +13,14 @@ in
     file = relative "secrets/users/${username}/id_ed25519.pub.age";
     mode = "644";
   };
+
+  age.secrets."users/${username}/profile.agents.sh" = {
+    file = relative "secrets/users/${username}/profile.agents.sh.age";
+    mode = "644";
+  };
+
+  age.secrets."users/${username}/profile.secrets.sh" = {
+    file = relative "secrets/users/${username}/profile.secrets.sh.age";
+    mode = "644";
+  };
 }
