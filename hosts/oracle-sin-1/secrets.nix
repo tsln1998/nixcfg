@@ -12,4 +12,16 @@ in
     file = relative "secrets/hosts/${hostName}/xray.json.age";
     mode = "0644";
   };
+  age.secrets."hosts/${hostName}/cliproxy.yaml" = {
+    file = relative "secrets/hosts/${hostName}/cliproxy.yaml.age";
+    mode = "0644";
+  };
+  age.secrets."hosts/${hostName}/rclone.toml" = {
+    file = relative "secrets/hosts/${hostName}/rclone.toml.age";
+    mode = "0644";
+  };
+  age.secrets."hosts/${hostName}/caddyfile" = {
+    file = relative "secrets/hosts/${hostName}/caddyfile.age";
+    mode = "0644";
+  };
 }

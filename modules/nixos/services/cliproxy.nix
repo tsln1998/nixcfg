@@ -19,6 +19,12 @@ in
       description = "CLIProxyAPI serve port";
     };
 
+    after = lib.mkOption {
+      type = lib.types.listOf lib.types.str;
+      default = [ ];
+      description = "CLIProxyAPI systemd service after";
+    };
+
     settings = lib.mkOption {
       type = lib.types.attrs;
       default = { };
@@ -71,7 +77,7 @@ in
       data = "${cwd}/data";
 
       ### configuration file
-      conf = pkgs.writeText "${cfg.package.pname}.yaml" (
+      conf = pkgs.writeText "cliproxy.yaml" (
         lib.strings.toJSON (
           lib.recursiveUpdate {
             port = cfg.port;
@@ -84,7 +90,6 @@ in
             quota-exceeded = {
               switch-project = true;
             };
-            logging-to-file = true;
             usage-statistics-enabled = true;
           } cfg.settings
         )
@@ -93,18 +98,16 @@ in
       ### authentication files
       files = (
         cfg.authenticationsFile
-        ++ (lib.imap1 (
-          i: v: pkgs.writeText "nix-${cfg.package.pname}-${toString i}.json" v
-        ) cfg.authentications)
+        ++ (lib.imap1 (i: v: pkgs.writeText "nix-cliproxy-${toString i}.json" v) cfg.authentications)
       );
     in
     {
       ### systemd service
-      systemd.services.${cfg.package.pname} = {
+      systemd.services.cliproxy = {
         description = cfg.package.meta.description;
         documentation = [ cfg.package.meta.homepage ];
-        requires = [ "network-online.target" ];
-        after = [ "network-online.target" ];
+        requires = [ "network-online.target" ] ++ cfg.after;
+        after = [ "network-online.target" ] ++ cfg.after;
         wantedBy = [ "multi-user.target" ];
 
         ### environment variables
@@ -117,7 +120,7 @@ in
 
         ### service configuration
         serviceConfig = {
-          ExecStartPre = pkgs.writeScript "${cfg.package.pname}-pre" (
+          ExecStartPre = pkgs.writeScript "cliproxy-pre" (
             lib.concatStringsSep "\n" (
               [
                 ### shebang
