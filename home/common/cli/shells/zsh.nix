@@ -13,10 +13,10 @@
       bindkey '^[[1;5C' forward-word  # Ctrl + right
       bindkey '^[[1;5D' backward-word # Ctrl + left
 
-      # Load local profile files
-      for profile in ~/.profile*.local; do
-        source "$profile"
-      done
+      # Load local profile
+      if [ -f ~/.profile.sh ]; then
+        source ~/.profile.sh
+      fi
     '';
   };
 }

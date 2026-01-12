@@ -36,4 +36,6 @@ in
   "users/tsln/passwd.age".publicKeys = keys.all;
   "users/tsln/id_ed25519.age".publicKeys = users.tsln;
   "users/tsln/id_ed25519.pub.age".publicKeys = keys.all;
+  "users/tsln/profile.agents.sh.age".publicKeys = users.tsln;
+  "users/tsln/profile.secrets.sh.age".publicKeys = users.tsln;
 }
