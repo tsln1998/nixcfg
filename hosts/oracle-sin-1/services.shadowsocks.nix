@@ -2,10 +2,10 @@
 let
   inherit (config.age) secrets;
   inherit (config.networking) hostName;
-in
-{
-  services.xray = {
+in{
+  services.shadowsocks-rust = {
     enable = true;
-    settingsFile = secrets."hosts/${hostName}/xray.json".path;
+
+    settingsFile = secrets."hosts/${hostName}/shadowsocks.json".path;
   };
 }
