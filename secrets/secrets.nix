@@ -16,6 +16,7 @@ in
   "hosts/oracle-sin-1/ssh_host_ed25519_key.pub.age".publicKeys = keys.all;
   "hosts/oracle-sin-1/hysteria.yaml.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
   "hosts/oracle-sin-1/xray.json.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
+  "hosts/oracle-sin-1/shadowsocks.json.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
   "hosts/oracle-sin-1/cliproxy.yaml.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
   "hosts/oracle-sin-1/rclone.toml.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
   "hosts/oracle-sin-1/caddyfile.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;

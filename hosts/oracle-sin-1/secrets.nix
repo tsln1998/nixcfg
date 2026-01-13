@@ -12,6 +12,10 @@ in
     file = relative "secrets/hosts/${hostName}/xray.json.age";
     mode = "0644";
   };
+  age.secrets."hosts/${hostName}/shadowsocks.json" = {
+    file = relative "secrets/hosts/${hostName}/shadowsocks.json.age";
+    mode = "0644";
+  };
   age.secrets."hosts/${hostName}/cliproxy.yaml" = {
     file = relative "secrets/hosts/${hostName}/cliproxy.yaml.age";
     mode = "0644";
