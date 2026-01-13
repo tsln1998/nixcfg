@@ -11,7 +11,7 @@ in
   "hosts/tb16g6imh/ssh_host_ed25519_key.age".publicKeys = hosts.tb16g6imh ++ users.tsln;
   "hosts/tb16g6imh/ssh_host_ed25519_key.pub.age".publicKeys = keys.all;
 
-  # Oracle Cloud Singapore
+  # Oracle Cloud Singapore 1
   "hosts/oracle-sin-1/ssh_host_ed25519_key.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
   "hosts/oracle-sin-1/ssh_host_ed25519_key.pub.age".publicKeys = keys.all;
   "hosts/oracle-sin-1/hysteria.yaml.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
@@ -26,12 +26,16 @@ in
   "hosts/oracle-bom-1/ssh_host_ed25519_key.pub.age".publicKeys = keys.all;
   "hosts/oracle-bom-1/hysteria.yaml.age".publicKeys = hosts.oracle-bom-1 ++ users.tsln;
   "hosts/oracle-bom-1/xray.json.age".publicKeys = hosts.oracle-bom-1 ++ users.tsln;
+  "hosts/oracle-bom-1/shadowsocks.json.age".publicKeys = hosts.oracle-bom-1 ++ users.tsln;
+  "hosts/oracle-bom-1/caddyfile.age".publicKeys = hosts.oracle-bom-1 ++ users.tsln;
 
   # Oracle Cloud USA Phoenix 1
   "hosts/oracle-phx-1/ssh_host_ed25519_key.age".publicKeys = hosts.oracle-phx-1 ++ users.tsln;
   "hosts/oracle-phx-1/ssh_host_ed25519_key.pub.age".publicKeys = keys.all;
   "hosts/oracle-phx-1/hysteria.yaml.age".publicKeys = hosts.oracle-phx-1 ++ users.tsln;
   "hosts/oracle-phx-1/xray.json.age".publicKeys = hosts.oracle-phx-1 ++ users.tsln;
+  "hosts/oracle-phx-1/shadowsocks.json.age".publicKeys = hosts.oracle-phx-1 ++ users.tsln;
+  "hosts/oracle-phx-1/caddyfile.age".publicKeys = hosts.oracle-phx-1 ++ users.tsln;
 
   # User - tsln
   "users/tsln/passwd.age".publicKeys = keys.all;

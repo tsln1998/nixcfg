@@ -2,10 +2,10 @@
 let
   inherit (config.age) secrets;
   inherit (config.networking) hostName;
-in
-{
-  services.hysteria = {
+in{
+  services.shadowsocks-rust = {
     enable = true;
-    configFile = secrets."hosts/${hostName}/hysteria.yaml".path;
+
+    settingsFile = secrets."hosts/${hostName}/shadowsocks.json".path;
   };
 }
