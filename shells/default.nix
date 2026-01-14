@@ -1,7 +1,6 @@
 { ... }@inputs:
 {
-  net = import ./net inputs;
   uup = import ./uup inputs;
-  crproxy = import ./crproxy inputs;
+  openwrt = import ./openwrt inputs;
   aircrack = import ./aircrack inputs;
 }
