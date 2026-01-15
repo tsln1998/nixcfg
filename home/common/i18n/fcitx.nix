@@ -18,19 +18,7 @@
     };
   };
 
-  # Plasma Virutal Keyboard
-  programs.plasma.configFile.kwinrc = {
-    Wayland = {
-      "VirtualKeyboardEnabled" = true;
-      "InputMethod[\$e]" = "$HOME/.nix-profile/share/applications/fcitx5-wayland-launcher.desktop";
-    };
-  };
-
-  # Wayland supported
-  home.sessionVariables = {
-    NIXOS_OZONE_WL = 1;
-  };
-
+  # Rime settings
   home.file = {
     "rime-default.custom.yaml" = {
       target = ".local/share/fcitx5/rime/default.custom.yaml";
@@ -78,5 +66,18 @@
           translator/preedit_format/@after last: xlit/ⓐⓑⓒⓓⓔⓕⓖⓗⓘⓙⓚⓛⓜⓝⓞⓟⓠⓡⓢⓣⓤⓥⓦⓧⓨⓩ/abcdefghijklmnopqrstuvwxyz
       '';
     };
+  };
+
+  # Plasma virutal keyboard
+  programs.plasma.configFile.kwinrc = {
+    Wayland = {
+      "VirtualKeyboardEnabled" = true;
+      "InputMethod[\$e]" = "$HOME/.nix-profile/share/applications/fcitx5-wayland-launcher.desktop";
+    };
+  };
+
+  # Wayland supported
+  home.sessionVariables = {
+    NIXOS_OZONE_WL = 1;
   };
 }

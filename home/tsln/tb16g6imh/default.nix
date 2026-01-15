@@ -7,17 +7,14 @@
       "home/common/themes/papirus.nix"
       "home/common/themes/catppuccin.nix"
       "home/common/apps/bitwarden.nix"
-      "home/common/apps/chromium.nix"
       "home/common/apps/dingtalk.nix"
       "home/common/apps/filelight.nix"
       "home/common/apps/flclash.nix"
       "home/common/apps/insomnia.nix"
       "home/common/apps/intellij.nix"
-      "home/common/apps/konsole.nix"
       "home/common/apps/netease.nix"
       "home/common/apps/qq.nix"
       "home/common/apps/vlc.nix"
-      "home/common/apps/vscode.nix"
       "home/common/apps/wechat.nix"
       "home/common/desktop/plasma.nix"
       "home/common/dev/dotnet.nix"
@@ -37,6 +34,9 @@
     ])
     ++ (map tools.relative [
       "home/tsln/common/dev/git.nix"
+      "home/tsln/common/apps/chromium.nix"
+      "home/tsln/common/apps/konsole.nix"
+      "home/tsln/common/apps/vscode.nix"
     ])
     ++ (tools.scan ./.)
   );
