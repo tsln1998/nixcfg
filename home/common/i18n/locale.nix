@@ -1,3 +1,4 @@
+{ lib, ... }:
 {
-  home.language.base = "zh_CN.UTF-8";
+  home.language.base = lib.mkDefault "zh_CN.UTF-8";
 }
