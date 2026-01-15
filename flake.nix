@@ -51,11 +51,6 @@
     catppuccin.url = "github:catppuccin/nix";
     catppuccin.inputs.nixpkgs.follows = "nixpkgs";
 
-    jetbrains-plugins.url = "github:nix-community/nix-jetbrains-plugins";
-    jetbrains-plugins.inputs.nixpkgs.follows = "nixpkgs";
-    jetbrains-plugins.inputs.systems.follows = "nixos-systems";
-    jetbrains-plugins.inputs.flake-utils.follows = "flake-utils";
-
     llm-agents.url = "github:numtide/llm-agents.nix";
     llm-agents.inputs.nixpkgs.follows = "nixpkgs-unstable";
   };

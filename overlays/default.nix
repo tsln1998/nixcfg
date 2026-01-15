@@ -5,5 +5,4 @@
   ./agenix.nix
   ./unstable.nix
   ./additions.nix
-  ./jetbrains-plugins.nix
 ])
