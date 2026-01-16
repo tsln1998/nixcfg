@@ -97,6 +97,69 @@
             };
           };
         };
+      # make nixosSystem
+      nixosSystem =
+        { hostName, system, ... }@args:
+        {
+          name = hostName;
+          value = nixpkgs.lib.nixosSystem (
+            {
+              inherit system;
+              modules = [
+                ./hosts/${hostName}
+                {
+                  networking = {
+                    inherit hostName;
+                  };
+                }
+              ];
+              specialArgs = with self; {
+                inherit
+                  inputs
+                  outputs
+                  overlays
+                  tools
+                  ;
+              };
+            }
+            // (builtins.removeAttrs args [
+              "hostName"
+              "system"
+            ])
+          );
+        };
+      # make homeConfiguration
+      homeConfiguration =
+        {
+          userName,
+          hostName,
+          system,
+          ...
+        }@args:
+        {
+          name = "${userName}@${hostName}";
+          value = home-manager.lib.homeManagerConfiguration (
+            {
+              pkgs = pkgsFor.${system};
+              modules = [
+                ./home/${userName}/${hostName}
+              ];
+              extraSpecialArgs = with self; {
+                inherit
+                  inputs
+                  outputs
+                  overlays
+                  tools
+                  ;
+              };
+            }
+            // (builtins.removeAttrs args [
+              "userName"
+              "hostName"
+              "system"
+            ])
+          );
+        };
     in
     {
       #
@@ -111,8 +174,6 @@
       devShells = nixpkgs.lib.genAttrs (builtins.attrNames pkgsFor) (
         system: import ./shells pkgsFor.${system}
       );
-    }
-    // {
       #
       # NixOS Modules
       #
@@ -120,170 +181,77 @@
         default = import ./modules/nixos;
       };
       #
-      # NixOS Configurations
-      #
-      nixosConfigurations = {
-        # ThinkBook 16+ G6 IMH (WSL)
-        "tb16g6imh-wsl" = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            ./hosts/tb16g6imh-wsl
-          ];
-          specialArgs = with self; {
-            inherit
-              inputs
-              outputs
-              overlays
-              tools
-              ;
-          };
-        };
-        # ThinkBook 16+ G6 IMH
-        "tb16g6imh" = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            ./hosts/tb16g6imh
-          ];
-          specialArgs = with self; {
-            inherit
-              inputs
-              outputs
-              overlays
-              tools
-              ;
-          };
-        };
-        # Oracle Cloud Singapore
-        "oracle-sin-1" = nixpkgs.lib.nixosSystem {
-          system = "aarch64-linux";
-          modules = [
-            ./hosts/oracle-sin-1
-          ];
-          specialArgs = with self; {
-            inherit
-              inputs
-              outputs
-              overlays
-              tools
-              ;
-          };
-        };
-        # Oracle Cloud India 1
-        "oracle-bom-1" = nixpkgs.lib.nixosSystem {
-          system = "aarch64-linux";
-          modules = [
-            ./hosts/oracle-bom-1
-          ];
-          specialArgs = with self; {
-            inherit
-              inputs
-              outputs
-              overlays
-              tools
-              ;
-          };
-        };
-        # Oracle Cloud USA Phoenix 1
-        "oracle-phx-1" = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            ./hosts/oracle-phx-1
-          ];
-          specialArgs = with self; {
-            inherit
-              inputs
-              outputs
-              overlays
-              tools
-              ;
-          };
-        };
-      };
-      #
       # Home Manager Modules
       #
       homeModules = {
         default = import ./modules/home;
       };
+    }
+    // {
+      #
+      # NixOS Configurations
+      #
+      nixosConfigurations = builtins.listToAttrs [
+        # ThinkBook 16+ G6 IMH (WSL)
+        (nixosSystem {
+          hostName = "tb16g6imh-wsl";
+          system = "x86_64-linux";
+        })
+        # ThinkBook 16+ G6 IMH
+        (nixosSystem {
+          hostName = "tb16g6imh";
+          system = "x86_64-linux";
+        })
+        # Oracle Cloud Singapore
+        (nixosSystem {
+          hostName = "oracle-sin-1";
+          system = "aarch64-linux";
+        })
+        # Oracle Cloud India 1
+        (nixosSystem {
+          hostName = "oracle-bom-1";
+          system = "aarch64-linux";
+        })
+        # Oracle Cloud USA Phoenix 1
+        (nixosSystem {
+          hostName = "oracle-phx-1";
+          system = "x86_64-linux";
+        })
+      ];
       #
       # Home Manager Standalone Configrations
       #
-      homeConfigurations = {
+      homeConfigurations = builtins.listToAttrs [
         # ThinkBook 16+ G6 IMH (WSL)
-        "tsln@tb16g6imh-wsl" = home-manager.lib.homeManagerConfiguration {
-          pkgs = pkgsFor.x86_64-linux;
-          modules = [
-            ./home/tsln/tb16g6imh-wsl
-          ];
-          extraSpecialArgs = with self; {
-            inherit
-              inputs
-              outputs
-              overlays
-              tools
-              ;
-          };
-        };
-        # ThinkBook 16+ G6 IMH (VMware)
-        "tsln@tb16g6imh" = home-manager.lib.homeManagerConfiguration {
-          pkgs = pkgsFor.x86_64-linux;
-          modules = [
-            ./home/tsln/tb16g6imh
-          ];
-          extraSpecialArgs = with self; {
-            inherit
-              inputs
-              outputs
-              overlays
-              tools
-              ;
-          };
-        };
+        (homeConfiguration {
+          userName = "tsln";
+          hostName = "tb16g6imh-wsl";
+          system = "x86_64-linux";
+        })
+        # ThinkBook 16+ G6 IMH
+        (homeConfiguration {
+          userName = "tsln";
+          hostName = "tb16g6imh";
+          system = "x86_64-linux";
+        })
         # Oracle Cloud Singapore
-        "tsln@oracle-sin-1" = home-manager.lib.homeManagerConfiguration {
-          pkgs = pkgsFor.aarch64-linux;
-          modules = [
-            ./home/tsln/oracle-sin-1
-          ];
-          extraSpecialArgs = with self; {
-            inherit
-              inputs
-              outputs
-              overlays
-              tools
-              ;
-          };
-        };
+        (homeConfiguration {
+          userName = "tsln";
+          hostName = "oracle-sin-1";
+          system = "aarch64-linux";
+        })
         # Oracle Cloud India 1
-        "tsln@oracle-bom-1" = home-manager.lib.homeManagerConfiguration {
-          pkgs = pkgsFor.aarch64-linux;
-          modules = [
-            ./home/tsln/oracle-bom-1
-          ];
-          extraSpecialArgs = with self; {
-            inherit
-              inputs
-              outputs
-              overlays
-              tools
-              ;
-          };
-        };
+        (homeConfiguration {
+          userName = "tsln";
+          hostName = "oracle-bom-1";
+          system = "aarch64-linux";
+        })
         # Oracle Cloud USA Phoenix 1
-        "tsln@oracle-phx-1" = home-manager.lib.homeManagerConfiguration {
-          pkgs = pkgsFor.x86_64-linux;
-          modules = [
-            ./home/tsln/oracle-phx-1
-          ];
-          extraSpecialArgs = with self; {
-            inherit
-              inputs
-              outputs
-              overlays
-              tools
-              ;
-          };
-        };
-      };
+        (homeConfiguration {
+          userName = "tsln";
+          hostName = "oracle-phx-1";
+          system = "x86_64-linux";
+        })
+      ];
     };
 }

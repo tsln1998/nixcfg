@@ -1,11 +1,15 @@
-{ config, ... }:
-let
-  inherit (config.networking) hostName;
-in
+{ ... }:
 {
-  environment.persistence."/persist/hosts/${hostName}" = {
+  fileSystems."/persist" = {
+    neededForBoot = true;
+  };
+
+  environment.persistence."/persist" = {
     hideMounts = true;
     directories = [
+      "/home"
+    ]
+    ++ [
       "/etc/ssh"
       "/etc/nixos"
       "/etc/NetworkManager/system-connections"
