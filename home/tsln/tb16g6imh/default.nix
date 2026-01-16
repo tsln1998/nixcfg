@@ -11,7 +11,6 @@
       "home/common/apps/filelight.nix"
       "home/common/apps/flclash.nix"
       "home/common/apps/insomnia.nix"
-      "home/common/apps/intellij.nix"
       "home/common/apps/netease.nix"
       "home/common/apps/qq.nix"
       "home/common/apps/vlc.nix"

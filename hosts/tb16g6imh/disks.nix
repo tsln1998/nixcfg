@@ -3,12 +3,12 @@ _: {
     disk = {
       main = {
         type = "disk";
-        device = "/dev/disk/by-id/scsi-36002248084c1aa9a059f42420d833145";
+        device = "/dev/disk/by-id/nvme-UMIS_RPJYJ512MLR1QWY_SS1M63310Z3CD41J353M";
         content = {
           type = "gpt";
           partitions = {
-            ESP = {
-              size = "1024M";
+            boot = {
+              size = "512M";
               type = "EF00";
               content = {
                 format = "vfat";
@@ -20,36 +20,55 @@ _: {
                 type = "filesystem";
               };
             };
-            zfs = {
+            lvm = {
               size = "100%";
               content = {
-                type = "zfs";
-                pool = "zroot";
+                type = "lvm_pv";
+                vg = "pool";
               };
             };
           };
         };
       };
     };
-    zpool = {
-      zroot = {
-        type = "zpool";
-        rootFsOptions = {
-          mountpoint = "none";
-          compression = "zstd";
-        };
-        datasets = {
-          "root" = {
-            type = "zfs_fs";
-            mountpoint = "/";
+    lvm_vg = {
+      pool = {
+        type = "lvm_vg";
+        lvs = {
+          root = {
+            size = "8G";
+            content = {
+              type = "filesystem";
+              format = "ext4";
+              mountpoint = "/";
+              mountOptions = [
+                "defaults"
+              ];
+            };
           };
-          "store" = {
-            type = "zfs_fs";
-            mountpoint = "/nix";
+          home = {
+            size = "64G";
+            content = {
+              type = "filesystem";
+              format = "ext4";
+              mountpoint = "/home";
+            };
           };
-          "home" = {
-            type = "zfs_fs";
-            mountpoint = "/home";
+          nix = {
+            size = "64G";
+            content = {
+              type = "filesystem";
+              format = "ext4";
+              mountpoint = "/nix";
+            };
+          };
+          swap = {
+            size = "64G";
+            content = {
+              type = "swap";
+              discardPolicy = "both";
+              resumeDevice = true;
+            };
           };
         };
       };
