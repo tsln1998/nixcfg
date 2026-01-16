@@ -35,23 +35,20 @@ _: {
       pool = {
         type = "lvm_vg";
         lvs = {
-          root = {
-            size = "8G";
-            content = {
-              type = "filesystem";
-              format = "ext4";
-              mountpoint = "/";
-              mountOptions = [
-                "defaults"
-              ];
-            };
-          };
           home = {
             size = "64G";
             content = {
               type = "filesystem";
               format = "ext4";
               mountpoint = "/home";
+            };
+          };
+          persist = {
+            size = "64G";
+            content = {
+              type = "filesystem";
+              format = "ext4";
+              mountpoint = "/persist";
             };
           };
           nix = {
@@ -71,6 +68,14 @@ _: {
             };
           };
         };
+      };
+    };
+    nodev = {
+      "/" = {
+        fsType = "tmpfs";
+        mountOptions = [
+          "size=2G"
+        ];
       };
     };
   };

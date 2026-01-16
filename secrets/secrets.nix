@@ -38,7 +38,6 @@ in
   "hosts/oracle-phx-1/caddyfile.age".publicKeys = hosts.oracle-phx-1 ++ users.tsln;
 
   # User - tsln
-  "users/tsln/passwd.age".publicKeys = keys.all;
   "users/tsln/id_ed25519.age".publicKeys = users.tsln;
   "users/tsln/id_ed25519.pub.age".publicKeys = keys.all;
   "users/tsln/profile.agents.sh.age".publicKeys = users.tsln;
