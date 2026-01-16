@@ -7,7 +7,6 @@
 }:
 let
   inherit (config.networking) hostName;
-  inherit (config.age) secrets;
 
   username = "tsln";
   groups = builtins.filter (g: builtins.hasAttr g config.users.groups) [
@@ -24,7 +23,7 @@ in
       packages = [ pkgs.home-manager ];
       isNormalUser = true;
       extraGroups = groups;
-      hashedPasswordFile = secrets."users/${username}/passwd".path;
+      hashedPassword = "$2b$05$3FgVPgolxWAkfcAyKLMs3.acSQHMnQU6wUMylrJ.ypv/dEe8P62u2";
     };
   };
 
