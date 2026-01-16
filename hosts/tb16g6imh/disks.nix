@@ -35,14 +35,6 @@ _: {
       pool = {
         type = "lvm_vg";
         lvs = {
-          home = {
-            size = "64G";
-            content = {
-              type = "filesystem";
-              format = "ext4";
-              mountpoint = "/home";
-            };
-          };
           persist = {
             size = "64G";
             content = {
