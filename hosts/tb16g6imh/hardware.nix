@@ -26,24 +26,18 @@
     "kernel.kptr_restrict" = 0;
   };
 
-  # RAM tmpfs
-  boot.tmp.useTmpfs = true;
-
   # GPU Drivers
   hardware.intelgpu.vaapiDriver = "intel-media-driver";
 
-  # Firmware
+  # Redistributable firmware
   hardware.enableRedistributableFirmware = lib.mkDefault true;
 
-  # Hardware Clock
-  time.hardwareClockInLocalTime = lib.mkDefault true;
+  # Immutable firmware  
+  services.fwupd.enable = lib.mkForce false;
 
   # Cooling management
   services.thermald.enable = lib.mkDefault true;
 
   # TPM2 Module
   security.tpm2.enable = lib.mkDefault true;
-
-  # VMware Guest
-  virtualisation.vmware.guest.enable = lib.mkDefault true;
 }
