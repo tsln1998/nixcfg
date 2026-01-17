@@ -1,6 +1,7 @@
 {
   inputs,
   lib,
+  pkgs,
   ...
 }:
 {
@@ -20,17 +21,23 @@
   boot.loader.grub.useOSProber = true;
   boot.loader.efi.efiSysMountPoint = "/boot";
 
-  # Sysctl
+  # System control
   boot.kernel.sysctl = {
     "kernel.perf_event_paranoid" = 1;
     "kernel.kptr_restrict" = 0;
   };
 
-  # GPU Drivers
-  hardware.intelgpu.vaapiDriver = "intel-media-driver";
+  # Hardware clock
+  time.hardwareClockInLocalTime = lib.mkForce false;
 
   # Redistributable firmware
-  hardware.enableRedistributableFirmware = lib.mkDefault true;
+  hardware.firmware = with pkgs; [
+    linux-firmware
+    sof-firmware
+  ];
+
+  # GPU drivers
+  hardware.intelgpu.vaapiDriver = "intel-media-driver";
 
   # Immutable firmware  
   services.fwupd.enable = lib.mkForce false;

@@ -23,7 +23,6 @@ let
       mkhl.direnv
       # Common
       editorconfig.editorconfig
-      github.github-vscode-theme
       gruntfuggly.todo-tree
       tamasfe.even-better-toml
       redhat.vscode-yaml
@@ -43,11 +42,8 @@ let
     "window.commandCenter" = lib.mkDefault false;
     "window.openFilesInNewWindow" = lib.mkDefault "off";
     "window.openFoldersInNewWindow" = lib.mkDefault "on";
-    "window.autoDetectColorScheme" = lib.mkDefault true;
 
     "workbench.startupEditor" = lib.mkDefault "none";
-    "workbench.preferredDarkColorTheme" = lib.mkDefault "GitHub Dark Colorblind (Beta)";
-    "workbench.preferredLightColorTheme" = lib.mkDefault "GitHub Light Colorblind (Beta)";
 
     "files.autoSaveWhenNoErrors" = lib.mkDefault true;
     "files.autoSaveWorkspaceFilesOnly" = lib.mkDefault true;

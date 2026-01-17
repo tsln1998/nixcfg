@@ -11,7 +11,7 @@ lib.mkIf config.programs.plasma.enable {
 
   programs.plasma = {
     workspace = {
-      iconTheme = "Papirus-Light";
+      iconTheme = if config.catppuccin.flavor == "latte" then "Papirus-Dark" else "Papirus-Dark";
     };
   };
 }
