@@ -8,7 +8,7 @@ let
   inherit (lib.strings) toSentenceCase;
   enablePlasma = config.programs.plasma.enable;
   enableKonsole = config.programs.konsole.enable;
-  flavor = "latte";
+  flavor = "macchiato";
   accent = "blue";
 in
 {
@@ -38,13 +38,9 @@ in
       wallpaper = "${artwork}/share/backgrounds/nixos/nixos-wallpaper-catppuccin-${flavor}.png";
     in
     {
-      workspace = {
-        inherit wallpaper;
-        lookAndFeel = "Catppuccin ${toSentenceCase flavor} ${toSentenceCase accent}";
-      };
-      kscreenlocker.appearance = {
-        inherit wallpaper;
-      };
+      workspace.wallpaper = wallpaper;
+      workspace.colorScheme = "Catppuccin${toSentenceCase flavor}${toSentenceCase accent}";
+      kscreenlocker.appearance.wallpaper = wallpaper;
     };
 
   # Catppuccin Konsole Theme Package
