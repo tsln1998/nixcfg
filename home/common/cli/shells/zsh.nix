@@ -14,9 +14,9 @@
       bindkey '^[[1;5D' backward-word # Ctrl + left
 
       # Load local profile
-      if [ -f ~/.profile.sh ]; then
-        source ~/.profile.sh
-      fi
+      for profile in ~/.profile*.sh; do
+        source "$profile"
+      done
     '';
   };
 }
