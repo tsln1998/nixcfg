@@ -7,25 +7,6 @@ with kdePackages;
     notoPackage = pkgs.noto-fonts-cjk-sans;
   };
 
-  xdg.portal = {
-    enable = true;
-
-    extraPortals = [
-      xdg-desktop-portal-kde
-      xdg-desktop-portal-gtk
-    ];
-
-    config = {
-      common = {
-        default = [ "kde" ];
-      };
-
-      kde = {
-        default = [ "kde" ];
-      };
-    };
-  };
-
   environment.defaultPackages = [
     partitionmanager
   ];
