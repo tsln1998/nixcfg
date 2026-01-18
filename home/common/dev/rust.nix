@@ -1,7 +1,4 @@
-{ pkgs, config, ... }:
-let
-  inherit (config.home) homeDirectory;
-in
+{ pkgs, ... }:
 {
   home.packages = with pkgs; [
     cargo
@@ -13,9 +10,4 @@ in
   home.sessionVariables = {
     RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
   };
-
-  # cargo paths
-  home.sessionPath = [
-    "${homeDirectory}/.cargo/bin"
-  ];
 }
