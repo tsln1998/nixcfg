@@ -23,4 +23,9 @@ in
     file = relative "secrets/users/${username}/profile.secrets.sh.age";
     mode = "644";
   };
+
+  age.secrets."users/${username}/factory-droid.json" = {
+    file = relative "secrets/users/${username}/factory-droid.json.age";
+    mode = "644";
+  };
 }

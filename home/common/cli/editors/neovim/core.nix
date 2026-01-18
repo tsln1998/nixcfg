@@ -1,13 +1,12 @@
 { ... }:
 {
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
+  programs.neovim.enable = true;
+  programs.neovim.defaultEditor = true;
 
-    viAlias = true;
-    vimAlias = true;
+  programs.neovim.viAlias = true;
+  programs.neovim.vimAlias = true;
 
-    withRuby = false;
-    withPython3 = false;
-  };
+  programs.neovim.withPython3 = false;
+  programs.neovim.withNodeJs = false;
+  programs.neovim.withRuby = false;
 }
