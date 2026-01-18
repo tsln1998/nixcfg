@@ -1,9 +1,5 @@
-{ tools, ... }:
+{ ... }:
 {
-  imports = [
-    (tools.relative "home/common/apps/konsole.nix")
-  ];
-
   programs.konsole = {
     defaultProfile = "Default";
 

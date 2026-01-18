@@ -1,9 +1,5 @@
-{ tools, ... }:
+{ ... }:
 {
-  imports = [
-    (tools.relative "home/common/apps/chromium.nix")
-  ];
-
   programs.chromium = {
     extensions = [
       { id = "ddkjiahejlhfcafbddmgiahcphecmpfh"; } # uBlock Origin Lite

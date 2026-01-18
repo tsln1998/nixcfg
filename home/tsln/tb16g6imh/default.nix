@@ -6,6 +6,9 @@
       "home/common/cli"
       "home/common/themes"
       "home/common/apps/bitwarden.nix"
+      "home/common/apps/chromium.nix"
+      "home/common/apps/konsole.nix"
+      "home/common/apps/vscode.nix"
       "home/common/apps/dingtalk.nix"
       "home/common/apps/filelight.nix"
       "home/common/apps/flclash.nix"
@@ -20,7 +23,9 @@
     ])
     ++ (map tools.relative [
       "home/tsln/common/dev"
-      "home/tsln/common/apps"
+      "home/tsln/common/apps/chromium.nix"
+      "home/tsln/common/apps/konsole.nix"
+      "home/tsln/common/apps/vscode.nix"
     ])
     ++ (tools.scan ./.)
   );

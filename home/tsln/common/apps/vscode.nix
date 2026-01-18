@@ -1,7 +1,6 @@
 {
   lib,
   pkgs,
-  tools,
   ...
 }:
 let
@@ -155,10 +154,6 @@ let
   allLangUserSettings = (langUserSettings.go or { }) // (langUserSettings.zig or { });
 in
 {
-  imports = [
-    (tools.relative "home/common/apps/vscode.nix")
-  ];
-
   # Default profile: 仅基础配置
   programs.vscode.profiles.default = {
     enableUpdateCheck = false;
