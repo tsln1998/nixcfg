@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 {
   programs.plasma = {
     enable = true;
@@ -21,28 +21,6 @@
         General = {
           loginMode = "emptySession";
         };
-      };
-    };
-  };
-
-  xdg.portal = {
-    enable = true;
-
-    extraPortals =
-      with pkgs;
-      with kdePackages;
-      [
-        xdg-desktop-portal-kde
-        xdg-desktop-portal-gtk
-      ];
-
-    config = {
-      common = {
-        default = [ "kde" ];
-      };
-
-      kde = {
-        default = [ "kde" ];
       };
     };
   };

@@ -19,8 +19,10 @@
       "/var/lib/bluetooth"
       "/var/lib/nixos"
       "/var/lib/docker"
+      "/var/lib/upower"
       "/var/lib/systemd/coredump"
       "/var/lib/systemd/timers"
+      "/var/lib/NetworkManager"
     ];
     files = [
       "/etc/machine-id"

@@ -8,7 +8,7 @@ let
   inherit (lib.strings) toSentenceCase;
   enablePlasma = config.programs.plasma.enable;
   enableKonsole = config.programs.konsole.enable;
-  flavor = "macchiato";
+  flavor = "latte";
   accent = "blue";
 in
 {
