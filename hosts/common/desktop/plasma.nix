@@ -12,13 +12,22 @@ with kdePackages;
 
     extraPortals = [
       xdg-desktop-portal-kde
+      xdg-desktop-portal-gtk
     ];
+
+    config = {
+      common = {
+        default = [ "kde" ];
+      };
+
+      kde = {
+        default = [ "kde" ];
+      };
+    };
   };
 
   environment.defaultPackages = [
-    qtbase
-    xdg-utils
-    desktop-file-utils
+    partitionmanager
   ];
 
   environment.plasma6.excludePackages = [
@@ -26,6 +35,5 @@ with kdePackages;
     khelpcenter
     kate
     elisa
-    okular
   ];
 }
