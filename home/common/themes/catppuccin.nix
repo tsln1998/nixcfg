@@ -10,6 +10,8 @@ let
   enableKonsole = config.programs.konsole.enable;
   flavor = "latte";
   accent = "blue";
+  artwork = pkgs.nixos-artwork.wallpapers."catppuccin-${flavor}";
+  wallpaper = "${artwork}/share/backgrounds/nixos/nixos-wallpaper-catppuccin-${flavor}.png";
 in
 {
   # Catppuccin
@@ -32,18 +34,16 @@ in
   ];
 
   # Catppuccin Plasma Configuration
-  programs.plasma =
-    let
-      artwork = pkgs.nixos-artwork.wallpapers."catppuccin-${flavor}";
-      wallpaper = "${artwork}/share/backgrounds/nixos/nixos-wallpaper-catppuccin-${flavor}.png";
-    in
-    {
-      kscreenlocker.appearance.wallpaper = wallpaper;
-      workspace.wallpaper = wallpaper;
-      workspace.colorScheme = "Catppuccin${toSentenceCase flavor}${toSentenceCase accent}";
-      workspace.splashScreen.theme = "Catppuccin-${toSentenceCase flavor}-${toSentenceCase accent}";
-      workspace.cursor.theme = if flavor == "latte" then "Breeze_Light" else "breeze_cursors";
-    };
+  programs.plasma.kscreenlocker = lib.optionalAttrs enablePlasma {
+    appearance.wallpaper = wallpaper;
+  };
+
+  programs.plasma.workspace = lib.optionalAttrs enablePlasma {
+    wallpaper = wallpaper;
+    colorScheme = "Catppuccin${toSentenceCase flavor}${toSentenceCase accent}";
+    splashScreen.theme = "Catppuccin-${toSentenceCase flavor}-${toSentenceCase accent}";
+    cursor.theme = if flavor == "latte" then "Breeze_Light" else "breeze_cursors";
+  };
 
   # Catppuccin Konsole Theme Package
   home.file = lib.optionalAttrs enableKonsole {
