@@ -129,12 +129,6 @@ let
       ms-vscode.cmake-tools
       vadimcn.vscode-lldb
     ];
-
-    net = with repo.vscode-extensions; [
-      ms-dotnettools.csdevkit
-      ms-dotnettools.csharp
-      ms-dotnettools.vscode-dotnet-runtime
-    ];
   };
 
   # 语言特定用户设置
@@ -155,8 +149,7 @@ let
     ++ langExtensions.zig
     ++ langExtensions.java
     ++ langExtensions.python
-    ++ langExtensions.cxx
-    ++ langExtensions.net;
+    ++ langExtensions.cxx;
 
   # 所有语言的用户设置
   allLangUserSettings = (langUserSettings.go or { }) // (langUserSettings.zig or { });
@@ -213,12 +206,6 @@ in
   # Cxx profile: 基础 + C++
   programs.vscode.profiles.Cxx = {
     extensions = baseExtensions ++ langExtensions.cxx;
-    userSettings = baseUserSettings;
-  };
-
-  # Net profile: 基础 + .NET
-  programs.vscode.profiles.Net = {
-    extensions = baseExtensions ++ langExtensions.net;
     userSettings = baseUserSettings;
   };
 }

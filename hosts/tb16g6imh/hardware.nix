@@ -22,6 +22,7 @@
   boot.loader.efi.efiSysMountPoint = "/boot";
 
   # System control
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernel.sysctl = {
     "kernel.perf_event_paranoid" = 1;
     "kernel.kptr_restrict" = 0;
