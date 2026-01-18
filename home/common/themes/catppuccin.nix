@@ -38,9 +38,11 @@ in
       wallpaper = "${artwork}/share/backgrounds/nixos/nixos-wallpaper-catppuccin-${flavor}.png";
     in
     {
+      kscreenlocker.appearance.wallpaper = wallpaper;
       workspace.wallpaper = wallpaper;
       workspace.colorScheme = "Catppuccin${toSentenceCase flavor}${toSentenceCase accent}";
-      kscreenlocker.appearance.wallpaper = wallpaper;
+      workspace.splashScreen.theme = "Catppuccin-${toSentenceCase flavor}-${toSentenceCase accent}";
+      workspace.cursor.theme = if flavor == "latte" then "Breeze_Light" else "breeze_cursors";
     };
 
   # Catppuccin Konsole Theme Package

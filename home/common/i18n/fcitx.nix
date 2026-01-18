@@ -71,8 +71,13 @@
   # Plasma virutal keyboard
   programs.plasma.configFile.kwinrc = {
     Wayland = {
-      "VirtualKeyboardEnabled" = true;
-      "InputMethod[\$e]" = "$HOME/.nix-profile/share/applications/fcitx5-wayland-launcher.desktop";
+      VirtualKeyboardEnabled = {
+        value = true;
+      };
+      InputMethod = {
+        shellExpand = true;
+        value = "$HOME/.nix-profile/share/applications/fcitx5-wayland-launcher.desktop";
+      };
     };
   };
 
