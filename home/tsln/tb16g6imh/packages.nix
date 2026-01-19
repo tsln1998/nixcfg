@@ -10,7 +10,6 @@
   ++ [
     # Development Tools
     pkgs.cloc
-    pkgs.bun
   ]
   ++ [
     # Github Client

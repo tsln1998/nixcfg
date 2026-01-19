@@ -20,6 +20,8 @@
       "home/common/apps/wechat.nix"
       "home/common/desktop/plasma.nix"
       "home/common/dev/nix.nix"
+      "home/common/dev/nodejs.nix"
+      "home/common/dev/bun.nix"
       "home/common/i18n"
     ])
     ++ (map tools.relative [
