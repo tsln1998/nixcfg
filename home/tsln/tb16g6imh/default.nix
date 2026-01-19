@@ -8,6 +8,7 @@
       "home/common/apps/bitwarden.nix"
       "home/common/apps/chromium.nix"
       "home/common/apps/konsole.nix"
+      "home/common/apps/libreoffice.nix"
       "home/common/apps/vscode.nix"
       "home/common/apps/dingtalk.nix"
       "home/common/apps/filelight.nix"
