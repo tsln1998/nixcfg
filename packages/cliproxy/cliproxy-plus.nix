@@ -13,9 +13,9 @@ let
   owner = "router-for-me";
   repo = "CLIProxyAPIPlus";
   pname = "cliproxy-plus";
-  version = "6.7.6-1";
+  version = "6.7.9-0";
   rev = "refs/tags/v${version}";
-  hash = "sha256-drHMVd7tk5yENNQpM5IGmm1lJH3kCD4vi2Z7lKxu/4g=";
+  hash = "sha256-vTcXJC7ffqC1yAVAJ0GIE++SyNvtUge3armFxrCCgGk=";
   vendorHash = "sha256-eMzl/rMQi4kOyJsohEiUB4yMdmrkLr8XJ4k71ZFZ2p8=";
 in
 buildGoModule rec {
