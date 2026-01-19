@@ -1,6 +1,5 @@
 {
   lib,
-  pkgs,
   tools,
   config,
   ...
@@ -13,8 +12,6 @@ in
   # User configuration
   users.users = {
     "${userName}" = {
-      shell = pkgs.zsh;
-      packages = [ pkgs.home-manager ];
       isNormalUser = true;
       extraGroups = builtins.filter (g: builtins.hasAttr g config.users.groups) [
         "wheel"
