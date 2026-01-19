@@ -28,4 +28,14 @@ in
     file = relative "secrets/users/${username}/factory-droid.json.age";
     mode = "644";
   };
+
+  age.secrets."users/${username}/opencode.json" = {
+    file = relative "secrets/users/${username}/opencode.json.age";
+    mode = "644";
+  };
+
+  age.secrets."users/${username}/oh-my-opencode.json" = {
+    file = relative "secrets/users/${username}/oh-my-opencode.json.age";
+    mode = "644";
+  };
 }
