@@ -43,4 +43,6 @@ in
   "users/tsln/profile.agents.sh.age".publicKeys = users.tsln;
   "users/tsln/profile.secrets.sh.age".publicKeys = users.tsln;
   "users/tsln/factory-droid.json.age".publicKeys = users.tsln;
+  "users/tsln/opencode.json.age".publicKeys = users.tsln;
+  "users/tsln/oh-my-opencode.json.age".publicKeys = users.tsln;
 }
