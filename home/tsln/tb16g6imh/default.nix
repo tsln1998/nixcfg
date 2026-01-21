@@ -11,6 +11,7 @@
       "home/common/apps/libreoffice.nix"
       "home/common/apps/vscode.nix"
       "home/common/apps/dingtalk.nix"
+      "home/common/apps/datagrip.nix"
       "home/common/apps/filelight.nix"
       "home/common/apps/flclash.nix"
       "home/common/apps/insomnia.nix"
