@@ -82,9 +82,9 @@ let
     "nix.serverPath" = lib.mkDefault "nixd";
     "nix.formatterPath" = lib.mkDefault "nixfmt";
 
-    "redhat.telemetry.enabled" = lib.mkDefault false;
-
     "security.workspace.trust.enabled" = lib.mkDefault false;
+
+    "update.showReleaseNotes" = false;
   };
 
   # 语言特定扩展配置（不包含基础扩展）
@@ -135,6 +135,7 @@ let
   langSettings = rec {
     Go = {
       "go.showWelcome" = false;
+      "go.diagnostic.vulncheck" = "Off";
     };
 
     Zig = {
@@ -169,6 +170,6 @@ in
     };
   }
   // (lib.genAttrs names (lang: {
-      enable = true;
+    enable = true;
   }));
 }
