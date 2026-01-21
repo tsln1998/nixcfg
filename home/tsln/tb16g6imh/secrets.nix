@@ -14,28 +14,28 @@ in
     mode = "644";
   };
 
-  age.secrets."users/${username}/profile.agents.sh" = {
-    file = relative "secrets/users/${username}/profile.agents.sh.age";
+  age.secrets."users/${username}/config/profile.d/agents.sh" = {
+    file = relative "secrets/users/${username}/config/profile.d/agents.sh.age";
     mode = "644";
   };
 
-  age.secrets."users/${username}/profile.secrets.sh" = {
-    file = relative "secrets/users/${username}/profile.secrets.sh.age";
+  age.secrets."users/${username}/config/profile.d/secrets.sh" = {
+    file = relative "secrets/users/${username}/config/profile.d/secrets.sh.age";
     mode = "644";
   };
 
-  age.secrets."users/${username}/factory-droid.json" = {
-    file = relative "secrets/users/${username}/factory-droid.json.age";
+  age.secrets."users/${username}/config/opencode/opencode.json" = {
+    file = relative "secrets/users/${username}/config/opencode/opencode.json.age";
     mode = "644";
   };
 
-  age.secrets."users/${username}/opencode.json" = {
-    file = relative "secrets/users/${username}/opencode.json.age";
+  age.secrets."users/${username}/config/opencode/oh-my-opencode.json" = {
+    file = relative "secrets/users/${username}/config/opencode/oh-my-opencode.json.age";
     mode = "644";
   };
 
-  age.secrets."users/${username}/oh-my-opencode.json" = {
-    file = relative "secrets/users/${username}/oh-my-opencode.json.age";
+  age.secrets."users/${username}/factory/settings.json" = {
+    file = relative "secrets/users/${username}/factory/settings.json.age";
     mode = "644";
   };
 }
