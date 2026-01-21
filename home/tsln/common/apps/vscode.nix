@@ -7,33 +7,28 @@ let
   repo = pkgs.unstable;
 
   # 基础扩展
-  baseExtensions =
-    (with repo.vscode-extensions; [
-      # Keybindings
-      k--kato.intellij-idea-keybindings
-      # Rainbow
-      oderwat.indent-rainbow
-      # Git
-      codezombiech.gitignore
-      waderyan.gitblame
-      # Nix
-      jnoortheen.nix-ide
-      # Direnv
-      mkhl.direnv
-      # Common
-      editorconfig.editorconfig
-      gruntfuggly.todo-tree
-      tamasfe.even-better-toml
-      redhat.vscode-yaml
-      usernamehw.errorlens
-    ])
-    ++ (with pkgs.additions; [
-      # gRPC
-      vscode-extensions_vscode-buf
-    ]);
+  baseExtensions = with repo.vscode-extensions; [
+    # Keybindings
+    k--kato.intellij-idea-keybindings
+    # Rainbow
+    oderwat.indent-rainbow
+    # Git
+    codezombiech.gitignore
+    waderyan.gitblame
+    # Nix
+    jnoortheen.nix-ide
+    # Direnv
+    mkhl.direnv
+    # Common
+    editorconfig.editorconfig
+    gruntfuggly.todo-tree
+    tamasfe.even-better-toml
+    redhat.vscode-yaml
+    usernamehw.errorlens
+  ];
 
   # 基础用户设置
-  baseUserSettings = {
+  baseSettings = {
     "chat.disableAIFeatures" = lib.mkDefault true;
 
     "window.titleBarStyle" = lib.mkForce "native";
@@ -93,26 +88,30 @@ let
   };
 
   # 语言特定扩展配置（不包含基础扩展）
-  langExtensions = {
-    go = with repo.vscode-extensions; [
-      golang.go
-    ];
+  langExtensions = rec {
+    Go =
+      (with repo.vscode-extensions; [
+        golang.go
+      ])
+      ++ (with pkgs.additions; [
+        vscode-extensions_vscode-buf
+      ]);
 
-    rust = with repo.vscode-extensions; [
+    Rust = with repo.vscode-extensions; [
       rust-lang.rust-analyzer
       vadimcn.vscode-lldb
     ];
 
-    zig = with repo.vscode-extensions; [
+    Zig = with repo.vscode-extensions; [
       ziglang.vscode-zig
       vadimcn.vscode-lldb
     ];
 
-    java = with repo.vscode-extensions; [
+    Java = with repo.vscode-extensions; [
       mathiasfrohlich.kotlin
     ];
 
-    python =
+    Python =
       (with repo.vscode-extensions; [
         ms-python.python
         ms-python.debugpy
@@ -123,84 +122,53 @@ let
         vscode-extensions_autopep8
       ]);
 
-    cxx = with repo.vscode-extensions; [
+    Cxx = with repo.vscode-extensions; [
       ms-vscode.cpptools
       ms-vscode.cmake-tools
       vadimcn.vscode-lldb
     ];
+
+    All = Go ++ Rust ++ Zig ++ Java ++ Python ++ Cxx;
   };
 
   # 语言特定用户设置
-  langUserSettings = {
-    go = {
+  langSettings = rec {
+    Go = {
       "go.showWelcome" = false;
     };
 
-    zig = {
+    Zig = {
       "zig.zls.enabled" = "on";
     };
+
+    All = Go // Zig;
   };
 
-  # 所有语言的扩展列表
-  allLangExtensions =
-    langExtensions.go
-    ++ langExtensions.rust
-    ++ langExtensions.zig
-    ++ langExtensions.java
-    ++ langExtensions.python
-    ++ langExtensions.cxx;
-
-  # 所有语言的用户设置
-  allLangUserSettings = (langUserSettings.go or { }) // (langUserSettings.zig or { });
+  # 提取配置名称
+  names = lib.attrNames (langExtensions // langSettings);
 in
 {
-  # Default profile: 仅基础配置
-  programs.vscode.profiles.default = {
-    enableUpdateCheck = false;
-    enableExtensionUpdateCheck = false;
-    extensions = baseExtensions;
-    userSettings = baseUserSettings;
-  };
+  # 生成 profiles
+  programs.vscode.profiles = {
+    default = {
+      enableUpdateCheck = false;
+      enableExtensionUpdateCheck = false;
+      extensions = baseExtensions;
+      userSettings = baseSettings;
+    };
+  }
+  // (lib.genAttrs names (lang: {
+    extensions = baseExtensions ++ (langExtensions.${lang} or [ ]);
+    userSettings = baseSettings // (langSettings.${lang} or { });
+  }));
 
-  # All profile: 基础 + 所有语言
-  programs.vscode.profiles.All = {
-    extensions = baseExtensions ++ allLangExtensions;
-    userSettings = baseUserSettings // allLangUserSettings;
-  };
-
-  # Go profile: 基础 + Go
-  programs.vscode.profiles.Go = {
-    extensions = baseExtensions ++ langExtensions.go;
-    userSettings = baseUserSettings // (langUserSettings.go or { });
-  };
-
-  # Rust profile: 基础 + Rust
-  programs.vscode.profiles.Rust = {
-    extensions = baseExtensions ++ langExtensions.rust;
-    userSettings = baseUserSettings;
-  };
-
-  # Zig profile: 基础 + Zig
-  programs.vscode.profiles.Zig = {
-    extensions = baseExtensions ++ langExtensions.zig;
-    userSettings = baseUserSettings // (langUserSettings.zig or { });
-  };
-
-  # Java profile: 基础 + Java
-  programs.vscode.profiles.Java = {
-    extensions = baseExtensions ++ langExtensions.java;
-    userSettings = baseUserSettings;
-  };
-
-  # Python profile: 基础 + Python
-  programs.vscode.profiles.Python = {
-    extensions = baseExtensions ++ langExtensions.python;
-    userSettings = baseUserSettings;
-  };
-
-  # Cxx profile: 基础 + C++
-  programs.vscode.profiles.Cxx = {
-    extensions = baseExtensions ++ langExtensions.cxx;
-    userSettings = baseUserSettings;
-  };
+  # 生成 catppuccin 配置
+  catppuccin.vscode.profiles = {
+    default = {
+      enable = true;
+    };
+  }
+  // (lib.genAttrs names (lang: {
+      enable = true;
+  }));
 }
