@@ -14,7 +14,7 @@
       bindkey '^[[1;5D' backward-word # Ctrl + left
 
       # Load local profile
-      for profile in ~/.profile*.sh; do
+      for profile in ~/.config/profile.d/*.sh; do
         source "$profile"
       done
     '';
