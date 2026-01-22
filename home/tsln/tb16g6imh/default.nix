@@ -30,6 +30,7 @@
       "home/tsln/common/apps/chromium.nix"
       "home/tsln/common/apps/konsole.nix"
       "home/tsln/common/apps/vscode.nix"
+      "home/tsln/common/i18n"
     ])
     ++ (tools.scan ./.)
   );
