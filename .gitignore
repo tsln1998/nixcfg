@@ -1,6 +1,9 @@
 # Ignore tmp directory
 /tmp
 
+# Ignore local files
+*.local.*
+
 # Ignore build outputs from performing a nix-build or `nix build` command
 result
 result-*
@@ -10,4 +13,4 @@ result-*
 
 # Ignore editor files
 .vscode/*
-.claude/*
+
