@@ -12,6 +12,8 @@ in
   # go environment variables
   home.sessionVariables = {
     GOPATH = lib.mkDefault path;
+    GOPROXY = "https://goproxy.cn,direct";
+    GOSUMDB = "sum.golang.google.cn";
   };
 
   # go paths
