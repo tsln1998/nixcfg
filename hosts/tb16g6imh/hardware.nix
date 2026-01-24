@@ -19,6 +19,7 @@
   boot.loader.grub.efiInstallAsRemovable = true;
   boot.loader.grub.configurationLimit = 50;
   boot.loader.grub.useOSProber = true;
+  boot.loader.grub.default = "saved";
   boot.loader.efi.efiSysMountPoint = "/boot";
 
   # System control
