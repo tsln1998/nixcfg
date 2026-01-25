@@ -11,6 +11,7 @@
       "home/common/i18n/locale.nix"
     ])
     ++ (map tools.relative [
+      "home/tsln/common/cli"
       "home/tsln/common/dev"
     ])
     ++ (tools.scan ./.)
