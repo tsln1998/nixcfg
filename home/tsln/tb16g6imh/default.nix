@@ -26,6 +26,7 @@
       "home/common/i18n"
     ])
     ++ (map tools.relative [
+      "home/tsln/common/cli"
       "home/tsln/common/dev"
       "home/tsln/common/apps/chromium.nix"
       "home/tsln/common/apps/konsole.nix"
