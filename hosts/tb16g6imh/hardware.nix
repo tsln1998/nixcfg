@@ -38,8 +38,14 @@
     sof-firmware
   ];
 
-  # GPU drivers
+  # Intel GPU
   hardware.intelgpu.vaapiDriver = "intel-media-driver";
+
+  # TODO: Intel NPU (Requires NixOS 26.05)
+  # hardware.cpu.intel.npu.enable = true;
+
+  # Intel microcode
+  hardware.cpu.intel.updateMicrocode = true;
 
   # Immutable firmware  
   services.fwupd.enable = lib.mkForce false;
