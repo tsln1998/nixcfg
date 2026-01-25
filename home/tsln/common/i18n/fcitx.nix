@@ -1,5 +1,19 @@
-{ ... }:
+{ pkgs, ... }:
 {
+  i18n.inputMethod.fcitx5.addons =
+    with pkgs;
+    with kdePackages;
+    (
+      [
+        fcitx5-rime
+        rime-cli
+        rime-data
+      ]
+      ++ [
+        fcitx5-chinese-addons
+      ]
+    );
+
   # Rime settings
   home.file = {
     "rime-default.custom.yaml" = {
