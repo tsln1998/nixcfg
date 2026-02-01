@@ -1,66 +1,59 @@
 { pkgs, ... }:
 {
-  i18n.inputMethod.fcitx5.addons =
-    with pkgs;
-    with kdePackages;
-    (
-      [
-        fcitx5-rime
-        rime-cli
-        rime-data
-      ]
-      ++ [
-        fcitx5-chinese-addons
-      ]
-    );
+  i18n.inputMethod.fcitx5.addons = [
+    pkgs.kdePackages.fcitx5-chinese-addons
+  ];
 
-  # Rime settings
-  home.file = {
-    "rime-default.custom.yaml" = {
-      target = ".local/share/fcitx5/rime/default.custom.yaml";
-      text = ''
-        patch:
-          # 配置输入模式
-          schema_list:
-            - schema: double_pinyin_mspy
-          # 候选词 8 个
-          menu/page_size: 8
-          # 配置方案切换
-          switcher/caption: "[方案切换]"
-          switcher/hotkeys:
-            - "Shift+F3"
-          # 快捷键绑定
-          key_binder/bindings:
-            # 按 Tab/Shift+Tab 或 -/= 切换候选词
-            - {accept: "Tab", send: "Page_Down", when: composing}
-            - {accept: "Shift+Tab", send: "Page_Up", when: composing}
-            - {accept: "minus", send: "Page_Up", when: has_menu}
-            - {accept: "equal", send: "Page_Down", when: has_menu}
-      '';
+  # 配置默认输入法
+  i18n.inputMethod.fcitx5.settings.inputMethod = {
+    "GroupOrder" = {
+      "0" = "Default";
     };
-    "rime-double_pinyin_mspy.custom.yaml" = {
-      target = ".local/share/fcitx5/rime/double_pinyin_mspy.custom.yaml";
-      text = ''
-        patch:
-          schema/name: "微软双拼"
-          schema/description: "微软双拼"
-          # 配置各项开关
-          switches:
-            - name: ascii_mode
-              reset: 0
-              states: [ "中文", "西文" ]
-            - name: full_shape
-              states: [ "半角", "全角" ]
-            - name: simplification
-              reset: 1
-              states: [ "漢字", "汉字" ]
-            - name: ascii_punct
-              reset: 0
-              states: [ "。，", "．，" ]
-          # 不展开到全拼
-          translator/preedit_format/@before 0: xlit/abcdefghijklmnopqrstuvwxyz/ⓐⓑⓒⓓⓔⓕⓖⓗⓘⓙⓚⓛⓜⓝⓞⓟⓠⓡⓢⓣⓤⓥⓦⓧⓨⓩ
-          translator/preedit_format/@after last: xlit/ⓐⓑⓒⓓⓔⓕⓖⓗⓘⓙⓚⓛⓜⓝⓞⓟⓠⓡⓢⓣⓤⓥⓦⓧⓨⓩ/abcdefghijklmnopqrstuvwxyz
-      '';
+    "Groups/0" = {
+      "Name" = "Default";
+      "Default Layout" = "us";
+      "DefaultIM" = "shuangpin";
+    };
+    "Groups/0/Items/0"."Name" = "keyboard-us";
+    "Groups/0/Items/1"."Name" = "shuangpin";
+  };
+
+  i18n.inputMethod.fcitx5.settings.addons = {
+    pinyin.globalSection = {
+      # 非首次运行
+      "FirstRun" = "False";
+      # 双拼方案
+      "ShuangpinProfile" = "MS";
+      # 每页候选词
+      "PageSize" = 9;
+      # 显示英文候选词
+      "SpellEnabled" = "True";
+      # 显示符号候选词
+      "SymbolsEnabled" = "True";
+      # 显示拆字候选词
+      "ChaiziEnabled" = "True";
+      # 启用云拼音
+      "CloudPinyinEnabled" = "True";
+      # 云拼音候选词顺序
+      "CloudPinyinIndex" = 2;
+      # 加载云拼音的时候显示动画
+      "CloudPinyinAnimation" = "True";
+    };
+    cloudpinyin.globalSection = {
+      # 最小拼音长度
+      "MinimumPinyinLength" = 4;
+      # 使用百度后端
+      "Backend" = "Baidu";
+      # 禁用切换键
+      "Toggle Key" = "";
+    };
+    punctuation.globalSection = {
+      # 启用
+      "Enabled" = "True";
+      # 字母或者数字之后输入半角标点
+      "HalfWidthPuncAfterLetterOrNumber" = "True";
+      # 同时输入成对标点 (例如引号)
+      "TypePairedPunctuationsTogether" = "False";
     };
   };
 }
