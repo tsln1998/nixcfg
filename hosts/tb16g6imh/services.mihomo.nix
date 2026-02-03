@@ -1,4 +1,9 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 let
   inherit (config.age) secrets;
   inherit (config.networking) hostName;
@@ -23,6 +28,8 @@ in
   };
 
   networking.firewall = {
+    allowedTCPPorts = [ 7890 ];
+    allowedUDPPorts = [ 7890 ];
     trustedInterfaces = lib.optionals (cfg.tunMode && !cfg.tproxyMode) [
       "tun0"
     ];
