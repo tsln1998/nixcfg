@@ -20,17 +20,17 @@
       "/var/lib/nixos"
       "/var/lib/docker"
       "/var/lib/upower"
+      "/var/lib/NetworkManager"
       "/var/lib/systemd/coredump"
       "/var/lib/systemd/timers"
+      "/var/lib/private/mihomo"
     ];
     files = [
       "/etc/machine-id"
     ]
     ++ [
-      "/var/lib/systemd/random-seed"
-    ]
-    ++ [
       "/var/lib/sddm/state.conf"
+      "/var/lib/systemd/random-seed"
     ];
   };
 }
