@@ -20,10 +20,12 @@
       "/var/lib/nixos"
       "/var/lib/docker"
       "/var/lib/upower"
-      "/var/lib/NetworkManager"
       "/var/lib/systemd/coredump"
       "/var/lib/systemd/timers"
-      "/var/lib/private/mihomo"
+      {
+        directory = "/var/lib/private";
+        mode = "0700";
+      }
     ];
     files = [
       "/etc/machine-id"
