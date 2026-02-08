@@ -13,6 +13,7 @@ in
   users.users = {
     "${userName}" = {
       isNormalUser = true;
+      linger = true;
       extraGroups = builtins.filter (g: builtins.hasAttr g config.users.groups) [
         "wheel"
         "docker"

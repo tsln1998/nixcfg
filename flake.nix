@@ -55,6 +55,11 @@
     catppuccin.url = "github:catppuccin/nix";
     catppuccin.inputs.nixpkgs.follows = "nixpkgs";
 
+    openclaw.url = "github:openclaw/nix-openclaw";
+    openclaw.inputs.nixpkgs.follows = "nixpkgs";
+    openclaw.inputs.flake-utils.follows = "flake-utils";
+    openclaw.inputs.home-manager.follows = "home-manager";
+
     llm-agents.url = "github:numtide/llm-agents.nix";
     llm-agents.inputs.nixpkgs.follows = "nixpkgs-unstable";
   };

@@ -13,4 +13,9 @@ in
     file = relative "secrets/users/${username}/id_ed25519.pub.age";
     mode = "644";
   };
+
+  age.secrets."users/${username}/openclaw/openclaw.json" = {
+    file = relative "secrets/users/${username}/openclaw/openclaw.json.age";
+    mode = "644";
+  };
 }
