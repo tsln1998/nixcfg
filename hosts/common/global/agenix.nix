@@ -1,23 +1,12 @@
-{
-  config,
-  pkgs,
-  ...
-}:
-let
-  inherit (config.networking) hostName;
-in
+{ pkgs, ... }:
 {
   age.identityPaths = [
     "/etc/ssh/ssh_host_ed25519_key"
     "/etc/ssh/ssh_host_rsa_key"
   ]
   ++ [
-    "/persist/hosts/${hostName}/etc/ssh/ssh_host_ed25519_key"
-    "/persist/hosts/${hostName}/etc/ssh/ssh_host_rsa_key"
-  ]
-  ++ [
-    "/tmp/id_rsa_${hostName}"
-    "/tmp/id_ed25519_${hostName}"
+    "/persist/etc/ssh/ssh_host_ed25519_key"
+    "/persist/etc/ssh/ssh_host_rsa_key"
   ]
   ++ [
     "/tmp/id_rsa"

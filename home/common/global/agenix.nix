@@ -3,7 +3,7 @@
   ...
 }:
 let
-  inherit (config.home) username homeDirectory;
+  inherit (config.home) homeDirectory;
 in
 {
   age.identityPaths = [
@@ -11,8 +11,8 @@ in
     "${homeDirectory}/.ssh/id_ed25519"
   ]
   ++ [
-    "/tmp/id_rsa_${username}"
-    "/tmp/id_ed25519_${username}"
+    "/persist/${homeDirectory}/.ssh/id_rsa"
+    "/persist/${homeDirectory}/.ssh/id_ed25519"
   ]
   ++ [
     "/tmp/id_rsa"

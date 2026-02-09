@@ -207,7 +207,12 @@
           hostName = "tb16g6imh";
           system = "x86_64-linux";
         })
-        # Oracle Cloud Singapore
+        # Aliyun China Shenzhen 1
+        (nixosSystem {
+          hostName = "aliyun-szx-1";
+          system = "x86_64-linux";
+        })
+        # Oracle Cloud Singapore 1
         (nixosSystem {
           hostName = "oracle-sin-1";
           system = "aarch64-linux";
@@ -239,7 +244,13 @@
           hostName = "tb16g6imh";
           system = "x86_64-linux";
         })
-        # Oracle Cloud Singapore
+        # Aliyun China Shenzhen 1
+        (homeConfiguration {
+          userName = "tsln";
+          hostName = "aliyun-szx-1";
+          system = "x86_64-linux";
+        })
+        # Oracle Cloud Singapore 1
         (homeConfiguration {
           userName = "tsln";
           hostName = "oracle-sin-1";

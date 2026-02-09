@@ -15,6 +15,9 @@ let
     tb16g6imh = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGAkFEAhSYaKtw30BigRgUjZtwq9iFVKAS/5m8vWBprr"
     ];
+    aliyun-szx-1 = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILZ4M/151t9j8o1Y+EmBzGImhN1pHKxaCtKyVOvhdV+x"
+    ];
     oracle-sin-1 = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAbdrPFrrWj6DTbSAI7dv4wtuWSrZMZ55VS26RNysb1J"
     ];
