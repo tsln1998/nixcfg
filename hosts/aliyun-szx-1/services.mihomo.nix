@@ -11,9 +11,9 @@ let
 in
 {
   services.mihomo = {
-    enable = true;
+    enable = false;
     tunMode = true;
-    # tproxyMode = true;
+    tproxyMode = false;
     package = pkgs.mihomo;
     webui = pkgs.zashboard;
     configFile = secrets."hosts/${hostName}/mihomo.yaml".path;

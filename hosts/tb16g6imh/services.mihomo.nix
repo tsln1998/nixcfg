@@ -11,9 +11,9 @@ let
 in
 {
   services.mihomo = {
-    enable = true;
+    enable = false;
     tunMode = true;
-    # tproxyMode = true;
+    tproxyMode = false;
     package = pkgs.mihomo;
     webui = pkgs.zashboard;
     configFile = secrets."hosts/${hostName}/mihomo.yaml".path;
@@ -28,8 +28,6 @@ in
   };
 
   networking.firewall = lib.optionalAttrs (cfg.enable && (cfg.tunMode || cfg.tproxyMode)) {
-    allowedTCPPorts = [ 7890 ];
-    allowedUDPPorts = [ 7890 ];
     trustedInterfaces = lib.optionals (cfg.tunMode && !cfg.tproxyMode) [
       "tun0"
     ];
