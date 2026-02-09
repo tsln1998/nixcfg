@@ -1,4 +1,9 @@
-{ pkgs, lib,config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 let
   inherit (config.home) username;
 in
@@ -6,7 +11,16 @@ in
   programs.openclaw = {
     documents = ./assets/openclaw;
     bundledPlugins = {
+      summarize = {
+        enable = true;
+      };
       oracle = {
+        enable = true;
+      };
+      gogcli = {
+        enable = true;
+      };
+      goplaces = {
         enable = true;
       };
     };
