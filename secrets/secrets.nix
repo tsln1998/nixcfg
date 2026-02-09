@@ -12,6 +12,11 @@ in
   "hosts/tb16g6imh/ssh_host_ed25519_key.pub.age".publicKeys = keys.all;
   "hosts/tb16g6imh/mihomo.yaml.age".publicKeys = hosts.tb16g6imh ++ users.tsln;
 
+  # Aliyun China Shenzhen 1
+  "hosts/aliyun-szx-1/ssh_host_ed25519_key.age".publicKeys = hosts.aliyun-szx-1 ++ users.tsln;
+  "hosts/aliyun-szx-1/ssh_host_ed25519_key.pub.age".publicKeys = keys.all;
+  "hosts/aliyun-szx-1/mihomo.yaml.age".publicKeys = hosts.aliyun-szx-1 ++ users.tsln;
+
   # Oracle Cloud Singapore 1
   "hosts/oracle-sin-1/ssh_host_ed25519_key.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
   "hosts/oracle-sin-1/ssh_host_ed25519_key.pub.age".publicKeys = keys.all;
