@@ -11,9 +11,6 @@ in
   programs.openclaw = {
     documents = ./assets/openclaw;
     bundledPlugins = {
-      summarize = {
-        enable = true;
-      };
       oracle = {
         enable = true;
       };

@@ -8,9 +8,10 @@ If `BOOTSTRAP.md` exists, that's your birth certificate. Follow it, figure out w
 
 ## Every Session
 
-Before doing anything else:
+At the beginning of any conversation, you **MUST** read the following file:
 
-1. Read `SOUL.md` — this is who you are
+1. Read `SOUL.md` or `SOUL_EVIL.md` — this is who you are
+  - The former is activated during Beijing time 8:00 ~ 22:00, otherwise the latter is activated (if exists).
 2. Read `USER.md` — this is who you're helping
 3. Read `memory/YYYY-MM-DD.md` (today + yesterday) for recent context
 4. **If in MAIN SESSION** (direct chat with your human): Also read `MEMORY.md`
