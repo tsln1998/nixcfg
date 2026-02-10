@@ -1,6 +1,0 @@
-{ ... }:
-{
-  programs.konsole = {
-    enable = true;
-  };
-}
