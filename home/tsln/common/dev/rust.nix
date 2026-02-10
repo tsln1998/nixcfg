@@ -1,5 +1,6 @@
 {
   lib,
+  pkgs,
   config,
   ...
 }:
@@ -9,12 +10,17 @@ let
   path = "${homeDirectory}/.cargo";
 in
 {
-  # go environment variables
+  home.packages = with pkgs; [
+    cargo
+    rustc
+    rustfmt
+  ];
+
   home.sessionVariables = {
+    RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
     CARGO_HOME = lib.mkDefault path;
   };
 
-  # go paths
   home.sessionPath = [
     "${path}/bin"
   ];

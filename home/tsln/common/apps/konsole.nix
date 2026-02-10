@@ -1,6 +1,7 @@
 { ... }:
 {
   programs.konsole = {
+    enable = true;
     defaultProfile = "Default";
 
     extraConfig = {

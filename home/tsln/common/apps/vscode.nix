@@ -149,6 +149,10 @@ let
   names = lib.attrNames (langExtensions // langSettings);
 in
 {
+  programs.vscode.enable = true;
+  programs.vscode.package = repo.vscode;
+  programs.vscode.mutableExtensionsDir = false;
+
   # 生成 profiles
   programs.vscode.profiles = {
     default = {

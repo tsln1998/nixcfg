@@ -1,4 +1,5 @@
 {
+  pkgs,
   config,
   ...
 }:
@@ -6,6 +7,10 @@ let
   inherit (config.home) homeDirectory;
 in
 {
+  home.packages = with pkgs; [
+    nodejs
+  ];
+
   home.file = {
     ".npmrc" = {
       text = ''
