@@ -52,7 +52,7 @@
     plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
     plasma-manager.inputs.home-manager.follows = "home-manager";
 
-    catppuccin.url = "github:catppuccin/nix";
+    catppuccin.url = "github:catppuccin/nix/release-25.11";
     catppuccin.inputs.nixpkgs.follows = "nixpkgs";
 
     openclaw.url = "github:openclaw/nix-openclaw";
