@@ -7,8 +7,6 @@
   boot.loader.grub.efiInstallAsRemovable = true;
   boot.loader.efi.efiSysMountPoint = "/efi";
 
-  boot.tmp.useTmpfs = true;
-
   # Use Initrd
   boot.initrd = {
     availableKernelModules = [
@@ -29,26 +27,5 @@
       "virtio_rng"
       "virtio_gpu"
     ];
-  };
-
-  # Use Kernel Params
-  boot.kernelParams = [
-    "console=ttyAMA0,115200n8"
-    "console=tty0"
-  ];
-
-  fileSystems = {
-    "/" = {
-      device = "/dev/disk/by-uuid/850b03ce-145d-4a5e-98da-9770968976c9";
-      fsType = "ext4";
-    };
-    "/efi" = {
-      device = "/dev/disk/by-uuid/A2C6-6BD0";
-      fsType = "vfat";
-      options = [
-        "fmask=0077"
-        "dmask=0077"
-      ];
-    };
   };
 }

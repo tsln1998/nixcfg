@@ -1,5 +1,4 @@
 {
-  lib,
   tools,
   config,
   ...
@@ -24,7 +23,7 @@ in
   };
 
   # Home Manager configuration
-  home-manager.users = lib.optionalAttrs (config.services.comin.enable) {
+  home-manager.users = {
     "${userName}" = tools.relative "home/${userName}/${hostName}";
   };
 }
