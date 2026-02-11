@@ -2,11 +2,11 @@
 {
   imports = (
     (map tools.relative [
-      "home/tsln/common/global"
-      "home/tsln/common/cli/shells"
-      "home/tsln/common/cli/alternatives"
-      "home/tsln/common/cli/additionals"
-      "home/tsln/common/dev/git.nix"
+      "home/tsln/_common/global"
+      "home/tsln/_common/cli/shells"
+      "home/tsln/_common/cli/alternatives"
+      "home/tsln/_common/cli/additionals"
+      "home/tsln/_common/dev/git.nix"
     ])
     ++ (tools.scan ./.)
   );

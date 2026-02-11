@@ -2,10 +2,10 @@
 {
   imports = (
     map tools.relative [
-      "hosts/common/global"
-      "hosts/common/i18n"
-      "hosts/common/services/openssh.nix"
-      "hosts/common/services/comin.nix"
+      "hosts/_common/global"
+      "hosts/_common/i18n"
+      "hosts/_common/services/openssh.nix"
+      "hosts/_common/services/comin.nix"
       "users/tsln"
     ]
     ++ (tools.scan ./.)
