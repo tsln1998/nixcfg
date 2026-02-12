@@ -3,14 +3,12 @@ let
   # Import age secrets and hostname
   inherit (config.age) secrets;
   inherit (config.networking) hostName;
-  # Use the cliproxy-plus package from additions
-  pkg = pkgs.additions.cliproxy-plus;
 in
 {
   # CLIProxy service configuration
   services.cliproxy = {
     enable = true;
-    package = pkg;
+    package = pkgs.additions.cliproxy-plus;
     # Start after rclone mount is ready
     after = [ "rclone-cliproxy.service" ];
     settings = {
