@@ -27,6 +27,14 @@ in
   "hosts/oracle-sin-1/rclone.toml.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
   "hosts/oracle-sin-1/caddyfile.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
 
+  # Oracle Cloud Singapore 2
+  "hosts/oracle-sin-2/ssh_host_ed25519_key.age".publicKeys = hosts.oracle-sin-2 ++ users.tsln;
+  "hosts/oracle-sin-2/ssh_host_ed25519_key.pub.age".publicKeys = keys.all;
+  "hosts/oracle-sin-2/hysteria.yaml.age".publicKeys = hosts.oracle-sin-2 ++ users.tsln;
+  "hosts/oracle-sin-2/xray.json.age".publicKeys = hosts.oracle-sin-2 ++ users.tsln;
+  "hosts/oracle-sin-2/shadowsocks.json.age".publicKeys = hosts.oracle-sin-2 ++ users.tsln;
+  "hosts/oracle-sin-2/caddyfile.age".publicKeys = hosts.oracle-sin-2 ++ users.tsln;
+
   # Oracle Cloud India 1
   "hosts/oracle-bom-1/ssh_host_ed25519_key.age".publicKeys = hosts.oracle-bom-1 ++ users.tsln;
   "hosts/oracle-bom-1/ssh_host_ed25519_key.pub.age".publicKeys = keys.all;
