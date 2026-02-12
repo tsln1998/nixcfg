@@ -14,7 +14,6 @@ let
           --availability-domain "$OciAvailabilityDomain" \
           --compartment-id "$OciCompartmentId" \
           --subnet-id "$OciSubnetId" \
-          --metadata '{"ssh_authorized_keys": "$(cat ~/.ssh/id_ed25519.pub)"}' \
           --image-id "ocid1.image.oc1.phx.aaaaaaaaf6r2o2eybs2cnlmrhfnmzg546g2tpy3estztocaugnp7egxabmlq" \
           --boot-volume-size-in-gbs "100" \
           --shape "VM.Standard.A1.Flex" \
