@@ -5,7 +5,7 @@
   boot.loader.grub.device = "nodev";
   boot.loader.grub.efiSupport = true;
   boot.loader.grub.efiInstallAsRemovable = true;
-  boot.loader.efi.efiSysMountPoint = "/efi";
+  boot.loader.efi.efiSysMountPoint = "/boot";
 
   # Use Initrd
   boot.initrd = {

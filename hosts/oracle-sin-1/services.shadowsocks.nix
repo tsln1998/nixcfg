@@ -5,7 +5,6 @@ let
 in{
   services.shadowsocks-rust = {
     enable = true;
-
     settingsFile = secrets."hosts/${hostName}/shadowsocks.json".path;
   };
 }

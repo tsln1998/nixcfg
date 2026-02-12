@@ -7,9 +7,6 @@
   environment.persistence."/persist" = {
     hideMounts = true;
     directories = [
-      "/home"
-    ]
-    ++ [
       "/etc/ssh"
       "/etc/nixos"
     ]
