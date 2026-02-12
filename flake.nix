@@ -217,6 +217,11 @@
           hostName = "oracle-sin-1";
           system = "aarch64-linux";
         })
+        # Oracle Cloud Singapore 2
+        (nixosSystem {
+          hostName = "oracle-sin-2";
+          system = "aarch64-linux";
+        })
         # Oracle Cloud India 1
         (nixosSystem {
           hostName = "oracle-bom-1";
@@ -232,12 +237,8 @@
       # Home Manager Standalone Configrations
       #
       homeConfigurations = builtins.listToAttrs [
-        # ThinkBook 16+ G6 IMH (WSL)
-        (homeConfiguration {
-          userName = "tsln";
-          hostName = "tb16g6imh-wsl";
-          system = "x86_64-linux";
-        })
+        # nothing
+        (homeConfiguration {})
       ];
     };
 }
