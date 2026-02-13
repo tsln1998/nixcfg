@@ -12,11 +12,6 @@ in
   "hosts/tb16g6imh/ssh_host_ed25519_key.pub.age".publicKeys = keys.all;
   "hosts/tb16g6imh/mihomo.yaml.age".publicKeys = hosts.tb16g6imh ++ users.tsln;
 
-  # Aliyun China Shenzhen 1
-  "hosts/aliyun-szx-1/ssh_host_ed25519_key.age".publicKeys = hosts.aliyun-szx-1 ++ users.tsln;
-  "hosts/aliyun-szx-1/ssh_host_ed25519_key.pub.age".publicKeys = keys.all;
-  "hosts/aliyun-szx-1/mihomo.yaml.age".publicKeys = hosts.aliyun-szx-1 ++ users.tsln;
-
   # Oracle Cloud Singapore 1
   "hosts/oracle-sin-1/ssh_host_ed25519_key.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
   "hosts/oracle-sin-1/ssh_host_ed25519_key.pub.age".publicKeys = keys.all;
@@ -35,26 +30,9 @@ in
   "hosts/oracle-sin-2/shadowsocks.json.age".publicKeys = hosts.oracle-sin-2 ++ users.tsln;
   "hosts/oracle-sin-2/caddyfile.age".publicKeys = hosts.oracle-sin-2 ++ users.tsln;
 
-  # Oracle Cloud India 1
-  "hosts/oracle-bom-1/ssh_host_ed25519_key.age".publicKeys = hosts.oracle-bom-1 ++ users.tsln;
-  "hosts/oracle-bom-1/ssh_host_ed25519_key.pub.age".publicKeys = keys.all;
-  "hosts/oracle-bom-1/hysteria.yaml.age".publicKeys = hosts.oracle-bom-1 ++ users.tsln;
-  "hosts/oracle-bom-1/xray.json.age".publicKeys = hosts.oracle-bom-1 ++ users.tsln;
-  "hosts/oracle-bom-1/shadowsocks.json.age".publicKeys = hosts.oracle-bom-1 ++ users.tsln;
-  "hosts/oracle-bom-1/caddyfile.age".publicKeys = hosts.oracle-bom-1 ++ users.tsln;
-
-  # Oracle Cloud USA Phoenix 1
-  "hosts/oracle-phx-1/ssh_host_ed25519_key.age".publicKeys = hosts.oracle-phx-1 ++ users.tsln;
-  "hosts/oracle-phx-1/ssh_host_ed25519_key.pub.age".publicKeys = keys.all;
-  "hosts/oracle-phx-1/hysteria.yaml.age".publicKeys = hosts.oracle-phx-1 ++ users.tsln;
-  "hosts/oracle-phx-1/xray.json.age".publicKeys = hosts.oracle-phx-1 ++ users.tsln;
-  "hosts/oracle-phx-1/shadowsocks.json.age".publicKeys = hosts.oracle-phx-1 ++ users.tsln;
-  "hosts/oracle-phx-1/caddyfile.age".publicKeys = hosts.oracle-phx-1 ++ users.tsln;
-
   # User - tsln
   "users/tsln/id_ed25519.age".publicKeys = users.tsln;
   "users/tsln/id_ed25519.pub.age".publicKeys = keys.all;
-  "users/tsln/openclaw/openclaw.json.age".publicKeys = users.tsln;
   "users/tsln/factory/settings.json.age".publicKeys = users.tsln;
   "users/tsln/config/profile.d/agents.sh.age".publicKeys = users.tsln;
   "users/tsln/config/profile.d/secrets.sh.age".publicKeys = users.tsln;

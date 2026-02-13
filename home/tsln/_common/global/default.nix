@@ -11,7 +11,6 @@
     inputs.agenix.homeManagerModules.default
     inputs.catppuccin.homeModules.catppuccin
     inputs.plasma-manager.homeModules.plasma-manager
-    inputs.openclaw.homeManagerModules.openclaw
     outputs.homeModules.default
   ];
 

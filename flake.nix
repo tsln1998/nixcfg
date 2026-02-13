@@ -55,11 +55,6 @@
     catppuccin.url = "github:catppuccin/nix/release-25.11";
     catppuccin.inputs.nixpkgs.follows = "nixpkgs";
 
-    openclaw.url = "github:openclaw/nix-openclaw";
-    openclaw.inputs.nixpkgs.follows = "nixpkgs";
-    openclaw.inputs.flake-utils.follows = "flake-utils";
-    openclaw.inputs.home-manager.follows = "home-manager";
-
     llm-agents.url = "github:numtide/llm-agents.nix";
     llm-agents.inputs.nixpkgs.follows = "nixpkgs-unstable";
   };
@@ -207,11 +202,6 @@
           hostName = "tb16g6imh";
           system = "x86_64-linux";
         })
-        # Aliyun China Shenzhen 1
-        (nixosSystem {
-          hostName = "aliyun-szx-1";
-          system = "x86_64-linux";
-        })
         # Oracle Cloud Singapore 1
         (nixosSystem {
           hostName = "oracle-sin-1";
@@ -221,16 +211,6 @@
         (nixosSystem {
           hostName = "oracle-sin-2";
           system = "aarch64-linux";
-        })
-        # Oracle Cloud India 1
-        (nixosSystem {
-          hostName = "oracle-bom-1";
-          system = "aarch64-linux";
-        })
-        # Oracle Cloud USA Phoenix 1
-        (nixosSystem {
-          hostName = "oracle-phx-1";
-          system = "x86_64-linux";
         })
       ];
       #
