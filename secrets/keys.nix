@@ -15,20 +15,11 @@ let
     tb16g6imh = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGAkFEAhSYaKtw30BigRgUjZtwq9iFVKAS/5m8vWBprr"
     ];
-    aliyun-szx-1 = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILZ4M/151t9j8o1Y+EmBzGImhN1pHKxaCtKyVOvhdV+x"
-    ];
     oracle-sin-1 = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAbdrPFrrWj6DTbSAI7dv4wtuWSrZMZ55VS26RNysb1J"
     ];
     oracle-sin-2 = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIfVjyuhAbv15X+PkbMA8J6ero+ff9NPiiYr/gWG7t8O"
-    ];
-    oracle-bom-1 = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPE7Y+Jp2aGmJIKs7sKwmtt7x7n5oM0FdeufuhOhN2kw"
-    ];
-    oracle-phx-1 = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAID9BxLKduJubzOdDgUjleA3UmCnYrFIP7cwg1JkQ87oe"
     ];
   };
 in
