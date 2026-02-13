@@ -2,7 +2,7 @@
 {
   imports = (
     map tools.relative [
-      "users/common"
+      "users/_common"
     ]
     ++ (tools.scan ./.)
   );
