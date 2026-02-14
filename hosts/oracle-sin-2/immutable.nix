@@ -7,19 +7,15 @@
   environment.persistence."/persist" = {
     hideMounts = true;
     directories = [
-      "/etc/ssh"
-      "/etc/nixos"
-    ]
-    ++ [
-      "/var/log"
-      "/var/lib/nixos"
-      "/var/lib/systemd/coredump"
-      "/var/lib/systemd/timers"
+      { directory = "/etc/ssh"; mode = "0755"; }
+      { directory = "/etc/nixos"; mode = "0755"; }
+      { directory = "/var/log"; mode = "0755"; }
+      { directory = "/var/lib/nixos"; mode = "0755"; }
+      { directory = "/var/lib/systemd/coredump"; mode = "0755"; }
+      { directory = "/var/lib/systemd/timers"; mode = "0755"; }
     ];
     files = [
       "/etc/machine-id"
-    ]
-    ++ [
       "/var/lib/systemd/random-seed"
     ];
   };

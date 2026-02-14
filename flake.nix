@@ -17,36 +17,38 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    
     nixpkgs-nur.url = "github:nix-community/NUR";
     nixpkgs-nur.inputs.nixpkgs.follows = "nixpkgs";
 
-    nixos-systems.url = "github:nix-systems/default-linux";
-    nixos-hardware.url = "github:nixos/nixos-hardware";
     nixos-wsl.url = "github:nix-community/NixOS-WSL";
     nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
 
-    flake-utils.url = "github:numtide/flake-utils";
-    flake-utils.inputs.systems.follows = "nixos-systems";
-
-    home-manager.url = "github:nix-community/home-manager/release-25.11";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    systems.url = "github:nix-systems/default-linux";
+    hardware.url = "github:nixos/nixos-hardware";
 
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
-    agenix.inputs.systems.follows = "nixos-systems";
+    agenix.inputs.systems.follows = "systems";
     agenix.inputs.home-manager.follows = "home-manager";
-
-    impermanence.url = "github:nix-community/impermanence";
-    impermanence.inputs.nixpkgs.follows = "nixpkgs";
-    impermanence.inputs.home-manager.follows = "home-manager";
 
     comin.url = "github:nlewo/comin";
     comin.inputs.nixpkgs.follows = "nixpkgs";
 
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
+
+    impermanence.url = "github:nix-community/impermanence";
+    impermanence.inputs.nixpkgs.follows = "nixpkgs";
+    impermanence.inputs.home-manager.follows = "home-manager";
+
+    flake-utils.url = "github:numtide/flake-utils";
+    flake-utils.inputs.systems.follows = "systems";
+
+    home-manager.url = "github:nix-community/home-manager/release-25.11";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     plasma-manager.url = "github:nix-community/plasma-manager";
     plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
