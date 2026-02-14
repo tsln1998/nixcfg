@@ -8,7 +8,7 @@ in
   # CLIProxy service configuration
   services.cliproxy = {
     enable = true;
-    package = pkgs.additions.cliproxy-plus;
+    package = pkgs.repos.additions.cliproxy-plus;
     # Start after rclone mount is ready
     after = [ "rclone-cliproxy.service" ];
     settings = {

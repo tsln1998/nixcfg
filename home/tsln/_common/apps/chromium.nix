@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-  repo = pkgs.unstable;
+  repo = pkgs.repos.unstable;
 in
 {
   programs.chromium = {

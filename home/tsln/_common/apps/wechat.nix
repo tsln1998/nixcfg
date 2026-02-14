@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
   home.packages = [
-    pkgs.nur.repos.xddxdd.wechat-uos-sandboxed
+    pkgs.repos.nur.xddxdd.wechat-uos-sandboxed
   ];
 }

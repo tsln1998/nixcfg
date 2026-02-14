@@ -2,9 +2,9 @@
 {
   home.packages = [
     # LLM Agents
-    pkgs.llm-agents.openspec
-    pkgs.llm-agents.opencode
-    pkgs.llm-agents.claude-code
+    pkgs.repos.llm-agents.openspec
+    pkgs.repos.llm-agents.opencode
+    pkgs.repos.llm-agents.claude-code
   ]
   ++ [
     # Development Tools
