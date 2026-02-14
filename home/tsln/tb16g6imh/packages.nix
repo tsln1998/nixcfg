@@ -2,7 +2,6 @@
 {
   home.packages = [
     # LLM Agents
-    pkgs.llm-agents.droid
     pkgs.llm-agents.openspec
     pkgs.llm-agents.opencode
     pkgs.llm-agents.claude-code

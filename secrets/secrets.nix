@@ -33,7 +33,6 @@ in
   # User - tsln
   "users/tsln/id_ed25519.age".publicKeys = users.tsln;
   "users/tsln/id_ed25519.pub.age".publicKeys = keys.all;
-  "users/tsln/factory/settings.json.age".publicKeys = users.tsln;
   "users/tsln/config/profile.d/agents.sh.age".publicKeys = users.tsln;
   "users/tsln/config/profile.d/secrets.sh.age".publicKeys = users.tsln;
   "users/tsln/config/opencode/opencode.json.age".publicKeys = users.tsln;

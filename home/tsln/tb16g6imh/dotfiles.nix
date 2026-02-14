@@ -18,8 +18,4 @@ in
   age.secrets."users/${username}/config/opencode/oh-my-opencode.json" = {
     path = "${homeDirectory}/.config/opencode/oh-my-opencode.json";
   };
-
-  age.secrets."users/${username}/factory/settings.json" = {
-    path = "${homeDirectory}/.factory/settings.json";
-  };
 }
