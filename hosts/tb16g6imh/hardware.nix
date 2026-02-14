@@ -6,10 +6,10 @@
 }:
 {
   imports = [
-    inputs.nixos-hardware.nixosModules.common-cpu-intel
-    inputs.nixos-hardware.nixosModules.common-gpu-intel
-    inputs.nixos-hardware.nixosModules.common-pc-laptop
-    inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
+    inputs.hardware.nixosModules.common-cpu-intel
+    inputs.hardware.nixosModules.common-gpu-intel
+    inputs.hardware.nixosModules.common-pc-laptop
+    inputs.hardware.nixosModules.common-pc-laptop-ssd
   ];
 
   # Use the GRUB 2 boot loader.
