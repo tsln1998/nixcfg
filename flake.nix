@@ -19,7 +19,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
 
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    
+
     nixpkgs-nur.url = "github:nix-community/NUR";
     nixpkgs-nur.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -219,8 +219,12 @@
       # Home Manager Standalone Configrations
       #
       homeConfigurations = builtins.listToAttrs [
-        # nothing
-        (homeConfiguration {})
+        # ThinkBook 16+ G6 IMH (WSL)
+        (homeConfiguration {
+          userName = "tsln";
+          hostName = "tb16g6imh-wsl";
+          system = "x86_64-linux";
+        })
       ];
     };
 }

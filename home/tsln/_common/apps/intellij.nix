@@ -1,6 +1,6 @@
 { lib, pkgs, ... }:
 let
-  repo = pkgs.unstable;
+  repo = pkgs.repos.unstable;
   release = repo.jetbrains.idea;
 in
 {

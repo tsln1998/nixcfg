@@ -14,6 +14,6 @@
   ];
 
   environment.defaultPackages = [
-    pkgs.agenix
+    pkgs.ragenix
   ];
 }

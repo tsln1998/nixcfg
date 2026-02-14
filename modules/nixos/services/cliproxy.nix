@@ -11,7 +11,7 @@ in
   options.services.cliproxy = {
     enable = lib.mkEnableOption "CLIProxyAPI is a proxy server that provides OpenAI/Gemini/Claude/Codex compatible API interfaces for CLI.";
 
-    package = lib.mkPackageOption pkgs.additions "cliproxy" { };
+    package = lib.mkPackageOption pkgs.repos.additions "cliproxy" { };
 
     port = lib.mkOption {
       type = lib.types.port;
@@ -114,7 +114,7 @@ in
         environment = (
           (lib.optionalAttrs (cfg.environment != null) cfg.environment)
           // {
-            MANAGEMENT_STATIC_PATH = pkgs.additions.cliproxy-management.outPath;
+            MANAGEMENT_STATIC_PATH = pkgs.repos.additions.cliproxy-management.outPath;
           }
         );
 

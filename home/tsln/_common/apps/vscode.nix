@@ -4,7 +4,7 @@
   ...
 }:
 let
-  repo = pkgs.unstable;
+  repo = pkgs.repos.unstable;
 
   # 基础扩展
   baseExtensions = with repo.vscode-extensions; [
@@ -111,7 +111,7 @@ let
       (with repo.vscode-extensions; [
         golang.go
       ])
-      ++ (with pkgs.additions; [
+      ++ (with pkgs.repos.additions; [
         vscode-extensions_vscode-buf
       ]);
 
@@ -136,7 +136,7 @@ let
         ms-python.isort
         ms-python.vscode-pylance
       ])
-      ++ (with pkgs.additions; [
+      ++ (with pkgs.repos.additions; [
         vscode-extensions_autopep8
       ]);
 

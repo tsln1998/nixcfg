@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
   home.packages = [
-    pkgs.nur.repos.xddxdd.dingtalk
+    pkgs.repos.nur.xddxdd.dingtalk
   ];
 }
