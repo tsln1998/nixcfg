@@ -87,6 +87,24 @@ let
     "update.showReleaseNotes" = false;
   };
 
+  # 基础键盘映射
+  baseKeybindings = [
+    {
+      key = "ctrl+p";
+      command = "-workbench.action.quickOpen";
+    }
+    {
+      key = "ctrl+p";
+      command = "-editor.action.triggerParameterHints";
+      when = "editorHasSignatureHelpProvider && editorTextFocus";
+    }
+    {
+      key = "ctrl+p";
+      command = "-workbench.action.quickOpenNavigateNextInFilePicker";
+      when = "inFilesPicker && inQuickOpen";
+    }
+  ];
+
   # 语言特定扩展配置（不包含基础扩展）
   langExtensions = rec {
     Go =
@@ -145,6 +163,10 @@ let
     All = Go // Zig;
   };
 
+  # 语言特定键盘映射
+  langKeybindings = {
+  };
+
   # 提取配置名称
   names = lib.attrNames (langExtensions // langSettings);
 in
@@ -160,11 +182,13 @@ in
       enableExtensionUpdateCheck = false;
       extensions = baseExtensions;
       userSettings = baseSettings;
+      keybindings = baseKeybindings;
     };
   }
   // (lib.genAttrs names (lang: {
     extensions = baseExtensions ++ (langExtensions.${lang} or [ ]);
     userSettings = baseSettings // (langSettings.${lang} or { });
+    keybindings = baseKeybindings ++ (langKeybindings.${lang} or [ ]);
   }));
 
   # 生成 catppuccin 配置
