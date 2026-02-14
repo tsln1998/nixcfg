@@ -33,9 +33,4 @@ in
     file = relative "secrets/users/${username}/config/opencode/oh-my-opencode.json.age";
     mode = "644";
   };
-
-  age.secrets."users/${username}/factory/settings.json" = {
-    file = relative "secrets/users/${username}/factory/settings.json.age";
-    mode = "644";
-  };
 }
