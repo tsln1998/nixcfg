@@ -10,8 +10,6 @@ let
   enableKonsole = config.programs.konsole.enable;
   flavor = "latte";
   accent = "blue";
-  artwork = pkgs.nixos-artwork.wallpapers."catppuccin-${flavor}";
-  wallpaper = "${artwork}/share/backgrounds/nixos/nixos-wallpaper-catppuccin-${flavor}.png";
 in
 {
   # Catppuccin
@@ -34,12 +32,7 @@ in
   ];
 
   # Catppuccin Plasma Configuration
-  programs.plasma.kscreenlocker = lib.optionalAttrs enablePlasma {
-    appearance.wallpaper = wallpaper;
-  };
-
   programs.plasma.workspace = lib.optionalAttrs enablePlasma {
-    wallpaper = wallpaper;
     colorScheme = "Catppuccin${toSentenceCase flavor}${toSentenceCase accent}";
     splashScreen.theme = "Catppuccin-${toSentenceCase flavor}-${toSentenceCase accent}";
     cursor.theme = if flavor == "latte" then "Breeze_Light" else "breeze_cursors";
