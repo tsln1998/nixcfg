@@ -1,14 +1,29 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   # Import age secrets and hostname
   inherit (config.age) secrets;
   inherit (config.networking) hostName;
+
+  # Select the package with higher version
+  inherit (pkgs.repos.additions) cliproxy-plus cliproxy-plus-bin;
+  package = (
+    if lib.versionAtLeast cliproxy-plus.version cliproxy-plus-bin.version then
+      cliproxy-plus
+    else
+      cliproxy-plus-bin
+  );
 in
 {
   # CLIProxy service configuration
   services.cliproxy = {
     enable = true;
-    package = pkgs.repos.additions.cliproxy-plus;
+    package = package;
+
     # Start after rclone mount is ready
     after = [ "rclone-cliproxy.service" ];
     settings = {
