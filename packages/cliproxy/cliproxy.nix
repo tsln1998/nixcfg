@@ -5,7 +5,6 @@
   fetchFromGitHub,
 }:
 let
-  inherit (stdenv.hostPlatform.extensions) executable;
   owner = "router-for-me";
   repo = "CLIProxyAPI";
   pname = "cliproxy";
@@ -51,7 +50,7 @@ buildGoModule rec {
   '';
 
   postInstall = ''
-    mv $out/bin/server${executable} $out/bin/${pname}${executable}
+    mv $out/bin/server $out/bin/${pname}
     cp $src/config.example.yaml $out/
   '';
 

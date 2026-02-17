@@ -8,8 +8,7 @@
   desktop-file-utils,
 }:
 let
-  inherit (stdenv.hostPlatform.extensions) executable;
-  inherit (stdenv.hostPlatform) isLinux isWindows;
+  inherit (stdenv.hostPlatform) isLinux;
   owner = "router-for-me";
   repo = "CLIProxyAPIPlus";
   pname = "cliproxy-plus";
@@ -41,9 +40,7 @@ buildGoModule rec {
   ];
 
   buildInputs =
-    (lib.optionals (!isWindows) [
-      curl
-    ])
+    [ curl ]
     ++ (lib.optionals isLinux [
       xdg-utils
       desktop-file-utils
@@ -66,7 +63,7 @@ buildGoModule rec {
   '';
 
   postInstall = ''
-    mv $out/bin/server${executable} $out/bin/${pname}${executable}
+    mv $out/bin/server $out/bin/${pname}
     cp $src/config.example.yaml $out/
   '';
 
