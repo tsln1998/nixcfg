@@ -179,14 +179,14 @@
       # NixOS Configurations
       #
       nixosConfigurations = builtins.listToAttrs [
-        # ThinkBook 16+ G6 IMH (WSL)
-        (nixosSystem {
-          hostName = "tb16g6imh-wsl";
-          system = "x86_64-linux";
-        })
         # ThinkBook 16+ G6 IMH
         (nixosSystem {
           hostName = "tb16g6imh";
+          system = "x86_64-linux";
+        })
+        # ThinkBook 16+ G6 IMH (WSL)
+        (nixosSystem {
+          hostName = "tb16g6imh-wsl";
           system = "x86_64-linux";
         })
         # Oracle Cloud Singapore 1
