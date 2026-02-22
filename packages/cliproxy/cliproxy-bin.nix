@@ -8,16 +8,16 @@ let
   owner = "router-for-me";
   repo = "CLIProxyAPI";
   pname = "cliproxy-bin";
-  version = "6.8.22";
+  version = "6.8.24";
 
   srcs = {
     x86_64-linux = fetchurl {
       url = "https://github.com/${owner}/${repo}/releases/download/v${version}/CLIProxyAPI_${version}_linux_amd64.tar.gz";
-      hash = "sha256-vkrC/xlYblhIPKF0sYQMqsqWOqLDejRJQ5OARD7T1b0=";
+      hash = "sha256-3h4RldOoEOze7fPLCmyNaGaTudIkXiKd1MmCMleBlHg=";
     };
     aarch64-linux = fetchurl {
       url = "https://github.com/${owner}/${repo}/releases/download/v${version}/CLIProxyAPI_${version}_linux_arm64.tar.gz";
-      hash = "sha256-Kd1iFx6qkfw+NJHgCElodyxCwQJwTD7qK0QO+/tExo0=";
+      hash = "sha256-O/t3kalMzWeV/0xtOLnGN+Ogpi+sOvK3X4Ag8kMpccY=";
     };
   };
 
