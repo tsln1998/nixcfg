@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
   age.identityPaths = [
     "/etc/ssh/ssh_host_ed25519_key"
@@ -14,6 +14,6 @@
   ];
 
   environment.defaultPackages = [
-    pkgs.ragenix
+    inputs.agenix.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 }
