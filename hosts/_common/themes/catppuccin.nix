@@ -10,11 +10,11 @@
     };
 
     grub = {
-      flavor = "macchiato";
+      flavor = lib.mkDefault "macchiato";
     };
 
     plymouth = {
-      flavor = "macchiato";
+      flavor = lib.mkDefault "macchiato";
     };
   };
 }
