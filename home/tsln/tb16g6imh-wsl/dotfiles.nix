@@ -18,4 +18,12 @@ in
   age.secrets."users/${username}/config/opencode/oh-my-opencode.json" = {
     path = "${homeDirectory}/.config/opencode/oh-my-opencode.json";
   };
+
+  age.secrets."users/${username}/codex/config.toml" = {
+    path = "${homeDirectory}/.codex/config.toml";
+  };
+
+  age.secrets."users/${username}/codex/auth.json" = {
+    path = "${homeDirectory}/.codex/auth.json";
+  };
 }
