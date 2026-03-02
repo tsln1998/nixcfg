@@ -4,6 +4,7 @@
     # LLM Agents
     pkgs.repos.llm-agents.openspec
     pkgs.repos.llm-agents.opencode
+    pkgs.repos.llm-agents.codex
     pkgs.repos.llm-agents.claude-code
   ]
   ++ [
