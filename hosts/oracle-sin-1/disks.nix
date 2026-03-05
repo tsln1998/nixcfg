@@ -16,7 +16,7 @@ _: {
                   "defaults"
                   "umask=0077"
                 ];
-                mountpoint = "/boot";
+                mountpoint = "/boot/efi";
                 type = "filesystem";
               };
             };
@@ -35,6 +35,14 @@ _: {
       pool = {
         type = "lvm_vg";
         lvs = {
+          boot = {
+            size = "1G";
+            content = {
+              type = "filesystem";
+              format = "ext4";
+              mountpoint = "/boot";
+            };
+          };
           persist = {
             size = "4G";
             content = {
