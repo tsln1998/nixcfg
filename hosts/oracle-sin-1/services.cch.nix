@@ -10,10 +10,16 @@ in
     environment = {
       TZ = "Asia/Shanghai";
 
+      REDIS_URL = "redis://redis:6379";
+
       ENABLE_RATE_LIMIT = "true";
       ENABLE_SMART_PROBING = "true";
       ENABLE_CIRCUIT_BREAKER_ON_NETWORK_ERRORS = "true";
     };
+
+    dependsOn = [
+      "redis"
+    ];
 
     environmentFiles = [
       secrets."hosts/${hostName}/cch.env".path
