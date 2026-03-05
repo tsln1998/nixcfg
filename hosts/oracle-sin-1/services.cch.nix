@@ -9,9 +9,10 @@ in
 
     environment = {
       TZ = "Asia/Shanghai";
-      SESSION_TTL = "300";
-      AUTO_MIGRATE = "true";
+
       ENABLE_RATE_LIMIT = "true";
+      ENABLE_SMART_PROBING = "true";
+      ENABLE_CIRCUIT_BREAKER_ON_NETWORK_ERRORS = "true";
     };
 
     environmentFiles = [
