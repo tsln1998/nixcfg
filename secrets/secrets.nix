@@ -15,18 +15,16 @@ in
   # Oracle Cloud Singapore 1
   "hosts/oracle-sin-1/ssh_host_ed25519_key.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
   "hosts/oracle-sin-1/ssh_host_ed25519_key.pub.age".publicKeys = keys.all;
+  "hosts/oracle-sin-1/rclone.toml.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
   "hosts/oracle-sin-1/hub.env.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
   "hosts/oracle-sin-1/cpa.env.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
   "hosts/oracle-sin-1/xray.json.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
-  "hosts/oracle-sin-1/hysteria.yaml.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
   "hosts/oracle-sin-1/shadowsocks.json.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
-  "hosts/oracle-sin-1/rclone.toml.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
   "hosts/oracle-sin-1/caddyfile.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
 
   # Oracle Cloud Singapore 2
   "hosts/oracle-sin-2/ssh_host_ed25519_key.age".publicKeys = hosts.oracle-sin-2 ++ users.tsln;
   "hosts/oracle-sin-2/ssh_host_ed25519_key.pub.age".publicKeys = keys.all;
-  "hosts/oracle-sin-2/hysteria.yaml.age".publicKeys = hosts.oracle-sin-2 ++ users.tsln;
   "hosts/oracle-sin-2/xray.json.age".publicKeys = hosts.oracle-sin-2 ++ users.tsln;
   "hosts/oracle-sin-2/shadowsocks.json.age".publicKeys = hosts.oracle-sin-2 ++ users.tsln;
   "hosts/oracle-sin-2/caddyfile.age".publicKeys = hosts.oracle-sin-2 ++ users.tsln;
