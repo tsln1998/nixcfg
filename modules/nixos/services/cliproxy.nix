@@ -149,6 +149,10 @@ in
                     "${lib.getExe' pkgs.toybox "ln"} -sf ${conf} ${cwd}/config.yaml"
                   ]
               )
+              ++ [
+                ### create configuration file symlink
+                "${lib.getExe' pkgs.toybox "ln"} -sf ${cwd}/config.yaml ${cwd}/config.example.yaml"
+              ]
             )
           );
 
