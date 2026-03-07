@@ -4,8 +4,8 @@ let
   inherit (config.networking) hostName;
 in
 {
-  age.secrets."hosts/${hostName}/hysteria.yaml" = {
-    file = relative "secrets/hosts/${hostName}/hysteria.yaml.age";
+  age.secrets."hosts/${hostName}/rclone.toml" = {
+    file = relative "secrets/hosts/${hostName}/rclone.toml.age";
     mode = "0644";
   };
   age.secrets."hosts/${hostName}/hub.env" = {
@@ -22,10 +22,6 @@ in
   };
   age.secrets."hosts/${hostName}/shadowsocks.json" = {
     file = relative "secrets/hosts/${hostName}/shadowsocks.json.age";
-    mode = "0644";
-  };
-  age.secrets."hosts/${hostName}/rclone.toml" = {
-    file = relative "secrets/hosts/${hostName}/rclone.toml.age";
     mode = "0644";
   };
   age.secrets."hosts/${hostName}/caddyfile" = {
