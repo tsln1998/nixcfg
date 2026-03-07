@@ -8,8 +8,12 @@ in
     file = relative "secrets/hosts/${hostName}/hysteria.yaml.age";
     mode = "0644";
   };
-  age.secrets."hosts/${hostName}/cch.env" = {
-    file = relative "secrets/hosts/${hostName}/cch.env.age";
+  age.secrets."hosts/${hostName}/hub.env" = {
+    file = relative "secrets/hosts/${hostName}/hub.env.age";
+    mode = "0644";
+  };
+  age.secrets."hosts/${hostName}/cpa.env" = {
+    file = relative "secrets/hosts/${hostName}/cpa.env.age";
     mode = "0644";
   };
   age.secrets."hosts/${hostName}/xray.json" = {
@@ -18,10 +22,6 @@ in
   };
   age.secrets."hosts/${hostName}/shadowsocks.json" = {
     file = relative "secrets/hosts/${hostName}/shadowsocks.json.age";
-    mode = "0644";
-  };
-  age.secrets."hosts/${hostName}/cliproxy.yaml" = {
-    file = relative "secrets/hosts/${hostName}/cliproxy.yaml.age";
     mode = "0644";
   };
   age.secrets."hosts/${hostName}/rclone.toml" = {

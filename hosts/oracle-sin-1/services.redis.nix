@@ -1,9 +1,11 @@
 { ... }:
 {
-  virtualisation.oci-containers.containers.redis = {
-    image = "docker.io/redis:8-alpine";
-    volumes = [
-      "redis:/data"
-    ];
+  services.redis = {
+    servers = {
+      default = {
+        enable = true;
+        port = 6379;
+      };
+    };
   };
 }
