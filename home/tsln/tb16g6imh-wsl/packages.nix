@@ -2,7 +2,7 @@
 {
   home.packages = [
     # LLM Agents
-    pkgs.repos.llm-agents.codex
+    pkgs.repos.additions.codex
     pkgs.repos.llm-agents.opencode
     pkgs.repos.llm-agents.claude-code
   ]
