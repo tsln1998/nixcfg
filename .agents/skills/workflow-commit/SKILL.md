@@ -1,7 +1,8 @@
 ---
-name: Commit Agent
-description: Commit the current changes to the Git repository.
+name: workflow-commit
+description: Review the current Git changes, draft a Chinese commit message for user confirmation, then commit the intended local changes without pushing. Use when the user asks to commit work in the current repository.
 ---
+
 # Commit Agent
 
 Commit the current changes to the Git repository.
@@ -30,5 +31,3 @@ Commit the current changes to the Git repository.
   - merge: Merge a branch
 - The commit subject should be a short, descriptive summary of the changes and always using English.
 - The commit body should be a detailed description of the changes and always using English.
-
-$ARGUMENTS

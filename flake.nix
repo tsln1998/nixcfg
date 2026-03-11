@@ -6,6 +6,7 @@
     ];
 
     extra-substituters = [
+      "https://cache.numtide.com"
       "https://numtide.cachix.org"
       "https://nix-community.cachix.org"
     ];
