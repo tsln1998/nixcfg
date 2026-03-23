@@ -12,16 +12,16 @@ let
   owner = "openai";
   repo = "codex";
   pname = "codex";
-  version = "0.115.0";
+  version = "0.116.0";
 
   srcs = {
     x86_64-linux = fetchurl {
       url = "https://github.com/${owner}/${repo}/releases/download/rust-v${version}/codex-x86_64-unknown-linux-gnu.tar.gz";
-      hash = "sha256-HEkvSvzabAf7FMwFxjaEviUKRApb/wuiiOSIhi2DnSE=";
+      hash = "sha256-nHzLauLazZK2ziXVUllO3JuwaD9/GDaoJZluKeje2VQ=";
     };
     aarch64-linux = fetchurl {
       url = "https://github.com/${owner}/${repo}/releases/download/rust-v${version}/codex-aarch64-unknown-linux-gnu.tar.gz";
-      hash = "sha256-nWIcwgR3+IWR1zuxly3PivL5/sZ4AC9MKh6ogFMSW9k=";
+      hash = "sha256-TF6eFAQ9NLPIHTdavcKjH6cmFD++aFxN+usIjQDkIfw=";
     };
   };
 
