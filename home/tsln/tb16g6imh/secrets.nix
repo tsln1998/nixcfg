@@ -24,6 +24,16 @@ in
     mode = "644";
   };
 
+  age.secrets."users/${username}/codex/config.toml" = {
+    file = relative "secrets/users/${username}/codex/config.toml.age";
+    mode = "644";
+  };
+
+  age.secrets."users/${username}/codex/auth.json" = {
+    file = relative "secrets/users/${username}/codex/auth.json.age";
+    mode = "644";
+  };
+
   age.secrets."users/${username}/config/opencode/opencode.json" = {
     file = relative "secrets/users/${username}/config/opencode/opencode.json.age";
     mode = "644";
