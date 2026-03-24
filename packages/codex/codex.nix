@@ -1,12 +1,12 @@
 {
   autoPatchelfHook,
   lib,
-  libcap,
-  openssl,
   stdenv,
   stdenvNoCC,
   fetchurl,
   zlib,
+  libcap,
+  openssl,
 }:
 let
   owner = "openai";
@@ -32,13 +32,16 @@ in
 stdenvNoCC.mkDerivation {
   inherit pname version src;
 
-  nativeBuildInputs = [ autoPatchelfHook ];
+  nativeBuildInputs = [ 
+    autoPatchelfHook
+  ];
 
   buildInputs = [
-    libcap
-    openssl
     stdenv.cc.cc.lib
+    openssl
     zlib
+  ] ++ lib.optionals stdenv.hostPlatform.isLinux [
+    libcap
   ];
 
   sourceRoot = ".";
