@@ -11,6 +11,8 @@
       "home/tsln/_common/dev/go.nix"
       "home/tsln/_common/dev/nix.nix"
       "home/tsln/_common/dev/nodejs.nix"
+      "home/tsln/_common/ops/kubectl.nix"
+      "home/tsln/_common/ops/fluxcd.nix"
       "home/tsln/_common/ops/nixos.nix"
     ])
     ++ (tools.scan ./.)
