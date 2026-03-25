@@ -26,9 +26,13 @@
       "home/tsln/_common/dev/git.nix"
       "home/tsln/_common/dev/nix.nix"
       "home/tsln/_common/dev/nodejs.nix"
+      "home/tsln/_common/dev/agents"
+      "home/tsln/_common/dev/dotfiles"
+      "home/tsln/_common/dev/utils"
       "home/tsln/_common/ops/kubectl.nix"
       "home/tsln/_common/ops/fluxcd.nix"
       "home/tsln/_common/ops/nixos.nix"
+      "home/tsln/_common/ops/dotfiles/kubectl.nix"
     ])
     ++ (tools.scan ./.)
   );
