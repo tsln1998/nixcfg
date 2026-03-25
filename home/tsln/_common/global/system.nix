@@ -1,5 +1,6 @@
-{ config, lib, ... }:
+{ config, lib,tools, ... }:
 let
+  inherit (tools) relative;
   inherit (config.home) username;
   inherit (config.age) secrets;
 
@@ -20,6 +21,17 @@ let
     ];
 in
 {
+  # Load secrets
+  age.secrets."users/${username}/id_ed25519" = {
+    file = relative "secrets/users/${username}/id_ed25519.age";
+    mode = "600";
+  };
+
+  age.secrets."users/${username}/id_ed25519.pub" = {
+    file = relative "secrets/users/${username}/id_ed25519.pub.age";
+    mode = "644";
+  };
+
   # Install secret keys to ~/.ssh
   home.activation.secretKeys = lib.hm.dag.entryAfter [ "agenix" ] ''
     run mkdir -p $HOME/.ssh

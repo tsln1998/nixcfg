@@ -32,8 +32,8 @@ in
   # User - tsln
   "users/tsln/id_ed25519.age".publicKeys = users.tsln;
   "users/tsln/id_ed25519.pub.age".publicKeys = keys.all;
-  "users/tsln/config/profile.d/agents.sh.age".publicKeys = users.tsln;
-  "users/tsln/config/profile.d/secrets.sh.age".publicKeys = users.tsln;
+  "users/tsln/config/profile.d/claude.sh.age".publicKeys = users.tsln;
+  "users/tsln/kube/config.age".publicKeys = users.tsln;
   "users/tsln/codex/config.toml.age".publicKeys = users.tsln;
   "users/tsln/codex/auth.json.age".publicKeys = users.tsln;
   "users/tsln/config/opencode/opencode.json.age".publicKeys = users.tsln;
