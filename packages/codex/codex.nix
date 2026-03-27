@@ -1,9 +1,11 @@
 {
   autoPatchelfHook,
   lib,
+  makeWrapper,
   stdenv,
   stdenvNoCC,
   fetchurl,
+  bubblewrap,
   zlib,
   libcap,
   openssl,
@@ -12,16 +14,16 @@ let
   owner = "openai";
   repo = "codex";
   pname = "codex";
-  version = "0.116.0";
+  version = "0.118.0-alpha.3";
 
   srcs = {
     x86_64-linux = fetchurl {
       url = "https://github.com/${owner}/${repo}/releases/download/rust-v${version}/codex-x86_64-unknown-linux-gnu.tar.gz";
-      hash = "sha256-nHzLauLazZK2ziXVUllO3JuwaD9/GDaoJZluKeje2VQ=";
+      hash = "sha256-5+JTwgKZ/i6ldPdkA0+lw2eYqyqpUXYamD3ByWwAR6M=";
     };
     aarch64-linux = fetchurl {
       url = "https://github.com/${owner}/${repo}/releases/download/rust-v${version}/codex-aarch64-unknown-linux-gnu.tar.gz";
-      hash = "sha256-TF6eFAQ9NLPIHTdavcKjH6cmFD++aFxN+usIjQDkIfw=";
+      hash = "sha256-8F7saWB6d2cPmYCwd8QqVmkPfWDlv9atFit4qfbYJ60=";
     };
   };
 
@@ -32,8 +34,9 @@ in
 stdenvNoCC.mkDerivation {
   inherit pname version src;
 
-  nativeBuildInputs = [ 
+  nativeBuildInputs = [
     autoPatchelfHook
+    makeWrapper
   ];
 
   buildInputs = [
@@ -42,6 +45,7 @@ stdenvNoCC.mkDerivation {
     zlib
   ] ++ lib.optionals stdenv.hostPlatform.isLinux [
     libcap
+    bubblewrap
   ];
 
   sourceRoot = ".";
@@ -53,6 +57,11 @@ stdenvNoCC.mkDerivation {
     install -m755 codex-* $out/bin/codex
 
     runHook postInstall
+  '';
+
+  postFixup = ''
+    wrapProgram $out/bin/codex \
+      --prefix PATH : ${lib.makeBinPath [ bubblewrap ]}
   '';
 
   meta = with lib; {
