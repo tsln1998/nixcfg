@@ -16,5 +16,6 @@ with kdePackages;
     khelpcenter
     kate
     elisa
+    discover
   ];
 }
