@@ -39,7 +39,7 @@
   ];
 
   # Intel GPU
-  hardware.intelgpu.vaapiDriver = "intel-media-driver";
+  hardware.intelgpu.vaapiDriver = pkgs.intel-media-driver.pname;
 
   # TODO: Intel NPU (Requires NixOS 26.05)
   # hardware.cpu.intel.npu.enable = true;
@@ -48,7 +48,7 @@
   hardware.cpu.intel.updateMicrocode = true;
 
   # Immutable firmware  
-  services.fwupd.enable = lib.mkForce false;
+  services.fwupd.enable = lib.mkDefault true;
 
   # Cooling management
   services.thermald.enable = lib.mkDefault true;
