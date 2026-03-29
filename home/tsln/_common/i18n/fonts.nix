@@ -10,7 +10,8 @@
         "Noto Sans CJK SC"
       ];
       monospace = [
-        "Jetbrains Mono"
+        "Monaspace Neon"
+        "Monaspace Neon NF"
       ];
       emoji = [
         "Noto Color Emoji"
@@ -22,7 +23,7 @@
     noto-fonts-cjk-sans
     noto-fonts-cjk-serif
     noto-fonts-color-emoji
-    jetbrains-mono
-    nerd-fonts.jetbrains-mono
+    monaspace
+    nerd-fonts.monaspace
   ];
 }
