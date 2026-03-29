@@ -1,9 +1,12 @@
 {
+  config,
   lib,
   pkgs,
   ...
 }:
 let
+  inherit (config.fonts.fontconfig) defaultFonts;
+
   repo = pkgs.repos.unstable;
 
   # 基础扩展
@@ -44,14 +47,14 @@ let
     "files.eol" = lib.mkDefault "\n";
 
     "editor.fontLigatures" = lib.mkDefault true;
-    "editor.fontFamily" = lib.mkDefault (
-      lib.strings.concatStringsSep ", " [
-        "'Jetbrains Mono'"
-        "'Noto Sans CJK SC'"
-        "'Noto Serif CJK SC'"
-        "'Noto Color Emoji'"
-      ]
-    );
+    "editor.fontFamily" = lib.mkDefault (lib.strings.concatStringsSep ", " (
+      map (font: "'${font}'") (
+        defaultFonts.monospace
+        ++ defaultFonts.sansSerif
+        ++ defaultFonts.serif
+        ++ defaultFonts.emoji
+      )
+    ));
     "editor.cursorSmoothCaretAnimation" = lib.mkDefault "on";
     "editor.cursorBlinking" = lib.mkDefault "phase";
     "editor.inlineSuggest.enabled" = lib.mkDefault true;
@@ -75,8 +78,6 @@ let
 
     "gitblame.delayBlame" = lib.mkDefault 500;
     "gitblame.ignoreWhitespace" = lib.mkDefault true;
-
-    "diffEditor.renderSideBySide" = lib.mkDefault false;
 
     "nix.enableLanguageServer" = lib.mkDefault true;
     "nix.serverPath" = lib.mkDefault "nixd";

@@ -12,12 +12,12 @@
 
     fonts = [
       {
-        name = "JetBrains Mono";
-        package = pkgs.jetbrains-mono;
+        name = "Monaspace Neon";
+        package = pkgs.monaspace;
       }
       {
-        name = "JetBrainsMono Nerd Font";
-        package = pkgs.nerd-fonts.jetbrains-mono;
+        name = "Monaspace Neon NF";
+        package = pkgs.nerd-fonts.monaspace;
       }
       {
         name = "Noto Sans CJK SC";

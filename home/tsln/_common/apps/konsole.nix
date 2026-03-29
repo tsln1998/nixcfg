@@ -13,7 +13,7 @@
     profiles = {
       Default = {
         font = {
-          name = "Jetbrains Mono";
+          name = "Monospace";
           size = 11;
         };
       };
