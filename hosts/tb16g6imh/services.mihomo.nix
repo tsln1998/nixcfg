@@ -1,15 +1,22 @@
 {
   pkgs,
   lib,
+  tools,
   config,
   ...
 }:
 let
+  inherit (tools) relative;
   inherit (config.age) secrets;
   inherit (config.networking) hostName;
   cfg = config.services.mihomo;
 in
 {
+  age.secrets."hosts/${hostName}/mihomo.yaml" = {
+    file = relative "secrets/hosts/${hostName}/mihomo.yaml.age";
+    mode = "0644";
+  };
+  
   services.mihomo = {
     enable = false;
     tunMode = true;
