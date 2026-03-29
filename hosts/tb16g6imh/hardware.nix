@@ -30,7 +30,7 @@
   };
 
   # Hardware clock
-  time.hardwareClockInLocalTime = lib.mkForce false;
+  time.hardwareClockInLocalTime = lib.mkForce true;
 
   # Redistributable firmware
   hardware.firmware = with pkgs; [
