@@ -53,6 +53,11 @@
   # Cooling management
   services.thermald.enable = lib.mkDefault true;
 
+  # Awake device blacklist
+  services.udev.extraRules = ''
+    ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x8086", ATTR{device}=="0x7e7d", ATTR{power/wakeup}="disabled"
+  '';
+
   # TPM2 Module
   security.tpm2.enable = lib.mkDefault true;
 }

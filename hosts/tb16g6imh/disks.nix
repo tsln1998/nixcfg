@@ -66,14 +66,14 @@ _: {
       "/" = {
         fsType = "tmpfs";
         mountOptions = [
-          "size=1G"
+          "size=2G"
           "mode=0755"
         ];
       };
       "/tmp" = {
         fsType = "tmpfs";
         mountOptions = [
-          "size=4G"
+          "size=2G"
         ];
       };
     };

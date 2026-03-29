@@ -6,6 +6,7 @@
       { directory = ".bun"; mode = "0755"; }
       { directory = ".cache"; mode = "0755"; }
       { directory = ".cargo"; mode = "0755"; }
+      { directory = ".codex"; mode = "0755"; }
       { directory = ".claude"; mode = "0755"; }
       { directory = ".config"; mode = "0755"; }
       { directory = ".go"; mode = "0755"; }
