@@ -5,7 +5,5 @@
 
   networking.firewall.enable = true;
   networking.nftables.enable = true;
-  networking.wireless.iwd.enable = true;
   networking.networkmanager.enable = true;
-  networking.networkmanager.wifi.backend = lib.mkForce "iwd";
 }
