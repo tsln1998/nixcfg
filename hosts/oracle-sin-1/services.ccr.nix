@@ -1,7 +1,5 @@
 {
   config,
-  pkgs,
-  lib,
   ...
 }:
 let
@@ -23,17 +21,6 @@ in
 
     extraOptions = [
       "--network=host"
-    ];
-
-    volumes = [
-      "${
-        pkgs.writeTextFile {
-          name = "config.json";
-          text = lib.strings.toJSON {
-            port = 8318;
-          };
-        }
-      }:/CLIProxyAPI/config.yaml"
     ];
 
     environmentFiles = [
