@@ -22,7 +22,7 @@
   boot.loader.grub.default = "saved";
   boot.loader.efi.efiSysMountPoint = "/boot";
 
-  # System control
+  # Kernel modules
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernel.sysctl = {
     "kernel.perf_event_paranoid" = 1;
@@ -47,11 +47,8 @@
   # Intel microcode
   hardware.cpu.intel.updateMicrocode = true;
 
-  # Immutable firmware  
+  # Immutable firmware
   services.fwupd.enable = lib.mkDefault true;
-
-  # Cooling management
-  services.thermald.enable = lib.mkDefault true;
 
   # Awake device blacklist
   services.udev.extraRules = ''

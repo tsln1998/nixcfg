@@ -18,7 +18,7 @@ in
   };
   
   services.mihomo = {
-    enable = true;
+    enable = false;
     tunMode = true;
     tproxyMode = false;
     package = pkgs.mihomo;
