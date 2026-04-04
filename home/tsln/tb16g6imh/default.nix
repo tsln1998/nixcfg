@@ -11,6 +11,7 @@
       "home/tsln/_common/apps/chromium.nix"
       "home/tsln/_common/apps/datagrip.nix"
       "home/tsln/_common/apps/filelight.nix"
+      "home/tsln/_common/apps/firefox.nix"
       "home/tsln/_common/apps/hoppscotch.nix"
       "home/tsln/_common/apps/insomnia.nix"
       "home/tsln/_common/apps/konsole.nix"
