@@ -1,4 +1,7 @@
-{ ... }:
+{ lib, config, ... }:
+let
+  inherit (config.fonts.fontconfig) defaultFonts;
+in
 {
   programs.konsole = {
     enable = true;
@@ -13,7 +16,7 @@
     profiles = {
       Default = {
         font = {
-          name = "Monospace";
+          name = lib.head defaultFonts.monospace;
           size = 11;
         };
       };

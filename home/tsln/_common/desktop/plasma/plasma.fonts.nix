@@ -1,21 +1,32 @@
-{ lib, ... }:
+{ lib, config, ... }:
 let
-  defaultFont = {
-    family = "Monospace";
-    pointSize = 10;
-  };
-  defaultFontTargets = [
-    "general"
-    "fixedWidth"
-    "toolbar"
-    "menu"
-    "windowTitle"
-  ];
+  inherit (config.fonts.fontconfig) defaultFonts;
 in
 {
-  programs.plasma.fonts = (lib.genAttrs defaultFontTargets (_: defaultFont)) // {
-    small = defaultFont // {
+  programs.plasma.fonts = {
+    general = {
+      family = lib.head defaultFonts.sansSerif;
+      pointSize = 10;
+    };
+    fixedWidth = {
+      family = lib.head defaultFonts.monospace;
+      pointSize = 10;
+    };
+    toolbar = {
+      family = lib.head defaultFonts.sansSerif;
+      pointSize = 10;
+    };
+    menu = {
+      family = lib.head defaultFonts.sansSerif;
+      pointSize = 10;
+    };
+    small = {
+      family = lib.head defaultFonts.sansSerif;
       pointSize = 8;
+    };
+    windowTitle = {
+      family = lib.head defaultFonts.sansSerif;
+      pointSize = 10;
     };
   };
 }
