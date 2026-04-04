@@ -16,4 +16,5 @@
     outputs.nixosModules.default
   ];
 
+  system.stateVersion = "26.05";
 }
