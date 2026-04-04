@@ -16,5 +16,5 @@
 
   home.username = lib.mkDefault "tsln";
   home.homeDirectory = "/home/${config.home.username}";
-  home.stateVersion = "25.11";
+  home.stateVersion = "26.05";
 }
