@@ -7,7 +7,7 @@ with kdePackages;
     notoPackage = pkgs.noto-fonts-cjk-sans;
   };
 
-  environment.defaultPackages = [
+  environment.systemPackages = [
     partitionmanager
   ];
 

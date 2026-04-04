@@ -28,7 +28,7 @@
     inherit tools pkgs;
   };
 
-  environment.defaultPackages = [
+  environment.systemPackages = [
     pkgs.home-manager
   ];
 }

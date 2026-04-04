@@ -13,7 +13,7 @@
     "/tmp/id_ed25519"
   ];
 
-  environment.defaultPackages = [
+  environment.systemPackages = [
     inputs.agenix.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 }
