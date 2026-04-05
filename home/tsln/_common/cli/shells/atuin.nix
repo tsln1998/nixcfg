@@ -3,7 +3,7 @@
   programs.atuin = {
     enable = true;
     daemon = {
-      enable = true;
+      enable = false;
     };
     settings = {
       auto_sync = lib.mkDefault false;
