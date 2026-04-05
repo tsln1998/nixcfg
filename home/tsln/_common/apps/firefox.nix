@@ -1,11 +1,8 @@
 { pkgs, lib, ... }:
-let
-  repo = pkgs.repos.unstable;
-in
 {
   programs.firefox = rec {
     enable = true;
-    package = repo.firefox;
+    package = pkgs.repos.zen.zen-browser;
     languagePacks = [
       "zh_CN"
       "en_US"

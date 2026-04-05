@@ -13,6 +13,9 @@ final: _: {
     # LLM packages
     llm-agents = inputs.llm-agents.packages.${final.stdenv.hostPlatform.system};
 
+    # Zen packages
+    zen = inputs.zen.packages.${final.stdenv.hostPlatform.system};
+
     # Local packages
     additions = import ../packages final.pkgs;
   };
