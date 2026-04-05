@@ -62,6 +62,9 @@
 
     llm-agents.url = "github:numtide/llm-agents.nix";
     llm-agents.inputs.nixpkgs.follows = "nixpkgs-unstable";
+
+    zen.url = "github:youwen5/zen-browser-flake";
+    zen.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
