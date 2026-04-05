@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   home.packages = [
-    pkgs.repos.additions.zmx
+    pkgs.repos.nur.avycado13.zmx
   ];
 
   home.shellAliases = {

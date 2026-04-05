@@ -5,5 +5,4 @@ pkgs: {
   lazyworktree = pkgs.callPackage ./lazyworktree/lazyworktree.nix { };
   vscode-extensions_vscode-buf = pkgs.callPackage ./vscode/vscode-buf.nix { };
   vscode-extensions_autopep8 = pkgs.callPackage ./vscode/autopep8.nix { };
-  zmx = pkgs.callPackage ./zmx/zmx.nix { };
 }
