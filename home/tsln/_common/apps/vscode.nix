@@ -113,7 +113,7 @@ let
         golang.go
       ])
       ++ (with pkgs.repos.additions; [
-        vscode-extensions_vscode-buf
+        vscode-extensions_buf
       ]);
 
     Rust = with repo.vscode-extensions; [
