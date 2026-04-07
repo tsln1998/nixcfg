@@ -21,13 +21,22 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    # nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-unstable.follows = "nixpkgs";
+
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    flake-compat.url = "github:NixOS/flake-compat";
+
+    treefmt-nix.url = "github:numtide/treefmt-nix";
+    treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
 
     nixpkgs-nur.url = "github:nix-community/NUR";
     nixpkgs-nur.inputs.nixpkgs.follows = "nixpkgs";
+    nixpkgs-nur.inputs.flake-parts.follows = "flake-parts";
 
     nixos-wsl.url = "github:nix-community/NixOS-WSL";
     nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
+    nixos-wsl.inputs.flake-compat.follows = "flake-compat";
 
     systems.url = "github:nix-systems/default-linux";
     hardware.url = "github:nixos/nixos-hardware";
@@ -39,6 +48,8 @@
 
     comin.url = "github:nlewo/comin";
     comin.inputs.nixpkgs.follows = "nixpkgs";
+    comin.inputs.flake-compat.follows = "flake-compat";
+    comin.inputs.treefmt-nix.follows = "treefmt-nix";
 
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
@@ -62,6 +73,9 @@
 
     llm-agents.url = "github:numtide/llm-agents.nix";
     llm-agents.inputs.nixpkgs.follows = "nixpkgs-unstable";
+    llm-agents.inputs.flake-parts.follows = "flake-parts";
+    llm-agents.inputs.systems.follows = "systems";
+    llm-agents.inputs.treefmt-nix.follows = "treefmt-nix";
 
     zen.url = "github:youwen5/zen-browser-flake";
     zen.inputs.nixpkgs.follows = "nixpkgs";
@@ -74,6 +88,7 @@
     {
       self,
       nixpkgs,
+      treefmt-nix,
       home-manager,
       flake-utils,
       ...
@@ -92,6 +107,9 @@
             allowUnfree = true;
           };
         }
+      );
+      treefmtFor = nixpkgs.lib.genAttrs (builtins.attrNames pkgsFor) (
+        system: treefmt-nix.lib.evalModule pkgsFor.${system} ./formatter.nix
       );
       # make nixosSystem
       nixosSystem =
@@ -185,14 +203,22 @@
     }
     // {
       #
+      # Formatter
+      #
+      formatter = nixpkgs.lib.genAttrs (builtins.attrNames pkgsFor) (
+        system: treefmtFor.${system}.config.build.wrapper
+      );
+      #
       # Checks
       #
       checks = nixpkgs.lib.genAttrs (builtins.attrNames pkgsFor) (
         system:
         let
           packages = self.packages.${system};
+          treefmt = treefmtFor.${system};
         in
         {
+          formatting = treefmt.config.build.check self;
           packages-caddy-l4 = packages.caddy-l4;
           packages-catppuccin-konsole = packages.catppuccin-konsole;
           packages-vscode-buf = packages.vscode-extensions_buf;

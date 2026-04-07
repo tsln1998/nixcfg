@@ -16,7 +16,7 @@ in
     file = relative "secrets/hosts/${hostName}/mihomo.yaml.age";
     mode = "0644";
   };
-  
+
   services.mihomo = {
     enable = false;
     tunMode = true;

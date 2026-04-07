@@ -1,4 +1,9 @@
-{ config, lib,tools, ... }:
+{
+  config,
+  lib,
+  tools,
+  ...
+}:
 let
   inherit (tools) relative;
   inherit (config.home) username;

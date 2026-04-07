@@ -33,7 +33,7 @@
           "browser.newtabpage.activity-stream.showSponsoredCheckboxes" = false;
           "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
 
-          "browser.shell.didSkipDefaultBrowserCheckOnFirstRun"=	true;
+          "browser.shell.didSkipDefaultBrowserCheckOnFirstRun" = true;
 
           "browser.ai.control.default" = "blocked";
           "browser.ai.control.linkPreviewKeyPoints" = "blocked";
@@ -48,7 +48,7 @@
 
           "extensions.formautofill.creditCards.enabled" = false;
           "extensions.formautofill.addresses.enabled" = false;
-          
+
           "intl.locale.requested" = lib.concatStringsSep "," languagePacks;
         };
       };

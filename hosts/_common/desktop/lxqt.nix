@@ -1,5 +1,4 @@
-_:
-{
+_: {
   services.xserver.desktopManager.lxqt = {
     enable = true;
   };
