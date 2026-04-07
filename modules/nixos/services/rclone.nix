@@ -94,7 +94,7 @@ in
     };
   };
 
-  config = lib.mkIf (config.services.rclone.enable) {
+  config = lib.mkIf config.services.rclone.enable {
     environment.systemPackages = [
       cfg.package
     ];

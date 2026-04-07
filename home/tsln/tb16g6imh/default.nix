@@ -1,7 +1,6 @@
 { tools, ... }:
 {
-  imports = (
-    (map tools.relative [
+  imports = (map tools.relative [
       "home/tsln/_common/global"
       "home/tsln/_common/cli"
       "home/tsln/_common/themes"
@@ -35,6 +34,5 @@
       "home/tsln/_common/ops/nixos.nix"
       "home/tsln/_common/ops/dotfiles/kubectl.nix"
     ])
-    ++ (tools.scan ./.)
-  );
+    ++ (tools.scan ./.);
 }

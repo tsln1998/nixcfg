@@ -81,7 +81,7 @@
       # load overlays
       overlays = import ./overlays (with self; with nixpkgs; { inherit inputs outputs lib; });
       # load nixpkgs
-      pkgsFor = nixpkgs.lib.genAttrs (flake-utils.lib.defaultSystems) (
+      pkgsFor = nixpkgs.lib.genAttrs flake-utils.lib.defaultSystems (
         system:
         import nixpkgs {
           inherit system overlays;

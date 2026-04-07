@@ -1,4 +1,4 @@
-{ ... }:
+_:
 {
   programs.plasma.powerdevil = {
     # 通用设置
