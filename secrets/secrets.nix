@@ -33,6 +33,4 @@ in
   "users/tsln/kube/config.age".publicKeys = users.tsln;
   "users/tsln/codex/config.toml.age".publicKeys = users.tsln;
   "users/tsln/codex/auth.json.age".publicKeys = users.tsln;
-  "users/tsln/config/opencode/opencode.json.age".publicKeys = users.tsln;
-  "users/tsln/config/opencode/oh-my-opencode.json.age".publicKeys = users.tsln;
 }
