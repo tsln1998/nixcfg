@@ -172,8 +172,13 @@ let
 in
 {
   programs.vscode.enable = true;
-  programs.vscode.package = repo.vscode;
+  programs.vscode.package = repo.vscodium;
   programs.vscode.mutableExtensionsDir = false;
+
+  # 配置别名
+  home.shellAliases = lib.optionals (config.programs.vscode.package.pname == "vscodium") {
+    code = "codium";
+  };
 
   # 生成 profiles
   programs.vscode.profiles = {
