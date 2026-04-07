@@ -1,5 +1,4 @@
-_:
-{
+_: {
   catppuccin = {
     flavor = "mocha";
     accent = "blue";

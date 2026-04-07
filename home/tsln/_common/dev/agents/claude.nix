@@ -1,4 +1,9 @@
-{ config, tools,pkgs, ... }:
+{
+  config,
+  tools,
+  pkgs,
+  ...
+}:
 let
   inherit (tools) relative;
   inherit (config.home) username homeDirectory;

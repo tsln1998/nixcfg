@@ -1,5 +1,4 @@
-_:
-{
+_: {
   services.displayManager.sddm = {
     enable = true;
     enableHidpi = true;

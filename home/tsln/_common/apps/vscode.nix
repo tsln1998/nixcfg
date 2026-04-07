@@ -47,14 +47,13 @@ let
     "files.eol" = lib.mkDefault "\n";
 
     "editor.fontLigatures" = lib.mkDefault true;
-    "editor.fontFamily" = lib.mkDefault (lib.strings.concatStringsSep ", " (
-      map (font: "'${font}'") (
-        defaultFonts.monospace
-        ++ defaultFonts.sansSerif
-        ++ defaultFonts.serif
-        ++ defaultFonts.emoji
+    "editor.fontFamily" = lib.mkDefault (
+      lib.strings.concatStringsSep ", " (
+        map (font: "'${font}'") (
+          defaultFonts.monospace ++ defaultFonts.sansSerif ++ defaultFonts.serif ++ defaultFonts.emoji
+        )
       )
-    ));
+    );
     "editor.cursorSmoothCaretAnimation" = lib.mkDefault "on";
     "editor.cursorBlinking" = lib.mkDefault "phase";
     "editor.inlineSuggest.enabled" = lib.mkDefault true;

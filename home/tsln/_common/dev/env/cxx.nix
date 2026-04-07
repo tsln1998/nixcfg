@@ -1,5 +1,4 @@
-_:
-{
+_: {
   home.sessionVariables = {
     CC = "clang";
     CXX = "clang";

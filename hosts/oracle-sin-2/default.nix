@@ -1,6 +1,7 @@
 { tools, ... }:
 {
-  imports = map tools.relative [
+  imports =
+    map tools.relative [
       "hosts/_common/global"
       "hosts/_common/i18n/timezone.nix"
       "hosts/_common/services/comin.nix"

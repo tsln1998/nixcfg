@@ -1,5 +1,6 @@
 {
-  lib, config,
+  lib,
+  config,
   ...
 }:
 let
@@ -48,7 +49,7 @@ in
       };
     };
   };
-  
+
   systemd.services.rclone-postgresql = {
     serviceConfig = {
       DynamicUser = lib.mkForce false;

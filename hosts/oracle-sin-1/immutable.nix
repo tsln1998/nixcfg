@@ -1,5 +1,4 @@
-_:
-{
+_: {
   fileSystems."/persist" = {
     neededForBoot = true;
   };
@@ -7,14 +6,40 @@ _:
   environment.persistence."/persist" = {
     hideMounts = true;
     directories = [
-      { directory = "/etc/ssh"; mode = "0755"; }
-      { directory = "/etc/nixos"; mode = "0755"; }
-      { directory = "/var/log"; mode = "0755"; }
-      { directory = "/var/lib/nixos"; mode = "0755"; }
-      { directory = "/var/lib/containers"; mode = "0755"; }
-      { directory = "/var/lib/postgresql"; user="postgres"; group="postgres"; mode = "0750";  }
-      { directory = "/var/lib/systemd/coredump"; mode = "0755"; }
-      { directory = "/var/lib/systemd/timers"; mode = "0755"; }
+      {
+        directory = "/etc/ssh";
+        mode = "0755";
+      }
+      {
+        directory = "/etc/nixos";
+        mode = "0755";
+      }
+      {
+        directory = "/var/log";
+        mode = "0755";
+      }
+      {
+        directory = "/var/lib/nixos";
+        mode = "0755";
+      }
+      {
+        directory = "/var/lib/containers";
+        mode = "0755";
+      }
+      {
+        directory = "/var/lib/postgresql";
+        user = "postgres";
+        group = "postgres";
+        mode = "0750";
+      }
+      {
+        directory = "/var/lib/systemd/coredump";
+        mode = "0755";
+      }
+      {
+        directory = "/var/lib/systemd/timers";
+        mode = "0755";
+      }
     ];
     files = [
       "/etc/machine-id"
