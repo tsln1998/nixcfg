@@ -1,3 +1,3 @@
-{ ... }@inputs: [
+inputs: [
   (import ./repos.nix inputs)
 ]
