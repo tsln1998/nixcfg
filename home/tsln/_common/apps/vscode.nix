@@ -112,8 +112,8 @@ let
       (with repo.vscode-extensions; [
         golang.go
       ])
-      ++ (with pkgs.repos.additions; [
-        vscode-extensions_buf
+      ++ (with pkgs.repos.vscode; [
+        bufbuild.vscode-buf
       ]);
 
     Rust = with repo.vscode-extensions; [
@@ -137,8 +137,8 @@ let
         ms-python.isort
         ms-python.vscode-pylance
       ])
-      ++ (with pkgs.repos.additions; [
-        vscode-extensions_autopep8
+      ++ (with pkgs.repos.vscode; [
+        ms-python.autopep8
       ]);
 
     Cxx = with repo.vscode-extensions; [

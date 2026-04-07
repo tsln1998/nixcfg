@@ -65,6 +65,9 @@
 
     zen.url = "github:youwen5/zen-browser-flake";
     zen.inputs.nixpkgs.follows = "nixpkgs";
+
+    vscode.url = "github:nix-community/nix-vscode-extensions";
+    vscode.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =

@@ -11,10 +11,13 @@ final: _: {
     nur = (inputs.nixpkgs-nur.overlays.default final _).nur.repos;
 
     # LLM packages
-    llm-agents = inputs.llm-agents.packages.${final.stdenv.hostPlatform.system};
+    llm-agents = (inputs.llm-agents.overlays.default final _).llm-agents;
 
     # Zen packages
     zen = inputs.zen.packages.${final.stdenv.hostPlatform.system};
+
+    # vscode packages
+    vscode = (inputs.vscode.overlays.default final _).vscode-marketplace-release;
 
     # Local packages
     additions = import ../packages final.pkgs;
