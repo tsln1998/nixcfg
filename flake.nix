@@ -115,7 +115,7 @@
                   ;
               };
             }
-            // (builtins.removeAttrs args [
+            // (removeAttrs args [
               "hostName"
               "system"
             ])
@@ -146,7 +146,7 @@
                   ;
               };
             }
-            // (builtins.removeAttrs args [
+            // (removeAttrs args [
               "userName"
               "hostName"
               "system"
@@ -179,6 +179,23 @@
       homeModules = {
         default = import ./modules/home;
       };
+    }
+    // {
+      #
+      # Checks
+      #
+      checks = nixpkgs.lib.genAttrs (builtins.attrNames pkgsFor) (
+        system:
+        let
+          packages = self.packages.${system};
+        in
+        {
+          packages-caddy-l4 = packages.caddy-l4;
+          packages-catppuccin-konsole = packages.catppuccin-konsole;
+          packages-vscode-buf = packages.vscode-extensions_buf;
+          packages-vscode-autopep8 = packages.vscode-extensions_autopep8;
+        }
+      );
     }
     // {
       #
