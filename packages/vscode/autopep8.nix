@@ -5,7 +5,7 @@ in
 buildVscodeMarketplaceExtension {
   mktplcRef = {
     publisher = "ms-python";
-    name = "vscode-autopep8";
+    name = "autopep8";
     version = "2025.2.0";
     hash = "sha256-N1ryz3MieHinTcm5d1RVbGApMQAUhrDUpxDUdfEDmvU=";
   };
