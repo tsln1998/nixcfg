@@ -39,6 +39,7 @@ let
     "window.commandCenter" = lib.mkDefault false;
     "window.openFilesInNewWindow" = lib.mkDefault "off";
     "window.openFoldersInNewWindow" = lib.mkDefault "on";
+    "window.title" = lib.mkDefault "\${rootName}\${separator}\${appName}";
 
     "workbench.startupEditor" = lib.mkDefault "none";
 

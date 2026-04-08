@@ -7,8 +7,8 @@ let
         sha256 = "1n33324pfdd57mk25kp6qnl78d3s53grmg0m2lsj0gknph8v9d5m";
       })
       {
-        system = pkgs.stdenv.hostPlatform.system;
-        config = pkgs.config;
+        inherit (pkgs.stdenv.hostPlatform) system;
+        inherit (pkgs) config;
       };
 in
 locked.caddy.withPlugins {
