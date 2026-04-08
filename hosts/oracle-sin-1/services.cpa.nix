@@ -13,7 +13,7 @@ in
 {
   # CLIProxy service configuration
   virtualisation.oci-containers.containers.cpa = {
-    image = "eceasy/cli-proxy-api:v6.9.15";
+    image = "eceasy/cli-proxy-api:v6.9.16";
 
     environment = {
       PGSTORE_DSN = "postgresql://${db}@127.0.0.1:${builtins.toString config.services.postgresql.settings.port}/${db}";

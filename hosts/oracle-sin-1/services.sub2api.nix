@@ -13,7 +13,7 @@ in
 {
   # CLIProxy service configuration
   virtualisation.oci-containers.containers.sub2api = {
-    image = "ghcr.io/wei-shaw/sub2api:0.1.108";
+    image = "ghcr.io/wei-shaw/sub2api:0.1.110";
 
     environment = {
       AUTO_SETUP = "true";
