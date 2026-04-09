@@ -7,7 +7,7 @@ in
   services.caddy = {
     enable = true;
     configFile = secrets."hosts/${hostName}/caddyfile".path;
-    package = pkgs.repos.additions.caddy-l4;
+    package = pkgs.caddy;
   };
 
   networking.firewall = {
