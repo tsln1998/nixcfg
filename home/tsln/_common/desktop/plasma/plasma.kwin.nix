@@ -6,7 +6,7 @@
         Rows = 2;
       };
       TabBox = {
-        LayoutName = "flipswitch";
+        LayoutName = "sidebar";
       };
     };
     ksmserverrc = {
