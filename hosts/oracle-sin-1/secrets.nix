@@ -8,20 +8,12 @@ in
     file = relative "secrets/hosts/${hostName}/rclone.toml.age";
     mode = "0644";
   };
-  age.secrets."hosts/${hostName}/cpa.env" = {
-    file = relative "secrets/hosts/${hostName}/cpa.env.age";
-    mode = "0644";
-  };
   age.secrets."hosts/${hostName}/sub2api.env" = {
     file = relative "secrets/hosts/${hostName}/sub2api.env.age";
     mode = "0644";
   };
   age.secrets."hosts/${hostName}/xray.json" = {
     file = relative "secrets/hosts/${hostName}/xray.json.age";
-    mode = "0644";
-  };
-  age.secrets."hosts/${hostName}/shadowsocks.json" = {
-    file = relative "secrets/hosts/${hostName}/shadowsocks.json.age";
     mode = "0644";
   };
   age.secrets."hosts/${hostName}/caddyfile" = {
