@@ -12,9 +12,6 @@
         extensions = {
           force = true;
           packages = with pkgs.repos.nur.rycee.firefox-addons; [
-            ubolite
-            bitwarden
-            simple-translate
             hoppscotch
           ];
         };
