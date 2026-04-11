@@ -16,6 +16,9 @@ final: _: {
     # Zen packages
     zen = inputs.zen.packages.${final.stdenv.hostPlatform.system};
 
+    # Agenix packages
+    agenix = inputs.agenix.packages.${final.stdenv.hostPlatform.system};
+
     # vscode packages
     vscode = (inputs.vscode.overlays.default final _).vscode-marketplace-release;
 

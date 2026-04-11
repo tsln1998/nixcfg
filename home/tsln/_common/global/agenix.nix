@@ -1,7 +1,4 @@
-{
-  config,
-  ...
-}:
+{ pkgs, config, ... }:
 let
   inherit (config.home) homeDirectory;
 in
@@ -21,4 +18,8 @@ in
 
   age.secretsDir = homeDirectory + "/.agenix";
   age.secretsMountPoint = homeDirectory + "/.agenix.d";
+
+  home.packages = [
+    pkgs.repos.agenix.default
+  ];
 }

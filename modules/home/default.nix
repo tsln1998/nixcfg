@@ -32,5 +32,5 @@
 
   nixpkgs.overlays = overlays;
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.permittedInsecurePackages = [];
+  nixpkgs.config.permittedInsecurePackages = [ ];
 }
