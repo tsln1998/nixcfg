@@ -10,7 +10,7 @@ let
 in
 {
   home.packages = [
-    pkgs.repos.unstable.codex
+    pkgs.repos.additions.codex
   ];
 
   age.secrets."users/${username}/codex/config.toml" = {
