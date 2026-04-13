@@ -2,7 +2,7 @@
 {
   programs.firefox = rec {
     enable = true;
-    package = pkgs.repos.zen.zen-browser;
+    package = pkgs.unstable.firefox;
     languagePacks = [
       "zh_CN"
       "en_US"
@@ -11,7 +11,7 @@
       default = {
         extensions = {
           force = true;
-          packages = with pkgs.repos.nur.rycee.firefox-addons; [
+          packages = with pkgs.nur.repos.rycee.firefox-addons; [
             hoppscotch
           ];
         };

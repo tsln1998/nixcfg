@@ -47,7 +47,8 @@ stdenvNoCC.mkDerivation {
     stdenv.cc.cc.lib
     openssl
     zlib
-  ] ++ lib.optionals stdenv.hostPlatform.isLinux [
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
     libcap
   ];
 
@@ -69,7 +70,8 @@ stdenvNoCC.mkDerivation {
     wrapProgram $out/bin/codex --prefix PATH : ${
       lib.makeBinPath ([ ripgrep ] ++ lib.optionals stdenv.hostPlatform.isLinux [ bubblewrap ])
     }
-  '' + lib.optionalString installShellCompletions ''
+  ''
+  + lib.optionalString installShellCompletions ''
     installShellCompletion --cmd codex \
       --bash <($out/bin/codex completion bash) \
       --fish <($out/bin/codex completion fish) \
@@ -83,6 +85,9 @@ stdenvNoCC.mkDerivation {
     maintainers = [ ];
     mainProgram = pname;
     license = licenses.asl20;
-    platforms = [ "x86_64-linux" "aarch64-linux" ];
+    platforms = [
+      "x86_64-linux"
+      "aarch64-linux"
+    ];
   };
 }

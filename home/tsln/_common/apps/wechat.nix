@@ -1,7 +1,7 @@
 { pkgs, lib, ... }:
 {
   home.packages = [
-    (pkgs.repos.nur.xddxdd.wechat-uos-sandboxed.override {
+    (pkgs.nur.repos.xddxdd.wechat-uos-sandboxed.override {
       buildFHSEnvBubblewrap =
         args:
         pkgs.buildFHSEnvBubblewrap (

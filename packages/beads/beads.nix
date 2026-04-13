@@ -61,7 +61,8 @@ stdenvNoCC.mkDerivation {
   postFixup = ''
     autoPatchelf -- "$out"
     wrapProgram $out/bin/bd --prefix PATH : ${lib.makeBinPath [ dolt ]}
-  '' + lib.optionalString installShellCompletions ''
+  ''
+  + lib.optionalString installShellCompletions ''
     installShellCompletion --cmd bd \
       --bash <($out/bin/bd completion bash) \
       --fish <($out/bin/bd completion fish) \
