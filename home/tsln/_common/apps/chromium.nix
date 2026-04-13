@@ -1,11 +1,8 @@
 { pkgs, ... }:
-let
-  repo = pkgs.repos.unstable;
-in
 {
   programs.chromium = {
     enable = true;
-    package = repo.chromium;
+    package = pkgs.unstable.chromium;
     extensions = [
       { id = "ddkjiahejlhfcafbddmgiahcphecmpfh"; } # uBlock Origin Lite
       { id = "nngceckbapebfimnlniiiahkandclblb"; } # Bitwarden

@@ -7,10 +7,11 @@
 let
   inherit (config.fonts.fontconfig) defaultFonts;
 
-  repo = pkgs.repos.unstable;
+  inherit (pkgs) vscode-marketplace-release;
+  inherit (pkgs.unstable) vscode-extensions;
 
   # 基础扩展
-  baseExtensions = with repo.vscode-extensions; [
+  baseExtensions = with vscode-extensions; [
     # Keybindings
     k--kato.intellij-idea-keybindings
     # Rainbow
@@ -109,39 +110,39 @@ let
   # 语言特定扩展配置（不包含基础扩展）
   langExtensions = rec {
     Go =
-      (with repo.vscode-extensions; [
+      (with vscode-extensions; [
         golang.go
       ])
-      ++ (with pkgs.repos.vscode; [
+      ++ (with vscode-marketplace-release; [
         bufbuild.vscode-buf
       ]);
 
-    Rust = with repo.vscode-extensions; [
+    Rust = with vscode-extensions; [
       rust-lang.rust-analyzer
       vadimcn.vscode-lldb
     ];
 
-    Zig = with repo.vscode-extensions; [
+    Zig = with vscode-extensions; [
       ziglang.vscode-zig
       vadimcn.vscode-lldb
     ];
 
-    Java = with repo.vscode-extensions; [
+    Java = with vscode-extensions; [
       mathiasfrohlich.kotlin
     ];
 
     Python =
-      (with repo.vscode-extensions; [
+      (with vscode-extensions; [
         ms-python.python
         ms-python.debugpy
         ms-python.isort
         ms-python.vscode-pylance
       ])
-      ++ (with pkgs.repos.vscode; [
+      ++ (with vscode-marketplace-release; [
         ms-python.autopep8
       ]);
 
-    Cxx = with repo.vscode-extensions; [
+    Cxx = with vscode-extensions; [
       ms-vscode.cpptools
       ms-vscode.cmake-tools
       vadimcn.vscode-lldb
@@ -173,7 +174,7 @@ let
 in
 {
   programs.vscode.enable = true;
-  programs.vscode.package = repo.vscodium;
+  programs.vscode.package = pkgs.unstable.vscodium;
   programs.vscode.mutableExtensionsDir = false;
 
   # 配置别名

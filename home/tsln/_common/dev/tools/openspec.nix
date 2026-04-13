@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
   home.packages = [
-    pkgs.repos.llm-agents.openspec
+    pkgs.llm-agents.openspec
   ];
 }

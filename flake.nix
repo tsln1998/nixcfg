@@ -18,17 +18,17 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    nixpkgs-unstable.follows = "nixpkgs";
+    unstable.follows = "nixpkgs";
+
+    nur.url = "github:nix-community/NUR";
+    nur.inputs.nixpkgs.follows = "nixpkgs";
+    nur.inputs.flake-parts.follows = "flake-parts";
 
     flake-parts.url = "github:hercules-ci/flake-parts";
     flake-compat.url = "github:NixOS/flake-compat";
 
     treefmt-nix.url = "github:numtide/treefmt-nix";
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
-
-    nixpkgs-nur.url = "github:nix-community/NUR";
-    nixpkgs-nur.inputs.nixpkgs.follows = "nixpkgs";
-    nixpkgs-nur.inputs.flake-parts.follows = "flake-parts";
 
     nixos-wsl.url = "github:nix-community/NixOS-WSL";
     nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
@@ -68,7 +68,7 @@
     catppuccin.inputs.nixpkgs.follows = "nixpkgs";
 
     llm-agents.url = "github:numtide/llm-agents.nix";
-    llm-agents.inputs.nixpkgs.follows = "nixpkgs-unstable";
+    llm-agents.inputs.nixpkgs.follows = "unstable";
     llm-agents.inputs.flake-parts.follows = "flake-parts";
     llm-agents.inputs.systems.follows = "systems";
     llm-agents.inputs.treefmt-nix.follows = "treefmt-nix";
@@ -179,6 +179,12 @@
         system: import ./packages pkgsFor.${system}
       );
       #
+      # legacyPackages
+      #
+      legacyPackages = nixpkgs.lib.genAttrs (builtins.attrNames pkgsFor) (
+        system: pkgsFor.${system}
+      );
+      #
       # devShells
       #
       devShells = nixpkgs.lib.genAttrs (builtins.attrNames pkgsFor) (
@@ -213,7 +219,8 @@
           packages = self.packages.${system};
           treefmt = treefmtFor.${system};
         in
-        packages // {
+        packages
+        // {
           formatting = treefmt.config.build.check self;
         }
       );

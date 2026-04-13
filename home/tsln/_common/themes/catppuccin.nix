@@ -41,7 +41,7 @@ in
   # Catppuccin Konsole Theme Package
   home.file = lib.optionalAttrs enableKonsole {
     ".local/share/konsole/catppuccin-${flavor}.colorscheme" = {
-      source = "${pkgs.repos.additions.catppuccin-konsole}/catppuccin-${flavor}.colorscheme";
+      source = "${pkgs.catppuccin-konsole}/catppuccin-${flavor}.colorscheme";
     };
   };
 
