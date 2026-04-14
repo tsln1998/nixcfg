@@ -176,12 +176,14 @@
       # Packages
       #
       packages = nixpkgs.lib.genAttrs (builtins.attrNames pkgsFor) (
+        # local packages
         system: import ./packages pkgsFor.${system}
       );
       #
       # legacyPackages
       #
       legacyPackages = nixpkgs.lib.genAttrs (builtins.attrNames pkgsFor) (
+        # nixpkgs with overlays
         system: pkgsFor.${system}
       );
       #

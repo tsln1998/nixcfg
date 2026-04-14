@@ -30,6 +30,10 @@ _: {
         mode = "0755";
       }
       {
+        directory = ".dolt";
+        mode = "0755";
+      }
+      {
         directory = ".go";
         mode = "0755";
       }

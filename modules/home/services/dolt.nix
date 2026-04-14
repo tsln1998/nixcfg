@@ -52,11 +52,17 @@ let
     };
 
     Service = {
-      ExecStartPre = lib.concatStringsSep " " [
-        (lib.getExe' pkgs.coreutils "mkdir")
-        "-p"
-        (lib.escapeShellArg instance.dataDir)
-        (lib.escapeShellArg instance.cfgDir)
+      ExecStartPre = [
+        (lib.concatStringsSep " " [
+          (lib.getExe' pkgs.coreutils "mkdir")
+          "-p"
+          (lib.escapeShellArg instance.dataDir)
+        ])
+        (lib.concatStringsSep " " [
+          (lib.getExe' pkgs.coreutils "mkdir")
+          "-p"
+          (lib.escapeShellArg instance.cfgDir)
+        ])
       ];
       ExecStart = lib.escapeShellArgs [
         (lib.getExe cfg.package)
@@ -70,7 +76,9 @@ let
       Environment = mkEnvironment instance.environment;
     };
 
-    Install.WantedBy = lib.optional instance.autoStart "default.target";
+    Install = {
+      WantedBy = [ "default.target" ];
+    };
   };
 
   declaredPorts = lib.filter (port: port != null) (
