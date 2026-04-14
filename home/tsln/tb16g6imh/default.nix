@@ -29,7 +29,7 @@
       "home/tsln/_common/dev/nix.nix"
       "home/tsln/_common/dev/nodejs.nix"
       "home/tsln/_common/dev/agents"
-      "home/tsln/_common/dev/env"
+      "home/tsln/_common/dev/dotfiles"
       "home/tsln/_common/dev/tools"
       "home/tsln/_common/ops/kubectl.nix"
       "home/tsln/_common/ops/fluxcd.nix"
