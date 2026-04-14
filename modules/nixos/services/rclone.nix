@@ -110,11 +110,12 @@ in
         serviceConfig = {
           LoadCredential = "rclone.conf:${conf.configFile}";
 
-          ExecStartPre = lib.concatStringsSep " " [
-            (lib.getExe' pkgs.coreutils "mkdir")
-            "-p"
-            conf.local
-          ];
+          ExecStartPre = pkgs.writeShellScript "rclone-pre-${name}" ''
+            local=${lib.escapeShellArg conf.local}
+            if [ ! -d "$local" ] ; then
+              ${lib.getExe' pkgs.coreutils "mkdir"} -p $local
+            fi
+          '';
 
           ExecStart = lib.concatStringsSep " " (
             [ (lib.getExe' cfg.package "rclone") ]
