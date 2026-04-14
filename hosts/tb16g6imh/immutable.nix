@@ -22,6 +22,10 @@ _: {
         mode = "0755";
       }
       {
+        directory = "/var/cache";
+        mode = "0755";
+      }
+      {
         directory = "/var/lib/bluetooth";
         mode = "0755";
       }
