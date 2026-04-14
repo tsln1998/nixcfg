@@ -8,6 +8,10 @@ in
     file = relative "secrets/hosts/${hostName}/rclone.toml.age";
     mode = "0644";
   };
+  age.secrets."hosts/${hostName}/hub.env" = {
+    file = relative "secrets/hosts/${hostName}/hub.env.age";
+    mode = "0644";
+  };
   age.secrets."hosts/${hostName}/cpa.env" = {
     file = relative "secrets/hosts/${hostName}/cpa.env.age";
     mode = "0644";
