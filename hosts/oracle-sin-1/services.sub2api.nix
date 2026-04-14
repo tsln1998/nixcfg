@@ -13,7 +13,7 @@ in
 {
   # CLIProxy service configuration
   virtualisation.oci-containers.containers.sub2api = {
-    image = "ghcr.io/wei-shaw/sub2api:0.1.110";
+    image = "ghcr.io/wei-shaw/sub2api:0.1.112";
 
     environment = {
       AUTO_SETUP = "true";
@@ -28,7 +28,7 @@ in
       # Database Configuration (PostgreSQL)
       # =======================================================================
       DATABASE_HOST = "127.0.0.1";
-      DATABASE_PORT = builtins.toString config.services.postgresql.settings.port;
+      DATABASE_PORT = toString config.services.postgresql.settings.port;
       DATABASE_USER = db;
       # DATABASE_PASSWORD = "";
       DATABASE_DBNAME = db;
@@ -38,7 +38,7 @@ in
       # Redis Configuration
       # =======================================================================
       REDIS_HOST = "127.0.0.1";
-      REDIS_PORT = builtins.toString config.services.redis.servers.default.port;
+      REDIS_PORT = toString config.services.redis.servers.default.port;
 
       # =======================================================================
       # Admin Account (auto-created on first run)
