@@ -391,7 +391,7 @@
           "flake-parts"
         ],
         "nixpkgs": [
-          "nixpkgs"
+          "unstable"
         ]
       },
       "locked": {

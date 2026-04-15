@@ -6,7 +6,8 @@ _: [
   (import ./repos/agenix.nix _)
   (import ./repos/vscode.nix _)
   (import ./repos/llm-agents.nix _)
-  (import ./tweaks/deprecated/libxdamage.nix _)
+  (import ./tweaks/upgrade/qq.nix _)
+  (import ./tweaks/upgrade/wechat-uos.nix _)
   (import ./tweaks/desktop/wayland.nix _)
   (import ./tweaks/desktop/shortcut.nix _)
 ]

@@ -21,7 +21,7 @@
     unstable.follows = "nixpkgs";
 
     nur.url = "github:nix-community/NUR";
-    nur.inputs.nixpkgs.follows = "nixpkgs";
+    nur.inputs.nixpkgs.follows = "unstable";
     nur.inputs.flake-parts.follows = "flake-parts";
 
     flake-parts.url = "github:hercules-ci/flake-parts";
