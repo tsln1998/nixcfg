@@ -1,61 +1,71 @@
 _: final: prev:
 let
   gnused = final.gnused;
-in
-{
-  feishu = prev.feishu.overrideAttrs (old: {
-    postFixup = (old.postFixup or "") + ''
-      ${final.lib.getExe gnused} -i \
-        's/^Categories=.*/Categories=Network;/' \
-        "$out/share/applications/bytedance-feishu.desktop"
-    '';
-  });
 
-  hoppscotch = prev.hoppscotch.override {
-    appimageTools = final.appimageTools // {
-      wrapType2 =
-        args:
-        final.appimageTools.wrapType2 (
-          args
-          // {
-            extraInstallCommands = (args.extraInstallCommands or "") + ''
-              ${final.lib.getExe gnused} -i \
-                's/^Categories=.*/Categories=Development;/' \
-                "$out/share/applications/hoppscotch.desktop"
-            '';
-          }
-        );
-    };
-  };
+  mkNixpkgsOverrided =
+    pkgs:
+    pkgs
+    // {
+      feishu = pkgs.feishu.overrideAttrs (old: {
+        postFixup = (old.postFixup or "") + ''
+          ${final.lib.getExe gnused} -i \
+            's/^Categories=.*/Categories=Network;/' \
+            "$out/share/applications/bytedance-feishu.desktop"
+        '';
+      });
 
-  unstable = prev.unstable // {
-    qq = prev.unstable.qq.overrideAttrs (old: {
-      postFixup = (old.postFixup or "") + ''
-        ${final.lib.getExe gnused} -i \
-          's/^Comment=.*/Comment=QQ for Linux;/' \
-          "$out/share/applications/qq.desktop"
-      '';
-    });
-  };
-
-  nur = prev.nur // {
-    repos = prev.nur.repos // {
-      xddxdd = prev.nur.repos.xddxdd // {
-        wechat-uos-sandboxed = prev.nur.repos.xddxdd.wechat-uos-sandboxed.override {
-          buildFHSEnvBubblewrap =
+      hoppscotch = pkgs.hoppscotch.override {
+        appimageTools = final.appimageTools // {
+          wrapType2 =
             args:
-            final.buildFHSEnvBubblewrap (
+            final.appimageTools.wrapType2 (
               args
               // {
                 extraInstallCommands = (args.extraInstallCommands or "") + ''
                   ${final.lib.getExe gnused} -i \
-                    's/^Categories=.*/Categories=Network;/' \
-                    "$out/share/applications/com.tencent.wechat.desktop"
+                    's/^Categories=.*/Categories=Development;/' \
+                    "$out/share/applications/hoppscotch.desktop"
                 '';
               }
             );
         };
       };
+
+      qq = pkgs.qq.overrideAttrs (old: {
+        postFixup = (old.postFixup or "") + ''
+          ${final.lib.getExe gnused} -i \
+            's/^Comment=.*/Comment=QQ for Linux/' \
+            "$out/share/applications/qq.desktop"
+        '';
+      });
     };
-  };
+
+  mkNurOverrided =
+    nur:
+    nur
+    // {
+      repos = nur.repos // {
+        xddxdd = nur.repos.xddxdd // {
+          wechat-uos-sandboxed = nur.repos.xddxdd.wechat-uos-sandboxed.override {
+            buildFHSEnvBubblewrap =
+              args:
+              final.buildFHSEnvBubblewrap (
+                args
+                // {
+                  extraInstallCommands = (args.extraInstallCommands or "") + ''
+                    ${final.lib.getExe gnused} -i \
+                      's/^Categories=.*/Categories=Network;/' \
+                      "$out/share/applications/com.tencent.wechat.desktop"
+                  '';
+                }
+              );
+          };
+        };
+      };
+    };
+in
+mkNixpkgsOverrided prev
+// {
+  unstable = mkNixpkgsOverrided prev.unstable;
+  nur = mkNurOverrided prev.nur;
 }

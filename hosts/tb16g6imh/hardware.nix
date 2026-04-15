@@ -24,6 +24,9 @@
 
   # Kernel modules
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelParams = [
+    ''acpi_osi="Windows 2022"''
+  ];
   boot.kernel.sysctl = {
     "kernel.perf_event_paranoid" = 1;
     "kernel.kptr_restrict" = 0;
@@ -41,8 +44,8 @@
   # Intel GPU
   hardware.intelgpu.vaapiDriver = pkgs.intel-media-driver.pname;
 
-  # TODO: Intel NPU (Requires NixOS 26.05)
-  # hardware.cpu.intel.npu.enable = true;
+  # Intel NPU
+  hardware.cpu.intel.npu.enable = true;
 
   # Intel microcode
   hardware.cpu.intel.updateMicrocode = true;
