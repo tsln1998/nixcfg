@@ -45,7 +45,6 @@
         };
       };
       waylandFrontend = true;
-
     };
   };
 
@@ -60,10 +59,5 @@
         value = "$HOME/.nix-profile/share/applications/fcitx5-wayland-launcher.desktop";
       };
     };
-  };
-
-  # Wayland supported
-  home.sessionVariables = {
-    NIXOS_OZONE_WL = 1;
   };
 }
