@@ -28,6 +28,16 @@ in
     };
   };
 
+  unstable = prev.unstable // {
+    qq = prev.unstable.qq.overrideAttrs (old: {
+      postFixup = (old.postFixup or "") + ''
+        ${final.lib.getExe gnused} -i \
+          's/^Comment=.*/Comment=QQ for Linux;/' \
+          "$out/share/applications/qq.desktop"
+      '';
+    });
+  };
+
   nur = prev.nur // {
     repos = prev.nur.repos // {
       xddxdd = prev.nur.repos.xddxdd // {

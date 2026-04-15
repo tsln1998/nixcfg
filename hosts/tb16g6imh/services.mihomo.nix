@@ -22,7 +22,7 @@ in
     tunMode = true;
     tproxyMode = false;
     package = pkgs.mihomo;
-    webui = pkgs.zashboard;
+    webui = pkgs.metacubexd;
     configFile = secrets."hosts/${hostName}/mihomo.yaml".path;
   };
 
