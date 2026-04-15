@@ -19,19 +19,19 @@ let
     };
   };
 
-  mkOverridden =
-    pkg:
-    pkg.overrideAttrs (
-      optionalAttrs (hasAttr system srcs && versionOlder pkg.version version) {
-        inherit version;
-        src = srcs.${system};
-      }
-    );
+  mkNixpkgsOverrided =
+    pkgs:
+    pkgs
+    // {
+      qq = pkgs.qq.overrideAttrs (
+        optionalAttrs (hasAttr system srcs && versionOlder pkgs.qq.version version) {
+          inherit version;
+          src = srcs.${system};
+        }
+      );
+    };
 in
-{
-  qq = mkOverridden prev.qq;
-
-  unstable = prev.unstable // {
-    qq = mkOverridden prev.unstable.qq;
-  };
+mkNixpkgsOverrided prev
+// {
+  unstable = mkNixpkgsOverrided prev.unstable;
 }
