@@ -7,11 +7,11 @@ _: {
     hideMounts = true;
     directories = [
       {
-        directory = "/etc/ssh";
+        directory = "/etc/nixos";
         mode = "0755";
       }
       {
-        directory = "/etc/nixos";
+        directory = "/etc/ssh/keys";
         mode = "0755";
       }
       {
@@ -43,6 +43,8 @@ _: {
     ];
     files = [
       "/etc/machine-id"
+    ]
+    ++ [
       "/var/lib/systemd/random-seed"
     ];
   };

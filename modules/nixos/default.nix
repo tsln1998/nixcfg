@@ -29,4 +29,6 @@
   nixpkgs.overlays = overlays;
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.permittedInsecurePackages = [ ];
+  nixpkgs.flake.setFlakeRegistry = false;
+  nixpkgs.flake.setNixPath = false;
 }
