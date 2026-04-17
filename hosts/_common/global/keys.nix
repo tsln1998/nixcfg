@@ -12,16 +12,14 @@ let
 in
 {
   environment.etc = builtins.listToAttrs (
-    map
-      (keyFile: {
-        name = "ssh/keys/${keyFile}";
-        value = {
-          source = (builtins.getAttr "hosts/${hostName}/${keyFile}" secrets).path;
-          mode = if lib.strings.hasSuffix ".pub" keyFile then "0644" else "0600";
-          user = "root";
-          group = "root";
-        };
-      })
-      (lib.filter (keyFile: lib.hasAttr "hosts/${hostName}/${keyFile}" secrets) keyFiles)
+    map (keyFile: {
+      name = "ssh/keys/${keyFile}";
+      value = {
+        source = (builtins.getAttr "hosts/${hostName}/${keyFile}" secrets).path;
+        mode = if lib.strings.hasSuffix ".pub" keyFile then "0644" else "0600";
+        user = "root";
+        group = "root";
+      };
+    }) (lib.filter (keyFile: lib.hasAttr "hosts/${hostName}/${keyFile}" secrets) keyFiles)
   );
 }
