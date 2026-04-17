@@ -8,6 +8,9 @@
 result
 result-*
 
+# Ignore disko images
+*.raw
+
 # Ignore automatically generated direnv output
 .direnv
 
