@@ -24,6 +24,9 @@ let
     oracle-phx-1 = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAID9BxLKduJubzOdDgUjleA3UmCnYrFIP7cwg1JkQ87oe"
     ];
+    oracle-phx-2 = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH3l/zbS7ZlC8rpYt2/19xLFPQNGKk+OusRZdtkIBnLN"
+    ];
   };
 in
 {

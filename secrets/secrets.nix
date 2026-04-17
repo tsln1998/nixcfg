@@ -32,6 +32,11 @@ in
   "hosts/oracle-phx-1/ssh_host_ed25519_key.pub.age".publicKeys = keys.all;
   "hosts/oracle-phx-1/shadowsocks.json.age".publicKeys = hosts.oracle-phx-1 ++ users.tsln;
 
+  # Oracle Cloud USA Phoenix 2
+  "hosts/oracle-phx-2/ssh_host_ed25519_key.age".publicKeys = hosts.oracle-phx-1 ++ users.tsln;
+  "hosts/oracle-phx-2/ssh_host_ed25519_key.pub.age".publicKeys = keys.all;
+  "hosts/oracle-phx-2/shadowsocks.json.age".publicKeys = hosts.oracle-phx-1 ++ users.tsln;
+
   # User - tsln
   "users/tsln/id_ed25519.age".publicKeys = users.tsln;
   "users/tsln/id_ed25519.pub.age".publicKeys = keys.all;

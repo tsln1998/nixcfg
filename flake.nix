@@ -257,6 +257,11 @@
           hostName = "oracle-phx-1";
           system = "x86_64-linux";
         })
+        # Oracle Cloud USA Phoenix 2
+        (nixosSystem {
+          hostName = "oracle-phx-2";
+          system = "x86_64-linux";
+        })
       ];
       #
       # Home Manager Standalone Configrations
