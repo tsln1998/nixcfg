@@ -28,7 +28,7 @@ in
     file = relative "secrets/hosts/${hostName}/xray.json.age";
     mode = "0644";
   };
-  age.secrets."hosts/${hostName}/nginx.conf.age" = {
+  age.secrets."hosts/${hostName}/nginx.conf" = {
     file = relative "secrets/hosts/${hostName}/nginx.conf.age";
     mode = "0644";
   };
