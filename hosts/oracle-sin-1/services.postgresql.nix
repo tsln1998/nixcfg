@@ -51,6 +51,9 @@ in
   };
 
   systemd.services.rclone-postgresql = {
+    restartTriggers = [
+      secrets."hosts/${hostName}/rclone.toml".file
+    ];
     serviceConfig = {
       DynamicUser = lib.mkForce false;
       User = "postgres";

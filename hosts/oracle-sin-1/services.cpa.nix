@@ -6,6 +6,7 @@ let
   # Import age secrets and hostname
   inherit (config.age) secrets;
   inherit (config.networking) hostName;
+  inherit (config.virtualisation.oci-containers) backend;
 
   # Select database name
   db = "app-cpa";
@@ -25,6 +26,12 @@ in
 
     environmentFiles = [
       secrets."hosts/${hostName}/cpa.env".path
+    ];
+  };
+
+  systemd.services."${backend}-hub" = {
+    restartTriggers = [
+      secrets."hosts/${hostName}/cpa.env".file
     ];
   };
 
