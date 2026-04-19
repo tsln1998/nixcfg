@@ -30,4 +30,8 @@ _: {
       "virtio_gpu"
     ];
   };
+  
+  boot.kernel.sysctl = {
+    "vm.swappiness" = "10";
+  };
 }
