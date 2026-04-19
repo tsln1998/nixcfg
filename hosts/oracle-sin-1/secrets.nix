@@ -28,8 +28,8 @@ in
     file = relative "secrets/hosts/${hostName}/xray.json.age";
     mode = "0644";
   };
-  age.secrets."hosts/${hostName}/caddyfile" = {
-    file = relative "secrets/hosts/${hostName}/caddyfile.age";
+  age.secrets."hosts/${hostName}/nginx.conf.age" = {
+    file = relative "secrets/hosts/${hostName}/nginx.conf.age";
     mode = "0644";
   };
 }

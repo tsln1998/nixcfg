@@ -1,18 +1,19 @@
-{ config, pkgs, ... }:
+{ config, ... }:
 let
   inherit (config.age) secrets;
   inherit (config.networking) hostName;
 in
 {
-  services.caddy = {
+  services.nginx = {
     enable = true;
-    configFile = secrets."hosts/${hostName}/caddyfile".path;
-    package = pkgs.caddy;
+    config = ''
+      include ${secrets."hosts/${hostName}/nginx.conf".path};
+    '';
   };
 
-  systemd.services.caddy = {
-    reloadTriggers = [
-      secrets."hosts/${hostName}/caddyfile".file
+  systemd.services.nginx = {
+    restartTriggers = [
+      secrets."hosts/${hostName}/nginx.conf".file
     ];
   };
 
