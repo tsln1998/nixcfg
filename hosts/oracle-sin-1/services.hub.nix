@@ -2,6 +2,7 @@
 let
   inherit (config.age) secrets;
   inherit (config.networking) hostName;
+  inherit (config.virtualisation.oci-containers) backend;
 
   db = "app-hub";
 in
@@ -27,6 +28,12 @@ in
 
     environmentFiles = [
       secrets."hosts/${hostName}/hub.env".path
+    ];
+  };
+
+  systemd.services."${backend}-hub" = {
+    restartTriggers = [
+      secrets."hosts/${hostName}/hub.env".file
     ];
   };
 

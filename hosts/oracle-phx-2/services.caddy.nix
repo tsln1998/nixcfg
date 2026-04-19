@@ -10,6 +10,12 @@ in
     package = pkgs.caddy;
   };
 
+  systemd.services.caddy = {
+    reloadTriggers = [
+      secrets."hosts/${hostName}/caddyfile".file
+    ];
+  };
+
   networking.firewall = {
     allowedTCPPorts = [
       80
