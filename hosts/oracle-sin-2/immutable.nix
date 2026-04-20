@@ -23,6 +23,10 @@ _: {
         mode = "0755";
       }
       {
+        directory = "/var/lib/containers";
+        mode = "0755";
+      }
+      {
         directory = "/var/lib/systemd/coredump";
         mode = "0755";
       }
