@@ -19,7 +19,15 @@ _: {
         mode = "0755";
       }
       {
+        directory = "/var/tmp";
+        mode = "0755";
+      }
+      {
         directory = "/var/lib/nixos";
+        mode = "0755";
+      }
+      {
+        directory = "/var/lib/containers";
         mode = "0755";
       }
       {
