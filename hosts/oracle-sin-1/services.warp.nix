@@ -1,4 +1,9 @@
-{lib, config, pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 let
   inherit (config.virtualisation.oci-containers) backend;
 
@@ -36,28 +41,36 @@ in
     ];
   };
 
-  systemd.services.${checker} = {
-    description = "Check ${name} proxy and restart container if needed";
-    after = [ "${backend}-${name}.service" ];
-    wants = [ "${backend}-${name}.service" ];
-    serviceConfig = {
-      Type = "oneshot";
-      ExecStart = pkgs.writeShellScript checker ''
-        ${curl} https://cloudflare.com/cdn-cgi/trace \
-          -fsS
-          --max-time 1 \
-          -x socks5h://127.0.0.1:${toString port} >/dev/null || \
-        ${systemctl} restart ${backend}-${name}
-      '';
+  systemd.services.${checker} =
+    let
+      svc = "${backend}-${name}.service";
+    in
+    {
+      description = "Check ${name} proxy and restart container if needed";
+      after = [ svc ];
+      wants = [ svc ];
+      serviceConfig = {
+        Type = "oneshot";
+        ExecStart = pkgs.writeShellScript checker ''
+          ${curl} https://cloudflare.com/cdn-cgi/trace \
+            -fsS \
+            --max-time 1 \
+            -x socks5h://127.0.0.1:${toString port} >/dev/null || \
+          ${systemctl} restart ${svc}
+        '';
+      };
     };
-  };
 
-  systemd.timers.${checker} = {
-    wantedBy = [ "timers.target" ];
-    timerConfig = {
-      Unit = "${checker}.service";
-      OnBootSec = "1min";
-      OnUnitActiveSec = "15s";
+  systemd.timers.${checker} =
+    let
+      svc = "${checker}.service";
+    in
+    {
+      wantedBy = [ "timers.target" ];
+      timerConfig = {
+        Unit = svc;
+        OnBootSec = "15min";
+        OnUnitActiveSec = "1min";
+      };
     };
-  };
 }
