@@ -73,9 +73,6 @@
     llm-agents.inputs.systems.follows = "systems";
     llm-agents.inputs.treefmt-nix.follows = "treefmt-nix";
 
-    zen.url = "github:youwen5/zen-browser-flake";
-    zen.inputs.nixpkgs.follows = "nixpkgs";
-
     vscode.url = "github:nix-community/nix-vscode-extensions";
     vscode.inputs.nixpkgs.follows = "nixpkgs";
   };

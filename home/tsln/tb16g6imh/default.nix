@@ -22,7 +22,6 @@
       "home/tsln/_common/apps/vlc.nix"
       "home/tsln/_common/apps/vscode.nix"
       "home/tsln/_common/apps/wechat.nix"
-      "home/tsln/_common/apps/zen.nix"
       "home/tsln/_common/dev/bun.nix"
       "home/tsln/_common/dev/go.nix"
       "home/tsln/_common/dev/git.nix"
