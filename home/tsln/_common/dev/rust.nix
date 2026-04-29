@@ -4,5 +4,10 @@
     cargo
     rustc
     rustfmt
+
+    lld
+
+    cargo-workspaces
+    cargo-generate
   ];
 }
