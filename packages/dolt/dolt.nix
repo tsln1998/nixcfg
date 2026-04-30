@@ -9,16 +9,16 @@ let
   owner = "dolthub";
   repo = "dolt";
   pname = "dolt";
-  version = "1.86.1";
+  version = "1.86.6";
 
   srcs = {
     x86_64-linux = fetchurl {
       url = "https://github.com/${owner}/${repo}/releases/download/v${version}/dolt-linux-amd64.tar.gz";
-      hash = "sha256-N7S9c7TET9F3kRWzWrPgRqMy7ZnlY89WKILrT9uL3oY=";
+      hash = "sha256-H3i9w57fTU5zGlMTGxfUVfoNHi6HLA9fjaqkTQd1Oos=";
     };
     aarch64-linux = fetchurl {
       url = "https://github.com/${owner}/${repo}/releases/download/v${version}/dolt-linux-arm64.tar.gz";
-      hash = "sha256-XcRsnbPLLoo7UVTvly5QJnFSDv3Nzc4N9kS2e6sn2Vg=";
+      hash = "sha256-HKoK7cViymPPwk7kuRKH5b50Rqrt3ClPGZ91FeXP3B8=";
     };
   };
 

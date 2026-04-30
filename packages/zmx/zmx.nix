@@ -10,16 +10,16 @@ let
   owner = "neurosnap";
   repo = "zmx";
   pname = "zmx";
-  version = "0.4.2";
+  version = "0.5.0";
 
   srcs = {
     x86_64-linux = fetchurl {
       url = "https://zmx.sh/a/zmx-${version}-linux-x86_64.tar.gz";
-      hash = "sha256-JSPSkAbo4NdoyA9APK0pROkNWMuj9oqRJ3sLgNDB8jc=";
+      hash = "sha256-TMH2uFTczcq65MuRvQN5oj5vghAEivXYHgZh5ZSlDCg=";
     };
     aarch64-linux = fetchurl {
       url = "https://zmx.sh/a/zmx-${version}-linux-aarch64.tar.gz";
-      hash = "sha256-Lj/CpiV0CGJmNEgOWmhMwk5ys0+BPQiwCKNZ+VDvyjs=";
+      hash = "sha256-youXaIO9bdahR9kUD9b2JewpEMs6chCCGksoWND8nVw=";
     };
   };
 
