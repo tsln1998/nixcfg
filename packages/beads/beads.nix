@@ -14,16 +14,16 @@ let
   owner = "gastownhall";
   repo = "beads";
   pname = "beads";
-  version = "1.0.0";
+  version = "1.0.3";
 
   srcs = {
     x86_64-linux = fetchurl {
       url = "https://github.com/${owner}/${repo}/releases/download/v${version}/beads_${version}_linux_amd64.tar.gz";
-      hash = "sha256-cFfbHpJCj89cCNXcawfq1X5YiyYsuni5omiT1VvSn9s=";
+      hash = "sha256-HvXcqBjX6BV0356fn8KharcR2gmw+nuCKuFi2agciRI=";
     };
     aarch64-linux = fetchurl {
       url = "https://github.com/${owner}/${repo}/releases/download/v${version}/beads_${version}_linux_arm64.tar.gz";
-      hash = "sha256-m7MEEwQeUNrJRaD4qmQBHks0Xr/Qo/m1/M1kbG3KYac=";
+      hash = "sha256-JDqcdQEueUiI/K+5V+diS4/v+8DPRTNA+vJgxw7wS8=";
     };
   };
 
