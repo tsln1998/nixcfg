@@ -1,32 +1,27 @@
 {
   lib,
-  stdenv,
   stdenvNoCC,
   fetchurl,
   bubblewrap,
   ripgrep,
-  zlib,
-  libcap,
-  openssl,
-  autoPatchelfHook,
   makeWrapper,
   installShellFiles,
-  installShellCompletions ? stdenv.buildPlatform.canExecute stdenv.hostPlatform,
+  installShellCompletions ? stdenvNoCC.buildPlatform.canExecute stdenvNoCC.hostPlatform,
 }:
 let
   owner = "openai";
   repo = "codex";
   pname = "codex";
-  version = "0.125.0";
+  version = "0.128.0";
 
   srcs = {
     x86_64-linux = fetchurl {
-      url = "https://github.com/${owner}/${repo}/releases/download/rust-v${version}/codex-x86_64-unknown-linux-gnu.tar.gz";
-      hash = "sha256-UivAubirMfOo8fxIeKvU6DsRamwbz8dxfS/gNvVM1L4=";
+      url = "https://github.com/${owner}/${repo}/releases/download/rust-v${version}/codex-x86_64-unknown-linux-musl.tar.gz";
+      hash = "sha256-iGuF5hGMC0MjRDfKAH++kjYRpTsQPQDg0650rvsg4jo=";
     };
     aarch64-linux = fetchurl {
-      url = "https://github.com/${owner}/${repo}/releases/download/rust-v${version}/codex-aarch64-unknown-linux-gnu.tar.gz";
-      hash = "sha256-LQdlJ/11eGVvG4eQZQrck0SnQpmAs5mJQRVqtqBhVuY=";
+      url = "https://github.com/${owner}/${repo}/releases/download/rust-v${version}/codex-aarch64-unknown-linux-musl.tar.gz";
+      hash = "sha256-MWG01TBP6ve++7D8tBv5p+5A4xun4+821AoAqjumy9A=";
     };
   };
 
@@ -38,23 +33,11 @@ stdenvNoCC.mkDerivation {
   inherit pname version src;
 
   nativeBuildInputs = [
-    autoPatchelfHook
     makeWrapper
     installShellFiles
   ];
 
-  buildInputs = [
-    stdenv.cc.cc.lib
-    openssl
-    zlib
-  ]
-  ++ lib.optionals stdenv.hostPlatform.isLinux [
-    libcap
-  ];
-
   sourceRoot = ".";
-
-  dontAutoPatchelf = true;
 
   installPhase = ''
     runHook preInstall
@@ -66,9 +49,8 @@ stdenvNoCC.mkDerivation {
   '';
 
   postFixup = ''
-    autoPatchelf -- "$out"
     wrapProgram $out/bin/codex --prefix PATH : ${
-      lib.makeBinPath ([ ripgrep ] ++ lib.optionals stdenv.hostPlatform.isLinux [ bubblewrap ])
+      lib.makeBinPath ([ ripgrep ] ++ lib.optionals stdenvNoCC.hostPlatform.isLinux [ bubblewrap ])
     }
   ''
   + lib.optionalString installShellCompletions ''
