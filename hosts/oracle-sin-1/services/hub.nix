@@ -8,7 +8,7 @@ let
 in
 {
   virtualisation.oci-containers.containers.hub = {
-    image = "ghcr.io/ding113/claude-code-hub:v0.7.3";
+    image = "ghcr.io/ding113/claude-code-hub:v0.7.4";
 
     environment = {
       TZ = "Asia/Shanghai";
