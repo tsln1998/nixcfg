@@ -5,7 +5,7 @@ _: {
     initExtra = ''
       # Load local profile
       for profile in ~/.config/profile.d/*.sh; do
-        source "$profile"
+        test -f "$profile" && source "$profile"
       done
     '';
   };
