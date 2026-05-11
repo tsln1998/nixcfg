@@ -433,12 +433,33 @@
         "nixpkgs": "nixpkgs",
         "nur": "nur",
         "plasma-manager": "plasma-manager",
+        "rust": "rust",
         "systems": "systems",
         "treefmt-nix": "treefmt-nix",
         "unstable": [
           "nixpkgs"
         ],
         "vscode": "vscode"
+      }
+    },
+    "rust": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1778469574,
+        "narHash": "sha256-NTZzJ7xJvMXOonYqut3WLUhryeZj5QuuL0ANcqS7d30=",
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "4852a8aa041c94af55e136cde5b8b6d42c3563e8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "type": "github"
       }
     },
     "systems": {
