@@ -73,6 +73,9 @@
     llm-agents.inputs.systems.follows = "systems";
     llm-agents.inputs.treefmt-nix.follows = "treefmt-nix";
 
+    rust.url = "github:oxalica/rust-overlay";
+    rust.inputs.nixpkgs.follows = "nixpkgs";
+
     vscode.url = "github:nix-community/nix-vscode-extensions";
     vscode.inputs.nixpkgs.follows = "nixpkgs";
   };
