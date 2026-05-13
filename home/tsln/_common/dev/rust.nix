@@ -10,6 +10,7 @@
         "x86_64-pc-windows-msvc"     # Windows x64
         "aarch64-pc-windows-msvc"    # Windows aarch64
        ];
+       extensions = [ ];
     })
     
     lld
