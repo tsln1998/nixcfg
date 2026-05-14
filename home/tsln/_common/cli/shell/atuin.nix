@@ -1,7 +1,8 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 {
   programs.atuin = {
     enable = true;
+    package = pkgs.atuin;
     daemon = {
       enable = false;
     };
