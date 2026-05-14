@@ -15,6 +15,7 @@
     
     lld
 
+    cargo-xwin
     cargo-workspaces
     cargo-generate
   ];
