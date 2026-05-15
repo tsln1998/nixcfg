@@ -67,12 +67,6 @@
     catppuccin.url = "github:catppuccin/nix";
     catppuccin.inputs.nixpkgs.follows = "nixpkgs";
 
-    llm-agents.url = "github:numtide/llm-agents.nix";
-    llm-agents.inputs.nixpkgs.follows = "unstable";
-    llm-agents.inputs.flake-parts.follows = "flake-parts";
-    llm-agents.inputs.systems.follows = "systems";
-    llm-agents.inputs.treefmt-nix.follows = "treefmt-nix";
-
     rust.url = "github:oxalica/rust-overlay";
     rust.inputs.nixpkgs.follows = "nixpkgs";
 
