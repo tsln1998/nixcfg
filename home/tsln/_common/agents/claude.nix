@@ -10,7 +10,7 @@ let
 in
 {
   home.packages = [
-    pkgs.llm-agents.claude-code
+    pkgs.claude-code
   ];
 
   age.secrets."users/${username}/config/profile.d/claude.sh" = {
