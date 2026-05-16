@@ -40,7 +40,7 @@
     agenix.inputs.systems.follows = "systems";
     agenix.inputs.home-manager.follows = "home-manager";
 
-    comin.url = "github:nlewo/comin";
+    comin.url = "github:nlewo/comin/v0.12.0";
     comin.inputs.nixpkgs.follows = "nixpkgs";
     comin.inputs.flake-compat.follows = "flake-compat";
     comin.inputs.treefmt-nix.follows = "treefmt-nix";
