@@ -23,7 +23,7 @@ in
     ];
 
     postDeploymentCommand = pkgs.writeShellScript "comin-reboot" ''
-      if ${comin} status --json | ${jq} -e '.need_to_reboot' 2>/dev/null; then
+      if ${comin} status --json | ${jq} -e '.need_to_reboot' >/dev/null 2>&1; then
         if ! ${sleep} $(${shuf} -i 30-300 -n 1); then
           echo "Warning: sleep failed, proceeding to reboot anyway" >&2
         fi
