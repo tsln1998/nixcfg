@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
   home.packages = [
-    pkgs.unstable.qq
+    pkgs.qq
   ];
 }

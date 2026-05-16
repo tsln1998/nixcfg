@@ -32,6 +32,3 @@ let
     };
 in
 mkNixpkgsOverrided prev
-// {
-  unstable = mkNixpkgsOverrided prev.unstable;
-}

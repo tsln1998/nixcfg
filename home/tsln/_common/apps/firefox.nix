@@ -2,7 +2,7 @@
 {
   programs.firefox = rec {
     enable = true;
-    package = pkgs.unstable.firefox;
+    package = pkgs.firefox;
     languagePacks = [
       "zh_CN"
       "en_US"

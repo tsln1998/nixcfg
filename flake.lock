@@ -286,7 +286,7 @@
           "flake-parts"
         ],
         "nixpkgs": [
-          "unstable"
+          "nixpkgs"
         ]
       },
       "locked": {
@@ -345,9 +345,6 @@
         "rust": "rust",
         "systems": "systems",
         "treefmt-nix": "treefmt-nix",
-        "unstable": [
-          "nixpkgs"
-        ],
         "vscode": "vscode"
       }
     },

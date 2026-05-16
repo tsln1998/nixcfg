@@ -6,9 +6,7 @@
   ...
 }:
 {
-  imports = (tools.scan ./.) ++ [
-    ../common
-  ];
+  imports = tools.scan ./.;
 
   nix = {
     package = lib.mkDefault pkgs.nix;

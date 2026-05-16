@@ -2,7 +2,7 @@
 {
   programs.chromium = {
     enable = true;
-    package = pkgs.unstable.chromium;
+    package = pkgs.chromium;
     extensions = [
       { id = "ddkjiahejlhfcafbddmgiahcphecmpfh"; } # uBlock Origin Lite
       { id = "nngceckbapebfimnlniiiahkandclblb"; } # Bitwarden
