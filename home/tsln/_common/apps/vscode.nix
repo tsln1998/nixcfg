@@ -7,8 +7,7 @@
 let
   inherit (config.fonts.fontconfig) defaultFonts;
 
-  inherit (pkgs) vscode-marketplace-release;
-  inherit (pkgs.unstable) vscode-extensions;
+  inherit (pkgs) vscode-extensions vscode-marketplace-release;
 
   # 基础扩展
   baseExtensions = with vscode-extensions; [
@@ -174,7 +173,7 @@ let
 in
 {
   programs.vscode.enable = true;
-  programs.vscode.package = pkgs.unstable.vscodium;
+  programs.vscode.package = pkgs.vscodium;
   programs.vscode.mutableExtensionsDir = false;
 
   # 配置别名

@@ -1,5 +1,4 @@
 _: [
-  (import ./pkgs/unstable.nix _)
   (import ./pkgs/local.nix _)
   (import ./repos/nur.nix _)
   (import ./repos/agenix.nix _)
