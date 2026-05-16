@@ -7,6 +7,7 @@
       "home/tsln/_common/themes"
       "home/tsln/_common/i18n"
       "home/tsln/_common/utilities"
+      "home/tsln/_common/editor"
       "home/tsln/_common/agents/codex.nix"
       "home/tsln/_common/apps/bitwarden.nix"
       "home/tsln/_common/apps/chromium.nix"

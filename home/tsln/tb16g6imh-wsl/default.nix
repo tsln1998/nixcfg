@@ -6,6 +6,7 @@
       "home/tsln/_common/cli"
       "home/tsln/_common/themes"
       "home/tsln/_common/utilities"
+      "home/tsln/_common/editor"
       "home/tsln/_common/agents/codex.nix"
       "home/tsln/_common/dev/bun.nix"
       "home/tsln/_common/dev/cxx.nix"
