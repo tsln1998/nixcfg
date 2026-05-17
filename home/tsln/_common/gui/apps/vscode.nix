@@ -9,6 +9,9 @@ let
 
   inherit (pkgs) vscode-extensions vscode-marketplace-release;
 
+  # 变体包
+  pkg = pkgs.vscodium;
+
   # 基础扩展
   baseExtensions = with vscode-extensions; [
     # Keybindings
@@ -172,33 +175,29 @@ let
   names = lib.attrNames (langExtensions // langSettings);
 in
 {
-  programs.vscode.enable = true;
-  programs.vscode.package = pkgs.vscodium;
-  programs.vscode.mutableExtensionsDir = false;
-
-  # 配置别名
-  home.shellAliases = lib.optionals (config.programs.vscode.package.pname == "vscodium") {
-    code = "codium";
+  # 生成 Profiles
+  programs.${pkg.pname} = {
+    enable = true;
+    package = pkg;
+    mutableExtensionsDir = false;
+    profiles = {
+      default = {
+        enableUpdateCheck = false;
+        enableExtensionUpdateCheck = false;
+        extensions = baseExtensions;
+        userSettings = baseSettings;
+        keybindings = baseKeybindings;
+      };
+    }
+    // (lib.genAttrs names (lang: {
+      extensions = baseExtensions ++ (langExtensions.${lang} or [ ]);
+      userSettings = baseSettings // (langSettings.${lang} or { });
+      keybindings = baseKeybindings ++ (langKeybindings.${lang} or [ ]);
+    }));
   };
 
-  # 生成 profiles
-  programs.vscode.profiles = {
-    default = {
-      enableUpdateCheck = false;
-      enableExtensionUpdateCheck = false;
-      extensions = baseExtensions;
-      userSettings = baseSettings;
-      keybindings = baseKeybindings;
-    };
-  }
-  // (lib.genAttrs names (lang: {
-    extensions = baseExtensions ++ (langExtensions.${lang} or [ ]);
-    userSettings = baseSettings // (langSettings.${lang} or { });
-    keybindings = baseKeybindings ++ (langKeybindings.${lang} or [ ]);
-  }));
-
-  # 生成 catppuccin 配置
-  catppuccin.vscode.profiles = {
+  # 生成 Catppuccin 配置
+  catppuccin.${pkg.pname}.profiles = {
     default = {
       enable = true;
     };
@@ -206,4 +205,9 @@ in
   // (lib.genAttrs names (lang: {
     enable = true;
   }));
+
+  # 生成别名
+  home.shellAliases = lib.optionals (pkgs.vscode.meta.mainProgram != pkg.meta.mainProgram) {
+    ${pkgs.vscode.meta.mainProgram} = pkg.meta.mainProgram;
+  };
 }
