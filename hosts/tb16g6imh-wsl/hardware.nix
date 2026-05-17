@@ -1,4 +1,5 @@
-_: {
+{ lib, ... }:
+{
   wsl.enable = true;
   wsl.defaultUser = "tsln";
   wsl.startMenuLaunchers = true;
@@ -8,4 +9,6 @@ _: {
   wsl.wslConf.network.generateResolvConf = false;
 
   boot.tmp.useTmpfs = true;
+
+  hardware.graphics.enable = lib.mkForce false;
 }

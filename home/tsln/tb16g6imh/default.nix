@@ -18,7 +18,6 @@
       "home/tsln/_common/dev/managers/dotfiles/kubectl.nix"
       "home/tsln/_common/dev/managers/fluxcd.nix"
       "home/tsln/_common/dev/managers/kubectl.nix"
-      "home/tsln/_common/dev/managers/nixos.nix"
       "home/tsln/_common/dev/utilities"
       "home/tsln/_common/gui/apps/bitwarden.nix"
       "home/tsln/_common/gui/apps/chromium.nix"
