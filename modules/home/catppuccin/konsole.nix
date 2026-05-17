@@ -30,20 +30,12 @@ in
 
     accent = lib.mkOption {
       type = lib.types.str;
-      default = config.catppuccin.flavor;
+      default = config.catppuccin.accent;
       description = "Catppuccin accent";
     };
   };
 
   config = lib.mkIf enable {
-    # Catppuccin Konsole Theme Package
-    home.packages = [
-      (pkgs.catppuccin-kde.override {
-        flavour = cfg.flavor;
-        accents = cfg.accent;
-      })
-    ];
-
     # Catppuccin Konsole Theme Package
     home.file = {
       ".local/share/konsole/catppuccin-${cfg.flavor}.colorscheme" = {

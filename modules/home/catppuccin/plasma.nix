@@ -26,7 +26,7 @@ in
 
     accent = lib.mkOption {
       type = lib.types.str;
-      default = config.catppuccin.flavor;
+      default = config.catppuccin.accent;
       description = "Catppuccin accent";
     };
   };
@@ -35,8 +35,8 @@ in
     # Catppuccin Plasma Theme Package
     home.packages = [
       (pkgs.catppuccin-kde.override {
-        flavour = cfg.flavor;
-        accents = cfg.accent;
+        flavour = [ cfg.flavor ];
+        accents = [ cfg.accent ];
       })
     ];
 
