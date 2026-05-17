@@ -10,7 +10,6 @@
       "home/tsln/_common/dev/languages/cxx.nix"
       "home/tsln/_common/dev/languages/git.nix"
       "home/tsln/_common/dev/languages/go.nix"
-      "home/tsln/_common/dev/languages/nix.nix"
       "home/tsln/_common/dev/languages/nodejs.nix"
       "home/tsln/_common/dev/languages/rust.nix"
       "home/tsln/_common/dev/languages/dotfiles"
