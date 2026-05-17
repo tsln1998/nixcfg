@@ -22,10 +22,6 @@ _: {
         mode = "0755";
       }
       {
-        directory = ".claude";
-        mode = "0755";
-      }
-      {
         directory = ".config";
         mode = "0755";
       }
