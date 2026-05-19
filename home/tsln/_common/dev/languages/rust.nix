@@ -17,5 +17,7 @@
         # "aarch64-pc-windows-msvc"
       ];
     })
+
+    rustfmt
   ];
 }
