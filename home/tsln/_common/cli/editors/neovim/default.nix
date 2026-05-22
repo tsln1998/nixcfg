@@ -1,7 +1,7 @@
 { lib, tools, ... }:
 {
   imports = tools.scan ./.;
-  
+
   programs.neovim.enable = true;
   programs.neovim.defaultEditor = lib.mkDefault true;
   programs.neovim.viAlias = lib.mkDefault true;
