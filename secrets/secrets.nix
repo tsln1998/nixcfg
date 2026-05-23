@@ -7,10 +7,9 @@ in
   "hosts/tb16g6imh-wsl/ssh_host_ed25519_key.age".publicKeys = hosts.tb16g6imh-wsl ++ users.tsln;
   "hosts/tb16g6imh-wsl/ssh_host_ed25519_key.pub.age".publicKeys = keys.all;
 
-  # ThinkBook 16+ G6 IMH
-  "hosts/tb16g6imh/ssh_host_ed25519_key.age".publicKeys = hosts.tb16g6imh ++ users.tsln;
-  "hosts/tb16g6imh/ssh_host_ed25519_key.pub.age".publicKeys = keys.all;
-  "hosts/tb16g6imh/mihomo.yaml.age".publicKeys = hosts.tb16g6imh ++ users.tsln;
+  # Unknown Mini PC
+  "hosts/unknown-minipc/ssh_host_ed25519_key.age".publicKeys = hosts.unknown-minipc ++ users.tsln;
+  "hosts/unknown-minipc/ssh_host_ed25519_key.pub.age".publicKeys = keys.all;
 
   # Oracle Cloud Singapore 1
   "hosts/oracle-sin-1/ssh_host_ed25519_key.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;

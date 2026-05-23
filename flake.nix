@@ -224,9 +224,9 @@
       # NixOS Configurations
       #
       nixosConfigurations = builtins.listToAttrs [
-        # ThinkBook 16+ G6 IMH
+        # Unknown Mini PC
         (nixosSystem {
-          hostName = "tb16g6imh";
+          hostName = "unknown-minipc";
           system = "x86_64-linux";
         })
         # ThinkBook 16+ G6 IMH (WSL)
