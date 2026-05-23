@@ -3,12 +3,12 @@ _: {
     disk = {
       main = {
         type = "disk";
-        device = "/dev/disk/by-id/nvme-UMIS_RPJYJ512MLR1QWY_SS1M63310Z3CD41J353M";
+        device = "/dev/disk/by-id/nvme-Lexar_SSD_ARES_2TB_NLB057R000744P2202";
         content = {
           type = "gpt";
           partitions = {
             boot = {
-              size = "512M";
+              size = "200M";
               type = "EF00";
               content = {
                 format = "vfat";
@@ -16,7 +16,7 @@ _: {
                   "defaults"
                   "umask=0077"
                 ];
-                mountpoint = "/boot";
+                mountpoint = "/boot/efi";
                 type = "filesystem";
               };
             };
@@ -35,6 +35,14 @@ _: {
       pool = {
         type = "lvm_vg";
         lvs = {
+          boot = {
+            size = "1G";
+            content = {
+              type = "filesystem";
+              format = "ext4";
+              mountpoint = "/boot";
+            };
+          };
           persist = {
             size = "64G";
             content = {
@@ -52,7 +60,7 @@ _: {
             };
           };
           swap = {
-            size = "64G";
+            size = "32G";
             content = {
               type = "swap";
               discardPolicy = "both";

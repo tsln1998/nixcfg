@@ -1,15 +1,13 @@
 {
-  inputs,
   lib,
   pkgs,
+  inputs,
   ...
 }:
 {
   imports = [
-    inputs.hardware.nixosModules.common-cpu-intel
-    inputs.hardware.nixosModules.common-gpu-intel
-    inputs.hardware.nixosModules.common-pc-laptop
-    inputs.hardware.nixosModules.common-pc-laptop-ssd
+    inputs.hardware.nixosModules.common-cpu-amd
+    inputs.hardware.nixosModules.common-pc-ssd
   ];
 
   # Use the GRUB 2 boot loader.
@@ -20,13 +18,10 @@
   boot.loader.grub.configurationLimit = 50;
   boot.loader.grub.useOSProber = true;
   boot.loader.grub.default = "saved";
-  boot.loader.efi.efiSysMountPoint = "/boot";
+  boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
   # Kernel modules
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.kernelParams = [
-    ''acpi_osi="Windows 2022"''
-  ];
   boot.kernel.sysctl = {
     "kernel.perf_event_paranoid" = 1;
     "kernel.kptr_restrict" = 0;
@@ -38,25 +33,13 @@
   # Redistributable firmware
   hardware.firmware = with pkgs; [
     linux-firmware
-    sof-firmware
   ];
 
-  # Intel GPU
-  hardware.intelgpu.vaapiDriver = pkgs.intel-media-driver.pname;
-
-  # Intel NPU
-  hardware.cpu.intel.npu.enable = true;
-
-  # Intel microcode
-  hardware.cpu.intel.updateMicrocode = true;
+  # AMD microcode
+  hardware.cpu.amd.updateMicrocode = true;
 
   # Immutable firmware
   services.fwupd.enable = lib.mkDefault true;
-
-  # Awake device blacklist
-  services.udev.extraRules = ''
-    ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x8086", ATTR{device}=="0x7e7d", ATTR{power/wakeup}="disabled"
-  '';
 
   # TPM2 Module
   security.tpm2.enable = lib.mkDefault true;
