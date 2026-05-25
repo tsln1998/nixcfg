@@ -34,6 +34,10 @@ _: {
         mode = "0755";
       }
       {
+        directory = "/var/lib/tailscale";
+        mode = "0755";
+      }
+      {
         directory = "/var/lib/systemd/coredump";
         mode = "0755";
       }
