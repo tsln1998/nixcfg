@@ -9,7 +9,7 @@ let
   };
 
   hosts = {
-    unknown-minipc = [
+    minipc = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGAkFEAhSYaKtw30BigRgUjZtwq9iFVKAS/5m8vWBprr"
     ];
     oracle-sin-1 = [

@@ -209,9 +209,9 @@
       # NixOS Configurations
       #
       nixosConfigurations = builtins.listToAttrs [
-        # Unknown Mini PC
+        # Mini PC
         (nixosSystem {
-          hostName = "unknown-minipc";
+          hostName = "minipc";
           system = "x86_64-linux";
         })
         # Oracle Cloud Singapore 1
@@ -239,9 +239,10 @@
       # Home Manager Standalone Configrations
       #
       homeConfigurations = builtins.listToAttrs [
+        # Example
         (homeConfiguration {
-          userName = "placeholder";
-          hostName = "placeholder";
+          userName = "nixos";
+          hostName = "local";
           system = "x86_64-linux";
         })
       ];
