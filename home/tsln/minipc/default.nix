@@ -4,7 +4,6 @@
     (map tools.relative [
       "home/tsln/_common/base"
       "home/tsln/_common/cli"
-      "home/tsln/_common/cli/editors"
       "home/tsln/_common/dev/agents/codex.nix"
       "home/tsln/_common/dev/languages/cxx.nix"
       "home/tsln/_common/dev/languages/git.nix"
