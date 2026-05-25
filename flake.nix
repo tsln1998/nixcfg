@@ -229,11 +229,6 @@
           hostName = "unknown-minipc";
           system = "x86_64-linux";
         })
-        # ThinkBook 16+ G6 IMH (WSL)
-        (nixosSystem {
-          hostName = "tb16g6imh-wsl";
-          system = "x86_64-linux";
-        })
         # Oracle Cloud Singapore 1
         (nixosSystem {
           hostName = "oracle-sin-1";
@@ -258,13 +253,6 @@
       #
       # Home Manager Standalone Configrations
       #
-      homeConfigurations = builtins.listToAttrs [
-        # ThinkBook 16+ G6 IMH (WSL)
-        (homeConfiguration {
-          userName = "tsln";
-          hostName = "tb16g6imh-wsl";
-          system = "x86_64-linux";
-        })
-      ];
+      homeConfigurations = builtins.listToAttrs [];
     };
 }

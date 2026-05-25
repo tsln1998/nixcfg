@@ -1,6 +1,0 @@
-{
-  networking.nameservers = [
-    "223.5.5.5"
-    "223.6.6.6"
-  ];
-}
