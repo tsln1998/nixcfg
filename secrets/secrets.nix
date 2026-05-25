@@ -3,9 +3,9 @@ let
   inherit (keys) hosts users;
 in
 {
-  # Unknown Mini PC
-  "hosts/unknown-minipc/ssh_host_ed25519_key.age".publicKeys = hosts.unknown-minipc ++ users.tsln;
-  "hosts/unknown-minipc/ssh_host_ed25519_key.pub.age".publicKeys = keys.all;
+  # Mini PC
+  "hosts/minipc/ssh_host_ed25519_key.age".publicKeys = hosts.minipc ++ users.tsln;
+  "hosts/minipc/ssh_host_ed25519_key.pub.age".publicKeys = keys.all;
 
   # Oracle Cloud Singapore 1
   "hosts/oracle-sin-1/ssh_host_ed25519_key.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
