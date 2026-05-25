@@ -3,7 +3,8 @@ _: {
     disk = {
       main = {
         type = "disk";
-        device = "/dev/disk/by-id/nvme-Lexar_SSD_ARES_2TB_NLB057R000744P2202";
+        # device = "/dev/disk/by-id/nvme-Lexar_SSD_ARES_2TB_NLB057R000744P2202";
+        device = "/dev/disk/by-id/scsi-0QEMU_QEMU_HARDDISK_drive-scsi0";
         content = {
           type = "gpt";
           partitions = {
