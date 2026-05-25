@@ -2,10 +2,12 @@
   lib,
   pkgs,
   inputs,
+  modulesPath,
   ...
 }:
 {
   imports = [
+    (modulesPath + "/profiles/qemu-guest.nix")
     inputs.hardware.nixosModules.common-cpu-amd
     inputs.hardware.nixosModules.common-pc-ssd
   ];
@@ -15,13 +17,9 @@
   boot.loader.grub.device = "nodev";
   boot.loader.grub.efiSupport = true;
   boot.loader.grub.efiInstallAsRemovable = true;
-  boot.loader.grub.configurationLimit = 50;
-  boot.loader.grub.useOSProber = true;
-  boot.loader.grub.default = "saved";
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
   # Kernel modules
-  boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernel.sysctl = {
     "kernel.perf_event_paranoid" = 1;
     "kernel.kptr_restrict" = 0;
