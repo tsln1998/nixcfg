@@ -3,10 +3,6 @@ let
   inherit (keys) hosts users;
 in
 {
-  # ThinkBook 16+ G6 IMH (WSL)
-  "hosts/tb16g6imh-wsl/ssh_host_ed25519_key.age".publicKeys = hosts.tb16g6imh-wsl ++ users.tsln;
-  "hosts/tb16g6imh-wsl/ssh_host_ed25519_key.pub.age".publicKeys = keys.all;
-
   # Unknown Mini PC
   "hosts/unknown-minipc/ssh_host_ed25519_key.age".publicKeys = hosts.unknown-minipc ++ users.tsln;
   "hosts/unknown-minipc/ssh_host_ed25519_key.pub.age".publicKeys = keys.all;
