@@ -2,19 +2,11 @@
 {
   catppuccin = {
     enable = true;
-    flavor = lib.mkDefault "latte";
+    flavor = lib.mkDefault "mocha";
     accent = lib.mkDefault "blue";
 
     cache = {
       enable = true;
-    };
-
-    grub = {
-      flavor = lib.mkDefault "macchiato";
-    };
-
-    plymouth = {
-      flavor = lib.mkDefault "macchiato";
     };
   };
 }

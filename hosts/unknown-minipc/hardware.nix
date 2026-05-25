@@ -31,13 +31,8 @@
   # Redistributable firmware
   hardware.firmware = with pkgs; [
     linux-firmware
+    sof-firmware
   ];
-
-  # AMD microcode
-  hardware.cpu.amd.updateMicrocode = true;
-
-  # Immutable firmware
-  services.fwupd.enable = lib.mkDefault true;
 
   # TPM2 Module
   security.tpm2.enable = lib.mkDefault true;

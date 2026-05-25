@@ -18,19 +18,11 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    nur.url = "github:nix-community/NUR";
-    nur.inputs.nixpkgs.follows = "nixpkgs";
-    nur.inputs.flake-parts.follows = "flake-parts";
-
     flake-parts.url = "github:hercules-ci/flake-parts";
     flake-compat.url = "github:NixOS/flake-compat";
 
     treefmt-nix.url = "github:numtide/treefmt-nix";
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
-
-    nixos-wsl.url = "github:nix-community/NixOS-WSL";
-    nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
-    nixos-wsl.inputs.flake-compat.follows = "flake-compat";
 
     systems.url = "github:nix-systems/default-linux";
     hardware.url = "github:nixos/nixos-hardware";
@@ -58,18 +50,11 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    plasma-manager.url = "github:nix-community/plasma-manager";
-    plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
-    plasma-manager.inputs.home-manager.follows = "home-manager";
-
     catppuccin.url = "github:catppuccin/nix";
     catppuccin.inputs.nixpkgs.follows = "nixpkgs";
 
     rust.url = "github:oxalica/rust-overlay";
     rust.inputs.nixpkgs.follows = "nixpkgs";
-
-    vscode.url = "github:nix-community/nix-vscode-extensions";
-    vscode.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -253,6 +238,12 @@
       #
       # Home Manager Standalone Configrations
       #
-      homeConfigurations = builtins.listToAttrs [];
+      homeConfigurations = builtins.listToAttrs [
+        (homeConfiguration {
+          userName = "placeholder";
+          hostName = "placeholder";
+          system = "x86_64-linux";
+        })
+      ];
     };
 }

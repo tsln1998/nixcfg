@@ -46,6 +46,10 @@ _: {
         mode = "0755";
       }
       {
+        directory = ".vscode-server";
+        mode = "0755";
+      }
+      {
         directory = "codebases";
         mode = "0755";
       }
