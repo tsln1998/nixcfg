@@ -14,7 +14,6 @@ in
   imports = (tools.scan ./.) ++ [
     inputs.agenix.homeManagerModules.default
     inputs.catppuccin.homeModules.catppuccin
-    inputs.plasma-manager.homeModules.plasma-manager
     outputs.homeModules.default
   ];
 

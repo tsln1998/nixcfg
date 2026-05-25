@@ -6,7 +6,7 @@
   # Catppuccin
   catppuccin = {
     enable = true;
-    flavor = lib.mkDefault "latte";
+    flavor = lib.mkDefault "mocha";
     accent = lib.mkDefault "blue";
 
     cache = {

@@ -19,6 +19,7 @@
       "home/tsln/_common/dev/managers/kubectl.nix"
       "home/tsln/_common/dev/managers/dotfiles"
       "home/tsln/_common/dev/utilities"
+      "home/tsln/_common/i18n"
       "home/tsln/_common/themes"
     ])
     ++ (tools.scan ./.);
