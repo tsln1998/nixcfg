@@ -58,7 +58,6 @@ in
 
     samba-wsdd = {
       enable = true;
-      openFirewall = true;
     };
   };
 

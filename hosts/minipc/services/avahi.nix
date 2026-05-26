@@ -7,6 +7,7 @@ _: {
       workstation = true;
       userServices = true;
     };
+    openFirewall = false;
     extraServiceFiles = {
       samba = ''
         <?xml version="1.0" standalone='no'?>
@@ -38,13 +39,15 @@ _: {
             inherit name;
             value = {
               allowedTCPPorts = [
-                139
-                445
+                139 # NetBIOS Session
+                445 # Microsoft Direct Host SMB
+                3702 # Web Services Dynamic Discovery
               ];
               allowedUDPPorts = [
-                137
-                138
-                5353
+                137 # NetBIOS Name Service
+                138 # NetBIOS Datagram
+                5353 # mDNS
+                5357 # Web Services Dynamic Discovery
               ];
             };
           })
