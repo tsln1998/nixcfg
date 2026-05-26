@@ -12,4 +12,8 @@ in
     file = relative "secrets/hosts/${hostName}/ssh_host_ed25519_key.pub.age";
     mode = "0644";
   };
+  age.secrets."hosts/${hostName}/smbpasswd" = {
+    file = relative "secrets/hosts/${hostName}/smbpasswd.age";
+    mode = "0644";
+  };
 }
