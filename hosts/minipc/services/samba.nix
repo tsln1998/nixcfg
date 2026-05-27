@@ -9,7 +9,7 @@ let
   inherit (config.age) secrets;
   inherit (config.networking) hostName;
 
-  disk = "251ac21c-0155-432e-bcf0-d9ddc79b8c04";
+  disk = "7a411e69-f00f-441c-b987-49ce26341b81";
   service = "samba-smbd.service";
   mountPath = "/mnt/hdd";
   mountUnit = "${utils.escapeSystemdPath mountPath}.mount";
@@ -81,8 +81,8 @@ in
         description = "Mount mobile HDD for Samba shares";
         what = devicePath;
         where = mountPath;
-        type = "auto";
-        options = "defaults,nofail";
+        type = "btrfs";
+        options = "defaults,nofail,compress=zstd:3,autodefrag,noatime,commit=60";
 
         bindsTo = [ deviceUnit ];
         after = [ deviceUnit ];
