@@ -60,14 +60,6 @@ _: {
               mountpoint = "/nix";
             };
           };
-          swap = {
-            size = "32G";
-            content = {
-              type = "swap";
-              discardPolicy = "both";
-              resumeDevice = true;
-            };
-          };
         };
       };
     };

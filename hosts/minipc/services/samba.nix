@@ -34,6 +34,8 @@ in
 
           "fruit:aapl" = "yes";
           "fruit:copyfile" = "yes";
+          "fruit:metadata" = "stream";
+          "fruit:resource" = "stream";
         };
 
         "Time Machine" = {
@@ -44,11 +46,8 @@ in
           "force user" = "samba";
           "force group" = "samba";
 
-          "fruit:metadata" = "stream";
-          "fruit:resource" = "stream";
-
           "fruit:time machine" = "yes";
-          "fruit:time machine max size" = "1000G";
+          "fruit:time machine max size" = "1000000000000";
 
           "create mask" = "0600";
           "directory mask" = "0700";
