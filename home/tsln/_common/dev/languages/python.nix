@@ -1,6 +1,3 @@
-{ pkgs, ... }:
-{
-  home.packages = with pkgs; [
-    uv
-  ];
+_: {
+  programs.uv.enable = true;
 }
