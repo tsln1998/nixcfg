@@ -14,11 +14,19 @@ _: {
         mode = "0755";
       }
       {
+        directory = "/etc/NetworkManager/system-connections";
+        mode = "0755";
+      }
+      {
         directory = "/var/log";
         mode = "0755";
       }
       {
         directory = "/var/cache";
+        mode = "0755";
+      }
+      {
+        directory = "/var/lib/bluetooth";
         mode = "0755";
       }
       {
@@ -43,6 +51,10 @@ _: {
       }
       {
         directory = "/var/lib/systemd/timers";
+        mode = "0755";
+      }
+      {
+        directory = "/var/lib/NetworkManager";
         mode = "0755";
       }
     ];

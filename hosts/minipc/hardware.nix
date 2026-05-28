@@ -2,12 +2,10 @@
   lib,
   pkgs,
   inputs,
-  modulesPath,
   ...
 }:
 {
   imports = [
-    (modulesPath + "/profiles/qemu-guest.nix")
     inputs.hardware.nixosModules.common-cpu-amd
     inputs.hardware.nixosModules.common-pc-ssd
   ];
