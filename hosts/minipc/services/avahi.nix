@@ -7,7 +7,7 @@ _: {
       workstation = true;
       userServices = true;
     };
-    openFirewall = false;
+    openFirewall = true;
     extraServiceFiles = {
       samba = ''
         <?xml version="1.0" standalone='no'?>
@@ -28,34 +28,6 @@ _: {
           </service>
         </service-group>
       '';
-    };
-  };
-
-  networking = {
-    firewall = {
-      interfaces = builtins.listToAttrs (
-        map
-          (name: {
-            inherit name;
-            value = {
-              allowedTCPPorts = [
-                139 # NetBIOS Session
-                445 # Microsoft Direct Host SMB
-                3702 # Web Services Dynamic Discovery
-              ];
-              allowedUDPPorts = [
-                137 # NetBIOS Name Service
-                138 # NetBIOS Datagram
-                5353 # mDNS
-                5357 # Web Services Dynamic Discovery
-              ];
-            };
-          })
-          [
-            "eth0"
-            "wlan0"
-          ]
-      );
     };
   };
 }

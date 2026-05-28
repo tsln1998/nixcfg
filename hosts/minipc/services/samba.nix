@@ -21,6 +21,7 @@ in
     samba = {
       enable = true;
       package = pkgs.samba4Full;
+      openFirewall = true;
       smbd.enable = true;
       nmbd.enable = false;
       winbindd.enable = false;
