@@ -9,7 +9,7 @@ let
   path = "${homeDirectory}/.go";
 in
 {
-  home.sessionVariables = {
+  programs.go.env = {
     GOPATH = lib.mkDefault path;
     GOPROXY = "https://goproxy.cn,direct";
     GOSUMDB = "sum.golang.google.cn";
