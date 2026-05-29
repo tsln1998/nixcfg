@@ -7,6 +7,7 @@
 
   home.packages = [
     pkgs.go-tools
+    pkgs.golangci-lint
     pkgs.gopls
     pkgs.delve
   ];
