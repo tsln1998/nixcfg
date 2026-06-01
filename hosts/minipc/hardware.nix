@@ -17,26 +17,25 @@
   boot.loader.grub.efiInstallAsRemovable = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
-  # Kernel modules
+  # Kernel adjust
   boot.kernel.sysctl = {
     "kernel.perf_event_paranoid" = 1;
     "kernel.kptr_restrict" = 0;
   };
 
-  # Zram swap (4GB)
-  zramSwap.enable = true;
-  zramSwap.memoryMax = 4 * 1024 * 1024 * 1024;
-
-  # Hardware clock
-  time.hardwareClockInLocalTime = lib.mkForce true;
-
-  # Redistributable firmware
+  # Kernel firmware
+  services.fwupd.enable = true;
+  hardware.cpu.amd.updateMicrocode = true;
   hardware.firmware = with pkgs; [
     linux-firmware
     sof-firmware
   ];
 
-  # Hard disk standby
+  # Zram swap (4GB)
+  zramSwap.enable = true;
+  zramSwap.memoryMax = 4 * 1024 * 1024 * 1024;
+
+  # Disk standby
   services.udev.extraRules =
     let
       mkRule = as: lib.concatStringsSep ", " as;
@@ -51,6 +50,7 @@
         ''KERNEL=="sd[a-z]"''
         # 仅针对机械盘
         ''ATTR{queue/rotational}=="1"''
+        # 90 分钟自动休眠
         ''RUN+="${pkgs.hdparm}/bin/hdparm -B 127 -S 243 /dev/%k"''
       ])
     ];
