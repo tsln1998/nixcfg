@@ -3,8 +3,8 @@
   ...
 }:
 {
-  # install jq
   home.packages = [
     pkgs.jq
+    pkgs.yq-go
   ];
 }
