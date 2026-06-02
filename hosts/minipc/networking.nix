@@ -9,10 +9,10 @@
 
   networking.timeServers = [
     "pool.ntp.org"
-    
+
     "ntp.aliyun.com"
     "ntp.tencent.com"
-    
+
     "time.apple.com"
     "time.windows.com"
   ];
