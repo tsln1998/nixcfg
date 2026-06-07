@@ -6,7 +6,8 @@ in
   # Mini PC
   "hosts/minipc/ssh_host_ed25519_key.age".publicKeys = hosts.minipc ++ users.tsln;
   "hosts/minipc/ssh_host_ed25519_key.pub.age".publicKeys = keys.all;
-  "hosts/minipc/smbpasswd.age".publicKeys = hosts.minipc ++ users.tsln;
+  "hosts/minipc/hermes/env.age".publicKeys = hosts.minipc ++ users.tsln;
+  "hosts/minipc/hermes/config.yaml.age".publicKeys = hosts.minipc ++ users.tsln;
 
   # Oracle Cloud Singapore 1
   "hosts/oracle-sin-1/ssh_host_ed25519_key.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;

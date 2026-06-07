@@ -14,9 +14,10 @@ in
       isNormalUser = true;
       linger = true;
       extraGroups = builtins.filter (g: builtins.hasAttr g config.users.groups) [
+        "networkmanager"
         "wheel"
         "docker"
-        "networkmanager"
+        "hermes"
       ];
       hashedPassword = "$2b$05$3FgVPgolxWAkfcAyKLMs3.acSQHMnQU6wUMylrJ.ypv/dEe8P62u2";
     };

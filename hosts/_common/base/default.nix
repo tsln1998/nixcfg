@@ -12,6 +12,7 @@
     inputs.catppuccin.nixosModules.catppuccin
     inputs.home-manager.nixosModules.home-manager
     inputs.impermanence.nixosModules.impermanence
+    inputs.hermes-agent.nixosModules.default
     outputs.nixosModules.default
   ];
 
