@@ -16,6 +16,7 @@ in
       extraGroups = builtins.filter (g: builtins.hasAttr g config.users.groups) [
         "wheel"
         "docker"
+        "podman"
         "networkmanager"
       ];
       hashedPassword = "$2b$05$3FgVPgolxWAkfcAyKLMs3.acSQHMnQU6wUMylrJ.ypv/dEe8P62u2";

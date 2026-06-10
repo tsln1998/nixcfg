@@ -1,6 +1,7 @@
 { config, lib, ... }:
 let
   inherit (config.services.tailscale) enable openFirewall relay;
+  inherit (config.networking) nftables;
 in
 {
   options.services.tailscale.relay = {
@@ -16,6 +17,10 @@ in
     services.tailscale.extraSetFlags = [
       "--relay-server-port=${toString relay.port}"
     ];
+
+    systemd.services.tailscaled.environment = lib.mkIf nftables.enable {
+      TS_DEBUG_FIREWALL_MODE = "nftables";
+    };
 
     networking.firewall.allowedUDPPorts = lib.optionals openFirewall [
       relay.port
