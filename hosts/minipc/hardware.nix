@@ -36,26 +36,6 @@
   zramSwap.enable = true;
   zramSwap.memoryMax = 4 * 1024 * 1024 * 1024;
 
-  # Disk standby
-  services.udev.extraRules =
-    let
-      mkRule = as: lib.concatStringsSep ", " as;
-      mkRules = rs: lib.concatStringsSep "\n" rs;
-    in
-    mkRules [
-      (mkRule [
-        ''ACTION=="add|change"''
-        # 过滤块设备
-        ''SUBSYSTEM=="block"''
-        # 过滤 sdX 设备
-        ''KERNEL=="sd[a-z]"''
-        # 仅针对机械盘
-        ''ATTR{queue/rotational}=="1"''
-        # 90 分钟自动休眠
-        ''RUN+="${pkgs.hdparm}/bin/hdparm -B 127 -S 243 /dev/%k"''
-      ])
-    ];
-
   # TPM2 Module
   security.tpm2.enable = lib.mkDefault true;
 }
