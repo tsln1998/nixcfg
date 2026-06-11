@@ -13,8 +13,8 @@ in
     };
   };
 
-  config = lib.mkIf (enable && relay.enable) {
-    services.tailscale.extraSetFlags = [
+  config = lib.mkIf enable {
+    services.tailscale.extraSetFlags = lib.optionals relay.enable [
       "--relay-server-port=${toString relay.port}"
     ];
 
@@ -22,7 +22,7 @@ in
       TS_DEBUG_FIREWALL_MODE = "nftables";
     };
 
-    networking.firewall.allowedUDPPorts = lib.optionals openFirewall [
+    networking.firewall.allowedUDPPorts = lib.optionals (relay.enable && openFirewall) [
       relay.port
     ];
   };
