@@ -19,7 +19,7 @@ in
 
     tag = lib.mkOption {
       type = lib.types.str;
-      default = "slim-2026.3.846.0-2.12.0";
+      default = "slim-2026.4.1390.0-2.12.0";
       description = "Cloudflare WARP image tag";
     };
 
