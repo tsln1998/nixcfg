@@ -7,8 +7,4 @@ in
     enable = true;
     flake = if isLinux then "/etc/nixos" else null;
   };
-
-  programs.home-manager = {
-    enable = true;
-  };
 }
