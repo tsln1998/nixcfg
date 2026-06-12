@@ -5,5 +5,7 @@
     pkgs.pciutils
     pkgs.lm_sensors
     pkgs.smartmontools
+
+    pkgs.nvd
   ];
 }
