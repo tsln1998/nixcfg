@@ -1,14 +1,24 @@
-{ config, ... }:
+{ config, tools, ... }:
 let
+  inherit (tools) relative;
   inherit (config.age) secrets;
   inherit (config.networking) hostName;
-  inherit (config.virtualisation.oci-containers) backend;
 
   db = "app-hub";
+  name = "cch";
 in
 {
-  virtualisation.oci-containers.containers.hub = {
+  # Secrets
+  age.secrets."hosts/${hostName}/${name}/config.env" = {
+    file = relative "secrets/hosts/${hostName}/${name}/config.env.age";
+    mode = "0644";
+  };
+
+  # Claude Code Hub service configuration
+  virtualisation.oci-containers.containers.${name} = {
     image = "ghcr.io/ding113/claude-code-hub:v0.8.7";
+
+    serviceName = name;
 
     environment = {
       TZ = "Asia/Shanghai";
@@ -27,16 +37,17 @@ in
     ];
 
     environmentFiles = [
-      secrets."hosts/${hostName}/hub.env".path
+      secrets."hosts/${hostName}/${name}/config.env".path
     ];
   };
 
-  systemd.services."${backend}-hub" = {
+  systemd.services.${name} = {
     restartTriggers = [
-      secrets."hosts/${hostName}/hub.env".file
+      secrets."hosts/${hostName}/${name}/config.env".file
     ];
   };
 
+  # Database ensures
   services.postgresql = {
     ensureUsers = [
       {
@@ -46,11 +57,5 @@ in
     ];
 
     ensureDatabases = [ db ];
-  };
-
-  services.postgresqlBackup = {
-    databases = [
-      db
-    ];
   };
 }

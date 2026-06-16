@@ -14,8 +14,16 @@ in
       '';
     };
   };
+  home.file = {
+    ".config/pnpm/config.yaml" = {
+      text = ''
+        updateNotifier: false
+      '';
+    };
+  };
 
   home.sessionPath = [
     "${homeDirectory}/.npm/bin"
+    "${homeDirectory}/.local/share/pnpm/bin"
   ];
 }

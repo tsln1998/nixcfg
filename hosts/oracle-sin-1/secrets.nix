@@ -12,24 +12,4 @@ in
     file = relative "secrets/hosts/${hostName}/ssh_host_ed25519_key.pub.age";
     mode = "0644";
   };
-  age.secrets."hosts/${hostName}/rclone.toml" = {
-    file = relative "secrets/hosts/${hostName}/rclone.toml.age";
-    mode = "0644";
-  };
-  age.secrets."hosts/${hostName}/hub.env" = {
-    file = relative "secrets/hosts/${hostName}/hub.env.age";
-    mode = "0644";
-  };
-  age.secrets."hosts/${hostName}/cpa.env" = {
-    file = relative "secrets/hosts/${hostName}/cpa.env.age";
-    mode = "0644";
-  };
-  age.secrets."hosts/${hostName}/xray.json" = {
-    file = relative "secrets/hosts/${hostName}/xray.json.age";
-    mode = "0644";
-  };
-  age.secrets."hosts/${hostName}/nginx.conf" = {
-    file = relative "secrets/hosts/${hostName}/nginx.conf.age";
-    mode = "0644";
-  };
 }
