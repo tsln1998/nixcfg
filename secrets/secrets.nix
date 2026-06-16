@@ -6,16 +6,18 @@ in
   # Mini PC
   "hosts/minipc/ssh_host_ed25519_key.age".publicKeys = hosts.minipc ++ users.tsln;
   "hosts/minipc/ssh_host_ed25519_key.pub.age".publicKeys = keys.all;
-  "hosts/minipc/smbpasswd.age".publicKeys = hosts.minipc ++ users.tsln;
 
   # Oracle Cloud Singapore 1
   "hosts/oracle-sin-1/ssh_host_ed25519_key.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
   "hosts/oracle-sin-1/ssh_host_ed25519_key.pub.age".publicKeys = keys.all;
-  "hosts/oracle-sin-1/rclone.toml.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
-  "hosts/oracle-sin-1/hub.env.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
-  "hosts/oracle-sin-1/cpa.env.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
-  "hosts/oracle-sin-1/xray.json.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
-  "hosts/oracle-sin-1/nginx.conf.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
+  "hosts/oracle-sin-1/cpa/config.yaml.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
+  "hosts/oracle-sin-1/cpa/config.env.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
+  "hosts/oracle-sin-1/cch/config.env.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
+  "hosts/oracle-sin-1/xray/config.json.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
+  "hosts/oracle-sin-1/nginx/config.conf.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
+  "hosts/oracle-sin-1/restic/repository.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
+  "hosts/oracle-sin-1/restic/password.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
+  "hosts/oracle-sin-1/restic/env.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
 
   # Oracle Cloud Singapore 2
   "hosts/oracle-sin-2/ssh_host_ed25519_key.age".publicKeys = hosts.oracle-sin-2 ++ users.tsln;

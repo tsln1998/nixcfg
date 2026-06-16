@@ -21,7 +21,7 @@ in
     mounts = lib.mkOption {
       type = lib.types.attrsOf (
         lib.types.submodule (
-          { lib, ... }:
+          { lib, name, ... }:
           {
             options = {
               enable = lib.mkOption {
@@ -32,6 +32,15 @@ in
               configFile = lib.mkOption {
                 type = lib.types.path;
                 description = "rclone.conf path";
+              };
+
+              serviceName = lib.mkOption {
+                type = lib.types.nullOr lib.types.str;
+                description = "rclone service name";
+                default = naming name;
+                defaultText = lib.literalExpression ''
+                  if name == "" then "redis" else "redis-''${name}"
+                '';
               };
 
               remote = lib.mkOption {
@@ -101,7 +110,7 @@ in
 
     systemd.services = lib.mapAttrs' (
       name: conf:
-      lib.nameValuePair (naming name) {
+      lib.nameValuePair conf.serviceName {
         description = "rclone mount ${name}";
 
         wantedBy = [ "multi-user.target" ];
@@ -110,7 +119,7 @@ in
         serviceConfig = {
           LoadCredential = "rclone.conf:${conf.configFile}";
 
-          ExecStartPre = pkgs.writeShellScript "rclone-pre-${name}" ''
+          ExecStartPre = pkgs.writeShellScript "${conf.serviceName}-pre" ''
             local=${lib.escapeShellArg conf.local}
             if [ ! -d "$local" ] ; then
               ${lib.getExe' pkgs.coreutils "mkdir"} -p $local
@@ -147,17 +156,15 @@ in
             ]
           );
 
-          ExecStartPost = pkgs.writeShellScript ((naming name) + "-check") ''
+          ExecStartPost = pkgs.writeShellScript "${conf.serviceName}-post" ''
             for i in {1..15}; do
               ${lib.getExe' pkgs.util-linux "mountpoint"} -q ${conf.local} && break || sleep 1
             done
           '';
 
-          ExecStop = lib.concatStringsSep " " [
-            (lib.getExe' pkgs.fuse "fusermount")
-            "-u"
-            conf.local
-          ];
+          ExecStop = ''
+            ${lib.getExe' pkgs.fuse "fusermount"} -u ${conf.local}
+          '';
         };
       }
     ) mounts;
