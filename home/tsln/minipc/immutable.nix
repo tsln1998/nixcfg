@@ -19,7 +19,7 @@ _: {
       }
       {
         directory = ".claude";
-	mode = "0755";
+        mode = "0755";
       }
       {
         directory = ".config";
