@@ -12,4 +12,6 @@
       whiskers = pkgs.catppuccin-whiskers;
     }
   );
+
+  catppuccin.gemini-cli.enable = false;
 }
