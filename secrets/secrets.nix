@@ -23,20 +23,20 @@ in
   # Oracle Cloud Singapore 2
   "hosts/oracle-sin-2/ssh_host_ed25519_key.age".publicKeys = hosts.oracle-sin-2 ++ users.tsln;
   "hosts/oracle-sin-2/ssh_host_ed25519_key.pub.age".publicKeys = keys.all;
-  "hosts/oracle-sin-2/xray.json.age".publicKeys = hosts.oracle-sin-2 ++ users.tsln;
-  "hosts/oracle-sin-2/nginx.conf.age".publicKeys = hosts.oracle-sin-2 ++ users.tsln;
+  "hosts/oracle-sin-2/xray/config.json.age".publicKeys = hosts.oracle-sin-2 ++ users.tsln;
+  "hosts/oracle-sin-2/nginx/config.conf.age".publicKeys = hosts.oracle-sin-2 ++ users.tsln;
 
   # Oracle Cloud USA Phoenix 1
   "hosts/oracle-phx-1/ssh_host_ed25519_key.age".publicKeys = hosts.oracle-phx-1 ++ users.tsln;
   "hosts/oracle-phx-1/ssh_host_ed25519_key.pub.age".publicKeys = keys.all;
-  "hosts/oracle-phx-1/xray.json.age".publicKeys = hosts.oracle-phx-1 ++ users.tsln;
-  "hosts/oracle-phx-1/nginx.conf.age".publicKeys = hosts.oracle-phx-1 ++ users.tsln;
+  "hosts/oracle-phx-1/xray/config.json.age".publicKeys = hosts.oracle-phx-1 ++ users.tsln;
+  "hosts/oracle-phx-1/nginx/config.conf.age".publicKeys = hosts.oracle-phx-1 ++ users.tsln;
 
   # Oracle Cloud USA Phoenix 2
   "hosts/oracle-phx-2/ssh_host_ed25519_key.age".publicKeys = hosts.oracle-phx-2 ++ users.tsln;
   "hosts/oracle-phx-2/ssh_host_ed25519_key.pub.age".publicKeys = keys.all;
-  "hosts/oracle-phx-2/xray.json.age".publicKeys = hosts.oracle-phx-2 ++ users.tsln;
-  "hosts/oracle-phx-2/nginx.conf.age".publicKeys = hosts.oracle-phx-2 ++ users.tsln;
+  "hosts/oracle-phx-2/xray/config.json.age".publicKeys = hosts.oracle-phx-2 ++ users.tsln;
+  "hosts/oracle-phx-2/nginx/config.conf.age".publicKeys = hosts.oracle-phx-2 ++ users.tsln;
 
   # User - tsln
   "users/tsln/id_ed25519.age".publicKeys = users.tsln;
