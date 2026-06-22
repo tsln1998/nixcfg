@@ -54,6 +54,10 @@ _: {
         mode = "0755";
       }
       {
+        directory = ".vscodium-server";
+        mode = "0755";
+      }
+      {
         directory = "codebases";
         mode = "0755";
       }
