@@ -9,8 +9,6 @@ let
   inherit (tools) relative;
   inherit (config.age) secrets;
   inherit (config.networking) hostName;
-  inherit (config.networking) firewall;
-  inherit (config.services) tailscale;
   inherit (config.services.samba) package;
 in
 {
@@ -55,38 +53,15 @@ in
     };
   };
 
-  # Firewall
-  networking.nftables = lib.optionalAttrs (firewall.enable && tailscale.enable) {
-    enable = lib.mkForce true;
-    tables = {
-      tailscale = {
-        # TCP   22: OpenSSH Server
-        # TCP  139: NetBIOS Session
-        # TCP  445: Microsoft Direct Host SMB
-        # TCP 3702: Web Services Dynamic Discovery
-        # UDP  137: NetBIOS Name Service
-        # UDP  138: NetBIOS Datagram
-        # UDP 5353: mDNS
-        # UDP 5357: Web Services Dynamic Discovery
-        family = "inet";
-        content = ''
-          chain input {
-            type filter hook input priority -10; policy accept;
-
-            iifname "${tailscale.interfaceName}" tcp dport 22 accept;
-            iifname "${tailscale.interfaceName}" tcp dport { 139, 445, 3792 } drop;
-            iifname "${tailscale.interfaceName}" udp dport { 137, 138, 5353, 5357 } drop;
-          }
-        '';
-      };
-    };
-  };
-
   # Samba
   services.samba = {
     enable = true;
     package = pkgs.samba4Full;
     openFirewall = true;
+    nsswins = false;
+    nmbd.enable = false;
+    winbindd.enable = false;
+    usershares.enable = false;
 
     settings = {
       global = {
