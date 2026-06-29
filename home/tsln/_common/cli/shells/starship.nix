@@ -6,7 +6,8 @@ _: {
         disabled = true;
       };
       nix_shell = {
-        format = "via [$symbol]($style)";
+        format = "via [$symbol$state]($style) ";
+        symbol = "❄️ ";
       };
       git_status = {
         style = "red";
@@ -20,6 +21,12 @@ _: {
         stashed = "≡";
         staged = "+";
         untracked = "?";
+      };
+      env_var.ZMX_SESSION = {
+        symbol = "🪄 ";
+        format = "[$symbol$env_value]($style) ";
+        description = "zmx session name";
+        style = "bold magenta";
       };
     };
   };
