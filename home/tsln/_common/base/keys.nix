@@ -1,9 +1,11 @@
 {
   config,
+  tools,
   lib,
   ...
 }:
 let
+  inherit (tools) relative;
   inherit (config.home) username;
   inherit (config.age) secrets;
 
@@ -24,7 +26,22 @@ let
     ];
 in
 {
-  # Install secret keys to ~/.ssh
+  age.secrets."users/${username}/id_ed25519" = {
+    file = relative "secrets/users/${username}/id_ed25519.age";
+    mode = "600";
+  };
+
+  age.secrets."users/${username}/id_ed25519.pub" = {
+    file = relative "secrets/users/${username}/id_ed25519.pub.age";
+    mode = "644";
+  };
+  
+  age.secrets."users/${username}/nix/nix.conf" = {
+    file = relative "secrets/users/${username}/nix/nix.conf.age";
+    mode = "600";
+  };
+
+  # Install openssh keys to ~/.ssh
   home.activation.secretKeys = lib.hm.dag.entryAfter [ "agenix" ] ''
     run mkdir -p $HOME/.ssh
     run rm -f $HOME/.ssh/id_* 2>/dev/null || true
@@ -34,5 +51,10 @@ in
     ${(installKey "dsa")}
     ${(installKey "ecdsa")}
     run chmod 0600 $HOME/.ssh/authorized_keys 2>/dev/null || true
+  '';
+
+  # Install access-tokens to ~/.config/nix/nix.conf
+  nix.extraOptions = ''
+    !include ${config.age.secrets."users/${username}/nix/nix.conf".path}
   '';
 }
