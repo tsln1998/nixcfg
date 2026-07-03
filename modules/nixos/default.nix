@@ -34,7 +34,8 @@
   };
 
   nixpkgs.overlays = overlays;
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfree = false;
+  nixpkgs.config.allowUnfreePackages = [ ];
   nixpkgs.config.permittedInsecurePackages = [ ];
   nixpkgs.flake.setFlakeRegistry = false;
   nixpkgs.flake.setNixPath = false;
