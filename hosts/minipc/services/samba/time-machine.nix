@@ -10,7 +10,7 @@ let
   inherit (utils) escapeSystemdPath;
 
   name = "Time Machine";
-  mount = "/mnt/hdd";
+  mount = "/mnt/WDWXT1E681M146";
   subdir = ".time-machine";
 
   cfg = config.services.samba.settings.global // config.services.samba.settings.${name};
@@ -30,10 +30,12 @@ in
 
   systemd.services =
     let
-      svc = "samba-subdir-${escapeSystemdPath "${mount}/${subdir}"}";
+      prefix = "samba-subdir-${escapeSystemdPath "${mount}/${subdir}"}";
+      automatic = "${prefix}-automatic";
+      reactivate = "${prefix}-reactivate";
     in
     {
-      ${svc} = {
+      ${automatic} = {
         after = [ "${escapeSystemdPath mount}.mount" ];
         requires = [ "${escapeSystemdPath mount}.mount" ];
         partOf = [ "${escapeSystemdPath mount}.mount" ];
@@ -58,12 +60,33 @@ in
             ''
           );
 
-          ExecStart = pkgs.writeShellScript "${svc}-start" ''
+          ExecStart = pkgs.writeShellScript "${automatic}-start" ''
             crudini --set /etc/samba/smb.conf ${escapeShellArg name} available yes
           '';
 
-          ExecStop = pkgs.writeShellScript "${svc}-stop" ''
+          ExecStop = pkgs.writeShellScript "${automatic}-stop" ''
             crudini --set /etc/samba/smb.conf ${escapeShellArg name} available no
+          '';
+        };
+      };
+
+      ${reactivate} = {
+        description = "Reapply ${name} share after NixOS switch";
+        requiredBy = [ "sysinit-reactivation.target" ];
+        before = [ "sysinit-reactivation.target" ];
+        after = [ "local-fs.target" ];
+        path = [
+          pkgs.systemd
+          pkgs.util-linux
+        ];
+
+        serviceConfig = {
+          Type = "oneshot";
+
+          ExecStart = pkgs.writeShellScript "${reactivate}-start" ''
+            if mountpoint -q ${escapeShellArg mount}; then
+              systemctl restart ${escapeShellArg "${automatic}.service"}
+            fi
           '';
         };
       };

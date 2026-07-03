@@ -3,7 +3,7 @@ let
   inherit (utils) escapeSystemdPath;
 
   type = "ext4";
-  where = "/mnt/hdd";
+  where = "/mnt/WDWXT1E681M146";
   disk = "87870ad4-9afc-4e3e-9b94-0d2ab56ccb1b";
   what = "/dev/disk/by-uuid/${disk}";
 in
