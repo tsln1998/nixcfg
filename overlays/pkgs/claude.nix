@@ -1,7 +1,7 @@
 _: _: prev: {
   claude-code = prev.symlinkJoin {
     name = "claude-code-wrapper";
-    paths = [ prev.claude-code ];
+    paths = [ prev.unstable.claude-code ];
 
     buildInputs = [ prev.makeWrapper ];
 
