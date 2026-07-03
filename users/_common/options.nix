@@ -1,5 +1,6 @@
 {
   inputs,
+  overlays,
   outputs,
   tools,
   pkgs,
@@ -11,7 +12,7 @@
     ${pkgs.coreutils}/bin/rm -rf "$1"
   '';
   home-manager.extraSpecialArgs = {
-    inherit inputs outputs;
-    inherit tools pkgs;
+    inherit inputs outputs overlays;
+    inherit tools;
   };
 }

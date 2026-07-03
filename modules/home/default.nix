@@ -34,6 +34,10 @@
   };
 
   nixpkgs.overlays = overlays;
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfree = false;
+  nixpkgs.config.allowUnfreePackages = [
+    "claude-code"
+    "unrar"
+  ];
   nixpkgs.config.permittedInsecurePackages = [ ];
 }

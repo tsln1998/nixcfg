@@ -77,9 +77,6 @@
         system:
         import nixpkgs {
           inherit system overlays;
-          config = {
-            allowUnfree = true;
-          };
         }
       );
       treefmtFor = nixpkgs.lib.genAttrs (builtins.attrNames pkgsFor) (
