@@ -14,14 +14,8 @@ let
     oracle-sin-1 = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAbdrPFrrWj6DTbSAI7dv4wtuWSrZMZ55VS26RNysb1J"
     ];
-    oracle-sin-2 = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIfVjyuhAbv15X+PkbMA8J6ero+ff9NPiiYr/gWG7t8O"
-    ];
     oracle-phx-1 = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAID9BxLKduJubzOdDgUjleA3UmCnYrFIP7cwg1JkQ87oe"
-    ];
-    oracle-phx-2 = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH3l/zbS7ZlC8rpYt2/19xLFPQNGKk+OusRZdtkIBnLN"
     ];
   };
 in
