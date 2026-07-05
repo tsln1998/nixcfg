@@ -17,6 +17,8 @@ in
         "wheel"
         "docker"
         "podman"
+        "kvm"
+        "libvirtd"
         "networkmanager"
       ];
       hashedPassword = "$2b$05$3FgVPgolxWAkfcAyKLMs3.acSQHMnQU6wUMylrJ.ypv/dEe8P62u2";
