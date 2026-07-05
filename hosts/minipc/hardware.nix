@@ -25,12 +25,18 @@
   };
 
   # Kernel firmware
-  services.fwupd.enable = true;
   hardware.cpu.amd.updateMicrocode = true;
   hardware.firmware = with pkgs; [
     linux-firmware
     sof-firmware
   ];
+
+  services.fwupd.enable = true;
+  services.fwupd.package = pkgs.fwupd;
+
+  # Graphicals
+  hardware.graphics.enable = true;
+  hardware.graphics.package = pkgs.mesa;
 
   # Zram swap (4GB)
   zramSwap.enable = true;
