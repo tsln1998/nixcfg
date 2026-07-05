@@ -30,10 +30,13 @@ in{
 
             iifname "${tailscale.interfaceName}" tcp dport { 139, 445, 3792 } drop;
             iifname "${tailscale.interfaceName}" udp dport { 137, 138, 5353, 5357 } drop;
-            iifname "${tailscale.interfaceName}" accept comment "trusted tailscale";
           }
         '';
       };
     };
   };
+
+  networking.firewall.trustedInterfaces = [
+    tailscale.interfaceName
+  ];
 }

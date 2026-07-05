@@ -14,6 +14,7 @@ in
   imports = (tools.scan ./.) ++ [
     inputs.agenix.homeManagerModules.default
     inputs.catppuccin.homeModules.catppuccin
+    inputs.nixvirt.homeModules.default
     outputs.homeModules.default
   ];
 

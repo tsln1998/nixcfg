@@ -38,6 +38,16 @@ _: {
         mode = "0755";
       }
       {
+        directory = "/var/lib/libvirt";
+        mode = "0755";
+      }
+      {
+        directory = "/var/lib/swtpm-localca";
+        mode = "0755";
+        user = "tss";
+        group = "tss";
+      }
+      {
         directory = "/var/lib/fwupd";
         mode = "0755";
       }
