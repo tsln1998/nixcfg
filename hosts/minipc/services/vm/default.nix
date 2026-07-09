@@ -48,7 +48,7 @@ in
   networking.firewall.trustedInterfaces = [
     "virbr0"
   ];
-  
+
   systemd.services.rdp-socat = {
     description = "RDP port forward via socat";
     wantedBy = [ "multi-user.target" ];

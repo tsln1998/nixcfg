@@ -8,8 +8,8 @@ in
     "${homeDirectory}/.ssh/id_ed25519"
   ]
   ++ [
-    "/persist/${homeDirectory}/.ssh/id_rsa"
-    "/persist/${homeDirectory}/.ssh/id_ed25519"
+    "/persist${homeDirectory}/.ssh/id_rsa"
+    "/persist${homeDirectory}/.ssh/id_ed25519"
   ]
   ++ [
     "/tmp/id_rsa"

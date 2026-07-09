@@ -1,6 +1,11 @@
 { config, lib, ... }:
 let
-  inherit (config.services.tailscale) enable openFirewall relay exit;
+  inherit (config.services.tailscale)
+    enable
+    openFirewall
+    relay
+    exit
+    ;
   inherit (config.networking) nftables;
 in
 {
@@ -20,11 +25,13 @@ in
 
   config = lib.mkIf enable {
     # Set flags
-    services.tailscale.extraSetFlags = (lib.optionals relay.enable [
-      "--relay-server-port=${toString relay.port}"
-    ]) ++ (lib.optionals exit.enable [
-      "--advertise-exit-node"
-    ]);
+    services.tailscale.extraSetFlags =
+      (lib.optionals relay.enable [
+        "--relay-server-port=${toString relay.port}"
+      ])
+      ++ (lib.optionals exit.enable [
+        "--advertise-exit-node"
+      ]);
 
     # Exit node
     boot.kernel.sysctl = lib.optionalAttrs exit.enable {
