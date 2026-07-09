@@ -6,7 +6,8 @@
 let
   inherit (config.services) tailscale;
   inherit (config.networking) firewall;
-in{
+in
+{
   services.tailscale.enable = true;
   services.tailscale.openFirewall = true;
 
