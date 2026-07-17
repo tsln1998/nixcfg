@@ -1,5 +1,4 @@
 {
-  pkgs,
   tools,
   lib,
   config,
@@ -36,8 +35,8 @@ in
       ]
   );
 
-  # Backup for PostgreSQL
-  services.restic.backups.postgresql = base // {
+  # Backup for CLIProxyAPI
+  services.restic.backups.cliproxyapi = base // {
     timerConfig = {
       OnCalendar = "hourly";
       Persistent = true;
@@ -46,32 +45,18 @@ in
 
     extraBackupArgs = [
       "--host=${lib.escapeShellArg hostName}"
-      "--tag=_:postgresql"
-      "--stdin-filename=postgresql.sql"
+      "--tag=_:cliproxyapi"
     ];
 
     pruneOpts = [
       "--host=${lib.escapeShellArg hostName}"
-      "--tag=_:postgresql"
+      "--tag=_:cliproxyapi"
       "--keep-hourly 72"
       "--keep-daily 7"
       "--keep-weekly 4"
       "--keep-monthly 6"
     ];
 
-    command =
-      let
-        pg_dumpall = lib.getExe' config.services.postgresql.package "pg_dumpall";
-        pg_dump = lib.getExe' config.services.postgresql.package "pg_dump";
-      in
-      [
-        "${pkgs.writeShellScript "restic-postgresql-export" ''
-          ${pg_dumpall} -U postgres -gc
-
-          for db in ${lib.escapeShellArgs config.services.postgresql.ensureDatabases} ;do
-            ${pg_dump} -U postgres -d $db -F p -Cc
-          done
-        ''}"
-      ];
+    paths = [ "/var/lib/cliproxyapi" ];
   };
 }

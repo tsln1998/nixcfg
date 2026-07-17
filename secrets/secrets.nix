@@ -11,8 +11,6 @@ in
   # Oracle Cloud Singapore 1
   "hosts/oracle-sin-1/ssh_host_ed25519_key.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
   "hosts/oracle-sin-1/ssh_host_ed25519_key.pub.age".publicKeys = keys.all;
-  "hosts/oracle-sin-1/cpa/config.yaml.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
-  "hosts/oracle-sin-1/cpa/config.env.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
   "hosts/oracle-sin-1/cch/config.env.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
   "hosts/oracle-sin-1/xray/config.json.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
   "hosts/oracle-sin-1/nginx/config.conf.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
@@ -23,8 +21,13 @@ in
   # Oracle Cloud USA Phoenix 1
   "hosts/oracle-phx-1/ssh_host_ed25519_key.age".publicKeys = hosts.oracle-phx-1 ++ users.tsln;
   "hosts/oracle-phx-1/ssh_host_ed25519_key.pub.age".publicKeys = keys.all;
+  "hosts/oracle-phx-1/cpa/config.yaml.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
+  "hosts/oracle-phx-1/cpa/config.env.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
   "hosts/oracle-phx-1/xray/config.json.age".publicKeys = hosts.oracle-phx-1 ++ users.tsln;
   "hosts/oracle-phx-1/nginx/config.conf.age".publicKeys = hosts.oracle-phx-1 ++ users.tsln;
+  "hosts/oracle-phx-1/restic/repository.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
+  "hosts/oracle-phx-1/restic/password.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
+  "hosts/oracle-phx-1/restic/env.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
 
   # User - tsln
   "users/tsln/id_ed25519.age".publicKeys = users.tsln;
