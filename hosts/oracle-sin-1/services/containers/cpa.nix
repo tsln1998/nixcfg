@@ -19,7 +19,7 @@ in
 
   # CLIProxy service configuration
   virtualisation.oci-containers.containers.${name} = {
-    image = "eceasy/cli-proxy-api:v7.2.77";
+    image = "eceasy/cli-proxy-api:v7.2.81";
 
     serviceName = name;
 
