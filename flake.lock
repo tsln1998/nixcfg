@@ -296,6 +296,52 @@
         "type": "github"
       }
     },
+    "nur": {
+      "inputs": {
+        "flake-parts": [
+          "flake-parts"
+        ],
+        "nixpkgs": [
+          "unstable"
+        ]
+      },
+      "locked": {
+        "lastModified": 1784702281,
+        "narHash": "sha256-4yno8vjcdLC7FkDeu25GUzyGMJq/3EVHHPIksW7DBAM=",
+        "owner": "nix-community",
+        "repo": "NUR",
+        "rev": "8934a2b94f43d9c4e6ea3f221933050e652ad987",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "NUR",
+        "type": "github"
+      }
+    },
+    "plasma-manager": {
+      "inputs": {
+        "home-manager": [
+          "home-manager"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1783574839,
+        "narHash": "sha256-ICof1tV4/9XheBLBGf7dhMhfMq4dOs1zwTHrr7zGFlA=",
+        "owner": "nix-community",
+        "repo": "plasma-manager",
+        "rev": "c551f0687658e4bb699cfff6015436ad7ee57a0d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "plasma-manager",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "agenix": "agenix",
@@ -310,10 +356,13 @@
         "impermanence": "impermanence",
         "nixpkgs": "nixpkgs_2",
         "nixvirt": "nixvirt",
+        "nur": "nur",
+        "plasma-manager": "plasma-manager",
         "rust": "rust",
         "systems": "systems",
         "treefmt-nix": "treefmt-nix",
-        "unstable": "unstable"
+        "unstable": "unstable",
+        "vscode": "vscode"
       }
     },
     "rust": {
@@ -384,6 +433,26 @@
         "owner": "NixOS",
         "ref": "nixpkgs-unstable",
         "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "vscode": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1784690271,
+        "narHash": "sha256-Td/6jJPsHg1LoUJZlAt2X/IoLkMOmxM1VWfNicKYGNI=",
+        "owner": "nix-community",
+        "repo": "nix-vscode-extensions",
+        "rev": "4c72373cecf4846a20232a288c5ede0a3937f4ad",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nix-vscode-extensions",
         "type": "github"
       }
     }
