@@ -38,10 +38,10 @@
   nixpkgs.config.allowUnfreePackages = [
     "qq"
     "unrar"
+    "wechat"
     "feishu"
     "datagrip"
     "claude-code"
-    "wechat-uos"
     "vscode-extension-ms-vscode-cpptools"
     "vscode-extension-MS-python-vscode-pylance"
   ];

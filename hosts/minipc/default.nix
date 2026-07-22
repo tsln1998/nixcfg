@@ -19,8 +19,6 @@
   services.logind.settings.Login.HandleHibernateKey="ignore";
   services.logind.settings.Login.KillUserProcesses = false;
   
-  systemd.defaultUnit = lib.mkForce "multi-user.target";
-
   systemd.sleep.settings.Sleep.AllowSuspend="no";
   systemd.sleep.settings.Sleep.AllowHibernation="no";
   systemd.sleep.settings.Sleep.AllowHybridSleep="no";
