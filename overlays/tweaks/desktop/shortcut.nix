@@ -38,21 +38,6 @@ let
             "$out/share/applications/qq.desktop"
         '';
       });
-
-      wechat-uos-sandboxed = pkgs.nur.repos.xddxdd.wechat-uos-sandboxed.override {
-        buildFHSEnvBubblewrap =
-          args:
-          final.buildFHSEnvBubblewrap (
-            args
-            // {
-              extraInstallCommands = (args.extraInstallCommands or "") + ''
-                ${final.lib.getExe gnused} -i \
-                  's/^Categories=.*/Categories=Network;/' \
-                  "$out/share/applications/com.tencent.wechat.desktop"
-              '';
-            }
-          );
-      };
     };
 in
 mkNixpkgsOverrided prev
