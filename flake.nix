@@ -19,6 +19,10 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
+    nur.url = "github:nix-community/NUR";
+    nur.inputs.nixpkgs.follows = "unstable";
+    nur.inputs.flake-parts.follows = "flake-parts";
+
     flake-parts.url = "github:hercules-ci/flake-parts";
     flake-compat.url = "github:NixOS/flake-compat";
 
@@ -54,11 +58,18 @@
     home-manager.url = "github:nix-community/home-manager/release-26.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    plasma-manager.url = "github:nix-community/plasma-manager";
+    plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
+    plasma-manager.inputs.home-manager.follows = "home-manager";
+
     catppuccin.url = "github:catppuccin/nix/release-26.05";
     catppuccin.inputs.nixpkgs.follows = "nixpkgs";
 
     rust.url = "github:oxalica/rust-overlay";
     rust.inputs.nixpkgs.follows = "nixpkgs";
+
+    vscode.url = "github:nix-community/nix-vscode-extensions";
+    vscode.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =

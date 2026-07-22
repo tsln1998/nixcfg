@@ -36,8 +36,14 @@
   nixpkgs.overlays = overlays;
   nixpkgs.config.allowUnfree = false;
   nixpkgs.config.allowUnfreePackages = [
-    "claude-code"
+    "qq"
     "unrar"
+    "feishu"
+    "datagrip"
+    "claude-code"
+    "wechat-uos"
+    "vscode-extension-ms-vscode-cpptools"
+    "vscode-extension-MS-python-vscode-pylance"
   ];
   nixpkgs.config.permittedInsecurePackages = [ ];
 }
