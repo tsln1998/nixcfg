@@ -1,0 +1,8 @@
+{
+  programs.helix.settings.editor.soft-wrap = {
+    enable = true;
+    max-wrap = 25;
+    max-indent-retain = 0;
+    wrap-indicator = "↪ ";
+  };
+}

@@ -1,4 +1,4 @@
-{ lib, tools, ... }:
+{ tools, ... }:
 {
   imports =
     map tools.relative [
