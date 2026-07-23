@@ -12,7 +12,6 @@
     inputs.catppuccin.nixosModules.catppuccin
     inputs.home-manager.nixosModules.home-manager
     inputs.impermanence.nixosModules.impermanence
-    inputs.nixvirt.nixosModules.default
     outputs.nixosModules.default
   ];
 
