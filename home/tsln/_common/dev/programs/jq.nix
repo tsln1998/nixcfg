@@ -1,10 +1,3 @@
-{
-  pkgs,
-  ...
-}:
-{
-  home.packages = [
-    pkgs.jq
-    pkgs.yq-go
-  ];
+{...}:{
+  programs.jq.enable = true;
 }

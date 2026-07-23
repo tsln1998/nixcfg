@@ -17,6 +17,6 @@
   };
 
   home.shellAliases = {
-    z = "zellij";
+    zj = "zellij";
   };
 }
