@@ -12,7 +12,6 @@ let
 in
 {
   imports = (tools.scan ./.) ++ [
-    inputs.nixvirt.homeModules.default
     inputs.agenix.homeManagerModules.default
     inputs.catppuccin.homeModules.catppuccin
     inputs.plasma-manager.homeModules.plasma-manager
