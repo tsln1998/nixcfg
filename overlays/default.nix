@@ -5,8 +5,8 @@ _: [
   (import ./repos/rust.nix _)
   (import ./repos/vscode.nix _)
   (import ./pkgs/local.nix _)
-  (import ./tweaks/upgrade/claude.nix _)
-  (import ./tweaks/upgrade/codex.nix _)
+  (import ./tweaks/alternative/claude.nix _)
+  (import ./tweaks/alternative/codex.nix _)
   (import ./tweaks/desktop/shortcut.nix _)
   (import ./tweaks/desktop/wayland.nix _)
 ]
