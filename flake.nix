@@ -57,6 +57,9 @@
     home-manager.url = "github:nix-community/home-manager/release-26.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    keyring-rs.url = "github:tsln1998/keyring-rs";
+    keyring-rs.inputs.nixpkgs.follows = "nixpkgs";
+
     plasma-manager.url = "github:nix-community/plasma-manager";
     plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
     plasma-manager.inputs.home-manager.follows = "home-manager";
