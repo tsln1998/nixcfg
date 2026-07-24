@@ -16,6 +16,10 @@ let
   baseExtensions = with vscode-extensions; [
     # Keybindings
     k--kato.intellij-idea-keybindings
+    # Themes
+    github.github-vscode-theme
+    pkief.material-icon-theme
+    miguelsolorio.fluent-icons
     # Rainbow
     oderwat.indent-rainbow
     # Git
@@ -40,11 +44,18 @@ let
     "window.titleBarStyle" = lib.mkForce "native";
     "window.menuStyle" = lib.mkForce "custom";
     "window.commandCenter" = lib.mkDefault false;
+    "window.autoDetectColorScheme" = lib.mkDefault true;
     "window.openFilesInNewWindow" = lib.mkDefault "off";
     "window.openFoldersInNewWindow" = lib.mkDefault "on";
     "window.title" = lib.mkDefault "\${rootName}\${separator}\${appName}";
 
     "workbench.startupEditor" = lib.mkDefault "none";
+    "workbench.editor.useModal" = lib.mkDefault "off";
+    "workbench.settings.editor" = lib.mkDefault "json";
+    "workbench.iconTheme" = lib.mkDefault "material-icon-theme";
+    "workbench.productIconTheme" = lib.mkDefault "fluent-icons";
+    "workbench.preferredLightColorTheme" = lib.mkDefault "GitHub Light";
+    "workbench.preferredDarkColorTheme" = lib.mkDefault "GitHub Dark";
 
     "files.autoSaveWhenNoErrors" = lib.mkDefault true;
     "files.autoSaveWorkspaceFilesOnly" = lib.mkDefault true;
@@ -199,11 +210,11 @@ in
   # 生成 Catppuccin 配置
   catppuccin.${pkg.pname}.profiles = {
     default = {
-      enable = true;
+      enable = false;
     };
   }
   // (lib.genAttrs names (lang: {
-    enable = true;
+    enable = false;
   }));
 
   # 生成别名
