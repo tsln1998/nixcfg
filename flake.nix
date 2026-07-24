@@ -17,7 +17,9 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
+
     unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    unstable-2511.url = "github:NixOS/nixpkgs/nixos-25.11-small";
 
     nur.url = "github:nix-community/NUR";
     nur.inputs.nixpkgs.follows = "unstable";
@@ -61,9 +63,6 @@
 
     catppuccin.url = "github:catppuccin/nix/release-26.05";
     catppuccin.inputs.nixpkgs.follows = "nixpkgs";
-
-    rust.url = "github:oxalica/rust-overlay";
-    rust.inputs.nixpkgs.follows = "nixpkgs";
 
     vscode.url = "github:nix-community/nix-vscode-extensions";
     vscode.inputs.nixpkgs.follows = "nixpkgs";
