@@ -1,8 +1,8 @@
 _: [
   (import ./repos/unstable.nix _)
+  (import ./repos/unstable-2511.nix _)
   (import ./repos/nur.nix _)
   (import ./repos/agenix.nix _)
-  (import ./repos/rust.nix _)
   (import ./repos/vscode.nix _)
   (import ./pkgs/local.nix _)
   (import ./tweaks/alternative/claude.nix _)

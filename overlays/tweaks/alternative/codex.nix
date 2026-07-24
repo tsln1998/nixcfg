@@ -1,3 +1,3 @@
 _: _: prev: {
-  codex = prev.unstable.codex;
+  codex = prev.repos.unstable.codex;
 }

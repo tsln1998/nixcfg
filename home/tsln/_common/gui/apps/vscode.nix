@@ -7,7 +7,8 @@
 let
   inherit (config.fonts.fontconfig) defaultFonts;
 
-  inherit (pkgs) vscode-extensions vscode-marketplace-release;
+  inherit (pkgs) vscode-extensions;
+  inherit (pkgs.repos.vscode) vscode-marketplace-release;
 
   # 变体包
   pkg = pkgs.vscodium;

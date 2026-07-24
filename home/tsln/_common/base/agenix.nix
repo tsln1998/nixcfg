@@ -20,6 +20,6 @@ in
   age.secretsMountPoint = homeDirectory + "/.agenix.d";
 
   home.packages = [
-    pkgs.agenix
+    pkgs.repos.agenix.agenix
   ];
 }
