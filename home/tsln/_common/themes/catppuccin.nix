@@ -11,6 +11,7 @@
 
     bat.flavor = lib.mkDefault "mocha";
     eza.flavor = lib.mkDefault "mocha";
+    k9s.flavor = lib.mkDefault "mocha";
     zellij.flavor = lib.mkDefault "mocha";
     lazygit.flavor = lib.mkDefault "mocha";
     konsole.flavor = lib.mkDefault "mocha";
