@@ -23,6 +23,9 @@
     "kernel.perf_event_paranoid" = 1;
     "kernel.kptr_restrict" = 0;
   };
+  boot.extraModprobeConfig = ''
+    options hid_apple fnmode=2
+  '';
 
   # Kernel firmware
   hardware.cpu.amd.updateMicrocode = true;
