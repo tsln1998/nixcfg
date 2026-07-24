@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
   home.packages = [
-    pkgs.jetbrains.datagrip
+    pkgs.repos.unstable-2511.jetbrains.datagrip
   ];
 }
