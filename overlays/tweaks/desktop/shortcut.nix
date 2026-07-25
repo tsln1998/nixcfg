@@ -35,4 +35,12 @@ in
         "$out/share/applications/qq.desktop"
     '';
   });
+
+  wechat = prev.wechat.overrideAttrs (old: {
+    buildCommand = (old.buildCommand or "") + ''
+      ${final.lib.getExe gnused} -i \
+        's/^Categories=.*/Categories=Network;/' \
+        "$out/share/applications/wechat.desktop"
+    '';
+  });
 }
