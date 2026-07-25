@@ -2,7 +2,9 @@
 {
   programs.chromium = {
     enable = true;
-    package = pkgs.chromium;
+    package = pkgs.chromium.override {
+      enableWideVine = true;
+    };
     extensions = [
       { id = "ddkjiahejlhfcafbddmgiahcphecmpfh"; } # uBlock Origin Lite
       { id = "nngceckbapebfimnlniiiahkandclblb"; } # Bitwarden

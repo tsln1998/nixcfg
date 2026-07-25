@@ -7,15 +7,13 @@ with kdePackages;
     notoPackage = pkgs.noto-fonts-cjk-sans;
   };
 
-  environment.systemPackages = [
-    partitionmanager
-  ];
-
   environment.plasma6.excludePackages = [
-    plasma-browser-integration
-    khelpcenter
     kate
     elisa
+    okular
     discover
+    gwenview
+    khelpcenter
+    plasma-browser-integration
   ];
 }
