@@ -35,7 +35,9 @@
 
   nixpkgs.overlays = overlays;
   nixpkgs.config.allowUnfree = false;
-  nixpkgs.config.allowUnfreePackages = [ ];
+  nixpkgs.config.allowUnfreePackages = [ 
+    "canon-cups-ufr2"
+  ];
   nixpkgs.config.permittedInsecurePackages = [ ];
   nixpkgs.flake.setFlakeRegistry = false;
   nixpkgs.flake.setNixPath = false;

@@ -8,12 +8,16 @@ with kdePackages;
   };
 
   environment.plasma6.excludePackages = [
-    kate
+    qrca
     elisa
-    okular
     discover
-    gwenview
     khelpcenter
     plasma-browser-integration
+    plasma-workspace-wallpapers
+  ];
+
+  environment.systemPackages = [
+    partitionmanager
+    kalk
   ];
 }

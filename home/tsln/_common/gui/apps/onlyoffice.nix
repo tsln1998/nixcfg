@@ -1,0 +1,5 @@
+{...}:{
+  programs.onlyoffice = {
+    enable = true;
+  };
+}

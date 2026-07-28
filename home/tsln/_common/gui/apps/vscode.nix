@@ -7,35 +7,34 @@
 let
   inherit (config.fonts.fontconfig) defaultFonts;
 
-  inherit (pkgs) vscode-extensions;
-  inherit (pkgs.repos.vscode) vscode-marketplace-release;
-
   # 变体包
   pkg = pkgs.vscodium;
+  market_1 = pkgs.vscode-extensions;
+  market_2 = pkgs.repos.vscode.vscode-marketplace-release;
 
   # 基础扩展
-  baseExtensions = with vscode-extensions; [
+  baseExtensions = [
     # Keybindings
-    k--kato.intellij-idea-keybindings
+    market_1.k--kato.intellij-idea-keybindings
     # Themes
-    github.github-vscode-theme
-    pkief.material-icon-theme
-    miguelsolorio.fluent-icons
+    market_1.github.github-vscode-theme
+    market_1.pkief.material-icon-theme
+    market_1.miguelsolorio.fluent-icons
     # Rainbow
-    oderwat.indent-rainbow
+    market_1.oderwat.indent-rainbow
     # Git
-    codezombiech.gitignore
-    waderyan.gitblame
+    market_1.codezombiech.gitignore
+    market_1.waderyan.gitblame
     # Nix
-    jnoortheen.nix-ide
+    market_1.jnoortheen.nix-ide
     # Direnv
-    mkhl.direnv
+    market_1.mkhl.direnv
     # Common
-    editorconfig.editorconfig
-    gruntfuggly.todo-tree
-    tamasfe.even-better-toml
-    redhat.vscode-yaml
-    usernamehw.errorlens
+    market_1.editorconfig.editorconfig
+    market_1.gruntfuggly.todo-tree
+    market_1.tamasfe.even-better-toml
+    market_1.redhat.vscode-yaml
+    market_1.usernamehw.errorlens
   ];
 
   # 基础用户设置
@@ -61,6 +60,7 @@ let
     "files.autoSaveWhenNoErrors" = lib.mkDefault true;
     "files.autoSaveWorkspaceFilesOnly" = lib.mkDefault true;
     "files.eol" = lib.mkDefault "\n";
+    "files.enableTrash" = lib.mkDefault false;
 
     "editor.fontLigatures" = lib.mkDefault true;
     "editor.fontFamily" = lib.mkDefault (
@@ -100,7 +100,9 @@ let
 
     "security.workspace.trust.enabled" = lib.mkDefault false;
 
-    "update.showReleaseNotes" = false;
+    "redhat.telemetry.enabled" = lib.mkDefault false;
+
+    "update.showReleaseNotes" = lib.mkDefault false;
   };
 
   # 基础键盘映射
@@ -123,43 +125,37 @@ let
 
   # 语言特定扩展配置（不包含基础扩展）
   langExtensions = rec {
-    Go =
-      (with vscode-extensions; [
-        golang.go
-      ])
-      ++ (with vscode-marketplace-release; [
-        bufbuild.vscode-buf
-      ]);
-
-    Rust = with vscode-extensions; [
-      rust-lang.rust-analyzer
-      vadimcn.vscode-lldb
+    Go = [
+      market_1.golang.go
+      market_2.bufbuild.vscode-buf
     ];
 
-    Zig = with vscode-extensions; [
-      ziglang.vscode-zig
-      vadimcn.vscode-lldb
+    Rust = [
+      market_1.rust-lang.rust-analyzer
+      market_1.vadimcn.vscode-lldb
     ];
 
-    Java = with vscode-extensions; [
-      mathiasfrohlich.kotlin
+    Zig = [
+      market_1.ziglang.vscode-zig
+      market_1.vadimcn.vscode-lldb
     ];
 
-    Python =
-      (with vscode-extensions; [
-        ms-python.python
-        ms-python.debugpy
-        ms-python.isort
-        ms-python.vscode-pylance
-      ])
-      ++ (with vscode-marketplace-release; [
-        ms-python.autopep8
-      ]);
+    Java = [
+      market_1.mathiasfrohlich.kotlin
+    ];
 
-    Cxx = with vscode-extensions; [
-      ms-vscode.cpptools
-      ms-vscode.cmake-tools
-      vadimcn.vscode-lldb
+    Python = [
+      market_1.ms-python.python
+      market_1.ms-python.debugpy
+      market_1.ms-python.isort
+      market_1.ms-python.vscode-pylance
+      market_2.ms-python.autopep8
+    ];
+
+    Cxx = [
+      market_1.ms-vscode.cpptools
+      market_1.ms-vscode.cmake-tools
+      market_1.vadimcn.vscode-lldb
     ];
 
     All = Go ++ Rust ++ Zig ++ Java ++ Python ++ Cxx;

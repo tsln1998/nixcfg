@@ -30,6 +30,18 @@ _: {
         mode = "0755";
       }
       {
+        directory = ".docker";
+        mode = "0755";
+      }
+      {
+        directory = ".k8slens";
+        mode = "0755";
+      }
+      {
+        directory = ".codegraph";
+        mode = "0755";
+      }
+      {
         directory = ".go";
         mode = "0755";
       }
@@ -54,11 +66,19 @@ _: {
         mode = "0755";
       }
       {
+        directory = ".vscode-oss";
+        mode = "0755";
+      }
+      {
         directory = ".vscodium-server";
         mode = "0755";
       }
       {
         directory = "codebases";
+        mode = "0755";
+      }
+      {
+        directory = "downloads";
         mode = "0755";
       }
     ];

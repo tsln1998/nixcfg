@@ -41,6 +41,17 @@
   hardware.graphics.enable = true;
   hardware.graphics.package = pkgs.mesa;
 
+  # Bluetooth
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.package = pkgs.bluez;
+
+  # Printer and Scanner
+  services.printing.enable = true;
+  hardware.sane.enable = true;
+  environment.systemPackages = [
+    pkgs.canon-cups-ufr2
+  ];
+
   # Zram swap (4GB)
   zramSwap.enable = true;
   zramSwap.memoryMax = 4 * 1024 * 1024 * 1024;

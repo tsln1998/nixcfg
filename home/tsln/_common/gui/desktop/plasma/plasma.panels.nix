@@ -25,14 +25,30 @@
             };
           };
         }
-        "org.kde.plasma.pager"
+        {
+          name = "org.kde.plasma.pager";
+        }
         {
           name = "org.kde.plasma.icontasks";
           config = {
-            General.launchers = [ "preferred://filemanager" ];
+            General = {
+              launchers = [
+                "applications:chromium-browser.desktop"
+                "applications:org.kde.dolphin.desktop"
+                "applications:org.kde.konsole.desktop"
+                "applications:codium.desktop"
+              ];
+
+              showOnlyCurrentActivity = false;
+              showOnlyCurrentDesktop = false;
+              showOnlyCurrentScreen = false;
+              showOnlyMinimized = false;
+            };
           };
         }
-        "org.kde.plasma.marginsseparator"
+        {
+          name = "org.kde.plasma.marginsseparator";
+        }
         {
           name = "org.kde.plasma.windowlist";
           config = {
@@ -40,9 +56,12 @@
             popupWidth = 560;
             General = {
               openOnHover = true;
+              showText = false;
+              
               showOnlyCurrentActivity = false;
               showOnlyCurrentDesktop = false;
-              showText = false;
+              showOnlyCurrentScreen = false;
+              showOnlyMinimized = false;
             };
           };
         }
@@ -82,13 +101,16 @@
             };
           };
         }
-        "org.kde.plasma.marginsseparator"
+        {
+          name = "org.kde.plasma.marginsseparator";
+        }
         {
           name = "org.kde.plasma.systemtray";
           config = {
             popupHeight = 432;
             popupWidth = 432;
             General = {
+              iconSpacing = 1;
               extraItems = [
                 "org.kde.plasma.clipboard"
                 "org.kde.plasma.cameraindicator"
@@ -103,11 +125,6 @@
                 "org.kde.plasma.keyboardindicator"
                 "org.kde.plasma.battery"
               ];
-              hiddenItems = [
-                "chrome_status_icon_1"
-                "lark_status_icon_1"
-              ];
-              iconSpacing = 1;
               knownItems = [
                 "org.kde.plasma.clipboard"
                 "org.kde.plasma.manage-inputmethod"
@@ -135,7 +152,9 @@
             Appearance.fontWeight = 400;
           };
         }
-        "org.kde.plasma.showdesktop"
+        {
+          name = "org.kde.plasma.showdesktop";
+        }
       ];
     }
   ];

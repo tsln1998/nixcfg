@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   home.packages = [
-    pkgs.zmx
+    pkgs.repos.unstable.zmx
   ];
   
   home.shellAliases = {
