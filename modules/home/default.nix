@@ -40,8 +40,9 @@
     "unrar"
     "wechat"
     "feishu"
-    "datagrip"
     "claude-code"
+    "lens-desktop"
+    "navicat-premium"
   ]++[
     # Visual Studio Code Extensions
     "vscode-extension-ms-vscode-cpptools"

@@ -18,11 +18,35 @@ _: {
         mode = "0755";
       }
       {
-        directory = "/var/log";
+        directory = "/var/tmp";
+        mode = "0777";
+      }
+      {
+        directory = "/var/cache/colord";
         mode = "0755";
       }
       {
-        directory = "/var/cache";
+        directory = "/var/cache/cups";
+        mode = "0755";
+      }
+      {
+        directory = "/var/cache/fwupd";
+        mode = "0755";
+      }
+      {
+        directory = "/var/cache/fwupdmgr";
+        mode = "0755";
+      }
+      {
+        directory = "/var/cache/samba";
+        mode = "0755";
+      }
+      {
+        directory = "/var/cache/tailsale";
+        mode = "0755";
+      }
+      {
+        directory = "/var/log/journal";
         mode = "0755";
       }
       {
@@ -60,9 +84,8 @@ _: {
     ];
     files = [
       "/etc/machine-id"
-    ]
-    ++ [
       "/var/lib/systemd/random-seed"
+      "/var/lib/sddm/state.conf"
     ];
   };
 }

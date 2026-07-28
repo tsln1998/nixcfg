@@ -8,6 +8,14 @@
       TabBox = {
         LayoutName = "sidebar";
       };
+      Windows = {
+        RollOverDesktops = true;
+        BorderSnapZone=10;
+        WindowSnapZone=10;
+      };
+      Script-desktopchangeosd = {
+        PopupHideDelay = 500;
+      };
     };
     ksmserverrc = {
       General = {
