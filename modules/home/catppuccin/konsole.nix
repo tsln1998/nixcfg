@@ -19,7 +19,7 @@ in
 
     package = lib.mkOption {
       type = lib.types.package;
-      default = pkgs.catppuccin-konsole;
+      default = pkgs.repos.local.catppuccin-konsole;
     };
 
     flavor = lib.mkOption {
