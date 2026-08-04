@@ -8,8 +8,8 @@ let
   inherit (config.fonts.fontconfig) defaultFonts;
 
   # 变体包
-  pkg = pkgs.vscodium;
-  market_1 = pkgs.vscode-extensions;
+  pkg = pkgs.repos.unstable.vscodium;
+  market_1 = pkgs.repos.unstable.vscode-extensions;
   market_2 = pkgs.repos.vscode.vscode-marketplace-release;
 
   # 基础扩展
