@@ -1,5 +1,5 @@
 { pkgs, ... }: {
   home.packages = [
-    pkgs.kontainer
+    pkgs.mission-center
   ];
 }

@@ -16,7 +16,7 @@ in
 
   # Claude Code Hub service configuration
   virtualisation.oci-containers.containers.${name} = {
-    image = "ghcr.io/ding113/claude-code-hub:v0.8.10";
+    image = "ghcr.io/ding113/claude-code-hub:v0.9.2";
 
     serviceName = name;
 

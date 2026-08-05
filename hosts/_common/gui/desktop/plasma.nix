@@ -17,7 +17,8 @@ with kdePackages;
   ];
 
   environment.systemPackages = [
-    partitionmanager
     kalk
+    koko
+    partitionmanager
   ];
 }
