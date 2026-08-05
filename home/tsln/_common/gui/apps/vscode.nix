@@ -75,6 +75,7 @@ let
     "editor.inlineSuggest.enabled" = lib.mkDefault true;
     "editor.acceptSuggestionOnCommitCharacter" = lib.mkDefault false;
     "editor.guides.bracketPairs" = lib.mkDefault true;
+    "editor.formatOnSave" = lib.mkDefault false;
     "editor.largeFileOptimizations" = lib.mkDefault false;
     "editor.inlineSuggest.showToolbar" = lib.mkDefault "always";
     "editor.minimap.autohide" = lib.mkDefault "scroll";
