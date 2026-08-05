@@ -3,7 +3,7 @@
     {
       alignment = "center";
       floating = true;
-      height = 34;
+      height = 36;
       hiding = "none";
       lengthMode = "fill";
       location = "bottom";
@@ -13,8 +13,8 @@
         {
           name = "org.kde.plasma.kickoff";
           config = {
-            popupHeight = 680;
-            popupWidth = 730;
+            popupHeight = 650;
+            popupWidth = 750;
             General = {
               alphaSort = true;
               favoritesPortedToKAstats = true;
@@ -36,7 +36,9 @@
                 "applications:chromium-browser.desktop"
                 "applications:org.kde.dolphin.desktop"
                 "applications:org.kde.konsole.desktop"
+                "applications:org.kde.spectacle.desktop"
                 "applications:codium.desktop"
+                "applications:beekeeper-studio.desktop"
               ];
 
               showOnlyCurrentActivity = false;
@@ -52,8 +54,6 @@
         {
           name = "org.kde.plasma.windowlist";
           config = {
-            popupHeight = 400;
-            popupWidth = 560;
             General = {
               openOnHover = true;
               showText = false;
@@ -70,7 +70,7 @@
           config = {
             CurrentPreset = "org.kde.plasma.systemmonitor";
             popupHeight = 400;
-            popupWidth = 560;
+            popupWidth = 400;
             Appearance = {
               chartFace = "org.kde.ksysguard.linechart";
               title = "RAM";
@@ -88,7 +88,7 @@
           config = {
             CurrentPreset = "org.kde.plasma.systemmonitor";
             popupHeight = 400;
-            popupWidth = 560;
+            popupWidth = 400;
             Appearance = {
               chartFace = "org.kde.ksysguard.linechart";
               title = "CPU";
@@ -107,49 +107,18 @@
         {
           name = "org.kde.plasma.systemtray";
           config = {
-            popupHeight = 432;
-            popupWidth = 432;
+            popupHeight = 450;
+            popupWidth = 430;
             General = {
               iconSpacing = 1;
-              extraItems = [
-                "org.kde.plasma.clipboard"
-                "org.kde.plasma.cameraindicator"
-                "org.kde.plasma.keyboardlayout"
-                "org.kde.plasma.devicenotifier"
-                "org.kde.plasma.notifications"
-                "org.kde.plasma.mediacontroller"
-                "org.kde.kscreen"
-                "org.kde.plasma.volume"
-                "org.kde.plasma.brightness"
-                "org.kde.plasma.networkmanagement"
-                "org.kde.plasma.keyboardindicator"
-                "org.kde.plasma.battery"
-              ];
-              knownItems = [
-                "org.kde.plasma.clipboard"
-                "org.kde.plasma.manage-inputmethod"
-                "org.kde.plasma.cameraindicator"
-                "org.kde.plasma.keyboardlayout"
-                "org.kde.plasma.devicenotifier"
-                "org.kde.plasma.notifications"
-                "org.kde.plasma.mediacontroller"
-                "org.kde.plasma.weather"
-                "org.kde.kscreen"
-                "org.kde.plasma.volume"
-                "org.kde.plasma.brightness"
-                "org.kde.plasma.battery"
-                "org.kde.plasma.networkmanagement"
-                "org.kde.plasma.keyboardindicator"
-              ];
             };
           };
         }
         {
           name = "org.kde.plasma.digitalclock";
           config = {
-            popupHeight = 451;
-            popupWidth = 560;
-            Appearance.fontWeight = 400;
+            popupHeight = 450;
+            popupWidth = 450;
           };
         }
         {
