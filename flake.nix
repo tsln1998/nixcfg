@@ -17,9 +17,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
-
     unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    unstable-2511.url = "github:NixOS/nixpkgs/nixos-25.11-small";
 
     nur.url = "github:nix-community/NUR";
     nur.inputs.nixpkgs.follows = "unstable";
