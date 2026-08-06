@@ -385,7 +385,6 @@
         "systems": "systems_2",
         "treefmt-nix": "treefmt-nix_2",
         "unstable": "unstable",
-        "unstable-2511": "unstable-2511",
         "vscode": "vscode"
       }
     },
@@ -472,22 +471,6 @@
       "original": {
         "owner": "NixOS",
         "ref": "nixpkgs-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "unstable-2511": {
-      "locked": {
-        "lastModified": 1782841183,
-        "narHash": "sha256-Ndt/5R7UN4rBdhFR1lxHZZZ42cD6vGlnuxC2VvvsKE4=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "c9bfd86ed684d27e63b0ff9ebb18699f84f27a3b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-25.11-small",
         "repo": "nixpkgs",
         "type": "github"
       }

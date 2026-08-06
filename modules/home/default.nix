@@ -45,11 +45,13 @@
     "claude-code"
     "lens-desktop"
     "navicat-premium"
-  ]++[
+  ]
+  ++ [
     # Visual Studio Code Extensions
     "vscode-extension-ms-vscode-cpptools"
     "vscode-extension-MS-python-vscode-pylance"
-  ] ++ [
+  ]
+  ++ [
     # Chromium DRM
     "chromium"
     "chromium-unwrapped"

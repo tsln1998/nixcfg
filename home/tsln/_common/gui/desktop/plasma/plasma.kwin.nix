@@ -10,8 +10,8 @@
       };
       Windows = {
         RollOverDesktops = true;
-        BorderSnapZone=10;
-        WindowSnapZone=10;
+        BorderSnapZone = 10;
+        WindowSnapZone = 10;
       };
       Script-desktopchangeosd = {
         PopupHideDelay = 500;

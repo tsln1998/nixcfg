@@ -57,7 +57,7 @@
             General = {
               openOnHover = true;
               showText = false;
-              
+
               showOnlyCurrentActivity = false;
               showOnlyCurrentDesktop = false;
               showOnlyCurrentScreen = false;

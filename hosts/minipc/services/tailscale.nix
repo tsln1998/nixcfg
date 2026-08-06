@@ -10,6 +10,7 @@ in
 {
   services.tailscale.enable = true;
   services.tailscale.openFirewall = true;
+  services.tailscale.exit.enable = true;
 
   # Firewall
   networking.nftables = lib.optionalAttrs firewall.enable {

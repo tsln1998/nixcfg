@@ -1,4 +1,4 @@
-{... }:
+_:
 {
   programs.lazyworktree = {
     enable = true;
