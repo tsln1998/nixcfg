@@ -17,11 +17,11 @@ let
     in
     lib.concatStringsSep "\n" [
       (lib.optionalString (lib.hasAttr privKeyPath secrets) ''
-        run install -m 0600 ${(builtins.getAttr privKeyPath secrets).path} $HOME/.ssh/id_${keyType}
+        $DRY_RUN_CMD install -m 0600 ${(builtins.getAttr privKeyPath secrets).path} $HOME/.ssh/id_${keyType}
       '')
       (lib.optionalString (lib.hasAttr pubKeyPath secrets) ''
-        run install -m 0644 ${(builtins.getAttr pubKeyPath secrets).path} $HOME/.ssh/id_${keyType}.pub
-        run cat $HOME/.ssh/id_${keyType}.pub >> $HOME/.ssh/authorized_keys
+        $DRY_RUN_CMD install -m 0644 ${(builtins.getAttr pubKeyPath secrets).path} $HOME/.ssh/id_${keyType}.pub
+        $DRY_RUN_CMD cat $HOME/.ssh/id_${keyType}.pub >> $HOME/.ssh/authorized_keys
       '')
     ];
 in
@@ -39,13 +39,13 @@ in
 
   # Install openssh keys to ~/.ssh
   home.activation.secretKeys = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    run mkdir -p $HOME/.ssh
-    run rm -f $HOME/.ssh/id_* 2>/dev/null || true
-    run rm -f $HOME/.ssh/authorized_keys 2>/dev/null || true
+    $DRY_RUN_CMD mkdir -p $HOME/.ssh
+    $DRY_RUN_CMD rm -f $HOME/.ssh/id_* 2>/dev/null || true
+    $DRY_RUN_CMD rm -f $HOME/.ssh/authorized_keys 2>/dev/null || true
     ${(installKey "ed25519")}
     ${(installKey "rsa")}
     ${(installKey "dsa")}
     ${(installKey "ecdsa")}
-    run chmod 0600 $HOME/.ssh/authorized_keys 2>/dev/null || true
+    $DRY_RUN_CMD chmod 0600 $HOME/.ssh/authorized_keys 2>/dev/null || true
   '';
 }
