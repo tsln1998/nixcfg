@@ -7,6 +7,10 @@ in
     enable = true;
     defaultProfile = "Default";
 
+    ui = {
+      colorScheme = "BreezeDark";
+    };
+
     extraConfig = {
       MainWindow = {
         MenuBar = "Enabled";
