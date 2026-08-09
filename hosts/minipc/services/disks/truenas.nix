@@ -1,4 +1,4 @@
-{ ... }: {
+_: {
   # NFS Mounts
   fileSystems = {
     "/mnt/truenas/kubernetes" = {
