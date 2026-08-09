@@ -29,7 +29,7 @@
     treefmt-nix.url = "github:numtide/treefmt-nix";
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
 
-    systems.url = "github:nix-systems/default-linux";
+    systems.url = "github:nix-systems/triplet";
     hardware.url = "github:nixos/nixos-hardware";
 
     agenix.url = "github:ryantm/agenix";
@@ -58,11 +58,26 @@
     keyring-rs.url = "github:tsln1998/keyring-rs";
     keyring-rs.inputs.nixpkgs.follows = "nixpkgs";
 
+    nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-26.05";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+
+    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+    nix-homebrew.inputs.brew-src.follows = "homebrew";
+
+    homebrew.url = "github:Homebrew/brew/6.0.15";
+    homebrew.flake = false;
+
+    homebrew-core.url = "github:homebrew/homebrew-core";
+    homebrew-core.flake = false;
+
+    homebrew-cask.url = "github:homebrew/homebrew-cask";
+    homebrew-cask.flake = false;
+
     plasma-manager.url = "github:nix-community/plasma-manager";
     plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
     plasma-manager.inputs.home-manager.follows = "home-manager";
 
-    catppuccin.url = "github:catppuccin/nix/release-26.05";
+    catppuccin.url = "github:catppuccin/nix/9e5cacc4e3a2d01c828fc4b29e88fb577241d70f";
     catppuccin.inputs.nixpkgs.follows = "nixpkgs";
 
     vscode.url = "github:nix-community/nix-vscode-extensions";
@@ -73,12 +88,14 @@
     {
       self,
       nixpkgs,
+      nix-darwin,
       treefmt-nix,
       home-manager,
       flake-utils,
       ...
     }@inputs:
     let
+      inherit (nixpkgs.lib.strings) toLower;
       # load tools
       tools = import ./tools (with self; with nixpkgs; { inherit inputs outputs lib; });
       # load overlays
@@ -90,6 +107,7 @@
           inherit system overlays;
         }
       );
+      # load formatter
       treefmtFor = nixpkgs.lib.genAttrs (builtins.attrNames pkgsFor) (
         system: treefmt-nix.lib.evalModule pkgsFor.${system} ./formatter.nix
       );
@@ -102,7 +120,38 @@
             {
               inherit system;
               modules = [
-                ./hosts/${hostName}
+                ./hosts/${toLower hostName}
+                {
+                  networking = {
+                    inherit hostName;
+                  };
+                }
+              ];
+              specialArgs = with self; {
+                inherit
+                  inputs
+                  outputs
+                  overlays
+                  tools
+                  ;
+              };
+            }
+            // (removeAttrs args [
+              "hostName"
+              "system"
+            ])
+          );
+        };
+      # make darwinSystem
+      darwinSystem =
+        { hostName, system, ... }@args:
+        {
+          name = hostName;
+          value = nix-darwin.lib.darwinSystem (
+            {
+              inherit system;
+              modules = [
+                ./hosts/${toLower hostName}
                 {
                   networking = {
                     inherit hostName;
@@ -138,7 +187,7 @@
             {
               pkgs = pkgsFor.${system};
               modules = [
-                ./home/${userName}/${hostName}
+                ./home/${userName}/${toLower hostName}
               ];
               extraSpecialArgs = with self; {
                 inherit
@@ -183,6 +232,12 @@
       #
       nixosModules = {
         default = import ./modules/nixos;
+      };
+      #
+      # Darwin Modules
+      #
+      darwinModules = {
+        default = import ./modules/darwin;
       };
       #
       # Home Manager Modules
@@ -235,7 +290,16 @@
         })
       ];
       #
-      # Home Manager Standalone Configrations
+      # Nix Darwin Standalone Configurations
+      #
+      darwinConfigurations = builtins.listToAttrs [
+        (darwinSystem {
+          hostName = "mba";
+          system = "aarch64-darwin";
+        })
+      ];
+      #
+      # Home Manager Standalone Configurations
       #
       homeConfigurations = builtins.listToAttrs [
         # Example

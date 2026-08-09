@@ -3,14 +3,13 @@
   tools,
   pkgs,
   lib,
-  osConfig ? { },
   ...
 }:
 {
   imports = tools.scan ./.;
 
   nix = {
-    package = lib.mkDefault (if (osConfig ? nix.package) then osConfig.nix.package else pkgs.lix);
+    package = lib.mkDefault pkgs.lix;
 
     settings = {
       experimental-features = [
@@ -19,7 +18,7 @@
       ];
       trusted-users = [
         "root"
-        "@wheel"
+        "@admin"
       ];
       warn-dirty = false;
       keep-outputs = true;
@@ -28,35 +27,16 @@
 
     gc = {
       automatic = true;
-      dates = "daily";
       options = "--delete-older-than 7d";
-      persistent = true;
-      randomizedDelaySec = "15min";
     };
   };
 
   nixpkgs.overlays = overlays;
   nixpkgs.config.allowUnfree = false;
   nixpkgs.config.allowUnfreePackages = [
-    "qq"
-    "unrar"
-    "wechat"
-    "feishu"
-    "claude-code"
-    "lens-desktop"
-    "google-chrome"
-    "navicat-premium"
-  ]
-  ++ [
-    # Visual Studio Code Extensions
-    "vscode-extension-ms-vscode-cpptools"
-    "vscode-extension-MS-python-vscode-pylance"
-  ]
-  ++ [
-    # Chromium DRM
-    "chromium"
-    "chromium-unwrapped"
-    "widevine-cdm"
+    "canon-cups-ufr2"
   ];
   nixpkgs.config.permittedInsecurePackages = [ ];
+  nixpkgs.flake.setFlakeRegistry = false;
+  nixpkgs.flake.setNixPath = false;
 }

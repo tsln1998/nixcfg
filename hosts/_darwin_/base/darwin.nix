@@ -1,0 +1,3 @@
+_: {
+  documentation.enable = false;
+}
