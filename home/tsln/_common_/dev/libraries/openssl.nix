@@ -4,7 +4,7 @@
     pkgs.openssl
   ];
 
-  programs.pkg-config = {
+  programs.pkgconfig = {
     enable = true;
     paths = [
       "${pkgs.openssl.dev}/lib/pkgconfig"
