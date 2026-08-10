@@ -125,20 +125,27 @@ let
       when = "editorTextFocus";
     }
   ];
+
+  _vsc_base_profile = {
+    extensions = baseExtensions;
+    userSettings = baseSettings;
+    keybindings = baseKeybindings;
+  };
 in
 {
+  _module.args = {
+    inherit _vsc_base_profile;
+  };
+
   # 生成 Profiles
   programs.${pkg.pname} = {
     enable = true;
     package = pkg;
     mutableExtensionsDir = false;
     profiles = {
-      default = {
+      default = _vsc_base_profile // {
         enableUpdateCheck = false;
         enableExtensionUpdateCheck = false;
-        extensions = baseExtensions;
-        userSettings = baseSettings;
-        keybindings = baseKeybindings;
       };
     };
   };
