@@ -2,7 +2,7 @@
 {
   programs.alacritty = {
     enable = true;
-    package = null;#pkgs.alacritty;
+    package = null;
     settings = {
       font = {
         normal = {
@@ -47,22 +47,22 @@
           {
             mods = "Command";
             key = "Left";
-            chars = "\u001bOH";
+            chars = "\\u001bOH";
           }
           {
             mods = "Command";
             key = "Right";
-            chars = "\u001bOF";
+            chars = "\\u001bOF";
           }
           {
             mods = "Option";
             key = "Left";
-            chars = "\u001bb";
+            chars = "\\u001bb";
           }
           {
             mods = "Option";
             key = "Right";
-            chars = "\u001bf";
+            chars = "\\u001bf";
           }
         ];
       };

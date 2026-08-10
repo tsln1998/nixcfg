@@ -11,7 +11,6 @@ _: {
     { name = "cyberduck"; }
     { name = "tableplus"; }
     { name = "pearcleaner"; }
-    { name = "tailscale-app"; }
     { name = "keepingyouawake"; }
     { name = "visual-studio-code"; }
   ];

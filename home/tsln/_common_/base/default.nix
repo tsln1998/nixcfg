@@ -19,6 +19,8 @@ in
   ];
 
   home.username = lib.mkDefault "tsln";
-  home.homeDirectory = lib.mkDefault "/home/${config.home.username}";
+  home.homeDirectory = lib.mkDefault (
+    if isLinux then "/home/${config.home.username}" else "/Users/${config.home.username}"
+  );
   home.stateVersion = "26.05";
 }
