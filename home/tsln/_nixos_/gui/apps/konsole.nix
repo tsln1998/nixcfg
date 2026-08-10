@@ -3,6 +3,11 @@ let
   inherit (config.fonts.fontconfig) defaultFonts;
 in
 {
+  catppuccin.konsole = {
+    enable = lib.mkDefault true;
+    flavor = lib.mkDefault "mocha";
+  };
+
   programs.konsole = {
     enable = true;
     defaultProfile = "Default";

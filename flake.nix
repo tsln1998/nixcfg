@@ -64,7 +64,7 @@
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
     nix-homebrew.inputs.brew-src.follows = "homebrew";
 
-    homebrew.url = "github:Homebrew/brew/6.0.15";
+    homebrew.url = "github:Homebrew/brew";
     homebrew.flake = false;
 
     homebrew-core.url = "github:homebrew/homebrew-core";
@@ -77,7 +77,7 @@
     plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
     plasma-manager.inputs.home-manager.follows = "home-manager";
 
-    catppuccin.url = "github:catppuccin/nix/9e5cacc4e3a2d01c828fc4b29e88fb577241d70f";
+    catppuccin.url = "github:catppuccin/nix";
     catppuccin.inputs.nixpkgs.follows = "nixpkgs";
 
     vscode.url = "github:nix-community/nix-vscode-extensions";

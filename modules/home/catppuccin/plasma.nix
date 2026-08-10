@@ -7,14 +7,14 @@
 let
   inherit (lib.strings) toSentenceCase;
   cfg = config.catppuccin.plasma;
-  enable = cfg.enable && config.programs.plasma.enable;
+  enable = cfg.enable && config.catppuccin.enable && config.programs.plasma.enable;
 in
 {
 
   options.catppuccin.plasma = {
     enable = lib.mkOption {
       type = lib.types.bool;
-      default = config.catppuccin.enable;
+      default = config.catppuccin.autoEnable;
       description = "Enable Catppuccin for Plasma";
     };
 

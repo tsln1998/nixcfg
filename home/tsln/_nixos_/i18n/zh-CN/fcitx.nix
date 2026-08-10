@@ -1,5 +1,7 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 {
+  catppuccin.fcitx5.enable = lib.mkDefault true;
+
   i18n.inputMethod = {
     enable = true;
     type = "fcitx5";
