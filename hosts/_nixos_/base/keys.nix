@@ -1,25 +1,19 @@
-{ config, lib, ... }:
+{ config, tools, ... }:
 let
+  inherit (tools) relative;
   inherit (config.networking) hostName;
-  inherit (config.age) secrets;
-
-  keyFiles = [
-    "ssh_host_ed25519_key"
-    "ssh_host_ed25519_key.pub"
-    "ssh_host_rsa_key"
-    "ssh_host_rsa_key.pub"
-  ];
 in
 {
-  environment.etc = builtins.listToAttrs (
-    map (keyFile: {
-      name = "ssh/keys/${keyFile}";
-      value = {
-        source = (builtins.getAttr "hosts/${hostName}/${keyFile}" secrets).path;
-        mode = if lib.strings.hasSuffix ".pub" keyFile then "0644" else "0600";
-        user = "root";
-        group = "root";
-      };
-    }) (lib.filter (keyFile: lib.hasAttr "hosts/${hostName}/${keyFile}" secrets) keyFiles)
-  );
+  age.secrets."hosts/${hostName}/ssh_host_ed25519_key" = {
+    file = relative "secrets/hosts/${hostName}/ssh_host_ed25519_key.age";
+    path = "/etc/ssh/keys/ssh_host_ed25519_key";
+    symlink = false;
+    mode = "0600";
+  };
+  age.secrets."hosts/${hostName}/ssh_host_ed25519_key.pub" = {
+    file = relative "secrets/hosts/${hostName}/ssh_host_ed25519_key.pub.age";
+    path = "/etc/ssh/keys/ssh_host_ed25519_key.pub";
+    symlink = false;
+    mode = "0644";
+  };
 }
