@@ -12,8 +12,8 @@ _: {
         "PingFang SC"
       ];
       monospace = [
-        "JetBrains Mono"
-        "JetBrainsMono Nerd Font"
+        "Monaspace Neon"
+        "Monaspace Neon NF"
       ];
       emoji = [
         "Apple Color Emoji"

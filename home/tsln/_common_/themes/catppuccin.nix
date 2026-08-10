@@ -12,7 +12,7 @@
     accent = lib.mkDefault "blue";
 
     wallpaper.enable = lib.mkDefault true;
-    
+
     bat.enable = lib.mkDefault true;
     bat.flavor = lib.mkDefault "mocha";
     eza.enable = lib.mkDefault true;
