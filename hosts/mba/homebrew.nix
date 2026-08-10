@@ -5,11 +5,14 @@ _: {
     { name = "keka"; }
     { name = "wechat"; }
     { name = "feishu"; }
+    { name = "chromium"; }
     { name = "obsidian"; }
+    { name = "alacritty"; }
     { name = "cyberduck"; }
     { name = "tableplus"; }
     { name = "pearcleaner"; }
     { name = "tailscale-app"; }
     { name = "keepingyouawake"; }
+    { name = "visual-studio-code"; }
   ];
 }

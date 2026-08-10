@@ -7,7 +7,7 @@
       "home/tsln/_common_/cli/monitors"
       "home/tsln/_common_/cli/replacements"
       "home/tsln/_common_/dev/programs/git.nix"
-      "home/tsln/_common_/gui"
+      "home/tsln/_common_/dev/agents/pi.nix"
       "home/tsln/_common_/themes"
       "home/tsln/_darwin_/gui"
       "home/tsln/_darwin_/i18n"

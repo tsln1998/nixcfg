@@ -7,8 +7,7 @@
 let
   inherit (config.fonts.fontconfig) defaultFonts;
 
-  # 变体包
-  pkg = pkgs.repos.unstable.vscodium;
+  # 插件市场
   market = pkgs.repos.unstable.vscode-extensions;
 
   # 基础扩展
@@ -125,33 +124,21 @@ let
       when = "editorTextFocus";
     }
   ];
-
-  _vsc_base_profile = {
-    extensions = baseExtensions;
-    userSettings = baseSettings;
-    keybindings = baseKeybindings;
-  };
 in
 {
-  _module.args = {
-    inherit _vsc_base_profile;
-  };
-
   # 生成 Profiles
-  programs.${pkg.pname} = {
+  programs.vscode = {
     enable = true;
-    package = pkg;
+    package = null;
     mutableExtensionsDir = false;
     profiles = {
-      default = _vsc_base_profile // {
+      default = {
         enableUpdateCheck = false;
         enableExtensionUpdateCheck = false;
+        extensions = baseExtensions;
+        userSettings = baseSettings;
+        keybindings = baseKeybindings;
       };
     };
-  };
-
-  # 生成别名
-  home.shellAliases = lib.optionals (pkgs.vscode.meta.mainProgram != pkg.meta.mainProgram) {
-    ${pkgs.vscode.meta.mainProgram} = pkg.meta.mainProgram;
   };
 }
