@@ -1,17 +1,12 @@
 {
   overlays,
   tools,
-  pkgs,
-  lib,
-  osConfig ? { },
   ...
 }:
 {
   imports = tools.scan ./.;
 
   nix = {
-    package = lib.mkDefault (if (osConfig ? nix.package) then osConfig.nix.package else pkgs.lix);
-
     settings = {
       experimental-features = [
         "nix-command"

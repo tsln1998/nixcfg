@@ -5,10 +5,10 @@
   ...
 }:
 let
-  cfg = config.programs.pkg-config;
+  cfg = config.programs.pkgconfig;
 in
 {
-  options.programs.pkg-config = {
+  options.programs.pkgconfig = {
     enable = lib.mkOption {
       type = lib.types.bool;
       default = false;
