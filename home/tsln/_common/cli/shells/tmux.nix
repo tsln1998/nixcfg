@@ -15,6 +15,9 @@
       # 重排窗口
       set -g renumber-windows on
 
+      # 开启扩展键盘编码支持
+      set -g extended-keys on
+
       # 状态栏置于底部
       set-option -g status-position bottom
 
