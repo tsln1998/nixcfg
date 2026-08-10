@@ -2,7 +2,7 @@
 {
   catppuccin = {
     enable = true;
-    autoEnable = true;
+    autoEnable = false;
 
     flavor = lib.mkDefault "mocha";
     accent = lib.mkDefault "blue";
