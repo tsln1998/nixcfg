@@ -10,6 +10,7 @@
       "home/tsln/_common_/themes"
       "home/tsln/_nixos_/gui"
       "home/tsln/_nixos_/i18n"
+      "home/tsln/_nixos_/themes"
     ])
     ++ (tools.scan ./.);
 }

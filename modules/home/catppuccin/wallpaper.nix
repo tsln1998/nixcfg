@@ -6,6 +6,7 @@
 }:
 let
   cfg = config.catppuccin.wallpaper;
+  enable = cfg.enable && config.catppuccin.enable && config.programs.plasma.enable;
   artwork = pkgs.nixos-artwork.wallpapers."catppuccin-${cfg.flavor}";
   wallpaper = "${artwork}/share/backgrounds/nixos/nixos-wallpaper-catppuccin-${cfg.flavor}.png";
 in
@@ -14,7 +15,7 @@ in
   options.catppuccin.wallpaper = {
     enable = lib.mkOption {
       type = lib.types.bool;
-      default = config.catppuccin.enable;
+      default = config.catppuccin.autoEnable;
       description = "Enable Catppuccin for Wallpaper";
     };
 
@@ -25,14 +26,14 @@ in
     };
   };
 
-  config = lib.mkIf cfg.enable {
+  config = lib.mkIf enable {
     # Catppuccin Plasma wallpaper
-    programs.plasma.workspace = lib.optionalAttrs config.programs.plasma.enable {
+    programs.plasma.workspace = {
       inherit wallpaper;
     };
 
     # Catppuccin Plasma Lockscreen wallpaper
-    programs.plasma.kscreenlocker.appearance = lib.optionalAttrs config.programs.plasma.enable {
+    programs.plasma.kscreenlocker.appearance = {
       inherit wallpaper;
     };
   };

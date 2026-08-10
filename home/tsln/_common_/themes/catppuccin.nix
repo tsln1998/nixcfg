@@ -11,10 +11,8 @@
     flavor = lib.mkDefault "latte";
     accent = lib.mkDefault "blue";
 
-    plasma.enable = lib.mkDefault true;
-    fcitx5.enable = lib.mkDefault true;
     wallpaper.enable = lib.mkDefault true;
-
+    
     bat.enable = lib.mkDefault true;
     bat.flavor = lib.mkDefault "mocha";
     eza.enable = lib.mkDefault true;
@@ -27,8 +25,6 @@
     zellij.flavor = lib.mkDefault "mocha";
     lazygit.enable = lib.mkDefault true;
     lazygit.flavor = lib.mkDefault "mocha";
-    konsole.enable = lib.mkDefault true;
-    konsole.flavor = lib.mkDefault "mocha";
     starship.enable = lib.mkDefault true;
     starship.flavor = lib.mkDefault "mocha";
     atuin.enable = lib.mkDefault true;

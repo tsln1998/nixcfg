@@ -6,12 +6,13 @@
 }:
 let
   cfg = config.catppuccin.konsole;
+  enable = cfg.enable && config.catppuccin.enable && config.programs.konsole.enable;
 in
 {
   options.catppuccin.konsole = {
     enable = lib.mkOption {
       type = lib.types.bool;
-      default = config.catppuccin.enable;
+      default = config.catppuccin.autoEnable;
       description = "Enable Catppuccin for Konsole";
     };
 
@@ -33,7 +34,7 @@ in
     };
   };
 
-  config = lib.mkIf cfg.enable {
+  config = lib.mkIf enable {
     # Catppuccin Konsole Theme Package
     home.file = {
       ".local/share/konsole/catppuccin-${cfg.flavor}.colorscheme" = {
