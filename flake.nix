@@ -302,11 +302,10 @@
       # Home Manager Standalone Configurations
       #
       homeConfigurations = builtins.listToAttrs [
-        # Example
         (homeConfiguration {
-          userName = "nixos";
-          hostName = "local";
-          system = "x86_64-linux";
+          userName = "tsln";
+          hostName = "mba";
+          system = "aarch64-darwin";
         })
       ];
     };

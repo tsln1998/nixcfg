@@ -1,4 +1,6 @@
 {
+  pkgs,
+  lib,
   overlays,
   tools,
   ...
@@ -7,6 +9,8 @@
   imports = tools.scan ./.;
 
   nix = {
+    package = lib.mkDefault pkgs.lix;
+
     settings = {
       experimental-features = [
         "nix-command"
