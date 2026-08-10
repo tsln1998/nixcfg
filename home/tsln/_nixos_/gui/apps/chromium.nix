@@ -1,15 +1,7 @@
 { pkgs, ... }:
-let
-  inherit (pkgs.stdenv.hostPlatform) isLinux isDarwin;
-in
 {
-  programs.google-chrome = {
-    enable = isDarwin;
-    package = pkgs.google-chrome;
-  };
-
   programs.chromium = {
-    enable = isLinux;
+    enable = true;
     package = pkgs.chromium.override {
       enableWideVine = true;
     };

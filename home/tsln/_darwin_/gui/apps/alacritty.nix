@@ -2,7 +2,7 @@
 {
   programs.alacritty = {
     enable = true;
-    package = pkgs.alacritty;
+    package = null;#pkgs.alacritty;
     settings = {
       font = {
         normal = {
