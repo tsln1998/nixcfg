@@ -31,8 +31,8 @@ in
 
   # User primary
   system = lib.optionalAttrs isDarwin {
-      primaryUser = lib.mkForce userName;
-    };
+    primaryUser = lib.mkForce userName;
+  };
 
   # Home Manager configuration
   home-manager.users = {

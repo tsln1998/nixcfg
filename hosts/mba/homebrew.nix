@@ -11,7 +11,5 @@ _: {
     { name = "pearcleaner"; }
     { name = "tailscale-app"; }
     { name = "keepingyouawake"; }
-    { name = "font-jetbrains-mono"; }
-    { name = "font-jetbrains-mono-nerd-font"; }
   ];
 }

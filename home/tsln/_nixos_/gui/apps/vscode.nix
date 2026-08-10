@@ -55,10 +55,13 @@ in
     _vsc_base_profile
     // {
       extensions = _vsc_base_profile.extensions ++ (langExtensions.${name} or [ ]);
-      userSettings = _vsc_base_profile.userSettings // {
-        "window.titleBarStyle" = lib.mkForce "native";
-        "window.menuStyle" = lib.mkForce "custom";
-      } // (langSettings.${name} or { });
+      userSettings =
+        _vsc_base_profile.userSettings
+        // {
+          "window.titleBarStyle" = lib.mkForce "native";
+          "window.menuStyle" = lib.mkForce "custom";
+        }
+        // (langSettings.${name} or { });
     }
   );
 
