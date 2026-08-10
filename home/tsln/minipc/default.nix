@@ -4,7 +4,6 @@
     (map tools.relative [
       "home/tsln/_common_/base"
       "home/tsln/_common_/cli"
-      "home/tsln/_common_/gui"
       "home/tsln/_common_/dev"
       "home/tsln/_common_/ops"
       "home/tsln/_common_/themes"
