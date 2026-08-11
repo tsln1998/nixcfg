@@ -1,5 +1,4 @@
-_:
-{
+_: {
   home.file = {
     ".agents/skills/workflow-commit/SKILL.md" = {
       text = ''

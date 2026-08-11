@@ -5,6 +5,7 @@ _: {
     { name = "keka"; }
     { name = "wechat"; }
     { name = "feishu"; }
+    { name = "ghostty"; }
     { name = "chromium"; }
     { name = "obsidian"; }
     { name = "alacritty"; }

@@ -42,7 +42,7 @@ let
       ++ (profile.extensions or [ ]);
       userSettings = {
         "chat.disableAIFeatures" = lib.mkDefault true;
-        
+
         "window.titleBarStyle" = lib.mkForce "native";
         "window.menuStyle" = lib.mkForce "custom";
 
