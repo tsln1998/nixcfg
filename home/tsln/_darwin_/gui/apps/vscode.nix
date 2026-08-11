@@ -32,6 +32,8 @@ let
         market.jnoortheen.nix-ide
         # Direnv
         market.mkhl.direnv
+        # Remote
+        market.ms-vscode-remote.remote-ssh
         # Common
         market.editorconfig.editorconfig
         market.gruntfuggly.todo-tree
