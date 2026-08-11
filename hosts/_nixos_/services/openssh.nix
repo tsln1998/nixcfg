@@ -1,5 +1,6 @@
 { lib, ... }:
 {
+  # 开启 OpenSSH 服务并配置 hostKeys 路径
   services.openssh = {
     enable = true;
     extraConfig = lib.concatStringsSep "\n" [
@@ -18,4 +19,7 @@
       }
     ];
   };
+
+  # 启用所有 terminfo 以供客户端连接时调用
+  environment.enableAllTerminfo = true;
 }

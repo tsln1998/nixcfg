@@ -1,5 +1,4 @@
-_:
-{
+_: {
   programs.chromium = {
     enable = true;
     package = null;

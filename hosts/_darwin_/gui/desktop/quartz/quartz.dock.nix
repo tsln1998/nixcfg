@@ -28,40 +28,6 @@ in
     # 右下角热区动作设为 1，即禁用。
     wvous-br-corner = 1;
 
-    # 按照下列顺序固定 Dock 中的应用。
-    persistent-apps = [
-      {
-        app = "/System/Applications/Apps.app";
-      }
-      {
-        app = "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app";
-      }
-      {
-        app = "/Applications/Chromium.app";
-      }
-      {
-        app = "/Applications/QQ.app";
-      }
-      {
-        app = "/Applications/WeChat.app";
-      }
-      {
-        app = "/Applications/Alacritty.app";
-      }
-      {
-        app = "/Applications/Obsidian.app";
-      }
-      {
-        app = "/Applications/Visual Studio Code.app";
-      }
-      {
-        app = "/Applications/Cyberduck.app";
-      }
-      {
-        app = "/Applications/TablePlus.app";
-      }
-    ];
-
     # 在 Dock 分隔线右侧固定目录与文件。
     persistent-others = [
       {
