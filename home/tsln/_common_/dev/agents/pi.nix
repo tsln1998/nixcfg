@@ -13,6 +13,7 @@ in
   programs.pi = {
     enable = true;
     package = pkgs.repos.unstable.pi-coding-agent;
+    extraPackages = [ pkgs.nodejs ];
     models = secrets."users/${username}/pi/agent/models.json".path;
     settings = {
       theme = "dark";
