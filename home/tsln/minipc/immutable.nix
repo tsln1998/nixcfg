@@ -30,6 +30,10 @@ _: {
         mode = "0755";
       }
       {
+        directory = ".pi";
+        mode = "0755";
+      }
+      {
         directory = ".docker";
         mode = "0755";
       }

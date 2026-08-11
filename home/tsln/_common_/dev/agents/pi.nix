@@ -17,21 +17,29 @@ in
     models = secrets."users/${username}/pi/agent/models.json".path;
     settings = {
       theme = "dark";
+      tuiMode = "fullscreen";
+
       defaultProvider = "openai";
       defaultModel = "gpt-5.6-terra";
+      defaultThinkingLevel = "xhigh";
+      defaultProjectTrust = "always";
+
       enabledModels = [
         "openai/gpt-5.6-sol"
         "openai/gpt-5.6-terra"
         "openai/gpt-5.6-luna"
         "openai/gpt-5.3-codex-spark"
       ];
+
       retry = {
         enabled = true;
         maxRetries = 3;
       };
+
       packages = [
-        "npm:pi-subagents"
         "npm:pi-plan"
+        "npm:pi-subagents"
+        "npm:pi-hermes-memory"
       ];
     };
   };
