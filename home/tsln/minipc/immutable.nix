@@ -22,6 +22,10 @@ _: {
         mode = "0755";
       }
       {
+        directory = ".agents";
+        mode = "0755";
+      }
+      {
         directory = ".config";
         mode = "0755";
       }
