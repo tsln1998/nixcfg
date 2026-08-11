@@ -17,6 +17,9 @@
       push = {
         autoSetupRemote = lib.mkDefault true;
       };
+      fetch = {
+        prune = lib.mkDefault true;
+      };
       url = lib.mkDefault {
         "ssh://git@codeup.aliyun.com/" = {
           insteadOf = "https://codeup.aliyun.com/";
