@@ -24,6 +24,7 @@ in
 
       macos-titlebar-style = "transparent";
       macos-option-as-alt = true;
+      macos-titlebar-proxy-icon = "hidden";
       macos-icon = "xray";
 
       background-blur = true;

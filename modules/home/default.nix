@@ -43,12 +43,12 @@
     "feishu"
     "claude-code"
     "lens-desktop"
-    "navicat-premium"
   ]
   ++ [
     # Visual Studio Code
     "vscode"
     "vscode-extension-ms-vscode-cpptools"
+    "vscode-extension-ms-vscode-remote-remote-ssh"
     "vscode-extension-MS-python-vscode-pylance"
   ]
   ++ [
