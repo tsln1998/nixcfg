@@ -18,7 +18,11 @@ in
       {
         name = "origin";
         url = "https://github.com/tsln1998/nixcfg.git";
-        branches.main.name = "main";
+        branches = {
+          main = {
+            name = "main";
+          };
+        };
       }
     ];
 
