@@ -43,11 +43,11 @@
     "feishu"
     "claude-code"
     "lens-desktop"
-    "google-chrome"
     "navicat-premium"
   ]
   ++ [
-    # Visual Studio Code Extensions
+    # Visual Studio Code
+    "vscode"
     "vscode-extension-ms-vscode-cpptools"
     "vscode-extension-MS-python-vscode-pylance"
   ]

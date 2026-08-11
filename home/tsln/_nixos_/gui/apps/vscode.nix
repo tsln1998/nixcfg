@@ -7,7 +7,7 @@
 let
   inherit (config.fonts.fontconfig) defaultFonts;
 
-  pkg = pkgs.repos.unstable.vscodium;
+  pkg = pkgs.repos.unstable.vscode;
   market = pkgs.repos.unstable.vscode-extensions;
 
   # 预设配置
@@ -41,6 +41,8 @@ let
       ]
       ++ (profile.extensions or [ ]);
       userSettings = {
+        "chat.disableAIFeatures" = lib.mkDefault true;
+        
         "window.titleBarStyle" = lib.mkForce "native";
         "window.menuStyle" = lib.mkForce "custom";
 
