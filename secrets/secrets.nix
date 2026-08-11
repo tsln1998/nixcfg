@@ -33,6 +33,5 @@ in
   "users/tsln/kube/config.age".publicKeys = users.tsln;
   "users/tsln/codex/config.toml.age".publicKeys = users.tsln;
   "users/tsln/pi/agent/models.json.age".publicKeys = users.tsln;
-  "users/tsln/pi/agent/settings.json.age".publicKeys = users.tsln;
   "users/tsln/keyring-rs/config.toml.age".publicKeys = users.tsln;
 }

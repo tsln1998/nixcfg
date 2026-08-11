@@ -6,21 +6,36 @@
 }:
 let
   inherit (tools) relative;
-  inherit (config.home) username homeDirectory;
+  inherit (config.age) secrets;
+  inherit (config.home) username;
 in
 {
-  age.secrets."users/${username}/pi/agent/models.json" = {
-    file = relative "secrets/users/${username}/pi/agent/models.json.age";
-    path = "${homeDirectory}/.pi/agent/models.json";
-    mode = "644";
-  };
-  age.secrets."users/${username}/pi/agent/settings.json" = {
-    file = relative "secrets/users/${username}/pi/agent/settings.json.age";
-    path = "${homeDirectory}/.pi/agent/settings.json";
-    mode = "644";
+  programs.pi = {
+    enable = true;
+    package = pkgs.repos.unstable.pi-coding-agent;
+    models = secrets."users/${username}/pi/agent/models.json".path;
+    settings = {
+      theme = "dark";
+      defaultProvider = "openai";
+      defaultModel = "gpt-5.6-terra";
+      enabledModels = [
+        "openai/gpt-5.6-sol"
+        "openai/gpt-5.6-terra"
+        "openai/gpt-5.6-luna"
+        "openai/gpt-5.3-codex-spark"
+      ];
+      retry = {
+        enabled = true;
+        maxRetries = 3;
+      };
+      packages = [
+        "npm:pi-subagents"
+        "npm:pi-plan"
+      ];
+    };
   };
 
-  home.packages = [
-    pkgs.repos.unstable.pi-coding-agent
-  ];
+  age.secrets."users/${username}/pi/agent/models.json" = {
+    file = relative "secrets/users/${username}/pi/agent/models.json.age";
+  };
 }
