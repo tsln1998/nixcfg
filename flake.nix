@@ -55,7 +55,7 @@
     home-manager.url = "github:nix-community/home-manager/release-26.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    keyring-rs.url = "github:tsln1998/keyring-rs";
+    keyring-rs.url = "github:tsln1998/keyring-rs/v0.1.1";
     keyring-rs.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-26.05";

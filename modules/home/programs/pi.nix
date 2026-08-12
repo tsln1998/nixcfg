@@ -11,9 +11,19 @@ let
   inherit (lib) optionals optionalAttrs;
   inherit (lib) isAttrs isString isPath;
   inherit (lib.strings) toJSON;
-  inherit (lib.types) oneOf listOf nullOr;
+  inherit (lib.types)
+    oneOf
+    listOf
+    nullOr
+    submodule
+    ;
   inherit (lib.types) str bool path;
-  inherit (lib.types) attrs package;
+  inherit (lib.types)
+    attrs
+    attrsOf
+    anything
+    package
+    ;
   inherit (config.lib.file) mkOutOfStoreSymlink;
 in
 {
@@ -47,7 +57,15 @@ in
       type = nullOr (oneOf [
         str
         path
-        attrs
+        (submodule {
+          freeformType = attrsOf anything;
+
+          options.packages = mkOption {
+            type = listOf str;
+            default = [ ];
+            description = "Pi extension packages.";
+          };
+        })
       ]);
       default = null;
       description = "Agent settings written or linked to ~/.pi/agent/settings.json.";
