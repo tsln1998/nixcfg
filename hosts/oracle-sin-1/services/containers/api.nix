@@ -4,8 +4,8 @@ let
   inherit (config.age) secrets;
   inherit (config.networking) hostName;
 
-  db = "app-hub";
-  name = "cch";
+  db = "app-api";
+  name = "api";
 in
 {
   # Secrets
@@ -14,30 +14,36 @@ in
     mode = "0644";
   };
 
-  # Claude Code Hub service configuration
+  # Sub2API service configuration
   virtualisation.oci-containers.containers.${name} = {
-    image = "ghcr.io/ding113/claude-code-hub:v0.9.2";
+    image = "ghcr.io/wei-shaw/sub2api:0.1.173";
 
     serviceName = name;
 
     environment = {
+      AUTO_SETUP = "true";
+
+      SERVER_HOST = "127.0.0.1";
+      SERVER_PORT = "8319";
+
+      DATABASE_HOST = "127.0.0.1";
+      DATABASE_PORT = toString config.services.postgresql.settings.port;
+      DATABASE_USER = db;
+      DATABASE_DBNAME = db;
+      DATABASE_SSLMODE = "disable";
+
+      REDIS_HOST = "127.0.0.1";
+      REDIS_PORT = toString config.services.redis.servers.default.port;
+
       TZ = "Asia/Shanghai";
-
-      DSN = "postgresql://${db}@127.0.0.1:${toString config.services.postgresql.settings.port}/${db}";
-
-      REDIS_URL = "redis://127.0.0.1:${toString config.services.redis.servers.default.port}";
-
-      ENABLE_RATE_LIMIT = "true";
-      ENABLE_SMART_PROBING = "true";
-      ENABLE_CIRCUIT_BREAKER_ON_NETWORK_ERRORS = "true";
     };
-
-    extraOptions = [
-      "--network=host"
-    ];
 
     environmentFiles = [
       secrets."hosts/${hostName}/${name}/config.env".path
+    ];
+
+    extraOptions = [
+      "--network=host"
     ];
   };
 

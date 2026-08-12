@@ -13,7 +13,8 @@ in
   "hosts/oracle-sin-1/ssh_host_ed25519_key.pub.age".publicKeys = keys.all;
   "hosts/oracle-sin-1/cpa/config.yaml.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
   "hosts/oracle-sin-1/cpa/config.env.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
-  "hosts/oracle-sin-1/cch/config.env.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
+  "hosts/oracle-sin-1/api/config.env.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
+  "hosts/oracle-sin-1/hub/config.env.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
   "hosts/oracle-sin-1/xray/config.json.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
   "hosts/oracle-sin-1/nginx/config.conf.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
   "hosts/oracle-sin-1/restic/repository.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
