@@ -310,15 +310,16 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1786459224,
-        "narHash": "sha256-J0b024EEb95t6YbWs0JnojVXNt98aPOebcO7JqCbcbg=",
+        "lastModified": 1786461102,
+        "narHash": "sha256-m3dso9cVy6j1wyBaSkrmMRXUQkxQgw0BbXCUqj0RBIg=",
         "owner": "tsln1998",
         "repo": "keyring-rs",
-        "rev": "3e8cc2e6929e961fa62f2849af8e4e8219a497ff",
+        "rev": "e51b198860eada18c72c40bb22b6879d355fbec4",
         "type": "github"
       },
       "original": {
         "owner": "tsln1998",
+        "ref": "v0.1.1",
         "repo": "keyring-rs",
         "type": "github"
       }
