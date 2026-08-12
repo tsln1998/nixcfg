@@ -1,6 +1,9 @@
 # Ignore tmp directory
 /tmp
 
+# Ignore Crew directory
+/.crew
+
 # Ignore local files
 *.local.*
 
