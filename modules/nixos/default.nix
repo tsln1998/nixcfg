@@ -9,13 +9,12 @@
   imports = tools.scan ./.;
 
   nix = {
-    package = lib.mkDefault pkgs.nix;
+    package = lib.mkDefault pkgs.lix;
 
     settings = {
       experimental-features = [
         "nix-command"
         "flakes"
-        "ca-derivations"
       ];
       trusted-users = [
         "root"
