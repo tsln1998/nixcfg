@@ -1,5 +1,5 @@
 _: {
-  programs.chromium = {
+  programs.google-chrome = {
     enable = true;
     package = null;
     extensions = [
