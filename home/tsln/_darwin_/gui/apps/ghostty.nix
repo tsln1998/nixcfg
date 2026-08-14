@@ -31,7 +31,6 @@ in
       background-opacity = 0.85;
 
       shell-integration = "detect";
-      shell-integration-features = "no-ssh-terminfo";
 
       cursor-style = "bar";
       cursor-style-blink = true;

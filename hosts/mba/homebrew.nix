@@ -6,12 +6,12 @@ _: {
     { name = "wechat"; }
     { name = "feishu"; }
     { name = "ghostty"; }
-    { name = "chromium"; }
     { name = "obsidian"; }
     { name = "alacritty"; }
     { name = "cyberduck"; }
     { name = "tableplus"; }
     { name = "pearcleaner"; }
+    { name = "google-chrome"; }
     { name = "keepingyouawake"; }
     { name = "visual-studio-code"; }
   ];
