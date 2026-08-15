@@ -41,6 +41,7 @@
     "unrar"
     "wechat"
     "feishu"
+    "obsidian"
     "claude-code"
     "lens-desktop"
   ]

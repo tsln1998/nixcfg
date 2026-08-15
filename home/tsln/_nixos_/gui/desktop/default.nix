@@ -12,14 +12,14 @@
     enable = true;
     createDirectories = true;
 
-    desktop = "desktop";
-    documents = "documents";
-    download = "downloads";
-    music = "music";
-    pictures = "pictures";
-    projects = "codebases";
-    templates = "templates";
-    videos = "videos";
-    publicShare = "shared";
+    desktop = "Desktop";
+    documents = "Documents";
+    download = "Downloads";
+    music = "Music";
+    pictures = "Pictures";
+    projects = "Codebases";
+    templates = "Templates";
+    videos = "Videos";
+    publicShare = "Shared";
   };
 }
