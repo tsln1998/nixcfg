@@ -6,10 +6,12 @@
       "https://cache.nixos.org/"
     ];
     extra-substituters = [
+      "https://cache.garnix.io"
       "https://cache.numtide.com"
       "https://nix-community.cachix.org"
     ];
     extra-trusted-public-keys = [
+      "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
       "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
     ];
@@ -49,7 +51,7 @@
     impermanence.inputs.nixpkgs.follows = "nixpkgs";
     impermanence.inputs.home-manager.follows = "home-manager";
 
-    flake-utils.url = "github:numtide/flake-utils";
+    flake-utils.url = "git+https://github.com/numtide/flake-utils.git?rev=11707dc2f618dd54ca8739b309ec4fc024de578b";
     flake-utils.inputs.systems.follows = "systems";
 
     home-manager.url = "github:nix-community/home-manager/release-26.05";
@@ -82,6 +84,26 @@
 
     vscode.url = "github:nix-community/nix-vscode-extensions";
     vscode.inputs.nixpkgs.follows = "nixpkgs";
+
+    qmd.url = "github:tobi/qmd";
+    qmd.inputs.nixpkgs.follows = "nixpkgs";
+    qmd.inputs.flake-utils.follows = "flake-utils";
+
+    agents.url = "github:numtide/llm-agents.nix";
+    agents.inputs.nixpkgs.follows = "nixpkgs";
+    agents.inputs.systems.follows = "systems";
+    agents.inputs.flake-parts.follows = "flake-parts";
+    agents.inputs.treefmt-nix.follows = "treefmt-nix";
+
+    nix-openclaw.url = "github:openclaw/nix-openclaw";
+    nix-openclaw.inputs.qmd.follows = "qmd";
+    nix-openclaw.inputs.nixpkgs.follows = "unstable";
+    nix-openclaw.inputs.flake-utils.follows = "flake-utils";
+    nix-openclaw.inputs.home-manager.follows = "home-manager";
+    nix-openclaw.inputs.nix-openclaw-tools.follows = "nix-openclaw-tools";
+    
+    nix-openclaw-tools.url = "github:openclaw/nix-openclaw-tools";
+    nix-openclaw-tools.inputs.nixpkgs.follows = "unstable";
   };
 
   outputs =

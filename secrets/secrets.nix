@@ -35,7 +35,7 @@ in
   "users/tsln/nix/nix.conf.age".publicKeys = users.tsln;
   "users/tsln/kube/config.age".publicKeys = users.tsln;
   "users/tsln/codex/config.toml.age".publicKeys = users.tsln;
-  "users/tsln/claude/settings.json.age".publicKeys = users.tsln;
-  "users/tsln/pi/agent/models.json.age".publicKeys = users.tsln;
+  "users/tsln/codex/auth.json.age".publicKeys = users.tsln;
   "users/tsln/keyring-rs/config.toml.age".publicKeys = users.tsln;
+  "users/tsln/openclaw/config.env.age".publicKeys = users.tsln;
 }
