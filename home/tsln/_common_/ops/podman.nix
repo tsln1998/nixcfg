@@ -1,4 +1,7 @@
 { pkgs, lib, ... }:
+let
+  DOCKER_HOST = "unix://$XDG_RUNTIME_DIR/podman/podman.sock";
+in
 {
   services.podman = {
     enable = true;
@@ -24,6 +27,10 @@
   '';
 
   home.sessionVariables = {
-    DOCKER_HOST = "unix://$XDG_RUNTIME_DIR/podman/podman.sock";
+    inherit DOCKER_HOST;
+  };
+
+  systemd.user.sessionVariables = {
+    inherit DOCKER_HOST;
   };
 }

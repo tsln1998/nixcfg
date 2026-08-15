@@ -18,19 +18,11 @@ _: {
         mode = "0755";
       }
       {
-        directory = ".claude";
-        mode = "0755";
-      }
-      {
         directory = ".config";
         mode = "0755";
       }
       {
         directory = ".dolt";
-        mode = "0755";
-      }
-      {
-        directory = ".pi";
         mode = "0755";
       }
       {
@@ -78,6 +70,10 @@ _: {
         mode = "0755";
       }
       {
+        directory = ".openclaw";
+        mode = "0755";
+      }
+      {
         directory = "Codebases";
         mode = "0755";
       }
@@ -85,17 +81,7 @@ _: {
         directory = "Downloads";
         mode = "0755";
       }
-      {
-        directory = "codebases";
-        mode = "0755";
-      }
-      {
-        directory = "downloads";
-        mode = "0755";
-      }
     ];
-    files = [
-      ".claude.json"
-    ];
+    files = [ ];
   };
 }

@@ -14,6 +14,7 @@ in
   imports = (tools.scan ./.) ++ [
     inputs.agenix.homeManagerModules.default
     inputs.catppuccin.homeModules.catppuccin
+    inputs.nix-openclaw.homeManagerModules.openclaw
     inputs.plasma-manager.homeModules.plasma-manager
     outputs.homeModules.default
   ];

@@ -42,7 +42,6 @@
     "wechat"
     "feishu"
     "obsidian"
-    "claude-code"
     "lens-desktop"
   ]
   ++ [
@@ -58,5 +57,7 @@
     "chromium-unwrapped"
     "widevine-cdm"
   ];
-  nixpkgs.config.permittedInsecurePackages = [ ];
+  nixpkgs.config.permittedInsecurePackages = [
+    "openclaw-2026.6.33"
+  ];
 }

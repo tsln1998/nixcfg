@@ -1,5 +1,4 @@
-_:
-{
+_: {
   services.tailscale.enable = true;
   services.tailscale.overrideLocalDns = false;
 }
