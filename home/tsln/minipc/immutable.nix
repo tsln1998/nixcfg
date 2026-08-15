@@ -78,6 +78,14 @@ _: {
         mode = "0755";
       }
       {
+        directory = "Codebases";
+        mode = "0755";
+      }
+      {
+        directory = "Downloads";
+        mode = "0755";
+      }
+      {
         directory = "codebases";
         mode = "0755";
       }
