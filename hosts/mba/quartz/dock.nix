@@ -9,7 +9,7 @@ _: {
         app = "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app";
       }
       {
-        app = "/Applications/Chromium.app";
+        app = "/Applications/Google Chrome.app";
       }
       {
         app = "/Applications/QQ.app";
@@ -24,7 +24,7 @@ _: {
         app = "/Applications/Alacritty.app";
       }
       {
-        app = "/Applications/Obsidian.app";
+        app = "/Applications/Notion.app";
       }
       {
         app = "/Applications/Visual Studio Code.app";
