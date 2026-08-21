@@ -25,6 +25,6 @@ in
   # Install nh and set flake path
   programs.nh = {
     enable = true;
-    flake = if isLinux then "/etc/nixos" else "${homeDirectory}/nixcfg";
+    flake = if isLinux then "/etc/nixos" else "${homeDirectory}/Nix";
   };
 }
