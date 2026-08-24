@@ -24,7 +24,10 @@ _: {
         app = "/Applications/Alacritty.app";
       }
       {
-        app = "/Applications/Notion.app";
+        app = "/Applications/Obsidian.app";
+      }
+      {
+        app = "/Applications/Antigravity.app";
       }
       {
         app = "/Applications/Visual Studio Code.app";
