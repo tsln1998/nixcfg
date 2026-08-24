@@ -70,10 +70,6 @@ _: {
         mode = "0755";
       }
       {
-        directory = ".openclaw";
-        mode = "0755";
-      }
-      {
         directory = "Codebases";
         mode = "0755";
       }

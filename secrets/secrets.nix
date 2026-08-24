@@ -37,5 +37,4 @@ in
   "users/tsln/codex/config.toml.age".publicKeys = users.tsln;
   "users/tsln/codex/auth.json.age".publicKeys = users.tsln;
   "users/tsln/keyring-rs/config.toml.age".publicKeys = users.tsln;
-  "users/tsln/openclaw/config.env.age".publicKeys = users.tsln;
 }
