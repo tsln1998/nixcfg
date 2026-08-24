@@ -84,26 +84,6 @@
 
     vscode.url = "github:nix-community/nix-vscode-extensions";
     vscode.inputs.nixpkgs.follows = "nixpkgs";
-
-    qmd.url = "github:tobi/qmd";
-    qmd.inputs.nixpkgs.follows = "nixpkgs";
-    qmd.inputs.flake-utils.follows = "flake-utils";
-
-    agents.url = "github:numtide/llm-agents.nix";
-    agents.inputs.nixpkgs.follows = "nixpkgs";
-    agents.inputs.systems.follows = "systems";
-    agents.inputs.flake-parts.follows = "flake-parts";
-    agents.inputs.treefmt-nix.follows = "treefmt-nix";
-
-    nix-openclaw.url = "github:openclaw/nix-openclaw";
-    nix-openclaw.inputs.qmd.follows = "qmd";
-    nix-openclaw.inputs.nixpkgs.follows = "unstable";
-    nix-openclaw.inputs.flake-utils.follows = "flake-utils";
-    nix-openclaw.inputs.home-manager.follows = "home-manager";
-    nix-openclaw.inputs.nix-openclaw-tools.follows = "nix-openclaw-tools";
-    
-    nix-openclaw-tools.url = "github:openclaw/nix-openclaw-tools";
-    nix-openclaw-tools.inputs.nixpkgs.follows = "unstable";
   };
 
   outputs =

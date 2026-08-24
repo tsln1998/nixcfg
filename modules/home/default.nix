@@ -57,7 +57,4 @@
     "chromium-unwrapped"
     "widevine-cdm"
   ];
-  nixpkgs.config.permittedInsecurePackages = [
-    "openclaw-2026.6.33"
-  ];
 }
