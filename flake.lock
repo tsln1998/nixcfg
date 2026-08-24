@@ -373,16 +373,15 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1786461102,
-        "narHash": "sha256-m3dso9cVy6j1wyBaSkrmMRXUQkxQgw0BbXCUqj0RBIg=",
+        "lastModified": 1787470515,
+        "narHash": "sha256-/GEWMOENlZZp7nR6y6eOQwJqmy34lbRP4CSARRZTNpM=",
         "owner": "tsln1998",
         "repo": "keyring-rs",
-        "rev": "e51b198860eada18c72c40bb22b6879d355fbec4",
+        "rev": "ef0bcc6cf812b307a78ebeae084167869bcce227",
         "type": "github"
       },
       "original": {
         "owner": "tsln1998",
-        "ref": "v0.1.1",
         "repo": "keyring-rs",
         "type": "github"
       }
@@ -626,16 +625,16 @@
     },
     "systems": {
       "locked": {
-        "lastModified": 1776166891,
-        "narHash": "sha256-bI8yrEGjrohR5hkQox7UrxDH7XqrYMwI8SL/LrJ1+S8=",
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
         "owner": "nix-systems",
-        "repo": "triplet",
-        "rev": "6de7bc09397911ce03636afbcf6118745ab2cda0",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
         "type": "github"
       },
       "original": {
         "owner": "nix-systems",
-        "repo": "triplet",
+        "repo": "default",
         "type": "github"
       }
     },
