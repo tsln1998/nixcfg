@@ -43,9 +43,6 @@ let
       userSettings = {
         "chat.disableAIFeatures" = lib.mkDefault true;
 
-        "window.titleBarStyle" = lib.mkForce "native";
-        "window.menuStyle" = lib.mkForce "custom";
-
         "window.commandCenter" = lib.mkDefault false;
         "window.autoDetectColorScheme" = lib.mkDefault true;
         "window.openFilesInNewWindow" = lib.mkDefault "off";
@@ -53,12 +50,16 @@ let
         "window.title" = lib.mkDefault "\${rootName}\${separator}\${appName}";
 
         "workbench.startupEditor" = lib.mkDefault "none";
+        "workbench.tips.enabled" = false;
         "workbench.editor.useModal" = lib.mkDefault "off";
         "workbench.settings.editor" = lib.mkDefault "json";
         "workbench.iconTheme" = lib.mkDefault "material-icon-theme";
         "workbench.productIconTheme" = lib.mkDefault "fluent-icons";
         "workbench.preferredLightColorTheme" = lib.mkDefault "GitHub Light";
         "workbench.preferredDarkColorTheme" = lib.mkDefault "GitHub Dark";
+        "workbench.preferredHighContrastLightColorTheme" = "GitHub Light High Contrast";
+        "workbench.preferredHighContrastColorTheme" = "GitHub Dark High Contrast";
+        "workbench.experimental.modernUI" = lib.mkDefault false;
 
         "files.autoSaveWhenNoErrors" = lib.mkDefault true;
         "files.autoSaveWorkspaceFilesOnly" = lib.mkDefault true;

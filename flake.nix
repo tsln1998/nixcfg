@@ -79,6 +79,12 @@
     plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
     plasma-manager.inputs.home-manager.follows = "home-manager";
 
+    agents.url = "github:numtide/llm-agents.nix";
+    agents.inputs.nixpkgs.follows = "nixpkgs";
+    agents.inputs.systems.follows = "systems";
+    agents.inputs.flake-parts.follows = "flake-parts";
+    agents.inputs.treefmt-nix.follows = "treefmt-nix";
+
     catppuccin.url = "github:catppuccin/nix";
     catppuccin.inputs.nixpkgs.follows = "nixpkgs";
 
