@@ -31,20 +31,46 @@ _: {
         };
       };
     };
+    nodev = {
+      "/" = {
+        fsType = "tmpfs";
+        mountOptions = [
+          "size=1G"
+          "mode=0755"
+        ];
+      };
+    };
     lvm_vg = {
       pool = {
         type = "lvm_vg";
         lvs = {
           boot = {
-            size = "1G";
+            size = "2G";
             content = {
               type = "filesystem";
               format = "ext4";
               mountpoint = "/boot";
             };
           };
+          tmp = {
+            size = "8G";
+            content = {
+              type = "filesystem";
+              format = "ext4";
+              extraArgs = [
+                "-m"
+                "0"
+              ];
+              mountpoint = "/tmp";
+              mountOptions = [
+                "defaults"
+                "nodev"
+                "nosuid"
+              ];
+            };
+          };
           persist = {
-            size = "64G";
+            size = "256G";
             content = {
               type = "filesystem";
               format = "ext4";
@@ -52,7 +78,7 @@ _: {
             };
           };
           nix = {
-            size = "64G";
+            size = "256G";
             content = {
               type = "filesystem";
               format = "ext4";
@@ -60,21 +86,6 @@ _: {
             };
           };
         };
-      };
-    };
-    nodev = {
-      "/" = {
-        fsType = "tmpfs";
-        mountOptions = [
-          "size=2G"
-          "mode=0755"
-        ];
-      };
-      "/tmp" = {
-        fsType = "tmpfs";
-        mountOptions = [
-          "size=2G"
-        ];
       };
     };
   };

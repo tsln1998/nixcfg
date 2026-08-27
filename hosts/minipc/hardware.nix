@@ -18,6 +18,9 @@
   boot.loader.grub.efiInstallAsRemovable = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
+  # Clean tmpfs on boot
+  boot.tmp.cleanOnBoot = true;
+
   # Kernel adjust
   boot.kernel.sysctl = {
     # 允许执行性能分析
@@ -66,6 +69,7 @@
   # System Directories
   systemd.tmpfiles.rules = [
     "d /mnt 0755 root root -"
+    "q /tmp 1777 root root 1d"
   ];
 
   # Hibernate and sleep
