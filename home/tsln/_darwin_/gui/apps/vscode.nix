@@ -7,7 +7,6 @@
 let
   inherit (config.fonts.fontconfig) defaultFonts;
 
-  # 插件市场
   market = pkgs.repos.unstable.vscode-extensions;
 
   # 预设配置
@@ -143,7 +142,7 @@ in
   };
 
   # 生成 Profiles
-  programs.vscode = {
+  programs.${_vsc_pkg_} = {
     enable = true;
     package = null;
     mutableExtensionsDir = false;

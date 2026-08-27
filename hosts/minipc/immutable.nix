@@ -38,10 +38,6 @@ _: {
         mode = "0755";
       }
       {
-        directory = "/var/cache/samba";
-        mode = "0755";
-      }
-      {
         directory = "/var/cache/tailsale";
         mode = "0755";
       }
