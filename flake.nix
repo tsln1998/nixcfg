@@ -51,7 +51,7 @@
     impermanence.inputs.nixpkgs.follows = "nixpkgs";
     impermanence.inputs.home-manager.follows = "home-manager";
 
-    flake-utils.url = "git+https://github.com/numtide/flake-utils.git?rev=11707dc2f618dd54ca8739b309ec4fc024de578b";
+    flake-utils.url = "github:numtide/flake-utils";
     flake-utils.inputs.systems.follows = "systems";
 
     home-manager.url = "github:nix-community/home-manager/release-26.05";
@@ -85,7 +85,8 @@
     agents.inputs.flake-parts.follows = "flake-parts";
     agents.inputs.treefmt-nix.follows = "treefmt-nix";
 
-    catppuccin.url = "github:catppuccin/nix";
+    # TODO: wait for release-26.11
+    catppuccin.url = "github:catppuccin/nix/9e84aa294455c58a1caba475902d06c1170ed5c1";
     catppuccin.inputs.nixpkgs.follows = "nixpkgs";
 
     vscode.url = "github:nix-community/nix-vscode-extensions";
