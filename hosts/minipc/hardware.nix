@@ -54,9 +54,6 @@
   # Printer and Scanner
   services.printing.enable = true;
   hardware.sane.enable = true;
-  environment.systemPackages = [
-    pkgs.canon-cups-ufr2
-  ];
 
   # Zram swap
   zramSwap.enable = true;
