@@ -5,6 +5,7 @@ _: [
   (import ./repos/agents.nix _)
   (import ./repos/vscode.nix _)
   (import ./repos/local.nix _)
+  (import ./tweaks/desktop/onlyoffice.nix _)
   (import ./tweaks/desktop/shortcut.nix _)
   (import ./tweaks/desktop/wayland.nix _)
 ]
