@@ -6,7 +6,6 @@
     pkgs.jinja2-cli
     pkgs.exfatprogs
     pkgs.btrfs-progs
-    pkgs.qbittorrent
     pkgs.android-tools
     pkgs.smartmontools
     pkgs.q
