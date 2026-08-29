@@ -15,9 +15,11 @@ in
     };
   };
 
+  # Enable podman docker compatibly
   home.packages = [
-    pkgs.docker-client
+    pkgs.podman
     pkgs.podman-compose
+    pkgs.docker-client
   ];
 
   home.activation.enablePodmanSocket = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
@@ -32,5 +34,33 @@ in
 
   systemd.user.sessionVariables = {
     inherit DOCKER_HOST;
+  };
+
+  # Enable podman auto purge
+  systemd.user.services."podman-resource-prune" = {
+    Unit = {
+      Description = "Podman Rootless Storage and Resource Prune Service";
+      Documentation = [ "man:podman-system-prune(1)" ];
+    };
+    Service = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.podman}/bin/podman system prune --all --volumes --force";
+      StandardOutput = "journal";
+      StandardError = "journal";
+    };
+  };
+
+  systemd.user.timers."podman-resource-prune" = {
+    Unit = {
+      Description = "Periodic Podman Resource Prune Timer";
+    };
+    Timer = {
+      OnCalendar = "Sun *-*-* 03:30:00";
+      Persistent = true;
+      RandomizedDelaySec = "15m";
+    };
+    Install = {
+      WantedBy = [ "timers.target" ];
+    };
   };
 }
