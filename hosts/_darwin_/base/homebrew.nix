@@ -1,6 +1,6 @@
 { inputs, config, ... }:
 let
-  inherit (inputs) homebrew-core homebrew-cask;
+  inherit (inputs) homebrew-core homebrew-cask homebrew-zuisong;
 in
 {
   nix-homebrew = {
@@ -17,6 +17,7 @@ in
     taps = {
       "homebrew/homebrew-core" = homebrew-core;
       "homebrew/homebrew-cask" = homebrew-cask;
+      "homebrew/homebrew-zuisong" = homebrew-zuisong;
     };
 
     # Optional: Enable fully-declarative tap management

@@ -21,16 +21,25 @@ _: {
         app = "/Applications/Ghostty.app";
       }
       {
-        app = "/Applications/Alacritty.app";
-      }
-      {
         app = "/Applications/Obsidian.app";
       }
       {
-        app = "/Applications/Antigravity.app";
+        app = "/Applications/ChatGPT.app";
       }
       {
         app = "/Applications/Visual Studio Code.app";
+      }
+      {
+        app = "/Applications/Microsoft Outlook.app";
+      }
+      {
+        app = "/Applications/Microsoft Word.app";
+      }
+      {
+        app = "/Applications/Microsoft Excel.app";
+      }
+      {
+        app = "/Applications/OneDrive.app";
       }
       {
         app = "/Applications/Cyberduck.app";
