@@ -341,6 +341,22 @@
         "type": "github"
       }
     },
+    "homebrew-zuisong": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1787391862,
+        "narHash": "sha256-KudJAAQ48VLoP5uoXwGFJk/7aLSrsIOh9E9Lj2xMZx4=",
+        "owner": "zuisong",
+        "repo": "homebrew-tap",
+        "rev": "977c125459667a1197765bb269eecb9f00139ff0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "zuisong",
+        "repo": "homebrew-tap",
+        "type": "github"
+      }
+    },
     "impermanence": {
       "inputs": {
         "home-manager": [
@@ -533,6 +549,7 @@
         "homebrew": "homebrew",
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
+        "homebrew-zuisong": "homebrew-zuisong",
         "impermanence": "impermanence",
         "keyring-rs": "keyring-rs",
         "nix-darwin": "nix-darwin",
