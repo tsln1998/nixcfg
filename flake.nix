@@ -18,11 +18,13 @@
   };
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
-    unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/release-26.05";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs-nixos.url = "github:NixOS/nixpkgs/nixos-26.05";
+    nixpkgs-darwin.url = "github:NixOS/nixpkgs/nixpkgs-26.05-darwin";
 
     nur.url = "github:nix-community/NUR";
-    nur.inputs.nixpkgs.follows = "unstable";
+    nur.inputs.nixpkgs.follows = "nixpkgs";
     nur.inputs.flake-parts.follows = "flake-parts";
 
     flake-parts.url = "github:hercules-ci/flake-parts";
@@ -33,6 +35,7 @@
 
     systems.url = "github:nix-systems/triplet";
     hardware.url = "github:nixos/nixos-hardware";
+    hardware.inputs.nixpkgs.follows = "nixpkgs";
 
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
@@ -57,11 +60,11 @@
     home-manager.url = "github:nix-community/home-manager/release-26.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    keyring-rs.url = "github:tsln1998/keyring-rs";
-    keyring-rs.inputs.nixpkgs.follows = "nixpkgs";
+    keyring.url = "github:tsln1998/keyring-rs";
+    keyring.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-26.05";
-    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs-darwin";
 
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
     nix-homebrew.inputs.brew-src.follows = "homebrew";
@@ -100,6 +103,8 @@
     {
       self,
       nixpkgs,
+      nixpkgs-nixos,
+      nixpkgs-darwin,
       nix-darwin,
       treefmt-nix,
       home-manager,
@@ -112,10 +117,13 @@
       tools = import ./tools (with self; with nixpkgs; { inherit inputs outputs lib; });
       # load overlays
       overlays = import ./overlays (with self; with nixpkgs; { inherit inputs outputs lib; });
+      # select the channel-gated nixpkgs input for each host platform
+      nixpkgsInputFor =
+        system: if nixpkgs.lib.hasSuffix "-darwin" system then nixpkgs-darwin else nixpkgs-nixos;
       # load nixpkgs
       pkgsFor = nixpkgs.lib.genAttrs flake-utils.lib.defaultSystems (
         system:
-        import nixpkgs {
+        import (nixpkgsInputFor system) {
           inherit system overlays;
         }
       );
@@ -128,7 +136,7 @@
         { hostName, system, ... }@args:
         {
           name = hostName;
-          value = nixpkgs.lib.nixosSystem (
+          value = nixpkgs-nixos.lib.nixosSystem (
             {
               inherit system;
               modules = [

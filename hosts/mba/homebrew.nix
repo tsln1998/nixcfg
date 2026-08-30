@@ -11,11 +11,11 @@ _: {
     { name = "cyberduck"; }
     { name = "tableplus"; }
     { name = "pearcleaner"; }
-    { name = "clashx.meta"; }
     { name = "google-chrome"; }
     { name = "tailscale-app"; }
     { name = "keepingyouawake"; }
     { name = "microsoft-office"; }
     { name = "visual-studio-code"; }
+    { name = "homebrew/zuisong/clashx-meta"; }
   ];
 }

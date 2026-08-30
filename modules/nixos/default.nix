@@ -9,7 +9,7 @@
   imports = tools.scan ./.;
 
   nix = {
-    package = lib.mkDefault pkgs.lix;
+    package = lib.mkDefault pkgs.lixPackageSets.lix_2_95.lix;
 
     settings = {
       experimental-features = [
