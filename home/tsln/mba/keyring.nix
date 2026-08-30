@@ -1,18 +1,19 @@
 {
   config,
   inputs,
+  pkgs,
   tools,
   ...
 }:
 let
   inherit (config.home) username homeDirectory;
 
-  secretName = "users/${username}/keyring-rs/config.toml";
-  socketPath = "${homeDirectory}/Library/Application Support/keyring-rs/keyring.sock";
+  secretName = "users/${username}/keyring/config.toml";
+  socketPath = "${homeDirectory}/Library/Application Support/keyring/keyring.sock";
 in
 {
   imports = [
-    inputs.keyring-rs.homeModules.keyring-rs
+    inputs.keyring.homeModules.keyring-rs
   ];
 
   age.secrets."${secretName}" = {
@@ -22,6 +23,7 @@ in
 
   services.keyring-rs = {
     enable = true;
+    package = pkgs.repos.keyring;
     path = socketPath;
     settingsFile = config.age.secrets."${secretName}".path;
   };

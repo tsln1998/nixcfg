@@ -1,29 +1,31 @@
 {
   config,
   inputs,
+  pkgs,
   tools,
   ...
 }:
 let
   inherit (config.home) username homeDirectory;
 
-  secretName = "users/${username}/keyring-rs/config.toml";
-  SSH_AUTH_SOCK = "${homeDirectory}/.local/state/keyring-rs/keyring.sock";
+  secretName = "users/${username}/keyring/config.toml";
+  SSH_AUTH_SOCK = "${homeDirectory}/.local/state/keyring/keyring.sock";
 in
 {
   imports = [
-    inputs.keyring-rs.homeModules.keyring-rs
+    inputs.keyring.homeModules.keyring-rs
   ];
 
-  age.secrets."users/${username}/keyring-rs/config.toml" = {
+  age.secrets."${secretName}" = {
     file = tools.relative "secrets/${secretName}.age";
     mode = "600";
   };
 
   services.keyring-rs = {
     enable = true;
+    package = pkgs.repos.keyring;
     path = SSH_AUTH_SOCK;
-    settingsFile = config.age.secrets."users/${username}/keyring-rs/config.toml".path;
+    settingsFile = config.age.secrets."${secretName}".path;
   };
 
   systemd.user.services.keyring-rs.Unit = {
