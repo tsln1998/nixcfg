@@ -14,11 +14,17 @@
       color = {
         ui = lib.mkDefault "auto";
       };
+      pull = {
+        rebase = lib.mkDefault true;
+      };
       push = {
         autoSetupRemote = lib.mkDefault true;
       };
       fetch = {
         prune = lib.mkDefault true;
+      };
+      rebase = {
+        autoStash = lib.mkDefault true;
       };
       url = lib.mkDefault {
         "ssh://git@codeup.aliyun.com/" = {
