@@ -62,6 +62,10 @@ _: {
         mode = "0755";
       }
       {
+        directory = ".vscode-shared";
+        mode = "0755";
+      }
+      {
         directory = ".vscode-oss";
         mode = "0755";
       }
