@@ -1,10 +1,10 @@
 { config, lib, ... }:
 let
-  cfg = config.programs.git;
+  inherit (config.programs) git;
 in
 {
-  programs.delta = lib.optionalAttrs cfg.enable {
-    enable = true;
-    enableGitIntegration = true;
+  programs.delta = lib.optionalAttrs git.enable {
+    enable = lib.mkDefault true;
+    enableGitIntegration = lib.mkDefault true;
   };
 }
