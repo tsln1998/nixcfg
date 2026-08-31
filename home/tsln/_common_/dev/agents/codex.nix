@@ -17,11 +17,6 @@ in
     file = relative "secrets/users/${username}/codex/config.toml.age";
     path = "${homeDirectory}/.codex/config.toml";
     mode = "600";
-  };
-
-  age.secrets."users/${username}/codex/auth.json" = {
-    file = relative "secrets/users/${username}/codex/auth.json.age";
-    path = "${homeDirectory}/.codex/auth.json";
-    mode = "600";
+    symlink = false;
   };
 }
