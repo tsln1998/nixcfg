@@ -29,9 +29,13 @@
     # 降低 Zram 优先级
     "vm.swappiness" = 15;
   };
-  boot.extraModprobeConfig = ''
-    options hid_apple fnmode=2
-  '';
+
+  boot.extraModprobeConfig = lib.concatStringsSep "\n" [
+    # 设置 Apple Magic Keyboard 的 F1~F12 功能键模式 (无需同时按下 Fn 即可触发)
+    "options hid_apple fnmode=2"
+    # 设置 KVM 禁用 AVIC (AMD Ryzen 7 8745H 不支持)
+    "options kvm_amd avic=0"
+  ];
 
   # Kernel firmware
   hardware.cpu.amd.updateMicrocode = true;
