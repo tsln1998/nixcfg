@@ -74,4 +74,29 @@ in
         ''}"
       ];
   };
+
+  # Backup for CLIProxyAPI
+  services.restic.backups.cliproxyapi = base // {
+    timerConfig = {
+      OnCalendar = "hourly";
+      Persistent = true;
+      RandomizedDelaySec = "1m";
+    };
+
+    extraBackupArgs = [
+      "--host=${lib.escapeShellArg hostName}"
+      "--tag=_:cliproxyapi"
+    ];
+
+    pruneOpts = [
+      "--host=${lib.escapeShellArg hostName}"
+      "--tag=_:cliproxyapi"
+      "--keep-hourly 72"
+      "--keep-daily 7"
+      "--keep-weekly 4"
+      "--keep-monthly 6"
+    ];
+
+    paths = [ "/var/lib/cliproxyapi" ];
+  };
 }
