@@ -13,10 +13,15 @@ in
     pkgs.repos.unstable.codex
   ];
 
+  home.file = {
+    ".codex/auth.json" = {
+      text = builtins.toJSON {};
+    };
+  };
+
   age.secrets."users/${username}/codex/config.toml" = {
     file = relative "secrets/users/${username}/codex/config.toml.age";
     path = "${homeDirectory}/.codex/config.toml";
     mode = "600";
-    symlink = false;
   };
 }
