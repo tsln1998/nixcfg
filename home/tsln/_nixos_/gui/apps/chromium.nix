@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   programs.chromium = {
     enable = true;
@@ -13,5 +13,9 @@
       { id = "amknoiejhlmhancpahfcfcfhllgkpbld"; } # Hoppscotch
       { id = "hkedbapjpblbodpgbajblpnlpenaebaa"; } # Elasticvue
     ];
+  };
+
+  home.sessionVariables = {
+    CHROME_EXECUTABLE = "${config.programs.chromium.package}/bin/chromium";
   };
 }

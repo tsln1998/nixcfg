@@ -7,7 +7,8 @@ _: [
   (import ./repos/agents.nix _)
   (import ./repos/vscode.nix _)
   (import ./repos/local.nix _)
-  (import ./tweaks/desktop/onlyoffice.nix _)
-  (import ./tweaks/desktop/shortcut.nix _)
-  (import ./tweaks/desktop/wayland.nix _)
+  (import ./packages/android.nix _)
+  (import ./tweaks/onlyoffice.nix _)
+  (import ./tweaks/shortcut.nix _)
+  (import ./tweaks/wayland.nix _)
 ]
