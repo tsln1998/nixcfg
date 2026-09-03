@@ -46,6 +46,20 @@
     "lens-desktop"
   ]
   ++ [
+    # Android SDK
+    "cmake"
+    "tools"
+    "platforms"
+    "build-tools"
+    "cmdline-tools"
+    "platform-tools"
+    "android-sdk-tools"
+    "android-sdk-platforms"
+    "android-sdk-build-tools"
+    "android-sdk-cmdline-tools"
+    "android-sdk-platform-tools"
+  ]
+  ++ [
     # Visual Studio Code
     "vscode"
     "vscode-extension-ms-vscode-cpptools"
