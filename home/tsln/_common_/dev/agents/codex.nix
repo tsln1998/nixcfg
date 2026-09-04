@@ -7,15 +7,21 @@
 let
   inherit (tools) relative;
   inherit (config.home) username homeDirectory;
+  inherit (pkgs.lib) versionAtLeast;
+
+  pkg = pkgs.repos.agents.codex;
+  pkg' = pkgs.repos.local.codex;
+
+  latest = if versionAtLeast pkg.version pkg'.version then pkg else pkg';
 in
 {
   home.packages = [
-    pkgs.repos.unstable.codex
+    latest
   ];
 
   home.file = {
     ".codex/auth.json" = {
-      text = builtins.toJSON {};
+      text = builtins.toJSON { };
     };
   };
 
