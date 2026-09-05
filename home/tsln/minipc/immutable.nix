@@ -54,6 +54,10 @@ _: {
         mode = "0755";
       }
       {
+        directory = ".pub-cache";
+        mode = "0755";
+      }
+      {
         directory = ".vscode";
         mode = "0755";
       }
