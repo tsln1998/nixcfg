@@ -16,7 +16,7 @@ in
 
   # Sub2API service configuration
   virtualisation.oci-containers.containers.${name} = {
-    image = "ghcr.io/wei-shaw/sub2api:0.2.0";
+    image = "ghcr.io/wei-shaw/sub2api:0.2.2";
 
     serviceName = name;
 
