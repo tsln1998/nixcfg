@@ -9,24 +9,24 @@ let
   owner = "openai";
   repo = "codex";
   pname = "codex";
-  version = "0.153.2";
+  version = "0.153.4";
 
   srcs = {
     x86_64-linux = fetchurl {
       url = "https://github.com/${owner}/${repo}/releases/download/rust-v${version}/codex-package-x86_64-unknown-linux-musl.tar.gz";
-      hash = "sha256-4Q+gzueOnwvTlYgPA/1P0ifZA8p69km7wI0WSRAekiU=";
+      hash = "sha256-qCIYfhokIMYcWSZyG/vYeHAe2VVHybsNTeRJiha6GCE=";
     };
     aarch64-linux = fetchurl {
       url = "https://github.com/${owner}/${repo}/releases/download/rust-v${version}/codex-package-aarch64-unknown-linux-musl.tar.gz";
-      hash = "sha256-o7+vS2L8sX4KAzjf4FAkE93OCrGzkChnk5BTnEXSxuM=";
+      hash = "sha256-/DlcsEOhCTqw2zT0Sroxmb+qnOZAzZvn/ViPRLDaZKQ=";
     };
     x86_64-darwin = fetchurl {
       url = "https://github.com/${owner}/${repo}/releases/download/rust-v${version}/codex-package-x86_64-apple-darwin.tar.gz";
-      hash = "sha256-bjh25/Tt/y497lReHTsjNIZnkajfzn4leJv2eZNVpOo=";
+      hash = "sha256-PuY41xVchW7zHz9Khcshld4ZOZYtOSTJNbJPBRRWSj0=";
     };
     aarch64-darwin = fetchurl {
       url = "https://github.com/${owner}/${repo}/releases/download/rust-v${version}/codex-package-aarch64-apple-darwin.tar.gz";
-      hash = "sha256-KH4t0Km7+1hYGwqRUDmUWLTwlOpCyvAoYPHoy1ogKgs=";
+      hash = "sha256-NUONofv3ptt92zvOyERI+mAVuhiEYUcql9nR2n2cQ1M=";
     };
   };
 
