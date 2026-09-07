@@ -8,7 +8,7 @@
     vaults = {
       "Default" = {
         enable = true;
-        target = "Codebases/obsidian";
+        target = "Codebases/Obsidian";
       };
     };
   };
