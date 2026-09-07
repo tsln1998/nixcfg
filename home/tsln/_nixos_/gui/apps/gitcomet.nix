@@ -1,5 +1,5 @@
 { pkgs, ... }: {
   home.packages = [
-    pkgs.repos.unstable.gitte
+    pkgs.repos.unstable.gitcomet
   ];
 }
