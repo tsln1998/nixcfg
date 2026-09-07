@@ -96,6 +96,9 @@
 
     vscode.url = "github:nix-community/nix-vscode-extensions";
     vscode.inputs.nixpkgs.follows = "nixpkgs";
+
+    openlogi.url = "github:AprilNEA/OpenLogi/v0.8.3";
+    openlogi.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
