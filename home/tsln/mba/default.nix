@@ -7,6 +7,7 @@
       "home/tsln/_common_/cli/monitors"
       "home/tsln/_common_/cli/replacements"
       "home/tsln/_common_/dev/agents/skills"
+      "home/tsln/_common_/dev/agents/pi.nix"
       "home/tsln/_common_/dev/agents/codex.nix"
       "home/tsln/_common_/dev/languages/nodejs.nix"
       "home/tsln/_common_/dev/programs/git.nix"
