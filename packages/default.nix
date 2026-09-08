@@ -1,8 +1,7 @@
 pkgs:
 {
   catppuccin-konsole = pkgs.callPackage ./catppuccin/konsole.nix { };
-  codex = pkgs.callPackage ./codex/codex.nix { };
-}
-// pkgs.lib.optionalAttrs (pkgs.stdenv.hostPlatform.system == "x86_64-linux") {
+  codex = pkgs.callPackage ./codex { };
+  waku = pkgs.callPackage ./waku { };
   pen = pkgs.callPackage ./pen { };
 }

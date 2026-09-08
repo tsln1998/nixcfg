@@ -1,22 +1,21 @@
 {
   lib,
   stdenvNoCC,
-  fetchFromGitHub,
+  fetchzip,
 }:
 let
   owner = "catppuccin";
   repo = "konsole";
   name = "${owner}-${repo}";
-  rev = "3b64040e3f4ae5afb2347e7be8a38bc3cd8c73a8";
-  hash = "sha256-d5+ygDrNl2qBxZ5Cn4U7d836+ZHz77m6/yxTIANd9BU=";
+  hashes = (builtins.fromJSON (builtins.readFile ./hashes.json)).konsole;
 in
 stdenvNoCC.mkDerivation {
   pname = name;
-  version = builtins.substring 0 6 rev;
+  inherit (hashes) version;
 
-  src = fetchFromGitHub {
-    inherit owner repo;
-    inherit rev hash;
+  src = fetchzip {
+    name = "source";
+    inherit (hashes) url hash;
   };
 
   installPhase = ''
