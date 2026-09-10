@@ -17,6 +17,7 @@
 
       # 开启扩展键盘编码支持
       set -g extended-keys on
+      set -g extended-keys-format csi-u
 
       # 状态栏置于底部
       set-option -g status-position bottom

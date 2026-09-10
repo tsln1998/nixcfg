@@ -17,8 +17,6 @@
     "npm:@narumitw/pi-plan-mode"
     # 启用“少写代码”的资深开发模式
     "npm:@dietrichgebert/ponytail"
-    # 子代理任务分发
-    "npm:@quintinshaw/pi-dynamic-workflows"
     # 展示任务列表
     "npm:@juicesharp/rpiv-todo"
     # 需要澄清时向用户发起结构化问卷
