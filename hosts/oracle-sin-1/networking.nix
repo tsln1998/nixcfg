@@ -1,4 +1,4 @@
-{ ... }:
+_:
 {
   boot.kernel.sysctl = {
     # Allow buffer growth for a 1 Gbps path with a 200 ms RTT.

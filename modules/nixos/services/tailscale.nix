@@ -75,9 +75,11 @@ in
 
     # MagicDNS
     # See: https://tailscale.com/docs/reference/linux-dns#networkmanager--systemd-resolved
-    networking.networkmanager = lib.optionalAttrs (magic-dns.enable && resolved.enable && networkmanager.enable) {
-      dns = lib.mkForce "systemd-resolved";
-    };
+    networking.networkmanager =
+      lib.optionalAttrs (magic-dns.enable && resolved.enable && networkmanager.enable)
+        {
+          dns = lib.mkForce "systemd-resolved";
+        };
 
     # Nftables
     # See: https://tailscale.com/docs/features/firewall-mode
