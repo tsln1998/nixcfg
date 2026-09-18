@@ -38,7 +38,6 @@
   nixpkgs.config.allowUnfree = false;
   nixpkgs.config.allowUnfreePackages = [
     "qq"
-    "unrar"
     "wechat"
     "feishu"
     "obsidian"
