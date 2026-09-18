@@ -28,9 +28,6 @@
     zellij.enable = lib.mkDefault true;
     zellij.flavor = lib.mkDefault "mocha";
 
-    lazygit.enable = lib.mkDefault true;
-    lazygit.flavor = lib.mkDefault "mocha";
-
     starship.enable = lib.mkDefault true;
     starship.flavor = lib.mkDefault "mocha";
 
