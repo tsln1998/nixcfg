@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   home.packages = [
-    pkgs.beads
+    pkgs.repos.unstable.beads
   ];
 
   programs.git = {
