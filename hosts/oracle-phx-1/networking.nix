@@ -1,4 +1,4 @@
-{ ... }:
+_:
 {
   boot.kernel.sysctl = {
     # Retain 16 MiB socket limits for Hysteria's UDP buffers.
