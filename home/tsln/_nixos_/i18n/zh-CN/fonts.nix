@@ -29,6 +29,7 @@
   };
 
   home.packages = with pkgs; [
+    ibm-plex
     monaspace
     noto-fonts-cjk-sans
     noto-fonts-cjk-serif
