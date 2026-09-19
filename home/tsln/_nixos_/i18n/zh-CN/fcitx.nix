@@ -59,7 +59,7 @@ in
   };
 
   # Plasma virutal keyboard
-  programs.plasma.configFile.kwinrc = lib.optionalsAttrs enable {
+  programs.plasma.configFile.kwinrc = lib.optionalAttrs enable {
     Wayland = {
       VirtualKeyboardEnabled = {
         value = true;
