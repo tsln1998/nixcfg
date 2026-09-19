@@ -28,7 +28,7 @@ in
       macos-icon = "xray";
 
       background-blur = true;
-      background-opacity = 0.85;
+      background-opacity = 0.9;
 
       shell-integration = "detect";
 

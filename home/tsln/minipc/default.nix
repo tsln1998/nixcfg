@@ -7,6 +7,7 @@
       "home/tsln/_common_/dev"
       "home/tsln/_common_/ops"
       "home/tsln/_common_/themes"
+      "home/tsln/_nixos_/base"
       "home/tsln/_nixos_/gui"
       "home/tsln/_nixos_/i18n"
       "home/tsln/_nixos_/themes"
