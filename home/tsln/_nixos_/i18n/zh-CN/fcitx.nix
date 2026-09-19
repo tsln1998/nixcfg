@@ -1,9 +1,17 @@
-{ lib, pkgs, ... }:
 {
-  catppuccin.fcitx5.enable = lib.mkDefault true;
+  lib,
+  pkgs,
+  config,
+  ...
+}:
+let
+  inherit (config.programs.plasma) enable;
+in
+{
+  catppuccin.fcitx5.enable = lib.mkDefault enable;
 
   i18n.inputMethod = {
-    enable = true;
+    enable = lib.mkDefault enable;
     type = "fcitx5";
     fcitx5 = {
       addons = [
@@ -51,7 +59,7 @@
   };
 
   # Plasma virutal keyboard
-  programs.plasma.configFile.kwinrc = {
+  programs.plasma.configFile.kwinrc = lib.optionalsAttrs enable {
     Wayland = {
       VirtualKeyboardEnabled = {
         value = true;
