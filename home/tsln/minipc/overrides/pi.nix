@@ -15,7 +15,7 @@
     # 通过检索与沙盒执行减少上下文占用
     "npm:context-mode"
     # 只读探索代码库，并在执行前先制定计划
-    "npm:@plannotator/pi-extension"
+    # "npm:@plannotator/pi-extension"
     # 自动重试错误
     "npm:@monotykamary/pi-retry"
     # 启用“少写代码”的资深开发模式
