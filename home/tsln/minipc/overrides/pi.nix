@@ -2,6 +2,7 @@
   programs.pi.extraPackages = [
     pkgs.rtk
   ];
+
   programs.pi.settings.packages = [
     # 网页搜索、URL 抓取及文档、视频内容提取
     "npm:pi-web-access"
@@ -14,7 +15,9 @@
     # 通过检索与沙盒执行减少上下文占用
     "npm:context-mode"
     # 只读探索代码库，并在执行前先制定计划
-    "npm:@narumitw/pi-plan-mode"
+    "npm:@plannotator/pi-extension"
+    # 自动重试错误
+    "npm:@monotykamary/pi-retry"
     # 启用“少写代码”的资深开发模式
     "npm:@dietrichgebert/ponytail"
     # 展示任务列表
@@ -22,4 +25,11 @@
     # 需要澄清时向用户发起结构化问卷
     "npm:@juicesharp/rpiv-ask-user-question"
   ];
+
+  programs.pi.settings.piRetry = {
+    baseDelayMs = 1000;
+    maxDelayMs = 60000;
+    multiplier = 2;
+    maxRetriesAtMaxDelay = 60;
+  };
 }
