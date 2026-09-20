@@ -19,4 +19,5 @@ _: [
   (import ./tweaks/onlyoffice.nix _)
   (import ./tweaks/shortcut.nix _)
   (import ./tweaks/wayland.nix _)
+  (import ./tweaks/konsole.nix _)
 ]
