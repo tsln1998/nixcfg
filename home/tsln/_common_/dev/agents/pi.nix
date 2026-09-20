@@ -38,37 +38,30 @@ in
           scout = {
             model = "openai/gpt-5.6-luna";
             thinking = "medium";
-            fallbackModels = [ ];
           };
           researcher = {
             model = "openai/gpt-5.6-terra";
             thinking = "medium";
-            fallbackModels = [ ];
           };
           reviewer = {
             model = "openai/gpt-5.6-terra";
             thinking = "xhigh";
-            fallbackModels = [ ];
           };
           worker = {
             model = "openai/gpt-5.6-sol";
             thinking = "xhigh";
-            fallbackModels = [ ];
           };
           oracle = {
             model = "openai/gpt-6-astra";
             thinking = "medium";
-            fallbackModels = [ ];
           };
           delegate = {
             model = "openai/gpt-5.6-sol";
             thinking = "xhigh";
-            fallbackModels = [ ];
           };
           evidence-auditor = {
             model = "openai/gpt-5.6-terra";
             thinking = "xhigh";
-            fallbackModels = [ ];
           };
         };
       };
