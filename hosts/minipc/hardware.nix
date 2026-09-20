@@ -7,6 +7,7 @@
 {
   imports = [
     inputs.hardware.nixosModules.common-cpu-amd
+    inputs.hardware.nixosModules.common-gpu-amd
     inputs.hardware.nixosModules.common-pc-ssd
   ];
 
@@ -38,7 +39,6 @@
   ];
 
   # Kernel firmware
-  hardware.cpu.amd.updateMicrocode = true;
   hardware.firmware = with pkgs; [
     linux-firmware
     sof-firmware
