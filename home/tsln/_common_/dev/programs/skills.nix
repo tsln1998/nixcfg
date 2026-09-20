@@ -4,6 +4,6 @@
 }:
 {
   home.packages = [
-    pkgs.repos.unstable.skills
+    pkgs.skills
   ];
 }
