@@ -90,6 +90,7 @@ let
 
         "terminal.integrated.cursorStyle" = lib.mkDefault "line";
         "terminal.integrated.cursorStyleInactive" = lib.mkDefault "underline";
+        "terminal.integrated.gpuAcceleration" = lib.mkDefault "off";
 
         "explorer.autoReveal" = lib.mkDefault true;
         "explorer.autoRevealExclude" = lib.mkDefault {
