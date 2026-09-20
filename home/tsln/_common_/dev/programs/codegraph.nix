@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   home.packages = [
-    pkgs.repos.unstable.codegraph
+    pkgs.codegraph
   ];
 
   programs.git = {

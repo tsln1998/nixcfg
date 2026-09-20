@@ -61,7 +61,7 @@
 
   # Logi devices
   programs.openlogi.enable = true;
-  programs.openlogi.package = pkgs.repos.unstable.openlogi;
+  programs.openlogi.package = pkgs.openlogi;
 
   # Zram swap
   zramSwap.enable = true;

@@ -52,7 +52,7 @@ let
 in
 {
   home.packages = [
-    pkgs.repos.unstable.herdr
+    pkgs.herdr
   ];
 
   # herdr 会自行回写，所以先复制出可写副本（store 路径是只读的）。
