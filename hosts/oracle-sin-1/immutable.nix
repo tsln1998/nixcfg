@@ -27,6 +27,10 @@ _: {
         mode = "0755";
       }
       {
+        directory = "/var/lib/wb";
+        mode = "0755";
+      }
+      {
         directory = "/var/lib/cliproxyapi";
         mode = "0755";
       }

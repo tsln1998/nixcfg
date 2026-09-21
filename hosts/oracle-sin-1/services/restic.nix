@@ -99,4 +99,29 @@ in
 
     paths = [ "/var/lib/cliproxyapi" ];
   };
+
+  # Backup for WB
+  services.restic.backups.wb = base // {
+    timerConfig = {
+      OnCalendar = "hourly";
+      Persistent = true;
+      RandomizedDelaySec = "1m";
+    };
+
+    extraBackupArgs = [
+      "--host=${lib.escapeShellArg hostName}"
+      "--tag=_:wb"
+    ];
+
+    pruneOpts = [
+      "--host=${lib.escapeShellArg hostName}"
+      "--tag=_:wb"
+      "--keep-hourly 72"
+      "--keep-daily 7"
+      "--keep-weekly 4"
+      "--keep-monthly 6"
+    ];
+
+    paths = [ "/var/lib/wb" ];
+  };
 }
