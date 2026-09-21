@@ -41,7 +41,6 @@
     "wechat"
     "feishu"
     "obsidian"
-    "lens-desktop"
   ]
   ++ [
     # Android SDK

@@ -14,6 +14,9 @@
       color = {
         ui = lib.mkDefault "auto";
       };
+      init = {
+        defaultBranch = "trunk";
+      };
       pull = {
         rebase = lib.mkDefault true;
       };

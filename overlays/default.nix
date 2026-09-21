@@ -8,6 +8,7 @@ _: [
   (import ./repos/vscode.nix _)
   (import ./repos/local.nix _)
   (import ./backports/rtk.nix _)
+  (import ./backports/pixi.nix _)
   (import ./backports/beads.nix _)
   (import ./backports/herdr.nix _)
   (import ./backports/skills.nix _)

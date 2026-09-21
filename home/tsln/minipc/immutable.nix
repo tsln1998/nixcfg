@@ -104,6 +104,7 @@
       # Python and uv
       ".cache/pip"
       ".cache/uv"
+      ".cache/rattler"
       ".local/share/uv"
 
       # Rust
