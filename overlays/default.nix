@@ -18,9 +18,10 @@ _: [
   (import ./backports/openlogi.nix _)
   (import ./backports/codegraph.nix _)
   (import ./packages/android.nix _)
-  (import ./tweaks/onlyoffice.nix _)
   (import ./tweaks/shortcut.nix _)
   (import ./tweaks/wayland.nix _)
   (import ./tweaks/konsole.nix _)
   (import ./bugfix/mcporter.nix _)
+  (import ./bugfix/onlyoffice.nix _)
+  (import ./bugfix/beekeeper.nix _)
 ]
