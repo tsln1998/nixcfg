@@ -7,6 +7,7 @@ _: [
   (import ./repos/agents.nix _)
   (import ./repos/vscode.nix _)
   (import ./repos/local.nix _)
+  (import ./backports/pi.nix _)
   (import ./backports/rtk.nix _)
   (import ./backports/pixi.nix _)
   (import ./backports/beads.nix _)

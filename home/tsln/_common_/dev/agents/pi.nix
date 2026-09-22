@@ -12,7 +12,7 @@ in
 {
   programs.pi = {
     enable = true;
-    package = pkgs.repos.unstable.pi-coding-agent;
+    package = pkgs.pi-coding-agent;
     extraPackages = [ pkgs.nodejs ];
     models = secrets."users/${username}/pi/agent/models.json".path;
     settings = {
@@ -20,7 +20,7 @@ in
       tuiMode = "fullscreen";
 
       defaultProvider = "deepseek";
-      defaultModel = "deepseek-v4-flash";
+      defaultModel = "deepseek-flash";
       defaultThinkingLevel = "xhigh";
       defaultProjectTrust = "always";
 
@@ -30,8 +30,23 @@ in
         "openai/gpt-5.6-terra"
         "openai/gpt-5.6-luna"
         "openai/gpt-5.3-codex-spark"
-        "deepseek/deepseek-v4-flash"
+        "deepseek/deepseek-flash"
       ];
+
+      modelThinkingLevels = {
+        "deepseek/deepseek-flash" = "high";
+      };
+
+      compaction = {
+        enabled = true;
+
+        modelOverrides = {
+          "deepseek/deepseek-flash" = {
+            reserveTokens = 128000;
+            keepRecentTokens = 20000;
+          };
+        };
+      };
 
       subagents = {
         agentOverrides = {
