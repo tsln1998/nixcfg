@@ -23,16 +23,14 @@
     "npm:@monotykamary/pi-retry@0.10.1"
     # 启用“少写代码”的资深开发模式
     "npm:@dietrichgebert/ponytail@4.10.0"
-    # 展示任务列表
-    "npm:@juicesharp/rpiv-todo@2.10.1"
     # 需要澄清时向用户发起结构化问卷
     "npm:@juicesharp/rpiv-ask-user-question@2.10.1"
   ];
 
   programs.pi.settings.piRetry = {
     baseDelayMs = 1000;
-    maxDelayMs = 60000;
+    maxDelayMs = 6000;
     multiplier = 2;
-    maxRetriesAtMaxDelay = 60;
+    maxRetriesAtMaxDelay = 100;
   };
 }
