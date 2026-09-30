@@ -41,6 +41,7 @@
 
       # Feishu
       ".cache/LarkShell"
+      ".config/LarkShell"
 
       # Flutter
       ".pub-cache"

@@ -5,13 +5,8 @@
   ...
 }:
 let
-  # herdr 会在 Settings UI / `herdr config reset-keys` 里回写 config.toml，
-  # 所以落盘的是可写副本而不是 /nix/store 路径。
-  # 改完跑 `herdr server reload-config` 生效，`herdr config check` 验证。
   toml = pkgs.formats.toml { };
 
-  # toml.generate 的输入要求是 JSON 兼容值（string/bool/float/attrset/list/null）。
-  # 传路径字面量让 store 里保留原始文件名。
   configFile = toml.generate "herdr-config.toml" {
     onboarding = false;
 
@@ -53,6 +48,7 @@ in
 {
   home.packages = [
     pkgs.herdr
+    pkgs.wl-clipboard
   ];
 
   # herdr 会自行回写，所以先复制出可写副本（store 路径是只读的）。

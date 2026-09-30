@@ -58,6 +58,10 @@ _: {
         mode = "0755";
       }
       {
+        directory = "/var/lib/docker";
+        mode = "0755";
+      }
+      {
         directory = "/var/lib/dnsmasq";
         mode = "0755";
       }
