@@ -89,9 +89,6 @@
       # OnlyOffice
       ".local/share/onlyoffice"
 
-      # OpenLogi
-      ".local/share/openlogi"
-
       # Pi
       ".pi"
 
@@ -176,7 +173,6 @@
     # ".config/nx"
     # ".config/obsidian"
     # ".config/onlyoffice"
-    # ".config/openlogi"
     # ".config/opencode"
     # ".config/openspec"
     # ".config/org.gnome.Ptyxis"
