@@ -88,9 +88,9 @@ in
 
       packages = [
         # 提供持久记忆、会话搜索及敏感信息扫描
-        "npm:pi-hermes-memory@0.9.9"
+        "npm:pi-hermes-memory@0.9.10"
         # 提供子代理支持
-        "npm:pi-subagents@0.69.0"
+        "npm:pi-subagents@0.76.0"
       ];
     };
   };

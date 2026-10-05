@@ -38,10 +38,8 @@
 
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
-    agenix.inputs.systems.follows = "systems";
-    agenix.inputs.home-manager.follows = "home-manager";
 
-    comin.url = "github:nlewo/comin/v0.12.0";
+    comin.url = "github:nlewo/comin/v0.14.0";
     comin.inputs.nixpkgs.follows = "nixpkgs";
     comin.inputs.flake-compat.follows = "flake-compat";
     comin.inputs.treefmt-nix.follows = "treefmt-nix";
@@ -91,12 +89,11 @@
     agents.inputs.treefmt-nix.follows = "treefmt-nix";
 
     # TODO: wait for release-26.11
-    catppuccin.url = "github:catppuccin/nix/9e84aa294455c58a1caba475902d06c1170ed5c1";
+    catppuccin.url = "github:catppuccin/nix/89b3eacf59d6b5eefbc2d69c3a4eb5aaf66d63bc";
     catppuccin.inputs.nixpkgs.follows = "nixpkgs";
 
     vscode.url = "github:nix-community/nix-vscode-extensions";
     vscode.inputs.nixpkgs.follows = "nixpkgs";
-
   };
 
   outputs =
