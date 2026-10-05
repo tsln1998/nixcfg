@@ -59,10 +59,6 @@
   services.printing.enable = true;
   hardware.sane.enable = true;
 
-  # Logi devices
-  programs.openlogi.enable = true;
-  programs.openlogi.package = pkgs.openlogi;
-
   # Zram swap
   zramSwap.enable = true;
   zramSwap.memoryPercent = 50;

@@ -15,7 +15,6 @@ _: [
   (import ./backports/skills.nix _)
   (import ./backports/mcporter.nix _)
   (import ./backports/mcporter.nix _)
-  (import ./backports/openlogi.nix _)
   (import ./backports/codegraph.nix _)
   (import ./packages/android.nix _)
   (import ./tweaks/shortcut.nix _)
