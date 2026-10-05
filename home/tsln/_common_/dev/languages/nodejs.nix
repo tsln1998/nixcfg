@@ -18,6 +18,7 @@ in
       text = ''
         prefix=${homeDirectory}/.npm
         registry=https://mirrors.cloud.tencent.com/npm/
+        update-notifier=false
       '';
     };
 

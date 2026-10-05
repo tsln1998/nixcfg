@@ -1,5 +1,4 @@
-_:
-{
+_: {
   boot.kernel.sysctl = {
     # Retain 16 MiB socket limits for Hysteria's UDP buffers.
     "net.core.rmem_max" = 16777216;

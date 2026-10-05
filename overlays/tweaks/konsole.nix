@@ -4,14 +4,16 @@
 #   ~/.local/state/konsolestaterc
 #
 _: final: prev: {
-  kdePackages = prev.kdePackages.overrideScope (_: kdePrev: {
-    konsole = final.symlinkJoin {
-      inherit (kdePrev.konsole) name meta;
-      paths = [ kdePrev.konsole ];
-      nativeBuildInputs = [ final.makeWrapper ];
-      postBuild = ''
-        wrapProgram "$out/bin/konsole" --add-flags --hide-toolbars
-      '';
-    };
-  });
+  kdePackages = prev.kdePackages.overrideScope (
+    _: kdePrev: {
+      konsole = final.symlinkJoin {
+        inherit (kdePrev.konsole) name meta;
+        paths = [ kdePrev.konsole ];
+        nativeBuildInputs = [ final.makeWrapper ];
+        postBuild = ''
+          wrapProgram "$out/bin/konsole" --add-flags --hide-toolbars
+        '';
+      };
+    }
+  );
 }

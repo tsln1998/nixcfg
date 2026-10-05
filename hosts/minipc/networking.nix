@@ -1,5 +1,4 @@
-_:
-{
+_: {
   networking.usePredictableInterfaceNames = false;
 
   networking.firewall.enable = true;
