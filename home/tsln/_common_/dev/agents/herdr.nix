@@ -5,9 +5,12 @@
   ...
 }:
 let
+  inherit (lib) optionals;
+  inherit (pkgs.stdenv.hostPlatform) isLinux;
+
   toml = pkgs.formats.toml { };
 
-  configFile = toml.generate "herdr-config.toml" {
+  conf = toml.generate "herdr-config.toml" {
     onboarding = false;
 
     theme = {
@@ -48,14 +51,16 @@ in
 {
   home.packages = [
     pkgs.herdr
+  ]
+  ++ (optionals isLinux [
     pkgs.wl-clipboard
-  ];
+  ]);
 
   # herdr 会自行回写，所以先复制出可写副本（store 路径是只读的）。
   home.activation.herdrConfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     conf="${config.xdg.configHome}/herdr/config.toml"
     run mkdir -p "$(dirname "$conf")"
-    run cp -f "${configFile}" "$conf"
+    run cp -f "${conf}" "$conf"
     run chmod u+w "$conf"
   '';
 }
