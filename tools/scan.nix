@@ -3,11 +3,14 @@ path:
 map (f: (path + "/${f}")) (
   builtins.attrNames (
     lib.attrsets.filterAttrs (
-      path: _type:
-      (_type == "directory") # include directories
+      name: type:
+      (
+        # include directory if default.nix exists
+        type == "directory" && builtins.pathExists (path + "/${name}/default.nix")
+      )
       || (
-        (path != "default.nix") # ignore default.nix
-        && (lib.strings.hasSuffix ".nix" path) # include .nix files
+        # include .nix files and ignore default.nix
+        (name != "default.nix") && (lib.strings.hasSuffix ".nix" name)
       )
     ) (builtins.readDir path)
   )
