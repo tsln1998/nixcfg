@@ -1,4 +1,26 @@
 _: final: prev: {
+  feishu = prev.feishu.overrideAttrs (
+    oldAttrs:
+    (final.lib.optionalAttrs prev.stdenv.isLinux {
+      postFixup = (oldAttrs.postFixup or "") + ''
+        wrapProgram "$out/opt/bytedance/feishu/bytedance-feishu" \
+          --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform=wayland --enable-features=UseOzonePlatform --enable-wayland-ime=true}}"
+      '';
+    })
+  );
+
+  beekeeper-studio = prev.beekeeper-studio.overrideAttrs (oldAttrs: {
+    installPhase =
+      builtins.replaceStrings
+        [
+          ''\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform-hint=auto --enable-features=WaylandWindowDecorations --enable-wayland-ime=true}}''
+        ]
+        [
+          ''\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform-hint=auto --enable-features=UseOzonePlatform --enable-wayland-ime=true}}''
+        ]
+        oldAttrs.installPhase;
+  });
+
   jetbrains = prev.jetbrains // {
     datagrip = prev.jetbrains.datagrip.override {
       vmopts = final.lib.concatStringsSep "\n" [
