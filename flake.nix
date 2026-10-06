@@ -22,11 +22,6 @@
     nixpkgs-darwin.url = "github:NixOS/nixpkgs/nixpkgs-26.05-darwin";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
-    nur.url = "github:nix-community/NUR";
-    nur.inputs.nixpkgs.follows = "nixpkgs";
-    nur.inputs.flake-parts.follows = "flake-parts";
-
-    flake-parts.url = "github:hercules-ci/flake-parts";
     flake-compat.url = "github:NixOS/flake-compat";
 
     treefmt-nix.url = "github:numtide/treefmt-nix";
@@ -81,12 +76,6 @@
     plasma-manager.url = "github:nix-community/plasma-manager";
     plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
     plasma-manager.inputs.home-manager.follows = "home-manager";
-
-    agents.url = "github:numtide/llm-agents.nix";
-    agents.inputs.nixpkgs.follows = "nixpkgs";
-    agents.inputs.systems.follows = "systems";
-    agents.inputs.flake-parts.follows = "flake-parts";
-    agents.inputs.treefmt-nix.follows = "treefmt-nix";
 
     # TODO: wait for release-26.11
     catppuccin.url = "github:catppuccin/nix/89b3eacf59d6b5eefbc2d69c3a4eb5aaf66d63bc";

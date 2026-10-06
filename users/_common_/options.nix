@@ -4,10 +4,12 @@
   outputs,
   tools,
   pkgs,
+  lib,
   ...
 }:
 {
   # Home Manager configuration
+  home-manager.useGlobalPkgs = lib.mkForce false;
   home-manager.backupCommand = ''
     ${pkgs.coreutils}/bin/rm -rf "$1"
   '';

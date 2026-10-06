@@ -70,7 +70,7 @@ _: {
             };
           };
           persist = {
-            size = "256G";
+            size = "1024G";
             content = {
               type = "filesystem";
               format = "ext4";

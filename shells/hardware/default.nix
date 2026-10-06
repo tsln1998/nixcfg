@@ -6,6 +6,7 @@ pkgs.mkShell {
   packages = with pkgs; [
     usbutils
     pciutils
+    xfsprogs
     exfatprogs
     btrfs-progs
     smartmontools

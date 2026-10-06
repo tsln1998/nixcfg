@@ -38,7 +38,7 @@ _: {
         mode = "0755";
       }
       {
-        directory = "/var/cache/tailsale";
+        directory = "/var/cache/tailscale";
         mode = "0755";
       }
       {
@@ -59,10 +59,6 @@ _: {
       }
       {
         directory = "/var/lib/docker";
-        mode = "0755";
-      }
-      {
-        directory = "/var/lib/dnsmasq";
         mode = "0755";
       }
       {

@@ -5,7 +5,7 @@ _: {
     defaultKeymap = "emacs";
 
     initContent = ''
-      setopt local_options nullglob
+      setopt nullglob
 
       # Ctrl + Left/Right
       bindkey "^[[1;5D" backward-word

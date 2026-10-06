@@ -19,9 +19,6 @@
   boot.loader.grub.efiInstallAsRemovable = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
-  # Clean tmpfs on boot
-  boot.tmp.cleanOnBoot = true;
-
   # Kernel adjust
   boot.kernel.sysctl = {
     # 允许执行性能分析
@@ -45,15 +42,12 @@
   ];
 
   services.fwupd.enable = true;
-  services.fwupd.package = pkgs.fwupd;
 
   # Graphicals
   hardware.graphics.enable = true;
-  hardware.graphics.package = pkgs.mesa;
 
   # Bluetooth
   hardware.bluetooth.enable = true;
-  hardware.bluetooth.package = pkgs.bluez;
 
   # Printer and Scanner
   services.printing.enable = true;
