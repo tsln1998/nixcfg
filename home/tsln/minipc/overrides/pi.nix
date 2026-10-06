@@ -9,14 +9,10 @@
   programs.pi.settings.packages = [
     # 网页搜索、URL 抓取及文档、视频内容提取
     "npm:pi-web-access@0.35.0"
-    # 连接并调用 MCP（模型上下文协议）服务
-    "npm:pi-mcp-adapter@5.0.0"
     # 命令输出过滤，节省 Token 用量并提升速度
     "npm:pi-rtk-optimizer@0.9.0"
     # 在底栏显示模型、路径、Git、令牌、费用及耗时
     "npm:pi-cometix-footer@1.2.0"
-    # 通过检索与沙盒执行减少上下文占用
-    "npm:context-mode@1.0.169"
     # 只读探索代码库，并在执行前先制定计划
     "npm:@plannotator/pi-extension@0.28.0"
     # 自动重试错误
