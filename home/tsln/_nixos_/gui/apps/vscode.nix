@@ -9,7 +9,6 @@ let
 
   pkg = pkgs.repos.unstable.vscode;
   market = pkgs.repos.unstable.vscode-extensions;
-  market_ = pkgs.repos.vscode.vscode-marketplace-release;
 
   # 预设配置
   _vsc_pkg_ = pkg.pname;
@@ -29,13 +28,10 @@ let
         # Git
         market.codezombiech.gitignore
         market.waderyan.gitblame
-        market_.jackiotyu.git-worktree-manager
         # Nix
         market.jnoortheen.nix-ide
         # Direnv
         market.mkhl.direnv
-        # OpenFGA
-        market_.openfga.openfga-vscode
         # Common
         market.editorconfig.editorconfig
         market.gruntfuggly.todo-tree
