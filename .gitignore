@@ -20,3 +20,7 @@ result-*
 # Ignore editor files
 .vscode/*
 
+# Ignore markdowns
+/**/*.md
+!/README*.md
+
