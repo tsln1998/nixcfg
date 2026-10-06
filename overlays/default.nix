@@ -22,5 +22,4 @@ _: [
   (import ./tweaks/konsole.nix _)
   (import ./bugfix/mcporter.nix _)
   (import ./bugfix/onlyoffice.nix _)
-  (import ./bugfix/beekeeper.nix _)
 ]
