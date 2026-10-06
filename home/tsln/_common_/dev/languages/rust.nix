@@ -10,18 +10,20 @@ let
   path = "${homeDirectory}/.cargo";
 in
 {
-  home.packages = with pkgs; [
-    cargo
-    rust-analyzer
-    rustfmt
-  ];
+  home = {
+    packages = with pkgs; [
+      cargo
+      rust-analyzer
+      rustfmt
+    ];
 
-  home.sessionVariables = {
-    RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
-    CARGO_HOME = lib.mkDefault path;
+    sessionVariables = {
+      RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
+      CARGO_HOME = lib.mkDefault path;
+    };
+
+    sessionPath = [
+      "${path}/bin"
+    ];
   };
-
-  home.sessionPath = [
-    "${path}/bin"
-  ];
 }

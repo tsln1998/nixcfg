@@ -7,7 +7,13 @@
     "@admin"
   ];
 
-  nixpkgs.config.allowUnfreePackages = [ ];
-  nixpkgs.flake.setFlakeRegistry = false;
-  nixpkgs.flake.setNixPath = false;
+  nixpkgs = {
+    config = {
+      allowUnfreePackages = [ ];
+    };
+    flake = {
+      setFlakeRegistry = false;
+      setNixPath = false;
+    };
+  };
 }

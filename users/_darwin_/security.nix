@@ -1,5 +1,13 @@
 _: {
-  security.pam.services.sudo_local.enable = true;
-  security.pam.services.sudo_local.touchIdAuth = true;
-  security.pam.services.sudo_local.watchIdAuth = true;
+  security = {
+    pam = {
+      services = {
+        sudo_local = {
+          enable = true;
+          touchIdAuth = true;
+          watchIdAuth = true;
+        };
+      };
+    };
+  };
 }

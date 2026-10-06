@@ -7,30 +7,32 @@ let
   inherit (config.home) homeDirectory;
 in
 {
-  home.packages = with pkgs; [
-    nodejs
-    yarn
-    pnpm
-  ];
+  home = {
+    packages = with pkgs; [
+      nodejs
+      yarn
+      pnpm
+    ];
 
-  home.file = {
-    ".npmrc" = {
-      text = ''
-        prefix=${homeDirectory}/.npm
-        registry=https://mirrors.cloud.tencent.com/npm/
-        update-notifier=false
-      '';
+    file = {
+      ".npmrc" = {
+        text = ''
+          prefix=${homeDirectory}/.npm
+          registry=https://mirrors.cloud.tencent.com/npm/
+          update-notifier=false
+        '';
+      };
+
+      ".config/pnpm/config.yaml" = {
+        text = ''
+          updateNotifier: false
+        '';
+      };
     };
 
-    ".config/pnpm/config.yaml" = {
-      text = ''
-        updateNotifier: false
-      '';
-    };
+    sessionPath = [
+      "${homeDirectory}/.npm/bin"
+      "${homeDirectory}/.local/share/pnpm/bin"
+    ];
   };
-
-  home.sessionPath = [
-    "${homeDirectory}/.npm/bin"
-    "${homeDirectory}/.local/share/pnpm/bin"
-  ];
 }

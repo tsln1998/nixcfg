@@ -5,10 +5,18 @@
   ];
 
   # Use the GRUB 2 boot loader.
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "nodev";
-  boot.loader.grub.efiSupport = true;
-  boot.loader.grub.efiInstallAsRemovable = true;
-  boot.loader.grub.configurationLimit = 15;
-  boot.loader.efi.efiSysMountPoint = "/boot/efi";
+  boot = {
+    loader = {
+      grub = {
+        enable = true;
+        device = "nodev";
+        efiSupport = true;
+        efiInstallAsRemovable = true;
+        configurationLimit = 15;
+      };
+      efi = {
+        efiSysMountPoint = "/boot/efi";
+      };
+    };
+  };
 }

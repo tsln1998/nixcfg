@@ -38,8 +38,15 @@ def prefetch_source_hash(url: str) -> str:
     """Hash the unpacked source tree, matching fetchzip's recursive hash."""
     result = subprocess.run(
         [
-            "nix", "store", "prefetch-file",
-            "--json", "--unpack", "--hash-type", "sha256", "--name", "source",
+            "nix",
+            "store",
+            "prefetch-file",
+            "--json",
+            "--unpack",
+            "--hash-type",
+            "sha256",
+            "--name",
+            "source",
             url,
         ],
         check=True,
@@ -100,7 +107,13 @@ def main() -> int:
     try:
         hashes = fetch_latest_hashes(HASHES_PATH)
         changed = write_hashes_if_changed(HASHES_PATH, hashes)
-    except (OSError, ValueError, KeyError, TypeError, subprocess.SubprocessError) as error:
+    except (
+        OSError,
+        ValueError,
+        KeyError,
+        TypeError,
+        subprocess.SubprocessError,
+    ) as error:
         print(f"Failed to update Catppuccin hashes: {error}", file=sys.stderr)
         return 1
 

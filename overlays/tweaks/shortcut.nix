@@ -1,7 +1,7 @@
 { lib, ... }:
 final: prev:
 let
-  gnused = final.gnused;
+  inherit (final) gnused;
 in
 {
   feishu = prev.feishu.overrideAttrs (

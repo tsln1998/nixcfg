@@ -7,8 +7,13 @@ _: {
     "net.ipv4.tcp_wmem" = "4096 65536 67108864";
   };
 
-  networking.usePredictableInterfaceNames = false;
-
-  networking.firewall.enable = true;
-  networking.nftables.enable = true;
+  networking = {
+    usePredictableInterfaceNames = false;
+    firewall = {
+      enable = true;
+    };
+    nftables = {
+      enable = true;
+    };
+  };
 }

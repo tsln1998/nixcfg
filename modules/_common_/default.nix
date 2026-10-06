@@ -27,7 +27,11 @@
     };
   };
 
-  nixpkgs.overlays = overlays;
-  nixpkgs.config.allowUnfree = false;
-  nixpkgs.config.permittedInsecurePackages = [ ];
+  nixpkgs = {
+    inherit overlays;
+    config = {
+      allowUnfree = false;
+      permittedInsecurePackages = [ ];
+    };
+  };
 }
