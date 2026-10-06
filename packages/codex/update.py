@@ -107,7 +107,9 @@ def write_hashes_if_changed(path: Path, hashes: ReleaseHashes) -> bool:
         return False
 
     # Keep the temporary file on the same filesystem for an atomic replacement.
-    with tempfile.TemporaryDirectory(prefix=".codex-update-", dir=path.parent) as directory:
+    with tempfile.TemporaryDirectory(
+        prefix=".codex-update-", dir=path.parent
+    ) as directory:
         temporary_path = Path(directory) / path.name
         temporary_path.write_text(content, encoding="utf-8")
         temporary_path.replace(path)

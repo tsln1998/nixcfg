@@ -1,4 +1,4 @@
-_: final: prev: {
+_: _: prev: {
   mcporter =
     if prev.mcporter.version == "0.13.13" then
       prev.mcporter.overrideAttrs (old: {

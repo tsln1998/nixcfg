@@ -1,5 +1,9 @@
 { pkgs, ... }: {
-  virtualisation.docker.enable = true;
-  virtualisation.docker.enableOnBoot = true;
-  virtualisation.docker.package = pkgs.docker;
+  virtualisation = {
+    docker = {
+      enable = true;
+      enableOnBoot = true;
+      package = pkgs.docker;
+    };
+  };
 }

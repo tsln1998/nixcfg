@@ -15,7 +15,10 @@
     };
   };
 
-  nixpkgs.config.allowUnfreePackages = [ "canon-cups-ufr2" ];
-  nixpkgs.flake.setFlakeRegistry = false;
-  nixpkgs.flake.setNixPath = false;
+  nixpkgs = {
+    flake = {
+      setFlakeRegistry = false;
+      setNixPath = false;
+    };
+  };
 }

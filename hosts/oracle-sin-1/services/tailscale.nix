@@ -1,6 +1,14 @@
 _: {
-  services.tailscale.enable = true;
-  services.tailscale.openFirewall = true;
-  services.tailscale.exit.enable = true;
-  services.tailscale.relay.enable = true;
+  services = {
+    tailscale = {
+      enable = true;
+      openFirewall = true;
+      exit = {
+        enable = true;
+      };
+      relay = {
+        enable = true;
+      };
+    };
+  };
 }

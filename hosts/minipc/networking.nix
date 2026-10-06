@@ -1,17 +1,23 @@
 _: {
-  networking.usePredictableInterfaceNames = false;
+  networking = {
+    usePredictableInterfaceNames = false;
+    firewall = {
+      enable = true;
+    };
+    nftables = {
+      enable = true;
+    };
+    networkmanager = {
+      enable = true;
+    };
+    timeServers = [
+      "pool.ntp.org"
 
-  networking.firewall.enable = true;
-  networking.nftables.enable = true;
-  networking.networkmanager.enable = true;
+      "ntp.aliyun.com"
+      "ntp.tencent.com"
 
-  networking.timeServers = [
-    "pool.ntp.org"
-
-    "ntp.aliyun.com"
-    "ntp.tencent.com"
-
-    "time.apple.com"
-    "time.windows.com"
-  ];
+      "time.apple.com"
+      "time.windows.com"
+    ];
+  };
 }

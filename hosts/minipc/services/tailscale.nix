@@ -3,9 +3,15 @@ let
   inherit (config.services) tailscale;
 in
 {
-  services.tailscale.enable = true;
-  services.tailscale.openFirewall = true;
-  services.tailscale.exit.enable = true;
+  services = {
+    tailscale = {
+      enable = true;
+      openFirewall = true;
+      exit = {
+        enable = true;
+      };
+    };
+  };
 
   # Firewall
   networking.firewall.trustedInterfaces = [
