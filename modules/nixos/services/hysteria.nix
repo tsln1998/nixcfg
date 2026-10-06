@@ -41,8 +41,6 @@ in
         LoadCredential = "config.yaml:${cfg.configFile}";
         AmbientCapabilities = "CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_NET_RAW";
         CapabilityBoundingSet = "CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_NET_RAW";
-        CPUSchedulingPolicy = "rr";
-        CPUSchedulingPriority = 99;
       };
     };
   };

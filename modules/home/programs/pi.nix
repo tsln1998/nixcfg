@@ -42,7 +42,7 @@ in
     extraPackages = mkOption {
       type = listOf package;
       default = [ ];
-      description = "The extra packages for pi-coding-agentto install.";
+      description = "The extra packages for pi-coding-agent to install.";
     };
     models = mkOption {
       type = nullOr (oneOf [

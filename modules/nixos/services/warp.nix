@@ -125,7 +125,6 @@ in
           timers.${service} = {
             wantedBy = [ "timers.target" ];
             timerConfig = {
-              Unit = unit;
               OnBootSec = "15min";
               OnUnitActiveSec = "1min";
             };

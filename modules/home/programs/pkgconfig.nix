@@ -29,7 +29,7 @@ in
     ];
 
     home.sessionVariables = lib.optionals (cfg.paths != [ ]) {
-      PKG_CONFIG_PATH = lib.concatStringsSep ";" cfg.paths;
+      PKG_CONFIG_PATH = lib.concatStringsSep ":" cfg.paths;
     };
   };
 }

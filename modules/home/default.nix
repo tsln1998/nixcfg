@@ -1,41 +1,20 @@
+{ tools, ... }:
 {
-  pkgs,
-  lib,
-  overlays,
-  tools,
-  ...
-}:
-{
-  imports = tools.scan ./.;
+  imports = tools.scan ./. ++ [ ../_common_ ];
 
   nix = {
-    package = lib.mkDefault pkgs.lixPackageSets.lix_2_95.lix;
-
-    settings = {
-      experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
-      trusted-users = [
-        "root"
-        "@wheel"
-      ];
-      warn-dirty = false;
-      keep-outputs = true;
-      keep-derivations = true;
-    };
+    settings.trusted-users = [
+      "root"
+      "@wheel"
+    ];
 
     gc = {
-      automatic = true;
       dates = "daily";
-      options = "--delete-older-than 7d";
       persistent = true;
       randomizedDelaySec = "15min";
     };
   };
 
-  nixpkgs.overlays = overlays;
-  nixpkgs.config.allowUnfree = false;
   nixpkgs.config.allowUnfreePackages = [
     "qq"
     "wechat"

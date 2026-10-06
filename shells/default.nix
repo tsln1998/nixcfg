@@ -1,9 +1,18 @@
-inputs: {
-  uup = import ./uup inputs;
-  default = import ./default inputs;
-  android = import ./android inputs;
-  network = import ./network inputs;
-  hardware = import ./hardware inputs;
-  openwrt = import ./openwrt inputs;
-  aircrack = import ./aircrack inputs;
+pkgs:
+let
+  inherit (pkgs) lib;
+  inherit (pkgs.stdenv) hostPlatform;
+in
+{
+  default = import ./default pkgs;
+  android = import ./android pkgs;
+  network = import ./network pkgs;
+}
+// lib.optionalAttrs hostPlatform.isLinux {
+  hardware = import ./hardware pkgs;
+  openwrt = import ./openwrt pkgs;
+  aircrack = import ./aircrack pkgs;
+}
+// lib.optionalAttrs (hostPlatform.isLinux && hostPlatform.isx86_64) {
+  uup = import ./uup pkgs;
 }

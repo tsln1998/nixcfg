@@ -6,7 +6,7 @@
 
   programs.plasma = {
     workspace = {
-      iconTheme = if config.catppuccin.flavor == "latte" then "Papirus-Dark" else "Papirus-Dark";
+      iconTheme = if config.catppuccin.flavor == "latte" then "Papirus-Light" else "Papirus-Dark";
     };
   };
 }
