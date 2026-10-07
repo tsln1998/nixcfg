@@ -131,9 +131,7 @@
       ".local/share/kactivitymanagerd"
       ".cache/drkonqi"
       ".cache/thumbnails"
-      ".cache/ksvg-elements"
       ".cache/bookmarksrunner"
-      ".cache/plasma_theme_default.kcache"
       ".cache/qtshadercache-x86_64-little-endian-lp64"
 
       # Mesa Shaders
@@ -163,8 +161,11 @@
     ];
 
     files = [
+      # KDE Plasma
       ".local/share/recently-used.xbel"
       ".local/share/user-places.xbel"
+      ".cache/ksvg-elements"
+      ".cache/plasma_theme_default.kcache"
     ];
   };
 }

@@ -3,18 +3,20 @@ let
   NaturalScroll = true;
 in
 {
-  programs.plasma.configFile."kcminputrc" = {
-    "Touchpad" = {
-      inherit NaturalScroll;
-    };
+  programs.plasma.configFile = {
+    kcminputrc = {
+      "Touchpad" = {
+        inherit NaturalScroll;
+      };
 
-    "Mouse" = {
-      inherit NaturalScroll;
-    };
+      "Mouse" = {
+        inherit NaturalScroll;
+      };
 
-    # 0x046D:0xC548 Logi Bolt Receiver
-    "Libinput/1133/50504/Logitech USB Receiver Mouse" = {
-      inherit NaturalScroll;
+      # 0x046D:0xC548 Logi Bolt Receiver
+      "Libinput/1133/50504/Logitech USB Receiver Mouse" = {
+        inherit NaturalScroll;
+      };
     };
   };
 }
