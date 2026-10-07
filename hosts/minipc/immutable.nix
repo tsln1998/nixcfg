@@ -70,11 +70,23 @@ _: {
         mode = "0755";
       }
       {
+        directory = "/var/lib/AccountsService";
+        mode = "0755";
+      }
+      {
+        directory = "/var/lib/colord";
+        mode = "0755";
+      }
+      {
         directory = "/var/lib/systemd/coredump";
         mode = "0755";
       }
       {
         directory = "/var/lib/systemd/timers";
+        mode = "0755";
+      }
+      {
+        directory = "/var/lib/systemd/timesync";
         mode = "0755";
       }
       {

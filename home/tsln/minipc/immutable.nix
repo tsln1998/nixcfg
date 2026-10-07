@@ -25,6 +25,10 @@
       ".config/chromium"
       ".cache/chromium"
 
+      # PKI
+      ".pki"
+      ".local/share/pki"
+
       # Codegraph
       ".codegraph"
 
@@ -92,9 +96,6 @@
       # Pi
       ".pi"
 
-      # Baloo (Plasma Search)
-      ".local/share/baloo"
-
       # Podman and Docker
       ".docker"
       ".local/share/containers"
@@ -112,11 +113,58 @@
       ".vscode"
       ".vscode-server"
       ".vscode-shared"
+      ".config/Code"
 
       # Zoxide
       ".local/share/zoxide"
+
+      # Bat
+      ".cache/bat"
+
+      # KDE Plasma
+      ".local/share/ark"
+      ".local/share/baloo"
+      ".local/share/gwenview"
+      ".local/share/kate"
+      ".local/share/klipper"
+      ".local/share/kwrite"
+      ".local/share/kactivitymanagerd"
+      ".cache/drkonqi"
+      ".cache/thumbnails"
+      ".cache/ksvg-elements"
+      ".cache/bookmarksrunner"
+      ".cache/plasma_theme_default.kcache"
+      ".cache/qtshadercache-x86_64-little-endian-lp64"
+
+      # Mesa Shaders
+      ".cache/mesa_shader_cache"
+      ".cache/radv_builtin_shaders"
+
+      # Android
+      ".android"
+
+      # Beads
+      ".beads"
+
+      # Kubernetes
+      ".kube/cache"
+
+      # Obsidian
+      ".config/obsidian"
+
+      # RTK
+      ".local/share/rtk"
+
+      # Treefmt
+      ".cache/treefmt"
+
+      # WirePlumber
+      ".local/state/wireplumber"
     ];
 
-    files = [ ];
+    files = [
+      ".local/share/recently-used.xbel"
+      ".local/share/user-places.xbel"
+    ];
   };
 }
