@@ -1,5 +1,8 @@
-{ inputs, ... }: final: prev: {
-  repos = (prev.repos or { }) // {
-    agenix = inputs.agenix.overlays.default final prev;
-  };
+{ inputs, ... }:
+final: prev:
+let
+  pkgs' = inputs.agenix.overlays.default final prev;
+in
+{
+  agenix-cli = pkgs'.agenix;
 }

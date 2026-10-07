@@ -7,16 +7,10 @@
 let
   inherit (tools) relative;
   inherit (config.home) username homeDirectory;
-  inherit (pkgs.lib) versionAtLeast;
-
-  pkg = pkgs.repos.local.codex;
-  pkg' = pkgs.repos.unstable.codex;
-
-  latest = if versionAtLeast pkg.version pkg'.version then pkg else pkg';
 in
 {
   home.packages = [
-    latest
+    pkgs.codex
   ];
 
   home.file = {

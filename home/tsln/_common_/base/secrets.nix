@@ -41,6 +41,6 @@ in
 
   # Agenix
   home.packages = [
-    pkgs.repos.agenix.agenix
+    pkgs.agenix-cli
   ];
 }

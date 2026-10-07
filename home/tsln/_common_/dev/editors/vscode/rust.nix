@@ -5,7 +5,7 @@
   ...
 }:
 let
-  market = pkgs.repos.unstable.vscode-extensions;
+  market = pkgs.vscode-extensions;
 in
 {
   programs.${_vsc_pkg_}.profiles.Rust = _vsc_profile_ {

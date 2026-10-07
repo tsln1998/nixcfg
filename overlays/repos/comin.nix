@@ -1,5 +1,8 @@
-{ inputs, ... }: final: prev: {
-  repos = (prev.repos or { }) // {
-    comin = inputs.comin.overlays.default final prev;
-  };
+{ inputs, ... }:
+final: prev:
+let
+  pkgs' = inputs.comin.overlays.default final prev;
+in
+{
+  comin = pkgs'.comin;
 }

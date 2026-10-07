@@ -1,7 +1,6 @@
 {
   config,
   inputs,
-  pkgs,
   tools,
   ...
 }:
@@ -23,7 +22,6 @@ in
 
   services.keyring-rs = {
     enable = true;
-    package = pkgs.repos.keyring;
     path = socketPath;
     settingsFile = config.age.secrets."${secretName}".path;
   };
