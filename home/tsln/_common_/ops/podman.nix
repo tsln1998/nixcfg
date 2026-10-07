@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 let
   DOCKER_HOST = "unix://$XDG_RUNTIME_DIR/podman/podman.sock";
 in
@@ -26,25 +26,40 @@ in
     sessionVariables = {
       inherit DOCKER_HOST;
     };
+  };
 
-    activation = {
-      enablePodmanSocket = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-        $DRY_RUN_CMD mkdir -p "$HOME/.config/systemd/user/sockets.target.wants"
-        $DRY_RUN_CMD ln -sfv "$HOME/.nix-profile/share/systemd/user/podman.socket" "$HOME/.config/systemd/user/sockets.target.wants/podman.socket"
-        $DRY_RUN_CMD "${pkgs.systemd}/bin/systemctl" --user daemon-reload || true
-      '';
+  # Take over the symlink previously created by enablePodmanSocket.
+  xdg.configFile = {
+    "systemd/user/sockets.target.wants/podman.socket" = {
+      force = true;
     };
   };
 
-  # Enable podman auto purge
+  # Enable the API socket and periodic cleanup.
   systemd = {
     user = {
       sessionVariables = {
         inherit DOCKER_HOST;
       };
 
+      sockets = {
+        podman = {
+          Unit = {
+            Description = "Podman API Socket";
+            Documentation = [ "man:podman-system-service(1)" ];
+          };
+          Socket = {
+            ListenStream = "%t/podman/podman.sock";
+            SocketMode = "0660";
+          };
+          Install = {
+            WantedBy = [ "sockets.target" ];
+          };
+        };
+      };
+
       services = {
-        "podman-resource-prune" = {
+        podman-resource-prune = {
           Unit = {
             Description = "Podman Rootless Storage and Resource Prune Service";
             Documentation = [ "man:podman-system-prune(1)" ];
@@ -59,7 +74,7 @@ in
       };
 
       timers = {
-        "podman-resource-prune" = {
+        podman-resource-prune = {
           Unit = {
             Description = "Periodic Podman Resource Prune Timer";
           };
