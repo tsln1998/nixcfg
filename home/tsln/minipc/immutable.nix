@@ -21,7 +21,12 @@
 
       # User data
       "Codebases"
+      "Desktop"
+      "Documents"
       "Downloads"
+      "Music"
+      "Pictures"
+      "Videos"
 
       # Atuin
       ".atuin"
@@ -29,6 +34,9 @@
 
       # Beekeeper Studio
       ".config/beekeeper-studio"
+
+      # Bruno
+      ".config/bruno"
 
       # Buf
       ".cache/buf"
@@ -79,6 +87,7 @@
       ".gradle"
 
       # Herdr
+      ".config/herdr"
       ".local/state/herdr"
 
       # Keyring
@@ -89,6 +98,7 @@
 
       # Nix
       ".cache/nix"
+      ".local/share/nix"
       ".local/state/nix"
 
       # Node.js and Package Manager
@@ -120,6 +130,12 @@
 
       # Rust
       ".cargo"
+
+      # Systemd timers
+      ".local/share/systemd/timers"
+
+      # VLC
+      ".config/vlc"
 
       # VS Code (included remote access)
       ".vscode"

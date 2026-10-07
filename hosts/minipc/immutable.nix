@@ -58,6 +58,10 @@ _: {
         mode = "0755";
       }
       {
+        directory = "/var/lib/cups";
+        mode = "0755";
+      }
+      {
         directory = "/var/lib/docker";
         mode = "0755";
       }
@@ -79,6 +83,10 @@ _: {
       }
       {
         directory = "/var/lib/systemd/coredump";
+        mode = "0755";
+      }
+      {
+        directory = "/var/lib/systemd/rfkill";
         mode = "0755";
       }
       {
