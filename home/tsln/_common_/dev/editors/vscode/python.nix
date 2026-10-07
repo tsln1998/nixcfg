@@ -5,8 +5,7 @@
   ...
 }:
 let
-  market = pkgs.repos.unstable.vscode-extensions;
-  market_ = pkgs.repos.vscode.vscode-marketplace-release;
+  market = pkgs.vscode-extensions;
 in
 {
   programs.${_vsc_pkg_}.profiles.Python = _vsc_profile_ {
@@ -15,7 +14,7 @@ in
       market.ms-python.debugpy
       market.ms-python.isort
       market.ms-python.vscode-pylance
-      market_.ms-python.autopep8
+      market.ms-python.autopep8
     ];
   };
 }

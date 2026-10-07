@@ -14,7 +14,7 @@ in
 {
   services.comin = {
     enable = true;
-    package = pkgs.repos.comin.comin;
+    package = pkgs.comin;
     remotes = [
       {
         name = "origin";

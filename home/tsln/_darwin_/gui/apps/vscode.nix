@@ -7,7 +7,7 @@
 let
   inherit (config.fonts.fontconfig) defaultFonts;
 
-  market = pkgs.repos.unstable.vscode-extensions;
+  market = pkgs.vscode-extensions;
 
   # 预设配置
   _vsc_pkg_ = "vscode";
