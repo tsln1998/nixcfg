@@ -17,6 +17,9 @@ in
     };
 
     extraConfig = {
+      General = {
+        ConfigVersion = 1;
+      };
       MainWindow = {
         MenuBar = "Enabled";
       };

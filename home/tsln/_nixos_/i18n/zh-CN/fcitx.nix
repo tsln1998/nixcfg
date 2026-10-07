@@ -8,8 +8,6 @@ let
   inherit (config.programs.plasma) enable;
 in
 {
-  catppuccin.fcitx5.enable = lib.mkDefault enable;
-
   i18n.inputMethod = {
     enable = lib.mkDefault enable;
     type = "fcitx5";
@@ -59,14 +57,16 @@ in
   };
 
   # Plasma virutal keyboard
-  programs.plasma.configFile.kwinrc = lib.optionalAttrs enable {
-    Wayland = {
-      VirtualKeyboardEnabled = {
-        value = true;
-      };
-      InputMethod = {
-        shellExpand = true;
-        value = "$HOME/.nix-profile/share/applications/fcitx5-wayland-launcher.desktop";
+  programs.plasma.configFile = {
+    kwinrc = lib.optionalAttrs enable {
+      Wayland = {
+        VirtualKeyboardEnabled = {
+          value = true;
+        };
+        InputMethod = {
+          shellExpand = true;
+          value = "$HOME/.nix-profile/share/applications/fcitx5-wayland-launcher.desktop";
+        };
       };
     };
   };
