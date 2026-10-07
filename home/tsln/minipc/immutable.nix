@@ -7,6 +7,18 @@
         mode = "0700";
       }
 
+      # GNOME Keyring
+      {
+        directory = ".local/share/keyrings";
+        mode = "0700";
+      }
+
+      # KWallet
+      {
+        directory = ".local/share/kwalletd";
+        mode = "0700";
+      }
+
       # User data
       "Codebases"
       "Downloads"
@@ -161,6 +173,10 @@
     ];
 
     files = [
+      # KWallet
+      ".config/kwalletrc"
+      ".local/state/kwalletmanagerstaterc"
+
       # KDE Plasma
       ".local/share/recently-used.xbel"
       ".local/share/user-places.xbel"
