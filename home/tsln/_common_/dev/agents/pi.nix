@@ -18,6 +18,7 @@ in
     settings = {
       theme = "dark";
       tuiMode = "fullscreen";
+      hideThinkingBlock = true;
 
       defaultProvider = "deepseek";
       defaultModel = "deepseek-flash";
@@ -26,10 +27,8 @@ in
 
       enabledModels = [
         "openai/gpt-6-astra"
-        "openai/gpt-5.6-sol"
-        "openai/gpt-5.6-terra"
-        "openai/gpt-5.6-luna"
-        "openai/gpt-5.3-codex-spark"
+        "openai/gpt-6-luna"
+        "openai/gpt-6.1-sol"
         "deepseek/deepseek-flash"
       ];
 
@@ -51,19 +50,19 @@ in
       subagents = {
         agentOverrides = {
           scout = {
-            model = "openai/gpt-5.6-luna";
+            model = "openai/gpt-6-luna";
             thinking = "medium";
           };
           researcher = {
-            model = "openai/gpt-5.6-terra";
+            model = "openai/gpt-6.1-sol";
             thinking = "medium";
           };
           reviewer = {
-            model = "openai/gpt-5.6-terra";
+            model = "openai/gpt-6.1-sol";
             thinking = "xhigh";
           };
           worker = {
-            model = "openai/gpt-5.6-sol";
+            model = "openai/gpt-6.1-sol";
             thinking = "xhigh";
           };
           oracle = {
@@ -71,11 +70,11 @@ in
             thinking = "medium";
           };
           delegate = {
-            model = "openai/gpt-5.6-sol";
+            model = "openai/gpt-6.1-sol";
             thinking = "xhigh";
           };
           evidence-auditor = {
-            model = "openai/gpt-5.6-terra";
+            model = "openai/gpt-6.1-sol";
             thinking = "xhigh";
           };
         };
