@@ -112,8 +112,8 @@
       ".local/share/pnpm"
       ".local/state/pnpm"
 
-      # OnlyOffice
-      ".local/share/onlyoffice"
+      # LibreOffice
+      ".config/libreoffice"
 
       # Pi
       ".pi"
