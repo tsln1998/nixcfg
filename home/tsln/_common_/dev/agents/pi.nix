@@ -90,6 +90,10 @@ in
         "npm:pi-hermes-memory@0.9.10"
         # 提供子代理支持
         "npm:pi-subagents@0.76.0"
+        # 网页搜索、URL 抓取及文档、视频内容提取
+        "npm:pi-web-access@0.35.0"
+        # 在底栏显示模型、路径、Git、令牌、费用及耗时
+        "npm:pi-cometix-footer@1.2.0"
       ];
     };
   };
