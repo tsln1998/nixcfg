@@ -19,4 +19,12 @@
       };
     };
   };
+
+  systemd = {
+    tmpfiles = {
+      rules = [
+        "q /tmp 1777 root root 1d"
+      ];
+    };
+  };
 }
