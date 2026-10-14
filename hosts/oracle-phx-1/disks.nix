@@ -4,7 +4,7 @@ _: {
       main = {
         type = "disk";
         device = "/dev/sda";
-        imageSize = "4G";
+        # imageSize = "4G";
         content = {
           type = "gpt";
           partitions = {
@@ -37,15 +37,32 @@ _: {
         type = "lvm_vg";
         lvs = {
           boot = {
-            size = "100M";
+            size = "1G";
             content = {
               type = "filesystem";
               format = "ext4";
               mountpoint = "/boot";
             };
           };
+          tmp = {
+            size = "8G";
+            content = {
+              type = "filesystem";
+              format = "ext4";
+              extraArgs = [
+                "-m"
+                "0"
+              ];
+              mountpoint = "/tmp";
+              mountOptions = [
+                "defaults"
+                "nodev"
+                "nosuid"
+              ];
+            };
+          };
           persist = {
-            size = "64M";
+            size = "4G";
             content = {
               type = "filesystem";
               format = "ext4";
@@ -53,7 +70,7 @@ _: {
             };
           };
           nix = {
-            size = "3G";
+            size = "32G";
             content = {
               type = "filesystem";
               format = "ext4";
@@ -61,7 +78,7 @@ _: {
             };
           };
           swap = {
-            size = "128M";
+            size = "4G";
             content = {
               type = "swap";
               discardPolicy = "both";
@@ -76,12 +93,6 @@ _: {
         mountOptions = [
           "size=128M"
           "mode=0755"
-        ];
-      };
-      "/tmp" = {
-        fsType = "tmpfs";
-        mountOptions = [
-          "size=256M"
         ];
       };
     };
