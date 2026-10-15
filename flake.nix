@@ -98,20 +98,27 @@
       ...
     }@inputs:
     let
+      inherit (nixpkgs.lib) hasSuffix;
       inherit (nixpkgs.lib.strings) toLower;
       # load tools
       tools = import ./tools (with self; with nixpkgs; { inherit inputs outputs lib; });
       # load overlays
       overlays = import ./overlays (with self; with nixpkgs; { inherit inputs outputs lib; });
-      # select the channel-gated nixpkgs input for each host platform
-      nixpkgsInputFor =
-        system: if nixpkgs.lib.hasSuffix "-darwin" system then nixpkgs-darwin else nixpkgs-nixos;
       # load nixpkgs
       pkgsFor = nixpkgs.lib.genAttrs flake-utils.lib.defaultSystems (
         system:
-        import (nixpkgsInputFor system) {
-          inherit system overlays;
-        }
+        import
+          (
+            if hasSuffix "-darwin" system then
+              nixpkgs-darwin
+            else if hasSuffix "-linux" system then
+              nixpkgs-nixos
+            else
+              nixpkgs
+          )
+          {
+            inherit system overlays;
+          }
       );
       # load formatter
       treefmtFor = nixpkgs.lib.genAttrs (builtins.attrNames pkgsFor) (
