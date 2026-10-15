@@ -21,7 +21,7 @@ let
     gitcomet = "0.2.3";
     mcporter = "0.13.0";
     codegraph = "0.0.0";
-    pi-coding-agent = "0.86.1";
+    pi-coding-agent = null;
     vscode-extensions = null;
   };
 in
