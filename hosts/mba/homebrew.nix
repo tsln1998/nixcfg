@@ -5,9 +5,9 @@ _: {
     { name = "keka"; }
     { name = "wechat"; }
     { name = "feishu"; }
+    { name = "notion"; }
     { name = "chatgpt"; }
     { name = "ghostty"; }
-    { name = "obsidian"; }
     { name = "cyberduck"; }
     { name = "tableplus"; }
     { name = "pearcleaner"; }

@@ -18,10 +18,13 @@ _: {
         app = "/Applications/WeChat.app";
       }
       {
+        app = "/Applications/Feishu.app";
+      }
+      {
         app = "/Applications/Ghostty.app";
       }
       {
-        app = "/Applications/Obsidian.app";
+        app = "/Applications/Notion.app";
       }
       {
         app = "/Applications/ChatGPT.app";
