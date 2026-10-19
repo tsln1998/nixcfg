@@ -12,8 +12,5 @@
         };
       }
     ];
-
-    # 禁用部署成功后的主动重启探测
-    postDeploymentCommand = lib.mkForce null;
   };
 }
