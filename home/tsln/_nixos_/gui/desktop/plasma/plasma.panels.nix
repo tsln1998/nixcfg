@@ -35,6 +35,7 @@
               launchers = [
                 "applications:chromium-browser.desktop"
                 "applications:org.kde.dolphin.desktop"
+                "applications:Alacritty.desktop"
                 "applications:org.kde.konsole.desktop"
                 "applications:org.kde.spectacle.desktop"
                 "applications:code.desktop"
