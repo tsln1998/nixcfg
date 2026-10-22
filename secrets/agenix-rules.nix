@@ -1,5 +1,6 @@
 let
-  keys = import ./keys.nix;
+  keys = import ./agenix-keys.nix;
+  
   inherit (keys) hosts users;
 in
 {

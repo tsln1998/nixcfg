@@ -1,6 +1,6 @@
 _: {
   services.warp = {
     enable = true;
-    port = 1080;
+    port = 2080;
   };
 }
