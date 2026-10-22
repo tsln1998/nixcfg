@@ -19,7 +19,6 @@
     "qq"
     "wechat"
     "feishu"
-    "obsidian"
   ]
   ++ [
     # Android SDK

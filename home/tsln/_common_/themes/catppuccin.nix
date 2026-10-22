@@ -6,12 +6,9 @@
   # Catppuccin
   catppuccin = {
     enable = true;
-    autoEnable = false;
 
     flavor = lib.mkDefault "latte";
     accent = lib.mkDefault "blue";
-
-    obsidian.enable = lib.mkDefault true;
 
     bat.enable = lib.mkDefault true;
     bat.flavor = lib.mkDefault "mocha";

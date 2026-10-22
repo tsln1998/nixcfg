@@ -175,9 +175,6 @@
       # Kubernetes
       ".kube/cache"
 
-      # Obsidian
-      ".config/obsidian"
-
       # RTK
       ".local/share/rtk"
 

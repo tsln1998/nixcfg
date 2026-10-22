@@ -24,7 +24,6 @@ in
       // {
         # 修正上游 catppuccin 无法跨平台求值
         starship = catppuccinSources.sources.starship + "/themes";
-        obsidian = catppuccinSources.sources.obsidian;
       };
   };
 }
