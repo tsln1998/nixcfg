@@ -14,6 +14,7 @@ let
     rtk = "0.48.0";
     pixi = "0.80.0";
     beads = "1.3.0";
+    xray = "26.9.0";
     codex = null;
     herdr = "0.0.0";
     vscode = null;
