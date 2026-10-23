@@ -21,6 +21,7 @@ let
     skills = "1.6.0";
     gitcomet = "0.2.3";
     mcporter = "0.13.0";
+    hysteria = "2.13.0";
     codegraph = "0.0.0";
     pi-coding-agent = null;
     vscode-extensions = null;
