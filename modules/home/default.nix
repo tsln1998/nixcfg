@@ -21,6 +21,10 @@
     "feishu"
   ]
   ++ [
+    # Agents
+    "rtk"
+  ]
+  ++ [
     # Android SDK
     "cmake"
     "tools"

@@ -10,4 +10,5 @@ _: [
   (import ./tweaks/konsole.nix _)
   (import ./packages/android.nix _)
   (import ./bugfix/mcporter.nix _)
+  (import ./bugfix/codegraph.nix _)
 ]

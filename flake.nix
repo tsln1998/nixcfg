@@ -78,7 +78,7 @@
     plasma-manager.inputs.home-manager.follows = "home-manager";
 
     # TODO: wait for release-26.11
-    catppuccin.url = "github:catppuccin/nix/89b3eacf59d6b5eefbc2d69c3a4eb5aaf66d63bc";
+    catppuccin.url = "github:catppuccin/nix";
     catppuccin.inputs.nixpkgs.follows = "nixpkgs";
 
     vscode.url = "github:nix-community/nix-vscode-extensions";
