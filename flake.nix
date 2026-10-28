@@ -70,8 +70,8 @@
     homebrew-cask.url = "github:homebrew/homebrew-cask";
     homebrew-cask.flake = false;
 
-    homebrew-zuisong.url = "github:zuisong/homebrew-tap";
-    homebrew-zuisong.flake = false;
+    homebrew-flcash.url = "github:chen08209/homebrew-tap";
+    homebrew-flcash.flake = false;
 
     plasma-manager.url = "github:nix-community/plasma-manager";
     plasma-manager.inputs.nixpkgs.follows = "nixpkgs";

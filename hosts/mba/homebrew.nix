@@ -16,6 +16,6 @@ _: {
     { name = "keepingyouawake"; }
     { name = "microsoft-office"; }
     { name = "visual-studio-code"; }
-    { name = "homebrew/zuisong/clashx-meta"; }
+    { name = "homebrew/flcash/flclash"; }
   ];
 }

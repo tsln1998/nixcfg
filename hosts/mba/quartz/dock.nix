@@ -24,6 +24,9 @@ _: {
         app = "/Applications/Ghostty.app";
       }
       {
+        app = "/Applications/FlClash.app";
+      }
+      {
         app = "/Applications/Notion.app";
       }
       {

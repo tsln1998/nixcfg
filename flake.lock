@@ -232,18 +232,18 @@
         "type": "github"
       }
     },
-    "homebrew-zuisong": {
+    "homebrew-flcash": {
       "flake": false,
       "locked": {
-        "lastModified": 1791642929,
-        "narHash": "sha256-vPjpjLhOlUPnv9X9fMj6DRB74Zq74ljCt4srYuhHukc=",
-        "owner": "zuisong",
+        "lastModified": 1792822717,
+        "narHash": "sha256-jbXAEUigIFtsP0SUO54j4EBUdGK2f2W5vMj1tijs4gQ=",
+        "owner": "chen08209",
         "repo": "homebrew-tap",
-        "rev": "f24d347a0eb91f2ddb486ff9588c10f579d0b33c",
+        "rev": "16c4ac4632445fc4db534bf932dd6767878962e4",
         "type": "github"
       },
       "original": {
-        "owner": "zuisong",
+        "owner": "chen08209",
         "repo": "homebrew-tap",
         "type": "github"
       }
@@ -435,7 +435,7 @@
         "homebrew": "homebrew",
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
-        "homebrew-zuisong": "homebrew-zuisong",
+        "homebrew-flcash": "homebrew-flcash",
         "impermanence": "impermanence",
         "keyring": "keyring",
         "nix-darwin": "nix-darwin",
