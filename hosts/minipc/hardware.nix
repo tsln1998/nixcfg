@@ -1,9 +1,13 @@
 {
   lib,
   pkgs,
+  utils,
   inputs,
   ...
 }:
+let
+  inherit (utils) escapeSystemdPath;
+in
 {
   imports = [
     inputs.hardware.nixosModules.common-cpu-amd
@@ -26,7 +30,78 @@
       };
     };
 
-    # Kernel adjust
+    # Impermanence: root is a fresh subvolume on every boot
+    initrd = {
+      enable = true;
+      systemd = {
+        enable = true;
+        services = {
+          btrfs-wipe-root =
+            let
+              rootPath = "/dev/disk/by-partlabel/disk-main-btrfs";
+              rootVolume = "@root";
+              rootDevice = "${escapeSystemdPath rootPath}.device";
+
+              mountpoint = "/btrfs-impermanence";
+              mountpointVolume = "${mountpoint}/${rootVolume}";
+              mountpointSnapshots = "${mountpoint}/.snapshots/${rootVolume}";
+            in
+            {
+              # No implicit default dependencies, only the ordering below
+              unitConfig = {
+                DefaultDependencies = false;
+              };
+              # Run synchronously, initrd waits for the script to exit
+              serviceConfig = {
+                Type = "oneshot";
+              };
+              # Started as part of initrd.target
+              wantedBy = [ "initrd.target" ];
+              # Must finish before the real root is mounted
+              before = [ "sysroot.mount" ];
+
+              # Hard dependency on the device unit, not just ordering
+              requires = [
+                rootDevice
+              ];
+              after = [
+                # Device node must exist first
+                rootDevice
+                # Let a pending hibernation resume finish before touching root
+                "local-fs-pre.target"
+              ];
+
+              script =lib.concatStringsSep "\n" [
+                # Mount the top-level volume to reach the subvolumes
+                ''
+                mkdir ${mountpoint}
+                mount ${rootPath} ${mountpoint}
+                trap 'umount ${mountpoint}' EXIT
+                ''
+                # Keep the previous root as a snapshot named after its mtime
+                ''
+                if [[ -e ${mountpointVolume} ]]; then
+                    mkdir -p ${mountpointSnapshots}
+                    timestamp=$(date --date="@$(stat -c %Y ${mountpointVolume})" "+%Y%m%d%H%M%S")
+                    mv ${mountpointVolume} "${mountpointSnapshots}/$timestamp"
+                fi
+                ''
+                # Delete snapshots older than 30 days
+                ''
+                for i in $(find ${mountpointSnapshots}/ -maxdepth 1 -mtime +30); do
+                    btrfs subvolume delete --recursive "$i"
+                done
+                ''
+                # Fresh empty root subvolume for this boot
+                ''
+                btrfs subvolume create ${mountpointVolume}
+              ''];
+            };
+        };
+      };
+    };
+
+    # Kernel tuning
     kernel = {
       sysctl = {
         # 允许执行性能分析
@@ -52,7 +127,7 @@
       sof-firmware
     ];
 
-    # Graphicals
+    # Graphics
     graphics = {
       enable = true;
     };
@@ -75,7 +150,7 @@
     algorithm = "zstd";
   };
 
-  # TPM2 Module
+  # TPM 2.0 support
   security.tpm2.enable = lib.mkDefault true;
 
   services = {
@@ -105,16 +180,8 @@
     };
   };
 
-  # System Directories
-  # Hibernate and sleep
+  # Sleep/hibernate turned off
   systemd = {
-    tmpfiles = {
-      rules = [
-        "d /mnt 0755 root root -"
-        "q /tmp 1777 root root 1d"
-      ];
-    };
-
     sleep = {
       settings = {
         Sleep = {

@@ -20,69 +20,42 @@ _: {
                 type = "filesystem";
               };
             };
-            lvm = {
+            btrfs = {
               size = "100%";
               content = {
-                type = "lvm_pv";
-                vg = "pool";
+                type = "btrfs";
+                extraArgs = [ "-f" "-L" "NixOS" ];
+                subvolumes = {
+                  "@root" = {
+                    mountpoint = "/";
+                    mountOptions = [
+                      "compress=zstd"
+                      "noatime"
+                    ];
+                  };
+                  "@boot" = {
+                    mountpoint = "/boot";
+                    mountOptions = [
+                      "compress=zstd"
+                      "noatime"
+                    ];
+                  };
+                  "@persist" = {
+                    mountpoint = "/persist";
+                    mountOptions = [
+                      "compress=zstd"
+                      "noatime"
+                    ];
+                  };
+                  "@nix" = {
+                    mountpoint = "/nix";
+                    mountOptions = [
+                      "compress=zstd"
+                      "noatime"
+                    ];
+                  };
+                };
               };
-            };
-          };
-        };
-      };
-    };
-    nodev = {
-      "/" = {
-        fsType = "tmpfs";
-        mountOptions = [
-          "size=1G"
-          "mode=0755"
-        ];
-      };
-    };
-    lvm_vg = {
-      pool = {
-        type = "lvm_vg";
-        lvs = {
-          boot = {
-            size = "2G";
-            content = {
-              type = "filesystem";
-              format = "ext4";
-              mountpoint = "/boot";
-            };
-          };
-          tmp = {
-            size = "8G";
-            content = {
-              type = "filesystem";
-              format = "ext4";
-              extraArgs = [
-                "-m"
-                "0"
-              ];
-              mountpoint = "/tmp";
-              mountOptions = [
-                "defaults"
-                "nodev"
-                "nosuid"
-              ];
-            };
-          };
-          persist = {
-            size = "1024G";
-            content = {
-              type = "filesystem";
-              format = "ext4";
-              mountpoint = "/persist";
-            };
-          };
-          nix = {
-            size = "256G";
-            content = {
-              type = "filesystem";
-              format = "ext4";
-              mountpoint = "/nix";
             };
           };
         };
