@@ -1,13 +1,9 @@
 {
   lib,
   pkgs,
-  utils,
   inputs,
   ...
 }:
-let
-  inherit (utils) escapeSystemdPath;
-in
 {
   imports = [
     inputs.hardware.nixosModules.common-cpu-amd
@@ -16,195 +12,75 @@ in
   ];
 
   # Use the GRUB 2 boot loader.
-  boot = {
-    loader = {
-      grub = {
-        enable = true;
-        device = "nodev";
-        efiSupport = true;
-        configurationLimit = 15;
-        efiInstallAsRemovable = true;
-      };
-      efi = {
-        efiSysMountPoint = "/boot/efi";
-      };
-    };
+  boot.loader.grub.enable = true;
+  boot.loader.grub.device = "nodev";
+  boot.loader.grub.efiSupport = true;
+  boot.loader.grub.configurationLimit = 15;
+  boot.loader.grub.efiInstallAsRemovable = true;
+  boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
-    # Impermanence: root is a fresh subvolume on every boot
-    initrd = {
-      enable = true;
-      systemd = {
-        enable = true;
-        services = {
-          btrfs-wipe-root =
-            let
-              rootPath = "/dev/disk/by-partlabel/disk-main-btrfs";
-              rootVolume = "@root";
-              rootDevice = "${escapeSystemdPath rootPath}.device";
-
-              mountpoint = "/btrfs-impermanence";
-              mountpointVolume = "${mountpoint}/${rootVolume}";
-              mountpointSnapshots = "${mountpoint}/.snapshots/${rootVolume}";
-            in
-            {
-              # No implicit default dependencies, only the ordering below
-              unitConfig = {
-                DefaultDependencies = false;
-              };
-              # Run synchronously, initrd waits for the script to exit
-              serviceConfig = {
-                Type = "oneshot";
-              };
-              # Started as part of initrd.target
-              wantedBy = [ "initrd.target" ];
-              # Must finish before the real root is mounted
-              before = [ "sysroot.mount" ];
-
-              # Hard dependency on the device unit, not just ordering
-              requires = [
-                rootDevice
-              ];
-              after = [
-                # Device node must exist first
-                rootDevice
-                # Let a pending hibernation resume finish before touching root
-                "local-fs-pre.target"
-              ];
-
-              script =lib.concatStringsSep "\n" [
-                # Mount the top-level volume to reach the subvolumes
-                ''
-                mkdir ${mountpoint}
-                mount ${rootPath} ${mountpoint}
-                trap 'umount ${mountpoint}' EXIT
-                ''
-                # Keep the previous root as a snapshot named after its mtime
-                ''
-                if [[ -e ${mountpointVolume} ]]; then
-                    mkdir -p ${mountpointSnapshots}
-                    timestamp=$(date --date="@$(stat -c %Y ${mountpointVolume})" "+%Y%m%d%H%M%S")
-                    mv ${mountpointVolume} "${mountpointSnapshots}/$timestamp"
-                fi
-                ''
-                # Delete snapshots older than 30 days
-                ''
-                for i in $(find ${mountpointSnapshots}/ -maxdepth 1 -mtime +30); do
-                    btrfs subvolume delete --recursive "$i"
-                done
-                ''
-                # Fresh empty root subvolume for this boot
-                ''
-                btrfs subvolume create ${mountpointVolume}
-              ''];
-            };
-        };
-      };
-    };
-
-    # Kernel tuning
-    kernel = {
-      sysctl = {
-        # 允许执行性能分析
-        "kernel.perf_event_paranoid" = 1;
-        "kernel.kptr_restrict" = 0;
-        # 降低 Zram 优先级
-        "vm.swappiness" = 15;
-      };
-    };
-
-    extraModprobeConfig = lib.concatStringsSep "\n" [
-      # 设置 Apple Magic Keyboard 的 F1~F12 功能键模式 (无需同时按下 Fn 即可触发)
-      "options hid_apple fnmode=2"
-      # 设置 KVM 禁用 AVIC (AMD Ryzen 7 8745H 不支持)
-      "options kvm_amd avic=0"
-    ];
+  # Kernel tuning
+  boot.kernel.sysctl = {
+    # Allow performance profiling
+    "kernel.perf_event_paranoid" = 1;
+    "kernel.kptr_restrict" = 0;
+    # Lower zram priority
+    "vm.swappiness" = 15;
   };
 
-  hardware = {
-    # Kernel firmware
-    firmware = with pkgs; [
-      linux-firmware
-      sof-firmware
-    ];
+  boot.extraModprobeConfig = lib.concatStringsSep "\n" [
+    # Make F1~F12 act as function keys on Apple Magic Keyboard (no Fn needed)
+    "options hid_apple fnmode=2"
+    # Disable AVIC for KVM (unsupported on AMD Ryzen 7 8745H)
+    "options kvm_amd avic=0"
+  ];
 
-    # Graphics
-    graphics = {
-      enable = true;
-    };
+  # Kernel firmware
+  hardware.firmware = with pkgs; [
+    linux-firmware
+    sof-firmware
+  ];
 
-    # Bluetooth
-    bluetooth = {
-      enable = true;
-    };
+  # Graphics
+  hardware.graphics.enable = true;
 
-    # Printer and Scanner
-    sane = {
-      enable = true;
-    };
-  };
+  # Bluetooth
+  hardware.bluetooth.enable = true;
+
+  # Printer and Scanner
+  hardware.sane.enable = true;
 
   # Zram swap
-  zramSwap = {
-    enable = true;
-    memoryPercent = 50;
-    algorithm = "zstd";
-  };
+  zramSwap.enable = true;
+  zramSwap.memoryPercent = 50;
+  zramSwap.algorithm = "zstd";
 
   # TPM 2.0 support
   security.tpm2.enable = lib.mkDefault true;
 
-  services = {
-    fwupd = {
-      enable = true;
-    };
+  # Firmware updates
+  services.fwupd.enable = true;
 
-    # Printer and Scanner
-    printing = {
-      enable = true;
-    };
+  # Printer and Scanner
+  services.printing.enable = true;
 
-    # Hibernate and sleep
-    logind = {
-      settings = {
-        Login = {
-          IdleAction = "ignore";
-          IdleActionSec = 0;
-          HandleLidSwitch = "ignore";
-          HandleLidSwitchDocked = "ignore";
-          HandleLidSwitchExternalPower = "ignore";
-          HandleSuspendKey = "ignore";
-          HandleHibernateKey = "ignore";
-          KillUserProcesses = false;
-        };
-      };
-    };
-  };
+  # Hibernate and sleep
+  services.logind.settings.Login.IdleAction = "ignore";
+  services.logind.settings.Login.IdleActionSec = 0;
+  services.logind.settings.Login.HandleLidSwitch = "ignore";
+  services.logind.settings.Login.HandleLidSwitchDocked = "ignore";
+  services.logind.settings.Login.HandleLidSwitchExternalPower = "ignore";
+  services.logind.settings.Login.HandleSuspendKey = "ignore";
+  services.logind.settings.Login.HandleHibernateKey = "ignore";
+  services.logind.settings.Login.KillUserProcesses = false;
 
   # Sleep/hibernate turned off
-  systemd = {
-    sleep = {
-      settings = {
-        Sleep = {
-          AllowSuspend = "no";
-          AllowHibernation = "no";
-          AllowHybridSleep = "no";
-        };
-      };
-    };
+  systemd.sleep.settings.Sleep.AllowSuspend = "no";
+  systemd.sleep.settings.Sleep.AllowHibernation = "no";
+  systemd.sleep.settings.Sleep.AllowHybridSleep = "no";
 
-    targets = {
-      sleep = {
-        enable = false;
-      };
-      suspend = {
-        enable = false;
-      };
-      hibernate = {
-        enable = false;
-      };
-      hybrid-sleep = {
-        enable = false;
-      };
-    };
-  };
+  systemd.targets.sleep.enable = false;
+  systemd.targets.suspend.enable = false;
+  systemd.targets.hibernate.enable = false;
+  systemd.targets.hybrid-sleep.enable = false;
 }
