@@ -17,6 +17,7 @@
   boot.loader.grub.efiSupport = true;
   boot.loader.grub.configurationLimit = 15;
   boot.loader.grub.efiInstallAsRemovable = true;
+  boot.loader.grub.fontSize = 32;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
   # Kernel tuning
