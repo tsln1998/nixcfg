@@ -23,4 +23,10 @@ _:
       upper = "04:59";
     };
   };
+
+  # Deprioritize builds/closure fetches so unattended deploys don't compete with
+  # interactive work on small hosts. "batch" is milder than "idle", which can
+  # starve updates; 5 is a low-but-not-extreme best-effort I/O weight.
+  nix.daemonCPUSchedPolicy = "batch";
+  nix.daemonIOSchedPriority = 5;
 }
