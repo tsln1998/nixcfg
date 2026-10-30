@@ -10,7 +10,6 @@
       "hosts/_nixos_/gui"
       "hosts/_nixos_/kernel/kmscon.nix"
       "hosts/_nixos_/kernel/plymouth.nix"
-      "hosts/_nixos_/services/comin.nix"
       "hosts/_nixos_/services/openssh.nix"
       "hosts/_nixos_/themes"
 

@@ -34,11 +34,6 @@
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
 
-    comin.url = "github:nlewo/comin/v0.14.0";
-    comin.inputs.nixpkgs.follows = "nixpkgs";
-    comin.inputs.flake-compat.follows = "flake-compat";
-    comin.inputs.treefmt-nix.follows = "treefmt-nix";
-
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
 

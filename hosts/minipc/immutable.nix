@@ -67,10 +67,7 @@ in
         directory = "/var/lib/nixos";
         mode = "0755";
       }
-      {
-        directory = "/var/lib/comin";
-        mode = "0755";
-      }
+
       {
         directory = "/var/lib/cups";
         mode = "0755";
