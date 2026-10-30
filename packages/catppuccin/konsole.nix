@@ -7,7 +7,7 @@ let
   owner = "catppuccin";
   repo = "konsole";
   name = "${owner}-${repo}";
-  hashes = (builtins.fromJSON (builtins.readFile ./hashes.json)).konsole;
+  hashes = (builtins.fromJSON (builtins.readFile ./update.json)).konsole;
 in
 stdenvNoCC.mkDerivation {
   pname = name;

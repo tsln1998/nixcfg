@@ -3,7 +3,7 @@
 # requires-python = ">=3.11"
 # dependencies = ["certifi"]
 # ///
-"""Update hashes.json from the latest stable native Codex release."""
+"""Update update.json from the latest stable native Codex release."""
 
 import base64
 import json
@@ -20,7 +20,7 @@ import certifi
 
 RELEASE_API_URL = "https://api.github.com/repos/openai/codex/releases/latest"
 CHECKSUM_ASSET_NAME = "codex-package_SHA256SUMS"
-HASHES_PATH = Path(__file__).resolve().with_name("hashes.json")
+UPDATE_PATH = Path(__file__).resolve().with_name("update.json")
 PLATFORM_TARGETS = {
     "x86_64-linux": "x86_64-unknown-linux-musl",
     "aarch64-linux": "aarch64-unknown-linux-musl",
@@ -119,14 +119,14 @@ def write_hashes_if_changed(path: Path, hashes: ReleaseHashes) -> bool:
 def main() -> int:
     try:
         hashes = fetch_latest_hashes()
-        changed = write_hashes_if_changed(HASHES_PATH, hashes)
+        changed = write_hashes_if_changed(UPDATE_PATH, hashes)
     except (OSError, ValueError, KeyError, TypeError) as error:
         print(f"Failed to update Codex hashes: {error}", file=sys.stderr)
         return 1
 
     version = hashes["version"]
     if changed:
-        print(f"Updated {HASHES_PATH} to Codex {version}")
+        print(f"Updated {UPDATE_PATH} to Codex {version}")
     else:
         print(f"Codex {version} is already up to date")
     return 0

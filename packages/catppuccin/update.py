@@ -21,7 +21,7 @@ from urllib.request import Request, urlopen
 import certifi
 
 
-HASHES_PATH = Path(__file__).resolve().with_name("hashes.json")
+UPDATE_PATH = Path(__file__).resolve().with_name("update.json")
 REPOSITORIES = {
     "konsole": "catppuccin/konsole",
 }
@@ -105,8 +105,8 @@ def write_hashes_if_changed(path: Path, hashes: dict[str, SourceHashes]) -> bool
 
 def main() -> int:
     try:
-        hashes = fetch_latest_hashes(HASHES_PATH)
-        changed = write_hashes_if_changed(HASHES_PATH, hashes)
+        hashes = fetch_latest_hashes(UPDATE_PATH)
+        changed = write_hashes_if_changed(UPDATE_PATH, hashes)
     except (
         OSError,
         ValueError,
@@ -118,7 +118,7 @@ def main() -> int:
         return 1
 
     if changed:
-        print(f"Updated {HASHES_PATH}")
+        print(f"Updated {UPDATE_PATH}")
     else:
         print("Catppuccin hashes are already up to date")
     return 0

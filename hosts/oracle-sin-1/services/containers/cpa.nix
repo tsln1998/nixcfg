@@ -1,4 +1,4 @@
-{ config, tools, ... }:
+{ config, pkgs, tools, ... }:
 let
   inherit (tools) relative;
   inherit (config.age) secrets;
@@ -17,7 +17,7 @@ in
 
   # CLIProxy service configuration
   virtualisation.oci-containers.containers.${name} = {
-    image = "eceasy/cli-proxy-api:v8.0.47";
+    image = pkgs.images.cliproxyapi.ref;
 
     serviceName = name;
 

@@ -1,4 +1,4 @@
-{ config, tools, ... }:
+{ config, pkgs, tools, ... }:
 let
   inherit (tools) relative;
   inherit (config.age) secrets;
@@ -16,7 +16,7 @@ in
 
   # Sub2API service configuration
   virtualisation.oci-containers.containers.${name} = {
-    image = "ghcr.io/wei-shaw/sub2api:0.2.19";
+    image = pkgs.images.sub2api.ref;
 
     serviceName = name;
 

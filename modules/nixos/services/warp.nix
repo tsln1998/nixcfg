@@ -19,7 +19,7 @@ in
 
     tag = lib.mkOption {
       type = lib.types.str;
-      default = "slim-2026.7.1377.0-2.12.0";
+      default = pkgs.images.cloudflare-warp.tag;
       description = "Cloudflare WARP image tag";
     };
 
@@ -73,7 +73,7 @@ in
       virtualisation.oci-containers.containers.${cfg.name} = {
         serviceName = cfg.name;
 
-        image = "caomingjun/warp:${cfg.tag}";
+        image = "${pkgs.images.cloudflare-warp.repo}:${cfg.tag}";
 
         ports = [
           "${cfg.listen}:${toString cfg.port}:1080"

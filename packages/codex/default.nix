@@ -10,7 +10,7 @@ let
   repo = "codex";
   pname = "codex";
 
-  hashes = builtins.fromJSON (builtins.readFile ./hashes.json);
+  hashes = builtins.fromJSON (builtins.readFile ./update.json);
 
   inherit (hashes) version platforms;
   inherit (stdenvNoCC.hostPlatform) system;
