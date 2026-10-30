@@ -6,6 +6,7 @@
       "hosts/_common_/i18n"
       "hosts/_nixos_/base"
       "hosts/_nixos_/kernel/bbr.nix"
+      "hosts/_nixos_/services/gitops.nix"
       "hosts/_nixos_/services/openssh.nix"
 
       "users/_common_"
