@@ -7,7 +7,7 @@ in
 {
   age.secrets."hosts/${hostName}/nginx/config.conf" = {
     file = relative "secrets/hosts/${hostName}/nginx/config.conf.age";
-    mode = "0644";
+    mode = "0400";
   };
 
   services.nginx = {

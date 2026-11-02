@@ -1,0 +1,38 @@
+{
+  "ask-user-question": {
+    "name": "@juicesharp/rpiv-ask-user-question",
+    "version": "2.15.0"
+  },
+  "cometix-footer": {
+    "name": "pi-cometix-footer",
+    "version": "1.2.0"
+  },
+  "hermes-memory": {
+    "name": "pi-hermes-memory",
+    "version": "0.9.11"
+  },
+  "plannotator": {
+    "name": "@plannotator/pi-extension",
+    "version": "0.28.31"
+  },
+  "ponytail": {
+    "name": "@dietrichgebert/ponytail",
+    "version": "5.3.2"
+  },
+  "retry": {
+    "name": "@monotykamary/pi-retry",
+    "version": "0.11.3"
+  },
+  "rtk-optimizer": {
+    "name": "pi-rtk-optimizer",
+    "version": "0.9.0"
+  },
+  "subagents": {
+    "name": "pi-subagents",
+    "version": "0.83.0"
+  },
+  "web-access": {
+    "name": "pi-web-access",
+    "version": "0.45.0"
+  }
+}

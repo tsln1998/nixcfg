@@ -1,4 +1,9 @@
-{ config, pkgs, tools, ... }:
+{
+  config,
+  pkgs,
+  tools,
+  ...
+}:
 let
   inherit (tools) relative;
   inherit (config.age) secrets;
@@ -12,7 +17,7 @@ in
   # Secrets
   age.secrets.${secret} = {
     file = relative "secrets/${secret}.age";
-    mode = "0644";
+    mode = "0400";
   };
 
   # CLIProxy service configuration

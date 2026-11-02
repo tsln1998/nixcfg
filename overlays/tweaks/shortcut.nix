@@ -1,17 +1,23 @@
 { lib, ... }:
 final: prev:
 let
-  inherit (final) gnused;
+  inherit (lib) getExe;
+
+  # sed -i silently no-ops when the pattern disappears upstream, so fail loudly
+  # instead of shipping an unpatched desktop entry.
+  setDesktopCategories = file: categories: ''
+    ${getExe final.gnugrep} -q '^Categories=' "${file}" \
+      || { echo "missing Categories= in ${file}" >&2; exit 1; }
+    ${getExe final.gnused} -i 's/^Categories=.*/Categories=${categories};/' "${file}"
+  '';
 in
 {
   feishu = prev.feishu.overrideAttrs (
     old:
     (lib.optionalAttrs prev.stdenv.isLinux {
-      postFixup = (old.postFixup or "") + ''
-        ${final.lib.getExe gnused} -i \
-          's/^Categories=.*/Categories=Network;/' \
-          "$out/share/applications/bytedance-feishu.desktop"
-      '';
+      postFixup =
+        (old.postFixup or "")
+        + setDesktopCategories "$out/share/applications/bytedance-feishu.desktop" "Network";
     })
   );
 
@@ -23,36 +29,12 @@ in
           final.appimageTools.wrapType2 (
             args
             // {
-              extraInstallCommands = (args.extraInstallCommands or "") + ''
-                ${final.lib.getExe gnused} -i \
-                  's/^Categories=.*/Categories=Development;/' \
-                  "$out/share/applications/hoppscotch.desktop"
-              '';
+              extraInstallCommands =
+                (args.extraInstallCommands or "")
+                + setDesktopCategories "$out/share/applications/hoppscotch.desktop" "Development";
             }
           );
       };
     }
-  );
-
-  qq = prev.qq.overrideAttrs (
-    old:
-    (lib.optionalAttrs prev.stdenv.isLinux {
-      postFixup = (old.postFixup or "") + ''
-        ${final.lib.getExe gnused} -i \
-          's/^Comment=.*/Comment=QQ for Linux/' \
-          "$out/share/applications/qq.desktop"
-      '';
-    })
-  );
-
-  wechat = prev.wechat.overrideAttrs (
-    old:
-    (lib.optionalAttrs prev.stdenv.isLinux {
-      buildCommand = (old.buildCommand or "") + ''
-        ${final.lib.getExe gnused} -i \
-          's/^Categories=.*/Categories=Network;/' \
-          "$out/share/applications/wechat.desktop"
-      '';
-    })
   );
 }
