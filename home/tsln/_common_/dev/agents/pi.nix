@@ -2,6 +2,7 @@
   config,
   tools,
   pkgs,
+  lib,
   ...
 }:
 let
@@ -103,6 +104,18 @@ in
     };
   };
 
+  # SSRF
+  home.file.".pi/agent/web-search.json" = {
+    text = lib.strings.toJSON {
+      ssrf = {
+        allowRanges = [
+          "198.18.0.0/15"
+        ];
+      };
+    };
+  };
+
+  # Secrets
   age.secrets."users/${username}/pi/agent/models.json" = {
     file = relative "secrets/users/${username}/pi/agent/models.json.age";
   };
