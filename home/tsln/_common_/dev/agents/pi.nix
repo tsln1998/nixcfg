@@ -26,13 +26,18 @@ in
       defaultProjectTrust = "always";
 
       enabledModels = [
-        "openai/gpt-6-astra"
         "openai/gpt-6-luna"
+        "openai/gpt-6-astra"
         "openai/gpt-6.1-sol"
+        "openai/gpt-6.1-terra"
         "deepseek/deepseek-flash"
       ];
 
       modelThinkingLevels = {
+        "openai/gpt-6-luna" = "max";
+        "openai/gpt-6-astra" = "medium";
+        "openai/gpt-6.1-sol" = "xhigh";
+        "openai/gpt-6.1-terra" = "xhigh";
         "deepseek/deepseek-flash" = "high";
       };
 
@@ -51,7 +56,7 @@ in
         agentOverrides = {
           scout = {
             model = "openai/gpt-6-luna";
-            thinking = "medium";
+            thinking = "max";
           };
           researcher = {
             model = "openai/gpt-6.1-sol";
