@@ -22,7 +22,7 @@ in
 
   # CLIProxy service configuration
   virtualisation.oci-containers.containers.${name} = {
-    image = pkgs.images.cliproxyapi.ref;
+    image = pkgs.managed-registry.cliproxyapi.ref;
 
     serviceName = name;
 

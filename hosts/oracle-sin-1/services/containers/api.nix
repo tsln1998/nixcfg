@@ -21,7 +21,7 @@ in
 
   # Sub2API service configuration
   virtualisation.oci-containers.containers.${name} = {
-    image = pkgs.images.sub2api.ref;
+    image = pkgs.managed-registry.sub2api.ref;
 
     serviceName = name;
 

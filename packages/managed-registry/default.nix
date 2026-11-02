@@ -10,17 +10,17 @@ let
   }) (builtins.fromJSON (builtins.readFile ./update.json));
 in
 stdenvNoCC.mkDerivation {
-  pname = "images";
+  pname = "managed-registry";
   version = builtins.substring 0 10 (builtins.hashString "sha256" (builtins.toJSON images));
 
   dontUnpack = true;
   dontBuild = true;
 
   installPhase = ''
-    install -Dm644 ${./update.json} $out/share/images/update.json
+    install -Dm644 ${./update.json} $out/share/managed-registry/update.json
   '';
 
-  # Consumers use pkgs.images.<key>.{repo,tag,ref}.
+  # Consumers use pkgs.managed-registry.<key>.{repo,tag,ref}.
   passthru = images;
 
   meta = {

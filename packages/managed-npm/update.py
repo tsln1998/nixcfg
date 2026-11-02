@@ -3,7 +3,7 @@
 # requires-python = ">=3.11"
 # dependencies = ["certifi"]
 # ///
-"""Update pi extension versions in update.json from the npm registry."""
+"""Update pi package versions in update.json from the npm registry."""
 
 import argparse
 import json
@@ -29,7 +29,7 @@ class Extension(TypedDict):
 
 
 def fetch_json(url: str, context: ssl.SSLContext) -> dict:
-    request = Request(url, headers={"User-Agent": "nixos-pi-extensions-updater"})
+    request = Request(url, headers={"User-Agent": "nixos-managed-npm-updater"})
     with urlopen(request, timeout=30, context=context) as response:
         return json.loads(response.read())
 
@@ -49,7 +49,7 @@ def write_extensions(extensions: dict[str, Extension]) -> None:
     """Replace the JSON atomically so a failed run never leaves it half written."""
     content = json.dumps(extensions, indent=2, sort_keys=True) + "\n"
     with tempfile.TemporaryDirectory(
-        prefix=".pi-extensions-update-", dir=UPDATE_PATH.parent
+        prefix=".managed-npm-update-", dir=UPDATE_PATH.parent
     ) as directory:
         temporary_path = Path(directory) / UPDATE_PATH.name
         temporary_path.write_text(content, encoding="utf-8")

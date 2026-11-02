@@ -14,6 +14,9 @@ result-*
 # Ignore disko images
 *.raw
 
+# Ignore pycache
+__pycache__
+
 # Ignore automatically generated direnv output
 .direnv
 

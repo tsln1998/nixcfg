@@ -93,13 +93,13 @@ in
 
       packages = [
         # 提供持久记忆、会话搜索及敏感信息扫描
-        pkgs.pi-extensions.hermes-memory.spec
+        pkgs.managed-npm.pi-hermes-memory.spec
         # 提供子代理支持
-        pkgs.pi-extensions.subagents.spec
+        pkgs.managed-npm.pi-subagents.spec
         # 网页搜索、URL 抓取及文档、视频内容提取
-        pkgs.pi-extensions.web-access.spec
+        pkgs.managed-npm.pi-web-access.spec
         # 在底栏显示模型、路径、Git、令牌、费用及耗时
-        pkgs.pi-extensions.cometix-footer.spec
+        pkgs.managed-npm.pi-cometix-footer.spec
       ];
     };
   };

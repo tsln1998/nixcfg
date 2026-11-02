@@ -10,17 +10,17 @@ let
   }) (builtins.fromJSON (builtins.readFile ./update.json));
 in
 stdenvNoCC.mkDerivation {
-  pname = "pi-extensions";
+  pname = "managed-npm";
   version = builtins.substring 0 10 (builtins.hashString "sha256" (builtins.toJSON extensions));
 
   dontUnpack = true;
   dontBuild = true;
 
   installPhase = ''
-    install -Dm644 ${./update.json} $out/share/pi-extensions/update.json
+    install -Dm644 ${./update.json} $out/share/managed-npm/update.json
   '';
 
-  # Consumers use pkgs.pi-extensions.<key>.spec.
+  # Consumers use pkgs.managed-npm.<key>.spec.
   passthru = extensions;
 
   meta = {

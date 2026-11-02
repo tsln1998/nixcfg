@@ -32,7 +32,7 @@ class Image(TypedDict):
 
 
 def fetch_json(url: str, context: ssl.SSLContext, token: str = "") -> dict:
-    headers = {"User-Agent": "nixos-images-updater"}
+    headers = {"User-Agent": "nixos-managed-registry-updater"}
     if token:
         headers["Authorization"] = f"Bearer {token}"
 
@@ -41,11 +41,11 @@ def fetch_json(url: str, context: ssl.SSLContext, token: str = "") -> dict:
 
 
 def split_registry(repo: str) -> tuple[str, str]:
-    """Split "registry/namespace/name" into registry and path; default Docker Hub."""
-    first, _, rest = repo.partition("/")
-    if "." in first or ":" in first:
-        return first, rest
-    return "docker.io", repo
+    """Split "registry/namespace/name" into registry and path; a registry is required."""
+    registry, _, path = repo.partition("/")
+    if not path or ("." not in registry and ":" not in registry):
+        raise ValueError(f"repo without a registry: {repo}")
+    return registry, path
 
 
 def list_tags(repo: str, context: ssl.SSLContext) -> list[str]:
@@ -98,7 +98,7 @@ def write_images(images: dict[str, Image]) -> None:
     """Replace the JSON atomically so a failed run never leaves it half written."""
     content = json.dumps(images, indent=2, sort_keys=True) + "\n"
     with tempfile.TemporaryDirectory(
-        prefix=".images-update-", dir=UPDATE_PATH.parent
+        prefix=".managed-registry-update-", dir=UPDATE_PATH.parent
     ) as directory:
         temporary_path = Path(directory) / UPDATE_PATH.name
         temporary_path.write_text(content, encoding="utf-8")
