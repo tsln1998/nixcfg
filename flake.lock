@@ -82,21 +82,6 @@
         "type": "gitlab"
       }
     },
-    "flake-compat": {
-      "locked": {
-        "lastModified": 1767039857,
-        "narHash": "sha256-vNpUSpF5Nuw8xvDLj2KCwwksIbjua2LZCqhV1LNRDns=",
-        "owner": "NixOS",
-        "repo": "flake-compat",
-        "rev": "5edf11c44bc78a0d334f6334cdaf7d60d732daab",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "repo": "flake-compat",
-        "type": "github"
-      }
-    },
     "flake-utils": {
       "inputs": {
         "systems": [
@@ -292,7 +277,7 @@
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
-          "nixpkgs-darwin"
+          "nixpkgs"
         ]
       },
       "locked": {
@@ -423,7 +408,6 @@
         "catppuccin": "catppuccin",
         "disko": "disko",
         "firefox": "firefox",
-        "flake-compat": "flake-compat",
         "flake-utils": "flake-utils",
         "hardware": "hardware",
         "home-manager": "home-manager",

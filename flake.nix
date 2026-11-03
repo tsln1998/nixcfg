@@ -22,8 +22,6 @@
     nixpkgs-darwin.url = "github:NixOS/nixpkgs/nixpkgs-26.05-darwin";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
-    flake-compat.url = "github:NixOS/flake-compat";
-
     treefmt-nix.url = "github:numtide/treefmt-nix";
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -51,7 +49,7 @@
     keyring.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-26.05";
-    nix-darwin.inputs.nixpkgs.follows = "nixpkgs-darwin";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
     nix-homebrew.inputs.brew-src.follows = "homebrew";
@@ -96,23 +94,22 @@
       ...
     }@inputs:
     let
-      inherit (nixpkgs.lib) hasSuffix;
+      inherit (nixpkgs) lib;
+      inherit (nixpkgs.lib.systems) inspect parse;
       inherit (nixpkgs.lib.strings) toLower;
       # load tools
-      tools = import ./tools (with self; with nixpkgs; { inherit inputs outputs lib; });
+      tools = import ./tools (with self; { inherit inputs outputs lib; });
       # load overlays
-      overlays = import ./overlays (with self; with nixpkgs; { inherit inputs outputs lib; });
+      overlays = import ./overlays (with self; { inherit inputs outputs lib; });
       # load nixpkgs
       pkgsFor = nixpkgs.lib.genAttrs flake-utils.lib.defaultSystems (
         system:
         import
           (
-            if hasSuffix "-darwin" system then
+            if inspect.predicates.isDarwin (parse.mkSystemFromString system) then
               nixpkgs-darwin
-            else if hasSuffix "-linux" system then
-              nixpkgs-nixos
             else
-              nixpkgs
+              nixpkgs-nixos
           )
           {
             inherit system overlays;

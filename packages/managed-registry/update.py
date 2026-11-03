@@ -36,7 +36,9 @@ def fetch_json(url: str, context: ssl.SSLContext, token: str = "") -> dict:
     if token:
         headers["Authorization"] = f"Bearer {token}"
 
-    with urlopen(Request(url, headers=headers), timeout=30, context=context) as response:
+    with urlopen(
+        Request(url, headers=headers), timeout=30, context=context
+    ) as response:
         return json.loads(response.read())
 
 
@@ -132,7 +134,10 @@ def main() -> int:
                 continue
 
             current_key = version_key(current, image.get("tag_prefix", ""))
-            if current_key is not None and version_key(latest, image.get("tag_prefix", "")) <= current_key:
+            if (
+                current_key is not None
+                and version_key(latest, image.get("tag_prefix", "")) <= current_key
+            ):
                 print(f"{name}: keeping {current} (registry only offers {latest})")
                 continue
 

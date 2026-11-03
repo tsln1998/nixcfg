@@ -1,5 +1,4 @@
-_:
-{
+_: {
   # Hourly GitOps deploy
   system.autoUpgrade = {
     enable = true;

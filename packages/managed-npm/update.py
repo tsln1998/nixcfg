@@ -83,7 +83,9 @@ def main() -> int:
 
             latest_key = version_key(latest)
             current_key = version_key(current)
-            if latest_key is None or (current_key is not None and latest_key <= current_key):
+            if latest_key is None or (
+                current_key is not None and latest_key <= current_key
+            ):
                 print(f"{key}: keeping {current} (registry only offers {latest})")
                 continue
 
