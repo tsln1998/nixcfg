@@ -34,6 +34,7 @@
             General = {
               launchers = [
                 "applications:chromium-browser.desktop"
+                "applications:firefox.desktop"
                 "applications:org.kde.dolphin.desktop"
                 "applications:Alacritty.desktop"
                 "applications:org.kde.konsole.desktop"

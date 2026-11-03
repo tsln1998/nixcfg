@@ -78,6 +78,9 @@
 
     vscode.url = "github:nix-community/nix-vscode-extensions";
     vscode.inputs.nixpkgs.follows = "nixpkgs";
+
+    firefox.url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+    firefox.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
