@@ -1,0 +1,54 @@
+{
+  "files": {
+    "bins/pinyin_segment.pte": {
+      "hash": "sha256-PWsKg7riVoaWD8D1w8/T7UvhMPtz60ksJKDwjkf+NVU=",
+      "url": "https://huggingface.co/afirelily/phonop2c_v2_2_base_w8a8_model/resolve/e9f90e488c1dc41997b5806537be7c43addca850/bins/pinyin_segment.pte"
+    },
+    "bins/post_model.pte": {
+      "hash": "sha256-RGyVnRHBRYxc7yin530eiyT54lfvSE39q1iIxgL0ZiI=",
+      "url": "https://huggingface.co/afirelily/phonop2c_v2_2_base_w8a8_model/resolve/e9f90e488c1dc41997b5806537be7c43addca850/bins/post_model.pte"
+    },
+    "bins/pre_model.pte": {
+      "hash": "sha256-zQAwIr4diqGX3RV+7wGimusn1ddT42Or98yHEjJ6KcQ=",
+      "url": "https://huggingface.co/afirelily/phonop2c_v2_2_base_w8a8_model/resolve/e9f90e488c1dc41997b5806537be7c43addca850/bins/pre_model.pte"
+    },
+    "config.json": {
+      "hash": "sha256-YMO9nmZhb36MW3gZT6ab61rKJQSjTnCkrU4ebj0wg6I=",
+      "url": "https://huggingface.co/afirelily/phonop2c_v2_2_base_w8a8_model/resolve/e9f90e488c1dc41997b5806537be7c43addca850/config.json"
+    },
+    "ops_config/model_ops.yaml": {
+      "hash": "sha256-NjPWkVY0uuCRtF6eLu6ii3JEf+HofOI0iT5Pm5nS1cw=",
+      "url": "https://huggingface.co/afirelily/phonop2c_v2_2_base_w8a8_model/resolve/e9f90e488c1dc41997b5806537be7c43addca850/ops_config/model_ops.yaml"
+    },
+    "ops_config/pinyin_segment_ops.yaml": {
+      "hash": "sha256-pHRUgDzjzLp3XLUFGcrqoJygVPBY2hrGGCqjXtN5U94=",
+      "url": "https://huggingface.co/afirelily/phonop2c_v2_2_base_w8a8_model/resolve/e9f90e488c1dc41997b5806537be7c43addca850/ops_config/pinyin_segment_ops.yaml"
+    },
+    "ops_config/post_model_ops.yaml": {
+      "hash": "sha256-x4cHiXoIwH4ckm16SIEVR4diuflVI9mUDymwzosVN04=",
+      "url": "https://huggingface.co/afirelily/phonop2c_v2_2_base_w8a8_model/resolve/e9f90e488c1dc41997b5806537be7c43addca850/ops_config/post_model_ops.yaml"
+    },
+    "ops_config/pre_model_ops.yaml": {
+      "hash": "sha256-6Mt5JYwrJppevwSA8FSuozzcu3Ky8LfvZTcIZ4tg0d8=",
+      "url": "https://huggingface.co/afirelily/phonop2c_v2_2_base_w8a8_model/resolve/e9f90e488c1dc41997b5806537be7c43addca850/ops_config/pre_model_ops.yaml"
+    },
+    "vocabs/chinese_vocab.txt": {
+      "hash": "sha256-Zo9p6FbDVxV3IKtab4ZE3KiiU7Q5dy+SzXYrGGpTtCE=",
+      "url": "https://huggingface.co/afirelily/phonop2c_v2_2_base_w8a8_model/resolve/e9f90e488c1dc41997b5806537be7c43addca850/vocabs/chinese_vocab.txt"
+    },
+    "vocabs/context_vocab.txt": {
+      "hash": "sha256-2fFHBWbWzUFikplBTl/Mm8D+ZWaXjIjH1ahqZSC0oUM=",
+      "url": "https://huggingface.co/afirelily/phonop2c_v2_2_base_w8a8_model/resolve/e9f90e488c1dc41997b5806537be7c43addca850/vocabs/context_vocab.txt"
+    },
+    "vocabs/pinyin_char_vocab.txt": {
+      "hash": "sha256-jFtB1mSCilH5UxwuCHd+fasoEADP64kvIcxU5s4A04s=",
+      "url": "https://huggingface.co/afirelily/phonop2c_v2_2_base_w8a8_model/resolve/e9f90e488c1dc41997b5806537be7c43addca850/vocabs/pinyin_char_vocab.txt"
+    },
+    "vocabs/pinyin_vocab.txt": {
+      "hash": "sha256-EomiMteDxz4WQzqfR09JKnKjIcqtevULHFdLk1fUMnk=",
+      "url": "https://huggingface.co/afirelily/phonop2c_v2_2_base_w8a8_model/resolve/e9f90e488c1dc41997b5806537be7c43addca850/vocabs/pinyin_vocab.txt"
+    }
+  },
+  "revision": "e9f90e488c1dc41997b5806537be7c43addca850",
+  "version": "e9f90e4"
+}
