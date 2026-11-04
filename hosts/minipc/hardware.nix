@@ -51,10 +51,6 @@
   # Printer and Scanner
   hardware.sane.enable = true;
 
-  # Logitech
-  hardware.logitech.wireless.enable = true;
-  hardware.logitech.wireless.enableGraphical = true;
-
   # Zram swap
   zramSwap.enable = true;
   zramSwap.memoryPercent = 50;
