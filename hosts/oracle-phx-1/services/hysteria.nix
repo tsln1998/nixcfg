@@ -7,7 +7,7 @@ in
 {
   age.secrets."hosts/${hostName}/hysteria/config.yaml" = {
     file = relative "secrets/hosts/${hostName}/hysteria/config.yaml.age";
-    mode = "0400";
+    mode = "0644";
   };
 
   services.hysteria = {

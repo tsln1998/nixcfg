@@ -11,14 +11,19 @@ let
 
   name = "cpa";
   secret = "hosts/${hostName}/${name}/config.yaml";
-  static = "/var/lib/cliproxyapi";
+  workdir = "/var/lib/cliproxyapi";
 in
 {
   # Secrets
   age.secrets.${secret} = {
     file = relative "secrets/${secret}.age";
-    mode = "0400";
+    mode = "0644";
   };
+
+  # CLIProxy work directory
+  systemd.tmpfiles.rules = [
+    "d ${workdir} 0755 root root -"
+  ];
 
   # CLIProxy service configuration
   virtualisation.oci-containers.containers.${name} = {
@@ -27,7 +32,7 @@ in
     serviceName = name;
 
     volumes = [
-      "${static}:/CLIProxyAPI/static"
+      "${workdir}:/CLIProxyAPI/static"
       "${secrets.${secret}.path}:/CLIProxyAPI/config.yaml"
     ];
 

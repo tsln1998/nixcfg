@@ -31,6 +31,10 @@ _: {
         mode = "0755";
       }
       {
+        directory = "/var/lib/magpie";
+        mode = "0755";
+      }
+      {
         directory = "/var/lib/postgresql";
         user = "postgres";
         group = "postgres";

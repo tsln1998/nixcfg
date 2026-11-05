@@ -22,6 +22,9 @@ UPDATE_PATH = Path(__file__).resolve().with_name("update.json")
 DOCKER_HUB_TAGS_URL = "https://hub.docker.com/v2/repositories/{repo}/tags?page_size=100"
 GHCR_TOKEN_URL = "https://ghcr.io/token?scope=repository:{repo}:pull"
 GHCR_TAGS_URL = "https://ghcr.io/v2/{repo}/tags/list?n=1000"
+# shortcut: caps GHCR pagination at 100k tags, far beyond any repo we track;
+# raise it if a repo ever needs more.
+PAGE_LIMIT = 100
 UNSTABLE_MARKERS = ("alpha", "beta", "rc", "dev", "test", "snapshot")
 
 
@@ -31,7 +34,10 @@ class Image(TypedDict):
     tag_prefix: str
 
 
-def fetch_json(url: str, context: ssl.SSLContext, token: str = "") -> dict:
+def fetch_page(
+    url: str, context: ssl.SSLContext, token: str = ""
+) -> tuple[dict, str | None]:
+    """Return the JSON body and the raw Link header of a registry response."""
     headers = {"User-Agent": "nixos-managed-registry-updater"}
     if token:
         headers["Authorization"] = f"Bearer {token}"
@@ -39,7 +45,21 @@ def fetch_json(url: str, context: ssl.SSLContext, token: str = "") -> dict:
     with urlopen(
         Request(url, headers=headers), timeout=30, context=context
     ) as response:
-        return json.loads(response.read())
+        return json.loads(response.read()), response.headers.get("Link")
+
+
+def fetch_json(url: str, context: ssl.SSLContext, token: str = "") -> dict:
+    return fetch_page(url, context, token)[0]
+
+
+def next_link(header: str | None, base: str) -> str | None:
+    """Extract the rel="next" URL from a Link header, resolving relative ones."""
+    for part in (header or "").split(","):
+        match = re.search(r'<([^>]+)>\s*;\s*rel="next"', part)
+        if match:
+            url = match.group(1)
+            return url if url.startswith("http") else base + url
+    return None
 
 
 def split_registry(repo: str) -> tuple[str, str]:
@@ -61,9 +81,17 @@ def list_tags(repo: str, context: ssl.SSLContext) -> list[str]:
 
     if registry == "ghcr.io":
         token = fetch_json(GHCR_TOKEN_URL.format(repo=path), context)["token"]
-        # shortcut: single page of 1000 GHCR tags, no Link-header pagination.
-        payload = fetch_json(GHCR_TAGS_URL.format(repo=path), context, token)
-        return payload["tags"] or []
+        tags: list[str] = []
+        url = GHCR_TAGS_URL.format(repo=path)
+
+        for _ in range(PAGE_LIMIT):
+            payload, link = fetch_page(url, context, token)
+            tags += payload["tags"] or []
+            url = next_link(link, f"https://{registry}")
+            if url is None:
+                break
+
+        return tags
 
     raise ValueError(f"unsupported registry: {registry}")
 

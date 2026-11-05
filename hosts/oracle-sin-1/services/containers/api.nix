@@ -16,7 +16,7 @@ in
   # Secrets
   age.secrets."hosts/${hostName}/${name}/config.env" = {
     file = relative "secrets/hosts/${hostName}/${name}/config.env.age";
-    mode = "0400";
+    mode = "0644";
   };
 
   # Sub2API service configuration
