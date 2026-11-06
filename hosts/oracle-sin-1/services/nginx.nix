@@ -47,85 +47,90 @@ in
   # NJS files
   environment.etc = {
     "nginx/magpie.js".text = ''
-      var ID = /^(.+\/)?([^\/]+)$/;
+      var REGEX_ID = /^(.+\/)?([^\/]+)$/;
+      var REGEX_DOT = / · [\s\S]*$/;
+      var REGEX_VIA = /\s*via magpie$/;
+      var chunks = [];
 
-      function resharpModels(text) {
-        var payload = JSON.parse(text);
-        if (payload == null || !Array.isArray(payload.data)) {
-          return text;
+      var resharp = {
+        items: function(items, identifier) {
+          var entries = [];
+          var seen = Object.create(null);
+
+          for (var index = 0; index < items.length; index++) {
+            var model = items[index];
+
+            if (model == null || typeof model[identifier] !== "string") {
+              continue;
+            }
+
+            var match = REGEX_ID.exec(model[identifier]);
+            if (match == null) {
+              continue;
+            }
+
+            var group = match[1] || "";
+            if (group !== "group/") {
+              continue;
+            }
+
+            var name = match[2] || "";
+            if (seen[name] === true) {
+              continue;
+            }
+
+            seen[name] = true;
+
+            entries.push(this.clear(model));
+          }
+
+          return entries;
+        },
+
+        clear: function(item) {
+          var entry = Object.assign({}, item);
+  
+          if (typeof entry.display_name === "string") {
+            entry.display_name = this.strip(entry.display_name)
+          }
+
+          if (typeof entry.description === "string") {
+            entry.description = this.strip(entry.description)
+          }
+
+          if (typeof entry.magpie_label === "string") {
+            delete entry.magpie_label;
+          }
+
+          if (typeof entry.owned_by === "string") {
+            delete entry.owned_by;
+          }
+
+          return entry;
+        },
+
+        strip: function(text) {
+          text = text.replace(REGEX_DOT, "");
+          text = text.replace(REGEX_VIA, "");
+          return text
+        },
+
+        models: function(payload) {
+          if (payload == null || !Array.isArray(payload.data)) {
+            return payload;
+          }
+
+          return { object: "list", data: this.items(payload.data, "id") };
+        },
+
+        codex: function(payload) {
+          if (payload == null || !Array.isArray(payload.models)) {
+            return payload;
+          }
+
+          return { models: this.items(payload.models, "slug") };
         }
-
-        var data = [];
-        var seen = Object.create(null);
-        var items = payload.data;
-
-        for (var i = 0; i < items.length; i++) {
-          var model = items[i];
-
-          if (model == null || typeof model.id !== "string") {
-            continue;
-          }
-
-          var match = ID.exec(model.id);
-          if (match == null) {
-            continue;
-          };
-
-          var group = match[1] || "";
-          if (group !== "" && group !== "group/") {
-            continue;
-          };
-
-          var name = match[2] || "";
-          if (seen[name] === true) {
-            continue;
-          };
-
-          seen[name] = true;
-          data.push(Object.assign({}, model, { id: name }));
-        }
-
-        return JSON.stringify({ object: "list", data: data });
-      }
-
-      function resharpCodex(text) {
-        var payload = JSON.parse(text);
-        if (payload == null || !Array.isArray(payload.models)) {
-          return text;
-        }
-
-        var models = [];
-        var seen = Object.create(null);
-        var items = payload.models;
-
-        for (var i = 0; i < items.length; i++) {
-          var model = items[i];
-
-          if (model == null || typeof model.slug !== "string") {
-            continue;
-          }
-
-          var match = ID.exec(model.slug);
-          if (match == null) {
-            continue;
-          }
-
-          var group = match[1] || "";
-          if (group !== "" && group !== "group/") {
-            continue;
-          }
-
-          var name = match[2] || "";
-          if (seen[name] === true) {
-            continue;
-          }
-
-          seen[name] = true;
-          models.push(Object.assign({}, model, { slug: name }));
-        }
-
-        return JSON.stringify({ models: models });
-      }
+      };
 
       function clear(r) {
         delete r.headersOut["Content-Length"];
@@ -137,33 +142,24 @@ in
           return;
         }
 
-        var buffer = Buffer.concat([
-          Buffer.from(r.variables.magpie_buf || "", "base64"),
-          data
-        ]);
-        if (!flags.last) {
-          r.variables.magpie_buf = buffer.toString("base64");
-          return;
-        }
+        chunks.push(Buffer.from(data));
 
-        r.variables.magpie_buf = "";
-        try {
-          var rewritten;
-          switch (r.uri) {
-            case "/v1/models":
-              rewritten = resharpModels(buffer.toString());
-              break;
-            case "/v1/codex/models":
-              rewritten = resharpCodex(buffer.toString());
-              break;
-            default:
-              rewritten = buffer;
-              break;
+        if (flags.last) {
+          var buffer = Buffer.concat(chunks);
+          try {
+            switch (r.uri) {
+              case "/v1/models":
+                buffer = JSON.stringify(resharp.models(JSON.parse(buffer.toString())))
+                break;
+              case "/v1/codex/models":
+                buffer = JSON.stringify(resharp.codex(JSON.parse(buffer.toString())))
+                break;
+            }
+          } catch (e) {
+            r.error("models rewrite failed: " + e);
+          } finally {
+            r.sendBuffer(buffer, { last: true, flush: true });
           }
-          r.sendBuffer(rewritten, { last: true, flush: true });
-        } catch (e) {
-          r.error("models rewrite failed: " + e);
-          r.sendBuffer(buffer, { last: true, flush: true });
         }
       }
 
