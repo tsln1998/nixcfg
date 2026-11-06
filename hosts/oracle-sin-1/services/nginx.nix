@@ -50,7 +50,11 @@ in
       var REGEX_ID = /^(.+\/)?([^\/]+)$/;
       var REGEX_DOT = / · [\s\S]*$/;
       var REGEX_VIA = /\s*via magpie$/;
+
       var chunks = [];
+      var blacklist = [
+        /^codex-auto-review$/
+      ];
 
       var resharp = {
         items: function(items, identifier) {
@@ -80,8 +84,15 @@ in
             }
 
             seen[name] = true;
+            if (blacklist.some(function(pattern) {
+              return pattern.test(name);
+            })) {
+              continue;
+            }
 
-            entries.push(this.clear(model));
+            entries.push(this.clear(Object.assign({}, model, {
+              [identifier]: name
+            })));
           }
 
           return entries;
@@ -89,7 +100,7 @@ in
 
         clear: function(item) {
           var entry = Object.assign({}, item);
-  
+
           if (typeof entry.display_name === "string") {
             entry.display_name = this.strip(entry.display_name)
           }
