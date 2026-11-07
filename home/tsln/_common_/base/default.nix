@@ -16,7 +16,7 @@ in
   imports = (tools.scan ./.) ++ [
     inputs.agenix.homeManagerModules.default
     inputs.catppuccin.homeModules.catppuccin
-    inputs.plasma-manager.homeModules.plasma-manager
+    inputs.plasma-manager.homeModules.plasma-manager # FIXME: remove it
     outputs.homeModules.default
   ];
 

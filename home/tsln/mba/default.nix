@@ -7,7 +7,6 @@
       "home/tsln/_common_/cli/monitors"
       "home/tsln/_common_/cli/replacements"
       "home/tsln/_common_/dev/agents/skills"
-      "home/tsln/_common_/dev/agents/pi.nix"
       "home/tsln/_common_/dev/agents/codex.nix"
       "home/tsln/_common_/dev/agents/herdr.nix"
       "home/tsln/_common_/dev/languages/nodejs.nix"
@@ -17,6 +16,7 @@
       "home/tsln/_darwin_/base"
       "home/tsln/_darwin_/gui"
       "home/tsln/_darwin_/i18n"
+      "home/tsln/_darwin_/themes"
     ])
     ++ (tools.scan ./.);
 }

@@ -3,11 +3,6 @@ let
   inherit (config.fonts.fontconfig) defaultFonts;
 in
 {
-  catppuccin.ghostty = {
-    enable = lib.mkDefault true;
-    flavor = lib.mkDefault "mocha";
-  };
-
   programs.ghostty = {
     enable = true;
     package = null;

@@ -17,5 +17,9 @@
     # Konsole
     konsole.enable = lib.mkDefault true;
     konsole.flavor = lib.mkDefault "mocha";
+
+    # Alacritty
+    alacritty.enable = lib.mkDefault true;
+    alacritty.flavor = lib.mkDefault "mocha";
   };
 }

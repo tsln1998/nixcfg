@@ -51,6 +51,13 @@
     nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-26.05";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
+    # TODO: nixpkgs wait for release-26.11
+    nix-darwin-app.url = "github:hraban/mac-app-util";
+    nix-darwin-app.inputs.nixpkgs.follows = "nixpkgs-unstable";
+    nix-darwin-app.inputs.systems.follows = "systems";
+    nix-darwin-app.inputs.flake-utils.follows = "flake-utils";
+    nix-darwin-app.inputs.treefmt-nix.follows = "treefmt-nix";
+
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
     nix-homebrew.inputs.brew-src.follows = "homebrew";
 

@@ -3,14 +3,6 @@ let
   inherit (config.fonts.fontconfig) defaultFonts;
 in
 {
-  # Catppuccin Mocha 配色
-  catppuccin = {
-    alacritty = {
-      enable = lib.mkDefault true;
-      flavor = lib.mkDefault "mocha";
-    };
-  };
-
   programs = {
     alacritty = {
       enable = true;

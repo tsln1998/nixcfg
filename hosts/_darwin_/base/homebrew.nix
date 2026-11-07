@@ -36,10 +36,4 @@ in
       taps = [ ];
     };
   };
-
-  homebrew = {
-    onActivation = {
-      cleanup = "zap";
-    };
-  };
 }
