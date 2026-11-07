@@ -30,7 +30,6 @@ let
     tableplus = "662";
     cyberduck = "9.5.4.45528";
     notion-app = "7.25.1";
-    ghostty-bin = "1.4.0";
     pi-coding-agent = null;
     keepingyouawake = "0.0.0";
     vscode-extensions = null;

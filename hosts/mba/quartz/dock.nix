@@ -27,7 +27,7 @@ in
         app = "${applicationsUser}/Feishu.app";
       }
       {
-        app = "${applicationsUser}/Ghostty.app";
+        app = "${applicationsUser}/Alacritty.app";
       }
       {
         app = "${applicationsUser}/FlClash.app";
