@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  options,
   pkgs,
   ...
 }:
@@ -9,44 +10,48 @@ let
   enable = cfg.enable && config.catppuccin.enable && config.programs.konsole.enable;
 in
 {
-  options.catppuccin.konsole = {
-    enable = lib.mkOption {
-      type = lib.types.bool;
-      default = config.catppuccin.autoEnable;
-      description = "Enable Catppuccin for Konsole";
-    };
-
-    package = lib.mkOption {
-      type = lib.types.package;
-      default = pkgs.catppuccin-konsole;
-    };
-
-    flavor = lib.mkOption {
-      type = lib.types.str;
-      default = config.catppuccin.flavor;
-      description = "Catppuccin flavor";
-    };
-
-    accent = lib.mkOption {
-      type = lib.types.str;
-      default = config.catppuccin.accent;
-      description = "Catppuccin accent";
-    };
-  };
-
-  config = lib.mkIf enable {
-    # Catppuccin Konsole Theme Package
-    home.file = {
-      ".local/share/konsole/catppuccin-${cfg.flavor}.colorscheme" = {
-        source = "${cfg.package}/catppuccin-${cfg.flavor}.colorscheme";
+  options.catppuccin = lib.optionalAttrs (options ? programs.konsole) {
+    konsole = {
+      enable = lib.mkOption {
+        type = lib.types.bool;
+        default = config.catppuccin.autoEnable;
+        description = "Enable Catppuccin for Konsole";
       };
-    };
 
-    # Catppuccin Konsole Configuration
-    programs.konsole.profiles = {
-      "${config.programs.konsole.defaultProfile}" = {
-        colorScheme = "catppuccin-${cfg.flavor}";
+      package = lib.mkOption {
+        type = lib.types.package;
+        default = pkgs.catppuccin-konsole;
+      };
+
+      flavor = lib.mkOption {
+        type = lib.types.str;
+        default = config.catppuccin.flavor;
+        description = "Catppuccin flavor";
+      };
+
+      accent = lib.mkOption {
+        type = lib.types.str;
+        default = config.catppuccin.accent;
+        description = "Catppuccin accent";
       };
     };
   };
+
+  config = lib.optionalAttrs (options ? programs.konsole) (
+    lib.mkIf enable {
+      # Catppuccin Konsole Theme Package
+      home.file = {
+        ".local/share/konsole/catppuccin-${cfg.flavor}.colorscheme" = {
+          source = "${cfg.package}/catppuccin-${cfg.flavor}.colorscheme";
+        };
+      };
+
+      # Catppuccin Konsole Configuration
+      programs.konsole.profiles = {
+        "${config.programs.konsole.defaultProfile}" = {
+          colorScheme = "catppuccin-${cfg.flavor}";
+        };
+      };
+    }
+  );
 }

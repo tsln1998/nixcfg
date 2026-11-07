@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  options,
   pkgs,
   ...
 }:
@@ -11,46 +12,50 @@ let
 in
 {
 
-  options.catppuccin.plasma = {
-    enable = lib.mkOption {
-      type = lib.types.bool;
-      default = config.catppuccin.autoEnable;
-      description = "Enable Catppuccin for Plasma";
-    };
-
-    flavor = lib.mkOption {
-      type = lib.types.str;
-      default = config.catppuccin.flavor;
-      description = "Catppuccin flavor";
-    };
-
-    accent = lib.mkOption {
-      type = lib.types.str;
-      default = config.catppuccin.accent;
-      description = "Catppuccin accent";
-    };
-  };
-
-  config = lib.mkIf enable {
-    # Catppuccin Plasma Theme Package
-    home.packages = [
-      (pkgs.catppuccin-kde.override {
-        flavour = [ cfg.flavor ];
-        accents = [ cfg.accent ];
-      })
-    ];
-
-    # Catppuccin Plasma Configuration
-    programs.plasma.workspace = {
-      colorScheme = "Catppuccin${toSentenceCase cfg.flavor}${toSentenceCase cfg.accent}";
-
-      splashScreen = {
-        theme = "Catppuccin-${toSentenceCase cfg.flavor}-${toSentenceCase cfg.accent}";
+  options.catppuccin = lib.optionalAttrs (options ? programs.plasma) {
+    plasma = {
+      enable = lib.mkOption {
+        type = lib.types.bool;
+        default = config.catppuccin.autoEnable;
+        description = "Enable Catppuccin for Plasma";
       };
 
-      cursor = {
-        theme = if cfg.flavor == "latte" then "Breeze_Light" else "breeze_cursors";
+      flavor = lib.mkOption {
+        type = lib.types.str;
+        default = config.catppuccin.flavor;
+        description = "Catppuccin flavor";
+      };
+
+      accent = lib.mkOption {
+        type = lib.types.str;
+        default = config.catppuccin.accent;
+        description = "Catppuccin accent";
       };
     };
   };
+
+  config = lib.optionalAttrs (options ? programs.plasma) (
+    lib.mkIf enable {
+      # Catppuccin Plasma Theme Package
+      home.packages = [
+        (pkgs.catppuccin-kde.override {
+          flavour = [ cfg.flavor ];
+          accents = [ cfg.accent ];
+        })
+      ];
+
+      # Catppuccin Plasma Configuration
+      programs.plasma.workspace = {
+        colorScheme = "Catppuccin${toSentenceCase cfg.flavor}${toSentenceCase cfg.accent}";
+
+        splashScreen = {
+          theme = "Catppuccin-${toSentenceCase cfg.flavor}-${toSentenceCase cfg.accent}";
+        };
+
+        cursor = {
+          theme = if cfg.flavor == "latte" then "Breeze_Light" else "breeze_cursors";
+        };
+      };
+    }
+  );
 }

@@ -1,7 +1,19 @@
-pkgs: {
+pkgs:
+let
+  inherit (pkgs) lib;
+  inherit (pkgs.stdenv) hostPlatform;
+in
+{
   # OpenAI's terminal-based coding agent.
   codex = pkgs.callPackage ./codex { };
 
+  # Managed npm package specifications.
+  managed-npm = pkgs.callPackage ./managed-npm { };
+
+  # Managed container image references.
+  managed-registry = pkgs.callPackage ./managed-registry { };
+}
+// lib.optionalAttrs hostPlatform.isLinux {
   # Catppuccin color schemes for Konsole.
   catppuccin-konsole = pkgs.callPackage ./catppuccin/konsole.nix { };
 
@@ -13,10 +25,4 @@ pkgs: {
 
   # PhonoP2C W8A8 model files for local neural input.
   fcitx5-phono-model = pkgs.callPackage ./fcitx5-phono-model { };
-
-  # Managed npm package specifications.
-  managed-npm = pkgs.callPackage ./managed-npm { };
-
-  # Managed container image references.
-  managed-registry = pkgs.callPackage ./managed-registry { };
 }

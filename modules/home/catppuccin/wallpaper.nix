@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  options,
   pkgs,
   ...
 }:
@@ -12,29 +13,33 @@ let
 in
 {
 
-  options.catppuccin.wallpaper = {
-    enable = lib.mkOption {
-      type = lib.types.bool;
-      default = config.catppuccin.autoEnable;
-      description = "Enable Catppuccin for Wallpaper";
-    };
+  options.catppuccin = lib.optionalAttrs (options ? programs.plasma) {
+    wallpaper = {
+      enable = lib.mkOption {
+        type = lib.types.bool;
+        default = config.catppuccin.autoEnable;
+        description = "Enable Catppuccin for Wallpaper";
+      };
 
-    flavor = lib.mkOption {
-      type = lib.types.str;
-      default = config.catppuccin.flavor;
-      description = "Catppuccin flavor";
+      flavor = lib.mkOption {
+        type = lib.types.str;
+        default = config.catppuccin.flavor;
+        description = "Catppuccin flavor";
+      };
     };
   };
 
-  config = lib.mkIf enable {
-    # Catppuccin Plasma wallpaper
-    programs.plasma.workspace = {
-      inherit wallpaper;
-    };
+  config = lib.optionalAttrs (options ? programs.plasma) (
+    lib.mkIf enable {
+      # Catppuccin Plasma wallpaper
+      programs.plasma.workspace = {
+        inherit wallpaper;
+      };
 
-    # Catppuccin Plasma Lockscreen wallpaper
-    programs.plasma.kscreenlocker.appearance = {
-      inherit wallpaper;
-    };
-  };
+      # Catppuccin Plasma Lockscreen wallpaper
+      programs.plasma.kscreenlocker.appearance = {
+        inherit wallpaper;
+      };
+    }
+  );
 }
