@@ -1,0 +1,13 @@
+{
+  "platforms": {
+    "aarch64-darwin": {
+      "hash": "sha256-mA6cw71H0gkIduXjwG93TjKokzDYOqZqw/hJDjmSTZs=",
+      "url": "https://github.com/chen08209/FlClash/releases/download/v0.9.3/FlClash-0.9.3-macos-arm64.dmg"
+    },
+    "x86_64-darwin": {
+      "hash": "sha256-lzjuvsTI3QF767YI8tHowgnPWql8xPGBeDA2tm3TyUQ=",
+      "url": "https://github.com/chen08209/FlClash/releases/download/v0.9.3/FlClash-0.9.3-macos-amd64.dmg"
+    }
+  },
+  "version": "0.9.3"
+}

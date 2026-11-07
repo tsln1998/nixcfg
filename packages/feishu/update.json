@@ -1,0 +1,13 @@
+{
+  "platforms": {
+    "aarch64-darwin": {
+      "hash": "sha256-q0xEfNulnnm4PO+jww7HtIqBLL3fdh3n+JadBRGRML0=",
+      "url": "https://sf3-cn.feishucdn.com/obj/ee-appcenter/3721df38/Feishu-darwin_arm64-8.4.7-signed.dmg"
+    },
+    "x86_64-darwin": {
+      "hash": "sha256-jv/pTFmNRwqvCBkCnLhgA2v5FMjtfkUP+dmIcNAMVd8=",
+      "url": "https://sf3-cn.feishucdn.com/obj/ee-appcenter/b4358c5e/Feishu-darwin_x64-8.4.7-signed.dmg"
+    }
+  },
+  "version": "8.4.7"
+}

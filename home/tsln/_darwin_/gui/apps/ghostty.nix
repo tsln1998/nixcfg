@@ -1,11 +1,16 @@
-{ lib, config, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 let
   inherit (config.fonts.fontconfig) defaultFonts;
 in
 {
   programs.ghostty = {
     enable = true;
-    package = null;
+    package = pkgs.ghostty-bin;
 
     settings = {
       font-family = lib.head defaultFonts.monospace;

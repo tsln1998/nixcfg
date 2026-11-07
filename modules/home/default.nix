@@ -46,6 +46,15 @@
     "vscode-extension-MS-python-vscode-pylance"
   ]
   ++ [
+    # macOS
+    "keka"
+    "chatgpt"
+    "tableplus"
+    "notion-app"
+    "pearcleaner"
+    "google-chrome"
+  ]
+  ++ [
     # Chromium DRM
     "chromium"
     "chromium-unwrapped"

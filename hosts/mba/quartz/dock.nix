@@ -1,4 +1,10 @@
-_: {
+{ config, ... }:
+let
+  home = config.home-manager.users.${config.system.primaryUser};
+  applicationsUser = "${home.home.homeDirectory}/${home.targets.darwin.copyApps.directory}";
+  applicationsSystem = "/Applications";
+in
+{
   system.defaults.dock = {
     # 按照下列顺序固定 Dock 中的应用。
     persistent-apps = [
@@ -9,49 +15,49 @@ _: {
         app = "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app";
       }
       {
-        app = "/Applications/Google Chrome.app";
+        app = "${applicationsUser}/Google Chrome.app";
       }
       {
-        app = "/Applications/QQ.app";
+        app = "${applicationsUser}/QQ.app";
       }
       {
-        app = "/Applications/WeChat.app";
+        app = "${applicationsUser}/WeChat.app";
       }
       {
-        app = "/Applications/Feishu.app";
+        app = "${applicationsUser}/Feishu.app";
       }
       {
-        app = "/Applications/Ghostty.app";
+        app = "${applicationsUser}/Ghostty.app";
       }
       {
-        app = "/Applications/FlClash.app";
+        app = "${applicationsUser}/FlClash.app";
       }
       {
-        app = "/Applications/Notion.app";
+        app = "${applicationsUser}/Notion.app";
       }
       {
-        app = "/Applications/ChatGPT.app";
+        app = "${applicationsUser}/ChatGPT.app";
       }
       {
-        app = "/Applications/Visual Studio Code.app";
+        app = "${applicationsUser}/Visual Studio Code.app";
       }
       {
-        app = "/Applications/Microsoft Outlook.app";
+        app = "${applicationsSystem}/Microsoft Outlook.app";
       }
       {
-        app = "/Applications/Microsoft Word.app";
+        app = "${applicationsSystem}/Microsoft Word.app";
       }
       {
-        app = "/Applications/Microsoft Excel.app";
+        app = "${applicationsSystem}/Microsoft Excel.app";
       }
       {
-        app = "/Applications/OneDrive.app";
+        app = "${applicationsSystem}/OneDrive.app";
       }
       {
-        app = "/Applications/Cyberduck.app";
+        app = "${applicationsUser}/Cyberduck.app";
       }
       {
-        app = "/Applications/TablePlus.app";
+        app = "${applicationsUser}/TablePlus.app";
       }
     ];
   };

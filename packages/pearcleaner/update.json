@@ -1,0 +1,13 @@
+{
+  "platforms": {
+    "aarch64-darwin": {
+      "hash": "sha256-9FVOaeEXnPzZCIcwGEI/LX4rWI01Vsvs3Xh4iGbZeqs=",
+      "url": "https://github.com/alienator88/Pearcleaner/releases/download/5.4.3/Pearcleaner-arm.zip"
+    },
+    "x86_64-darwin": {
+      "hash": "sha256-F+cQAatqgRY3i/Am6ANEYi/cs3wswHygZBWscPzLEyE=",
+      "url": "https://github.com/alienator88/Pearcleaner/releases/download/5.4.3/Pearcleaner-intel.zip"
+    }
+  },
+  "version": "5.4.3"
+}

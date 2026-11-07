@@ -144,7 +144,7 @@ in
   # 生成 Profiles
   programs.${_vsc_pkg_} = {
     enable = true;
-    package = null;
+    package = pkgs.vscode;
     mutableExtensionsDir = false;
     profiles = {
       default = _vsc_profile_ {
