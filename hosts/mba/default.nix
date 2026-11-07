@@ -13,7 +13,8 @@
 
       "users/_common_"
       "users/_darwin_"
-      "users/tsln"
+
+      "users/tsln/general.nix"
     ]
     ++ (tools.scan ./.);
 }
