@@ -33,6 +33,9 @@ _: {
         app = "/Applications/ChatGPT.app";
       }
       {
+        app = "/System/Applications/Podcasts.app";
+      }
+      {
         app = "/Applications/Visual Studio Code.app";
       }
       {
