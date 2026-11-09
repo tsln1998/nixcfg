@@ -8,6 +8,7 @@
     extensions = [
       { id = "ddkjiahejlhfcafbddmgiahcphecmpfh"; } # uBlock Origin Lite
       { id = "nngceckbapebfimnlniiiahkandclblb"; } # Bitwarden
+      { id = "djnlaiohfaaifbibleebjggkghlmcpcj"; } # FluentRead
       { id = "eggdlmopfankeonchoflhfoglaakobma"; } # Apifox
       { id = "amknoiejhlmhancpahfcfcfhllgkpbld"; } # Hoppscotch
       { id = "hkedbapjpblbodpgbajblpnlpenaebaa"; } # Elasticvue
