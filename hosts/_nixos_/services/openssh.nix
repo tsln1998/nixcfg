@@ -3,10 +3,17 @@
   # 开启 OpenSSH 服务并配置 hostKeys 路径
   services.openssh = {
     enable = true;
+    generateHostKeys = false;
+
     extraConfig = lib.concatStringsSep "\n" [
       "ClientAliveInterval 30"
       "ClientAliveCountMax 10"
     ];
+
+    authorizedKeysFiles = [
+      "/etc/ssh/keys/authorized_keys"
+    ];
+
     hostKeys = [
       {
         bits = 4096;
