@@ -7,6 +7,9 @@ in
     tailscale = {
       enable = true;
       openFirewall = true;
+      ssh = {
+        enable = true;
+      };
       exit = {
         enable = true;
       };

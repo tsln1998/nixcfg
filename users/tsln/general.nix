@@ -20,7 +20,7 @@ in
         "podman"
         "networkmanager"
       ];
-      hashedPassword = "$2b$05$3FgVPgolxWAkfcAyKLMs3.acSQHMnQU6wUMylrJ.ypv/dEe8P62u2";
+      hashedPassword = "$y$j9T$7ZDX/Kx5J2vtL9GZV7q0s.$SM.SCMBXk7MCgfpRF5omWWOYPPeRq0qeaarLLNEBn5A";
     })
     // (lib.optionalAttrs isDarwin {
       home = "/Users/${userName}";

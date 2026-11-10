@@ -13,6 +13,7 @@ let
   inherit (config.services.tailscale)
     relay
     exit
+    ssh
     magic-dns
     ;
 in
@@ -39,6 +40,14 @@ in
       };
     };
 
+    ssh = {
+      enable = lib.mkOption {
+        type = lib.types.bool;
+        default = false;
+        description = "Enable tailscale ssh server";
+      };
+    };
+
     magic-dns = {
       enable = lib.mkOption {
         type = lib.types.bool;
@@ -56,6 +65,9 @@ in
       ])
       ++ (lib.optionals exit.enable [
         "--advertise-exit-node"
+      ])
+      ++ (lib.optionals ssh.enable [
+        "--ssh"
       ])
       ++ [
         "--accept-dns=${lib.boolToString magic-dns.enable}"
