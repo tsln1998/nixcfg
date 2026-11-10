@@ -1,12 +1,12 @@
 {
   "cloudflare-warp": {
     "repo": "docker.io/caomingjun/warp",
-    "tag": "slim-2026.7.1377.0-2.12.0",
+    "tag": "slim-2026.8.2115.0-2.12.0",
     "tag_prefix": "slim-"
   },
   "magpie": {
     "repo": "ghcr.io/yetone/magpie",
-    "tag": "0.1.3130",
+    "tag": "0.1.3558",
     "tag_prefix": ""
   }
 }
