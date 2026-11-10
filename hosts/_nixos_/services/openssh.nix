@@ -5,6 +5,10 @@
     enable = true;
     generateHostKeys = false;
 
+    settings = {
+      PermitRootLogin = lib.mkDefault "no";
+    };
+
     extraConfig = lib.concatStringsSep "\n" [
       "ClientAliveInterval 30"
       "ClientAliveCountMax 10"
