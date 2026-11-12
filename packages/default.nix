@@ -7,6 +7,8 @@ in
   # OpenAI's terminal-based coding agent.
   codex = pkgs.callPackage ./codex { };
 
+  keyring-rs = pkgs.callPackage ./keyring-rs { };
+
   # Managed npm package specifications.
   managed-npm = pkgs.callPackage ./managed-npm { };
 

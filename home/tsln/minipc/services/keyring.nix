@@ -23,7 +23,7 @@ in
 
   services.keyring-rs = {
     enable = true;
-    package = pkgs.keyring;
+    package = pkgs.keyring-rs;
     path = SSH_AUTH_SOCK;
     settingsFile = config.age.secrets."${secretName}".path;
   };

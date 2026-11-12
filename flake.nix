@@ -47,6 +47,9 @@
 
     keyring.url = "github:tsln1998/keyring-rs";
     keyring.inputs.nixpkgs.follows = "nixpkgs";
+    keyring.inputs.systems.follows = "systems";
+    keyring.inputs.flake-utils.follows = "flake-utils";
+    keyring.inputs.treefmt-nix.follows = "treefmt-nix";
 
     nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-26.05";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
