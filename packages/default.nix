@@ -28,3 +28,7 @@ in
   # PhonoP2C W8A8 model files for local neural input.
   fcitx5-phono-model = pkgs.callPackage ./fcitx5-phono-model { };
 }
+// lib.optionalAttrs (hostPlatform.isDarwin || (hostPlatform.isLinux && hostPlatform.isx86_64)) {
+  # Another desktop dictionary, but way more faster and definition-rich
+  aictionary = pkgs.callPackage ./aictionary { };
+}

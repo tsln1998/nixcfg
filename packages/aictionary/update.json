@@ -1,0 +1,17 @@
+{
+  "platforms": {
+    "aarch64-darwin": {
+      "hash": "sha256-IecI/RVTUVTLJvORm5Ve5qK83KjEY7rsODAhQW8Grdg=",
+      "url": "https://github.com/ahpxex/Aictionary/releases/download/v3.6.0/Aictionary-v3.6.0_macos_arm64.app.tar.gz"
+    },
+    "x86_64-darwin": {
+      "hash": "sha256-SpAC/U04/feLkcwxpM9Pmv/oJqh8nDmxBuvAb6U6As0=",
+      "url": "https://github.com/ahpxex/Aictionary/releases/download/v3.6.0/Aictionary-v3.6.0_macos_x86_64.app.tar.gz"
+    },
+    "x86_64-linux": {
+      "hash": "sha256-fBckQLXBXrfy9RTy13rML63Rw2kft/+ee4xZ4d8FHXw=",
+      "url": "https://github.com/ahpxex/Aictionary/releases/download/v3.6.0/Aictionary-v3.6.0_linux_x86_64.AppImage"
+    }
+  },
+  "version": "3.6.0"
+}
