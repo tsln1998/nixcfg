@@ -8,6 +8,7 @@ _: {
     { name = "notion"; }
     { name = "chatgpt"; }
     { name = "ghostty"; }
+    { name = "easydict"; }
     { name = "cyberduck"; }
     { name = "tableplus"; }
     { name = "pearcleaner"; }

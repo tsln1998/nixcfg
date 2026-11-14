@@ -36,6 +36,12 @@ _: {
         app = "/System/Applications/Podcasts.app";
       }
       {
+        app = "/Applications/Easydict.app";
+      }
+      {
+        app = "/Applications/Nix Apps/Aictionary.app";
+      }
+      {
         app = "/Applications/Visual Studio Code.app";
       }
       {
@@ -46,9 +52,6 @@ _: {
       }
       {
         app = "/Applications/Microsoft Excel.app";
-      }
-      {
-        app = "/Applications/OneDrive.app";
       }
       {
         app = "/Applications/Cyberduck.app";
