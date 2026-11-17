@@ -18,8 +18,6 @@ in
         [
           # 中文输入法插件（拼音/双拼）
           fcitx5-chinese-addons
-          # 中文模型输入
-          fcitx5-phono-addons
           # 中文词库拓展
           fcitx5-pinyin-zhwiki
         ];
@@ -46,17 +44,9 @@ in
           # 组内输入法：英文键盘、双拼
           "Groups/0/Items/0"."Name" = "keyboard-us";
           "Groups/0/Items/1"."Name" = "shuangpin";
-          "Groups/0/Items/2"."Name" = "phono-shuangpin";
         };
         # 各插件配置，写入 conf/*.conf
         addons = {
-          # Phono 本地模型及微软双拼
-          phono = {
-            globalSection = {
-              "ModelDirectory" = "${pkgs.fcitx5-phono-model}";
-              "ShuangpinScheme" = "Microsoft";
-            };
-          };
           # 拼音/双拼
           pinyin = {
             globalSection = {

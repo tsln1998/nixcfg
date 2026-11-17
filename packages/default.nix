@@ -18,15 +18,6 @@ in
 // lib.optionalAttrs hostPlatform.isLinux {
   # Catppuccin color schemes for Konsole.
   catppuccin-konsole = pkgs.callPackage ./catppuccin/konsole.nix { };
-
-  # On-device Pinyin inference runtime and SDK for Phono.
-  fcitx5-phono-core = pkgs.callPackage ./fcitx5-phono-core { };
-
-  # Local neural input methods for Fcitx5.
-  fcitx5-phono-addons = pkgs.callPackage ./fcitx5-phono-addons { };
-
-  # PhonoP2C W8A8 model files for local neural input.
-  fcitx5-phono-model = pkgs.callPackage ./fcitx5-phono-model { };
 }
 // lib.optionalAttrs (hostPlatform.isDarwin || (hostPlatform.isLinux && hostPlatform.isx86_64)) {
   # Another desktop dictionary, but way more faster and definition-rich
