@@ -15,4 +15,6 @@
       "users/tsln"
     ]
     ++ (tools.scan ./.);
+
+  system.stateVersion = "26.05";
 }

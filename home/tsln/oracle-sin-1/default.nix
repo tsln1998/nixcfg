@@ -8,4 +8,6 @@
       "home/tsln/_nixos_/base"
     ])
     ++ (tools.scan ./.);
+
+  home.stateVersion = "26.05";
 }

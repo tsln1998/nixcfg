@@ -13,4 +13,6 @@
       "home/tsln/_nixos_/themes"
     ])
     ++ (tools.scan ./.);
+
+  home.stateVersion = "26.05";
 }

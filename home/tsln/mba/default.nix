@@ -19,4 +19,6 @@
       "home/tsln/_darwin_/themes"
     ])
     ++ (tools.scan ./.);
+
+  home.stateVersion = "26.05";
 }

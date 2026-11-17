@@ -12,6 +12,4 @@
     inputs.nix-homebrew.darwinModules.nix-homebrew
     outputs.darwinModules.default
   ];
-
-  system.stateVersion = 7;
 }

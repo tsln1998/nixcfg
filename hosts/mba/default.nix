@@ -17,4 +17,6 @@
       "users/tsln/general.nix"
     ]
     ++ (tools.scan ./.);
+
+  system.stateVersion = 7;
 }

@@ -22,6 +22,5 @@ in
   home = {
     username = lib.mkDefault "tsln";
     homeDirectory = lib.mkDefault directory;
-    stateVersion = "26.05";
   };
 }

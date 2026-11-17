@@ -13,6 +13,4 @@
     inputs.impermanence.nixosModules.impermanence
     outputs.nixosModules.default
   ];
-
-  system.stateVersion = "26.05";
 }
