@@ -30,6 +30,7 @@ in
 
   # User - tsln
   "users/tsln/id_ed25519.age".publicKeys = users.tsln;
+  "users/tsln/netrc.age".publicKeys = users.tsln;
   "users/tsln/nix/nix.conf.age".publicKeys = users.tsln;
   "users/tsln/kube/config.age".publicKeys = users.tsln;
   "users/tsln/codex/config.toml.age".publicKeys = users.tsln;
