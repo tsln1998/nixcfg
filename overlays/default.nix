@@ -7,5 +7,4 @@ _: [
   (import ./tweaks/shortcut.nix _)
   (import ./tweaks/wayland.nix _)
   (import ./tweaks/konsole.nix _)
-  (import ./bugfix/codegraph.nix _)
 ]

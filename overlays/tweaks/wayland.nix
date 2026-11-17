@@ -1,7 +1,7 @@
 _: final: prev: {
   feishu = prev.feishu.overrideAttrs (
     oldAttrs:
-    (final.lib.optionalAttrs prev.stdenv.isLinux {
+    (final.lib.optionalAttrs prev.stdenv.hostPlatform.isLinux {
       postFixup = (oldAttrs.postFixup or "") + ''
         wrapProgram "$out/opt/bytedance/feishu/bytedance-feishu" \
           --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform=wayland --enable-features=UseOzonePlatform --enable-wayland-ime=true}}"

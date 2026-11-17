@@ -11,7 +11,7 @@ let
   inherit (stdenvNoCC.hostPlatform) system;
 
   src = fetchurl (platforms.${system} or (throw "Unsupported system: ${system}"));
-  appimageContents = appimageTools.extractType2 { inherit pname version src; };
+  appimageContents = appimageTools.extract { inherit pname version src; };
 
   meta = {
     description = "Desktop dictionary with offline lookups and audio pronunciation";

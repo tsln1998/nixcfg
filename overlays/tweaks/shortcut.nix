@@ -14,7 +14,7 @@ in
 {
   feishu = prev.feishu.overrideAttrs (
     old:
-    (lib.optionalAttrs prev.stdenv.isLinux {
+    (lib.optionalAttrs prev.stdenv.hostPlatform.isLinux {
       postFixup =
         (old.postFixup or "")
         + setDesktopCategories "$out/share/applications/bytedance-feishu.desktop" "Network";
@@ -22,7 +22,7 @@ in
   );
 
   hoppscotch = prev.hoppscotch.override (
-    lib.optionalAttrs prev.stdenv.isLinux {
+    lib.optionalAttrs prev.stdenv.hostPlatform.isLinux {
       appimageTools = final.appimageTools // {
         wrapType2 =
           args:

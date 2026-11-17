@@ -11,20 +11,8 @@ let
   #  0.0.0 -> 上游不存在该包时，使用 unstable 替代
   #  x.y.z -> 上游版本低于此版本时，使用 unstable 替代
   versions = {
-    rtk = "0.48.0";
-    pixi = "0.80.0";
-    beads = "1.3.0";
-    xray = "26.9.0";
     codex = null;
-    herdr = "0.0.0";
-    vscode = null;
-    skills = "1.6.0";
-    gitcomet = "0.2.3";
-    mcporter = "0.13.0";
-    hysteria = "2.13.0";
-    codegraph = "0.0.0";
     pi-coding-agent = null;
-    vscode-extensions = null;
   };
 in
 lib.mapAttrs (

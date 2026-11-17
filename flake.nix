@@ -17,9 +17,12 @@
   };
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/release-26.05";
-    nixpkgs-nixos.url = "github:NixOS/nixpkgs/nixos-26.05";
-    nixpkgs-darwin.url = "github:NixOS/nixpkgs/nixpkgs-26.05-darwin";
+    # TODO: wait for release-26.11
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    # TODO: wait for nixos-26.11
+    nixpkgs-nixos.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    # TODO: wait for nixpkgs-26.11-darwin
+    nixpkgs-darwin.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
     treefmt-nix.url = "github:numtide/treefmt-nix";
@@ -42,7 +45,8 @@
     flake-utils.url = "github:numtide/flake-utils";
     flake-utils.inputs.systems.follows = "systems";
 
-    home-manager.url = "github:nix-community/home-manager/release-26.05";
+    # TODO: wait for release-26.11
+    home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     keyring.url = "github:tsln1998/keyring-rs";
@@ -51,7 +55,8 @@
     keyring.inputs.flake-utils.follows = "flake-utils";
     keyring.inputs.treefmt-nix.follows = "treefmt-nix";
 
-    nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-26.05";
+    # TODO: wait for nix-darwin-26.11
+    nix-darwin.url = "github:nix-darwin/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";

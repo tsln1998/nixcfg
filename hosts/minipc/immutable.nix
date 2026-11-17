@@ -123,7 +123,6 @@ in
   # Impermanence: root is a fresh subvolume on every boot
   # systemd in stage 1 so this runs before sysroot.mount
   boot.initrd.enable = true;
-  boot.initrd.systemd.enable = true;
   boot.initrd.systemd.services.btrfs-wipe-root =
     let
       rootPath = "/dev/disk/by-partlabel/disk-main-btrfs";
