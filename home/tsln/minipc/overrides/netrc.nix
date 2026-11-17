@@ -4,7 +4,9 @@
   ...
 }:
 let
-  inherit (config.home) username homeDirectory;in{
+  inherit (config.home) username homeDirectory;
+in
+{
 
   age.secrets."users/${username}/netrc" = {
     file = tools.relative "secrets/users/${username}/netrc.age";
