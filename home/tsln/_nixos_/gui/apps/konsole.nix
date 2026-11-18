@@ -29,4 +29,9 @@ in
       };
     };
   };
+
+  programs.plasma.launchers = {
+    icontasks = lib.mkOrder 50 [ "applications:org.kde.konsole.desktop" ];
+    kickoff = lib.mkOrder 50 [ "org.kde.konsole.desktop" ];
+  };
 }

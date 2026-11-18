@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   programs.firefox = {
     enable = true;
@@ -20,5 +20,10 @@
         };
       };
     };
+  };
+
+  programs.plasma.launchers = {
+    icontasks = lib.mkOrder 20 [ "applications:firefox.desktop" ];
+    kickoff = lib.mkOrder 20 [ "firefox.desktop" ];
   };
 }

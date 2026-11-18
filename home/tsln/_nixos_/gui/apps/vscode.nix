@@ -153,4 +153,9 @@ in
       };
     };
   };
+
+  programs.plasma.launchers = {
+    icontasks = lib.mkOrder 70 [ "applications:code.desktop" ];
+    kickoff = lib.mkOrder 70 [ "code.desktop" ];
+  };
 }

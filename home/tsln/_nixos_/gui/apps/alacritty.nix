@@ -65,5 +65,10 @@ in
         };
       };
     };
+
+    plasma.launchers = {
+      icontasks = lib.mkOrder 40 [ "applications:Alacritty.desktop" ];
+      kickoff = lib.mkOrder 40 [ "Alacritty.desktop" ];
+    };
   };
 }
