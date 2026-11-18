@@ -40,8 +40,6 @@
                 "applications:org.kde.konsole.desktop"
                 "applications:org.kde.spectacle.desktop"
                 "applications:code.desktop"
-                "applications:beekeeper-studio.desktop"
-                "applications:gitcomet.desktop"
               ];
 
               showOnlyCurrentActivity = false;
