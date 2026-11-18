@@ -6,7 +6,7 @@
   },
   "magpie": {
     "repo": "ghcr.io/yetone/magpie",
-    "tag": "0.1.4293",
+    "tag": "0.1.4403",
     "tag_prefix": ""
   }
 }
