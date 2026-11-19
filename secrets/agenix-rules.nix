@@ -18,6 +18,7 @@ in
   # Oracle Cloud Singapore 1
   "hosts/oracle-sin-1/ssh_host_ed25519_key.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
   "hosts/oracle-sin-1/magpie/config.env.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
+  "hosts/oracle-sin-1/substore/config.env.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
   "hosts/oracle-sin-1/xray/config.json.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
   "hosts/oracle-sin-1/nginx/config.conf.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
   "hosts/oracle-sin-1/hysteria/config.yaml.age".publicKeys = hosts.oracle-sin-1 ++ users.tsln;
