@@ -25,7 +25,7 @@ in
   ];
 
   # Magpie service configuration
-  virtualisation.oci-containers.containers.magpie = {
+  virtualisation.oci-containers.containers.${name} = {
     image = pkgs.managed-registry.magpie.ref;
 
     serviceName = name;

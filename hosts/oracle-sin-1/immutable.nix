@@ -23,6 +23,10 @@ _: {
         mode = "0755";
       }
       {
+        directory = "/var/lib/substore";
+        mode = "0755";
+      }
+      {
         directory = "/var/lib/nixos";
         mode = "0755";
       }
