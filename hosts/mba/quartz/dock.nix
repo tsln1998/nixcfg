@@ -21,6 +21,9 @@ _: {
         app = "/Applications/Feishu.app";
       }
       {
+        app = "/Applications/GoVault.app";
+      }
+      {
         app = "/Applications/Ghostty.app";
       }
       {
@@ -36,7 +39,7 @@ _: {
         app = "/System/Applications/Podcasts.app";
       }
       {
-        app = "/Applications/Easydict.app";
+        app = "/Applications/Eudic.app";
       }
       {
         app = "/Applications/Nix Apps/Aictionary.app";

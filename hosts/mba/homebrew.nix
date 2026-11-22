@@ -3,12 +3,12 @@ _: {
   homebrew.casks = [
     { name = "qq"; }
     { name = "keka"; }
+    { name = "eudic"; }
     { name = "wechat"; }
     { name = "feishu"; }
     { name = "notion"; }
     { name = "chatgpt"; }
     { name = "ghostty"; }
-    { name = "easydict"; }
     { name = "cyberduck"; }
     { name = "tableplus"; }
     { name = "pearcleaner"; }
@@ -18,5 +18,6 @@ _: {
     { name = "microsoft-office"; }
     { name = "visual-studio-code"; }
     { name = "homebrew/flcash/flclash"; }
+    { name = "homebrew/govault/govault"; }
   ];
 }
