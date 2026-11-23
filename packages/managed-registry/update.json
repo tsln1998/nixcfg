@@ -6,12 +6,12 @@
   },
   "magpie": {
     "repo": "ghcr.io/yetone/magpie",
-    "tag": "0.1.4403",
+    "tag": "0.1.4690",
     "tag_prefix": ""
   },
   "substore": {
     "repo": "docker.io/xream/sub-store",
-    "tag": "2.44.16",
+    "tag": "2.44.26",
     "tag_prefix": ""
   }
 }
