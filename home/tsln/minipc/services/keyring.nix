@@ -1,6 +1,5 @@
 {
   config,
-  inputs,
   pkgs,
   tools,
   ...
@@ -12,10 +11,6 @@ let
   SSH_AUTH_SOCK = "${homeDirectory}/.local/state/keyring/keyring.sock";
 in
 {
-  imports = [
-    inputs.keyring.homeModules.keyring-rs
-  ];
-
   age.secrets."${secretName}" = {
     file = tools.relative "secrets/${secretName}.age";
     mode = "600";

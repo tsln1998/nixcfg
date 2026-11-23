@@ -1,36 +1,14 @@
 {
   config,
-  inputs,
-  pkgs,
-  tools,
   ...
 }:
 let
-  inherit (config.home) username homeDirectory;
+  inherit (config.home) homeDirectory;
 
-  secretName = "users/${username}/keyring/config.toml";
-  socketPath = "${homeDirectory}/Library/Application Support/keyring/keyring.sock";
+  SSH_AUTH_SOCK = "${homeDirectory}/Library/Application Support/dev.txchen.govault/ssh-agent.sock";
 in
 {
-  imports = [
-    inputs.keyring.homeModules.keyring-rs
-  ];
-
-  age.secrets."${secretName}" = {
-    file = tools.relative "secrets/${secretName}.age";
-    mode = "600";
-  };
-
-  services.keyring-rs = {
-    enable = true;
-    package = pkgs.keyring-rs;
-    path = socketPath;
-    settingsFile = config.age.secrets."${secretName}".path;
-  };
-
-  sshAuthSock.initialization = {
-    bash = ''export SSH_AUTH_SOCK="${socketPath}"'';
-    fish = ''set -x SSH_AUTH_SOCK "${socketPath}"'';
-    nushell = ''$env.SSH_AUTH_SOCK = "${socketPath}"'';
+  home.sessionVariables = {
+    inherit SSH_AUTH_SOCK;
   };
 }

@@ -16,6 +16,7 @@ in
   imports = (tools.scan ./.) ++ [
     inputs.agenix.homeManagerModules.default
     inputs.catppuccin.homeModules.catppuccin
+    inputs.keyring.homeModules.keyring-rs
     outputs.homeModules.default
   ];
 
