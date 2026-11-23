@@ -7,13 +7,12 @@
 }:
 let
   cfg = config.catppuccin.wallpaper;
-  enable = cfg.enable && config.catppuccin.enable && config.programs.plasma.enable;
   artwork = pkgs.nixos-artwork.wallpapers."catppuccin-${cfg.flavor}";
   wallpaper = "${artwork}/share/backgrounds/nixos/nixos-wallpaper-catppuccin-${cfg.flavor}.png";
 in
 {
 
-  options.catppuccin = lib.optionalAttrs (options ? programs.plasma) {
+  options.catppuccin = lib.optionalAttrs (options ? programs.plasma.workspace) {
     wallpaper = {
       enable = lib.mkOption {
         type = lib.types.bool;
@@ -29,8 +28,8 @@ in
     };
   };
 
-  config = lib.optionalAttrs (options ? programs.plasma) (
-    lib.mkIf enable {
+  config = lib.optionalAttrs (options ? programs.plasma.workspace) (
+    lib.mkIf cfg.enable && config.catppuccin.enable && config.programs.plasma.enable {
       # Catppuccin Plasma wallpaper
       programs.plasma.workspace = {
         inherit wallpaper;

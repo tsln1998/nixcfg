@@ -3,9 +3,10 @@ _: {
     enable = true;
     package = null;
     extensions = [
-      { id = "ddkjiahejlhfcafbddmgiahcphecmpfh"; } # uBlock Origin Lite
+      { id = "hehggadaopoacecdllhhajmbjkdcmajg"; } # ChatGPT
       { id = "nngceckbapebfimnlniiiahkandclblb"; } # Bitwarden
       { id = "djnlaiohfaaifbibleebjggkghlmcpcj"; } # FluentRead
+      { id = "ddkjiahejlhfcafbddmgiahcphecmpfh"; } # uBlock Origin Lite
     ];
   };
 }

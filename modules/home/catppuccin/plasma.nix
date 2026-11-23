@@ -8,11 +8,10 @@
 let
   inherit (lib.strings) toSentenceCase;
   cfg = config.catppuccin.plasma;
-  enable = cfg.enable && config.catppuccin.enable && config.programs.plasma.enable;
 in
 {
 
-  options.catppuccin = lib.optionalAttrs (options ? programs.plasma) {
+  options.catppuccin = lib.optionalAttrs (options ? programs.plasma.workspace) {
     plasma = {
       enable = lib.mkOption {
         type = lib.types.bool;
@@ -34,8 +33,8 @@ in
     };
   };
 
-  config = lib.optionalAttrs (options ? programs.plasma) (
-    lib.mkIf enable {
+  config = lib.optionalAttrs (options ? programs.plasma.workspace) (
+    lib.mkIf cfg.enable && config.catppuccin.enable && config.programs.plasma.enable {
       # Catppuccin Plasma Theme Package
       home.packages = [
         (pkgs.catppuccin-kde.override {

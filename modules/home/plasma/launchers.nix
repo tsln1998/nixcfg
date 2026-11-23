@@ -1,6 +1,6 @@
-{ lib, ... }:
+{ lib, options, ... }:
 {
-  options.programs.plasma.launchers = {
+  options.programs.plasma.launchers = lib.optionalAttrs (options ? programs.plasma.panels) {
     icontasks = lib.mkOption {
       type = lib.types.listOf lib.types.str;
       default = [ ];
