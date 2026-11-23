@@ -34,7 +34,7 @@ in
   };
 
   config = lib.optionalAttrs (options ? programs.plasma.workspace) (
-    lib.mkIf cfg.enable && config.catppuccin.enable && config.programs.plasma.enable {
+    lib.mkIf (cfg.enable && config.catppuccin.enable && config.programs.plasma.enable) {
       # Catppuccin Plasma Theme Package
       home.packages = [
         (pkgs.catppuccin-kde.override {

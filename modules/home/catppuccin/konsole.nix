@@ -37,7 +37,7 @@ in
   };
 
   config = lib.optionalAttrs (options ? programs.konsole.profiles) (
-    lib.mkIf cfg.enable && config.catppuccin.enable && config.programs.konsole.enable {
+    lib.mkIf (cfg.enable && config.catppuccin.enable && config.programs.konsole.enable) {
       # Catppuccin Konsole Theme Package
       home.file = {
         ".local/share/konsole/catppuccin-${cfg.flavor}.colorscheme" = {
