@@ -96,6 +96,11 @@ let
         "git.autofetch" = lib.mkDefault true;
         "git.fetchOnPull" = lib.mkDefault true;
         "git.enableSmartCommit" = lib.mkDefault true;
+        "git.detectSubmodules" = lib.mkDefault false;
+
+        "scm.defaultViewMode" = lib.mkDefault "tree";
+        "scm.repositories.explorer" = lib.mkDefault true;
+        "scm.repositories.selectionMode" = lib.mkDefault "single";
 
         "gitblame.delayBlame" = lib.mkDefault 500;
         "gitblame.ignoreWhitespace" = lib.mkDefault true;
@@ -109,6 +114,7 @@ let
         "redhat.telemetry.enabled" = lib.mkDefault false;
 
         "update.showReleaseNotes" = lib.mkDefault false;
+        "update.titleBar" = lib.mkDefault false;
       }
       // (profile.userSettings or { });
       keybindings = [

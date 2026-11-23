@@ -1,6 +1,11 @@
 { inputs, config, ... }:
 let
-  inherit (inputs) homebrew-core homebrew-cask homebrew-flcash homebrew-govault;
+  inherit (inputs)
+    homebrew-core
+    homebrew-cask
+    homebrew-flcash
+    homebrew-govault
+    ;
 in
 {
   nix-homebrew = {

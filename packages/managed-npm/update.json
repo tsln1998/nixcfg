@@ -13,7 +13,7 @@
   },
   "pi-plannotator": {
     "name": "@plannotator/pi-extension",
-    "version": "0.28.65"
+    "version": "0.29.2"
   },
   "pi-ponytail": {
     "name": "@dietrichgebert/ponytail",
@@ -29,10 +29,10 @@
   },
   "pi-subagents": {
     "name": "pi-subagents",
-    "version": "0.88.1"
+    "version": "0.90.0"
   },
   "pi-web-access": {
     "name": "pi-web-access",
-    "version": "0.47.0"
+    "version": "0.48.0"
   }
 }
